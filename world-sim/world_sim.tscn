@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dj1dfxevdrbe8"]
+
+[ext_resource type="Script" uid="uid://dyfqjebcqd1kw" path="res://world-sim/line_chart.gd" id="4_ee0db"]
+
+[node name="WorldSim" type="Node2D" unique_id=549169052]
+
+[node name="Window" type="Window" parent="." unique_id=2014495586]
+oversampling_override = 1.0
+title = "Charts"
+position = Vector2i(130, 36)
+size = Vector2i(800, 500)
+
+[node name="LineChart" type="Node2D" parent="Window" unique_id=309522642]
+position = Vector2(92, 70)
+script = ExtResource("4_ee0db")
