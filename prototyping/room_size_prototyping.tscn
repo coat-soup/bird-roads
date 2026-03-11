@@ -1,0 +1,205 @@
+[gd_scene format=3 uid="uid://cx5yoigfoh0xg"]
+
+[ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="1_3tw78"]
+[ext_resource type="PackedScene" uid="uid://cjg11usfhasse" path="res://player/player.tscn" id="2_kdgit"]
+[ext_resource type="PackedScene" uid="uid://ch5ws2dsk0uvl" path="res://prototyping/human_reference.glb" id="3_kdgit"]
+[ext_resource type="PackedScene" uid="uid://dncxruqdyqw7b" path="res://prototyping/corridors/corridor_straight.tscn" id="5_op7uo"]
+[ext_resource type="PackedScene" uid="uid://dsfgsobsasgxb" path="res://prototyping/corridors/corridor_tee.tscn" id="6_dj0my"]
+[ext_resource type="PackedScene" uid="uid://be2h7ok4k2pxf" path="res://prototyping/corridors/corridor_elbow.tscn" id="6_hb8au"]
+[ext_resource type="PackedScene" uid="uid://c31tmc8x8kfu6" path="res://prototyping/corridors/corridor_junction.tscn" id="8_gea12"]
+[ext_resource type="PackedScene" uid="uid://dc67xhgdsfaep" path="res://prototyping/rooms/med_bay_small.tscn" id="9_dj0my"]
+[ext_resource type="PackedScene" uid="uid://sh8np8l6mpox" path="res://prototyping/rooms/bunk_room_medium.tscn" id="10_45sbi"]
+[ext_resource type="PackedScene" uid="uid://b7lvu22vkitj4" path="res://prototyping/rooms/mess_small.tscn" id="11_45sbi"]
+[ext_resource type="PackedScene" uid="uid://cd1jmul7hg3e5" path="res://prototyping/rooms/munitions_small.tscn" id="11_427k7"]
+[ext_resource type="PackedScene" uid="uid://q5va46g1xis8" path="res://prototyping/ships/prot_hull_medium.tscn" id="12_427k7"]
+[ext_resource type="PackedScene" uid="uid://cr2prc7066vc8" path="res://prototyping/airship_porthole_blockout.tscn" id="13_gga6o"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3tw78"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_kdgit"]
+sky_material = SubResource("ProceduralSkyMaterial_3tw78")
+
+[sub_resource type="Environment" id="Environment_2voc4"]
+background_mode = 2
+sky = SubResource("Sky_kdgit")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2voc4"]
+render_priority = 0
+shader = ExtResource("1_3tw78")
+shader_parameter/world_uv = false
+shader_parameter/object_uv = false
+shader_parameter/object_uv_scale = Vector2(1, 1)
+shader_parameter/preset_color = 0
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/metalic = 0.25
+shader_parameter/roughness = 0.75
+shader_parameter/grid_scale = 1.0
+shader_parameter/grid_width = 0.01
+shader_parameter/grid_color = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/inside_scale = 1.0
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_color = Color(0.8, 0.8, 0.8, 0.8)
+shader_parameter/checkered = true
+shader_parameter/sub_checkered_grid = false
+shader_parameter/checkered_color = Color(0.25, 0.25, 0.25, 1)
+shader_parameter/checkered_blend_color = 0.1
+shader_parameter/use_inside_uv = false
+shader_parameter/use_albedo_color = false
+shader_parameter/albedo_alpha = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_427k7"]
+size = Vector3(7.98, 0.5, 19.9917)
+
+[node name="RoomSizePrototyping" type="Node3D" unique_id=454104090]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=433013783]
+environment = SubResource("Environment_2voc4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=968551923]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1415426541]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48628524, 0)
+use_collision = true
+size = Vector3(40, 0.95, 40)
+material = SubResource("ShaderMaterial_2voc4")
+
+[node name="Player" parent="." unique_id=657413655 instance=ExtResource("2_kdgit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.356152, 1.5000019, 0.45201564)
+
+[node name="human_reference" parent="." unique_id=990238803 instance=ExtResource("3_kdgit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6331844, 0.007943034, -9.14816)
+
+[node name="human_reference2" parent="." unique_id=1450689534 instance=ExtResource("3_kdgit")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.8868084, 0.007943034, 1.702843)
+
+[node name="human_reference3" parent="." unique_id=2093689025 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -6.002021, 0.007943034, -8.108779)
+
+[node name="human_reference4" parent="." unique_id=74027997 instance=ExtResource("3_kdgit")]
+transform = Transform3D(-0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, -0.49999997, -6.527805, 0.007943034, -1.9007561)
+
+[node name="corridor_prot2" parent="." unique_id=1935301666 instance=ExtResource("8_gea12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="corridor_prot5" parent="." unique_id=820509507 instance=ExtResource("5_op7uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1)
+
+[node name="corridor_prot6" parent="." unique_id=1631976959 instance=ExtResource("6_dj0my")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -7)
+
+[node name="corridor_prot23" parent="." unique_id=219630713 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0, -7)
+
+[node name="corridor_prot7" parent="." unique_id=491863443 instance=ExtResource("5_op7uo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0, -3)
+
+[node name="corridor_prot8" parent="." unique_id=803037373 instance=ExtResource("5_op7uo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -11)
+
+[node name="corridor_prot9" parent="." unique_id=1977916860 instance=ExtResource("8_gea12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
+
+[node name="corridor_prot10" parent="." unique_id=1203906294 instance=ExtResource("6_hb8au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="corridor_prot11" parent="." unique_id=2104843336 instance=ExtResource("5_op7uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -7)
+
+[node name="corridor_prot13" parent="." unique_id=238559322 instance=ExtResource("6_dj0my")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -7)
+
+[node name="corridor_prot12" parent="." unique_id=464833955 instance=ExtResource("5_op7uo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, -3)
+
+[node name="corridor_prot14" parent="." unique_id=2095316980 instance=ExtResource("5_op7uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -7)
+
+[node name="corridor_prot15" parent="." unique_id=2036209969 instance=ExtResource("5_op7uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 1)
+
+[node name="corridor_prot16" parent="." unique_id=2108215589 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 1)
+
+[node name="corridor_prot17" parent="." unique_id=1094339694 instance=ExtResource("5_op7uo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 5)
+
+[node name="corridor_prot18" parent="." unique_id=1704979472 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 13)
+
+[node name="corridor_prot19" parent="." unique_id=1875651496 instance=ExtResource("5_op7uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 13)
+
+[node name="corridor_prot20" parent="." unique_id=1008555050 instance=ExtResource("5_op7uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
+
+[node name="corridor_prot21" parent="." unique_id=1612356578 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4, 0, 13)
+
+[node name="corridor_prot22" parent="." unique_id=1376195827 instance=ExtResource("5_op7uo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 9)
+
+[node name="room_prot" parent="." unique_id=2063581993 instance=ExtResource("9_dj0my")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
+
+[node name="room_prot3" parent="." unique_id=1307979828 instance=ExtResource("10_45sbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -11)
+
+[node name="room_prot4" parent="." unique_id=160586938 instance=ExtResource("11_427k7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -11)
+
+[node name="corridor_prot" parent="." unique_id=1632264079 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -3)
+
+[node name="room_prot2" parent="." unique_id=1478802349 instance=ExtResource("9_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, 3)
+
+[node name="room_prot5" parent="." unique_id=334034807 instance=ExtResource("11_427k7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, -3)
+
+[node name="corridor_prot3" parent="." unique_id=509403266 instance=ExtResource("8_gea12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="room_prot6" parent="." unique_id=1835838540 instance=ExtResource("11_45sbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
+
+[node name="prot_hull_medium" parent="." unique_id=1631090322 instance=ExtResource("12_427k7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.810955, 0, -3.0988884)
+
+[node name="corridor_prot" parent="prot_hull_medium" unique_id=1956180560 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, 0)
+
+[node name="corridor_prot3" parent="prot_hull_medium" unique_id=631775348 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, 4)
+
+[node name="corridor_prot4" parent="prot_hull_medium" unique_id=341525689 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 0, 4)
+
+[node name="room_prot" parent="prot_hull_medium" unique_id=692030550 instance=ExtResource("9_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -2)
+
+[node name="corridor_prot2" parent="prot_hull_medium" unique_id=1584896422 instance=ExtResource("5_op7uo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 0, -4)
+
+[node name="human_reference" parent="prot_hull_medium" unique_id=1442934169 instance=ExtResource("3_kdgit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.235939, 0.015886068, -15.197432)
+
+[node name="room_prot2" parent="prot_hull_medium" unique_id=127498153 instance=ExtResource("10_45sbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="room_prot3" parent="prot_hull_medium" unique_id=1072861533 instance=ExtResource("11_45sbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="prot_hull_medium" unique_id=247503593]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="prot_hull_medium/StaticBody3D" unique_id=548739098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25024414, 0.012939453)
+shape = SubResource("BoxShape3D_427k7")
+
+[node name="airship_porthole_blockout" parent="." unique_id=1255325083 instance=ExtResource("13_gga6o")]
+transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, 29.255312, 1.4194083, -2.29914)

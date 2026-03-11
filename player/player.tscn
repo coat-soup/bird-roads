@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cjg11usfhasse"]
+
+[ext_resource type="Script" uid="uid://c0c8otvncddg5" path="res://player/player_movement.gd" id="1_u3ln2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_765p8"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ybx0f"]
+radius = 0.3
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" unique_id=657413655 groups=["player"]]
+collision_layer = 2
+collision_mask = 35
+platform_on_leave = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=892348718]
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_765p8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1852533796]
+shape = SubResource("CapsuleShape3D_ybx0f")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=1597075800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732802, 0)
+
+[node name="Camera" type="Camera3D" parent="CameraPivot" unique_id=1289026910]
+
+[node name="MovementManager" type="Node3D" parent="." unique_id=805829882 node_paths=PackedStringArray("player", "camera_pivot", "camera")]
+script = ExtResource("1_u3ln2")
+player = NodePath("..")
+camera_pivot = NodePath("../CameraPivot")
+camera = NodePath("../CameraPivot/Camera")
+
+[node name="Floorcast" type="RayCast3D" parent="MovementManager" unique_id=456867915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.991744, 0)
+target_position = Vector3(0, -0.3, 0)
+collision_mask = 32

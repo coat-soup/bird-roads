@@ -1,0 +1,119 @@
+extends Node3D
+
+class_name PlayerMovement
+
+@export var player : CharacterBody3D
+
+@export var camera_pivot: Node3D
+@export var camera: Camera3D
+
+@onready var collision_shape_3d: CollisionShape3D = $"../CollisionShape3D"
+@onready var floorcast: RayCast3D = $Floorcast
+
+@export var speed = 5.0
+@export var sprint_speed = 8.0
+@export var jump_velocity = 4.5
+@export var sensetivity = 0.004;
+
+#viewbob
+const BOB_FREQ = 2.5
+const BOB_AMP = 0.05
+var t_bob : float = 0.0
+
+signal bob_top
+signal bob_bottom
+
+var landing : bool
+signal jump_start
+signal jump_land
+
+var debug_mode = false
+
+var floor_obj : Node3D
+
+
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	camera.current = true
+
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_key_pressed(KEY_SEMICOLON):
+		debug_mode = !debug_mode
+		if debug_mode:
+			collision_shape_3d.disabled = true
+		else:
+			collision_shape_3d.disabled = false
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		player.rotate_y(-event.relative.x * sensetivity)
+		camera_pivot.rotate_x(-event.relative.y * sensetivity)
+		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+
+
+func _process(delta: float) -> void:
+	player.rotation.z = lerp_angle(player.rotation.z, 0, delta * 10)
+	
+	
+	
+	# gravity
+	if not player.is_on_floor() and !debug_mode:
+		player.velocity += player.get_gravity() * delta
+	
+	# input
+	var input_dir := Input.get_vector("left", "right", "up", "down")
+	var direction := (player.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	
+	if debug_mode:
+		player.velocity.y = (int(Input.is_key_pressed(KEY_SPACE)) - int(Input.is_key_pressed(KEY_CTRL))) * speed
+	
+	# jump
+	if Input.is_action_just_pressed("jump") and player.is_on_floor():
+		jump_start.emit()
+		player.velocity.y = jump_velocity
+		
+	
+	elif player.is_on_floor():
+		if direction:
+			player.velocity.x = direction.x * get_speed()
+			player.velocity.z = direction.z * get_speed()
+		else:
+			player.velocity.x = lerp(player.velocity.x, direction.x * get_speed(), delta * 10)
+			player.velocity.z = lerp(player.velocity.z, direction.z * get_speed(), delta * 10)
+		
+		if landing:
+			landing = false
+			if player.velocity.y < 1:
+				jump_land.emit()
+	else:
+		player.velocity.x = lerp(player.velocity.x, direction.x * get_speed(), delta * 2)
+		player.velocity.z = lerp(player.velocity.z, direction.z * get_speed(), delta * 2)
+		
+		if !landing:
+			landing = true
+
+	# viewbob
+	t_bob += delta * player.velocity.length() * float(player.is_on_floor())
+	var b : float = bob_calc(t_bob)
+	camera.transform.origin = Vector3(0, b, 0)
+	
+	# bob signals
+	if b/BOB_AMP < 0.05:
+		bob_bottom.emit()
+	elif b/BOB_AMP > 0.95:
+		bob_top.emit()
+
+	player.move_and_slide()
+
+
+static func bob_calc(time : float) -> float:
+	return BOB_AMP * sin(time * BOB_FREQ)
+
+
+func add_velocity_impulse(vel):
+	player.velocity += vel
+
+func get_speed() -> float:
+	return speed if !Input.is_action_pressed("sprint") else sprint_speed

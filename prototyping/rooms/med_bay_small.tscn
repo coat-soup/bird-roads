@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dc67xhgdsfaep"]
+
+[ext_resource type="PackedScene" uid="uid://wqk8xmf04wbc" path="res://prototyping/rooms/room_prot.glb" id="1_h4kwe"]
+[ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="2_5cq5s"]
+[ext_resource type="PackedScene" uid="uid://ch5ws2dsk0uvl" path="res://prototyping/human_reference.glb" id="3_5cq5s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6u72v"]
+render_priority = 0
+shader = ExtResource("2_5cq5s")
+shader_parameter/world_uv = false
+shader_parameter/object_uv = false
+shader_parameter/object_uv_scale = Vector2(1, 1)
+shader_parameter/preset_color = 3
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/metalic = 0.25
+shader_parameter/roughness = 0.75
+shader_parameter/grid_scale = 1.0
+shader_parameter/grid_width = 0.01
+shader_parameter/grid_color = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/inside_scale = 1.0
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_color = Color(0.8, 0.8, 0.8, 0.8)
+shader_parameter/checkered = true
+shader_parameter/sub_checkered_grid = false
+shader_parameter/checkered_color = Color(0.25, 0.25, 0.25, 1)
+shader_parameter/checkered_blend_color = 0.1
+shader_parameter/use_inside_uv = false
+shader_parameter/use_albedo_color = false
+shader_parameter/albedo_alpha = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7esq"]
+render_priority = 0
+shader = ExtResource("2_5cq5s")
+shader_parameter/world_uv = false
+shader_parameter/object_uv = false
+shader_parameter/object_uv_scale = Vector2(1, 1)
+shader_parameter/preset_color = 5
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/metalic = 0.25
+shader_parameter/roughness = 0.75
+shader_parameter/grid_scale = 1.0
+shader_parameter/grid_width = 0.01
+shader_parameter/grid_color = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/inside_scale = 1.0
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_color = Color(0.8, 0.8, 0.8, 0.8)
+shader_parameter/checkered = true
+shader_parameter/sub_checkered_grid = false
+shader_parameter/checkered_color = Color(0.25, 0.25, 0.25, 1)
+shader_parameter/checkered_blend_color = 0.1
+shader_parameter/use_inside_uv = false
+shader_parameter/use_albedo_color = false
+shader_parameter/albedo_alpha = 0.5
+
+[node name="room_prot" unique_id=1478802349 instance=ExtResource("1_h4kwe")]
+
+[node name="Room3x2" parent="." index="0" unique_id=1544168275]
+visible = false
+
+[node name="Room2x1" parent="." index="1" unique_id=1981993197]
+surface_material_override/0 = SubResource("ShaderMaterial_6u72v")
+
+[node name="Bed" type="CSGBox3D" parent="." index="2" unique_id=1066764259]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.6118355, 0.5566262, 1.4106783)
+use_collision = true
+size = Vector3(1, 0.23779297, 2.2353516)
+material = SubResource("ShaderMaterial_w7esq")
+
+[node name="Bed2" type="CSGBox3D" parent="." index="3" unique_id=1361948908]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2.6118355, 0.5566262, -1.4210457)
+use_collision = true
+size = Vector3(1, 0.23779297, 2.2353516)
+material = SubResource("ShaderMaterial_w7esq")
+
+[node name="Desk" type="CSGBox3D" parent="." index="4" unique_id=321694974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8728557, 0.8896589, 1.5074296)
+use_collision = true
+size = Vector3(3.040039, 0.23779297, 0.963562)
+material = SubResource("ShaderMaterial_w7esq")
+
+[node name="human_reference" parent="." index="5" unique_id=990238803 instance=ExtResource("3_5cq5s")]
+transform = Transform3D(4.3711385e-08, -1, -4.3711392e-08, 8.742278e-08, -4.371139e-08, 1, -1, -4.371139e-08, 8.742278e-08, -1.7375215, 0.8669504, -1.4719044)
+
+[node name="human_reference2" parent="." index="6" unique_id=478429330 instance=ExtResource("3_5cq5s")]
+transform = Transform3D(4.3711385e-08, -1, -4.3711392e-08, 8.742278e-08, -4.371139e-08, 1, -1, -4.371139e-08, 8.742278e-08, -1.7375216, 0.8669504, 1.4503547)
+
+[node name="Room2x1_m" parent="." index="7" unique_id=1316929891]
+visible = false
+
+[node name="Room1x1" parent="." index="8" unique_id=853577433]
+visible = false
