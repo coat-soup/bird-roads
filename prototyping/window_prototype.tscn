@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dihxe3t5qppmg"]
+
+[ext_resource type="PackedScene" uid="uid://udot6gnkp2ju" path="res://prototyping/airship_base_blockout.tscn" id="1_sx16l"]
+[ext_resource type="PackedScene" uid="uid://cr2prc7066vc8" path="res://prototyping/airship_porthole_blockout.tscn" id="2_0awql"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_noarx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
+render_priority = 2
+transparency = 1
+albedo_color = Color(0.47843137, 0.3137255, 0.24313726, 1)
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+
+[sub_resource type="GDScript" id="GDScript_r3fl7"]
+script/source = "extends CSGBox3D
+
+func _ready() -> void:
+	material.rende"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jka67"]
+stencil_mode = 3
+stencil_flags = 2
+
+[node name="Node3D" type="Node3D" unique_id=1086732077]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=118966379]
+transform = Transform3D(10, 0, 0, 0, -4.371139e-07, 10, 0, -10, -4.371139e-07, 0, 0, 0)
+mesh = SubResource("QuadMesh_noarx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=65098707]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.193087, 1.699707, -0.44384766)
+size = Vector3(5.1118164, 3.600586, 0.11230469)
+material = SubResource("StandardMaterial3D_a0tk4")
+script = SubResource("GDScript_r3fl7")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=517666305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.027119, 1.9657046, -0.48558563)
+transparency = 1.0
+size = Vector3(1.2871094, 1.387207, 0.001)
+material = SubResource("StandardMaterial3D_jka67")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1919506794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5442232, 0.88055694)
+
+[node name="airship_base_blockout" parent="." unique_id=393235930 instance=ExtResource("1_sx16l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.275731, 2.1932735, -2.4940157)
+
+[node name="airship_porthole_blockout" parent="." unique_id=1255325083 instance=ExtResource("2_0awql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95537, 3.789072, -0.6767931)
+
+[node name="airship_porthole_blockout2" parent="." unique_id=1137796050 instance=ExtResource("2_0awql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.133718, 3.789072, -0.6767931)
+
+[node name="airship_porthole_blockout3" parent="." unique_id=211021639 instance=ExtResource("2_0awql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.631833, 3.789072, -0.6767931)
+
+[node name="airship_porthole_blockout4" parent="." unique_id=402559029 instance=ExtResource("2_0awql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.519741, 3.789072, -0.6767931)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=124787138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5442232, -5.312213)
+
+[node name="airship_base_blockout2" parent="." unique_id=736133519 instance=ExtResource("1_sx16l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.275731, 2.1932735, -8.686786)
+
+[node name="airship_porthole_blockout5" parent="." unique_id=1996393220 instance=ExtResource("2_0awql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95537, 3.789072, -6.869563)
+
+[node name="airship_porthole_blockout6" parent="." unique_id=1303540436 instance=ExtResource("2_0awql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.133718, 3.789072, -6.869563)
+
+[node name="airship_porthole_blockout7" parent="." unique_id=1039365130 instance=ExtResource("2_0awql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.631833, 3.789072, -6.869563)
+
+[node name="airship_porthole_blockout8" parent="." unique_id=9644866 instance=ExtResource("2_0awql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.519741, 3.789072, -6.869563)

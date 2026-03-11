@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://udot6gnkp2ju"]
+
+[ext_resource type="PackedScene" uid="uid://cas46nunwebfh" path="res://prototyping/airship_base_blockout.glb" id="1_dbqgx"]
+[ext_resource type="Material" uid="uid://bo4fdbcy6d7gp" path="res://prototyping/airship_hull_mat.tres" id="2_xfuke"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jwbjg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbqgx"]
+cull_mode = 2
+
+[node name="airship_base_blockout" unique_id=393235930 instance=ExtResource("1_dbqgx")]
+
+[node name="Cube" parent="." index="0" unique_id=1955972933]
+surface_material_override/0 = ExtResource("2_xfuke")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="6" unique_id=1263231452]
+transform = Transform3D(5.0131783, 0, 0, 0, 1, 0, 0, 0, 1.809136, 2.135713, 1.0001192, 0)
+mesh = SubResource("PlaneMesh_jwbjg")
+surface_material_override/0 = SubResource("StandardMaterial3D_dbqgx")

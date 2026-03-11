@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cr2prc7066vc8"]
+
+[ext_resource type="PackedScene" uid="uid://bibqk0foxuto" path="res://prototyping/airship_porthole_blockout.glb" id="1_m1e33"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1e33"]
+albedo_color = Color(0.42365062, 0.42365065, 0.42365062, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hl38i"]
+stencil_mode = 3
+stencil_flags = 2
+
+[node name="airship_porthole_blockout" unique_id=1255325083 instance=ExtResource("1_m1e33")]
+
+[node name="Cube" parent="." index="0" unique_id=1740675817]
+surface_material_override/0 = SubResource("StandardMaterial3D_m1e33")
+
+[node name="Cube_001" parent="." index="1" unique_id=689459960]
+transparency = 1.0
+surface_material_override/0 = SubResource("StandardMaterial3D_hl38i")
