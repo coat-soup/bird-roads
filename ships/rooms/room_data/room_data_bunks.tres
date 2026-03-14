@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShipRoomData" format=3 uid="uid://cxyij4onuyfmi"]
+
+[ext_resource type="PackedScene" uid="uid://sh8np8l6mpox" path="res://ships/rooms/models/bunk_room_medium.tscn" id="1_ut3xt"]
+[ext_resource type="Script" uid="uid://hhx2pmgp564o" path="res://ships/scripts/ship_room_data.gd" id="2_ja57i"]
+
+[resource]
+script = ExtResource("2_ja57i")
+name = "Bunkroom"
+size = Vector2i(2, 1)
+prefab = ExtResource("1_ut3xt")
+metadata/_custom_type_script = "uid://hhx2pmgp564o"

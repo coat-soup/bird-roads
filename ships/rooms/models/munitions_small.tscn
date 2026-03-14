@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cd1jmul7hg3e5"]
 
 [ext_resource type="PackedScene" uid="uid://wqk8xmf04wbc" path="res://prototyping/rooms/room_prot.glb" id="1_b0e46"]
+[ext_resource type="Script" uid="uid://dexkl1fl81yeg" path="res://ships/scripts/ship_room.gd" id="2_0gf6t"]
 [ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="2_05bsq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tuovh"]
@@ -100,6 +101,7 @@ shader_parameter/use_albedo_color = false
 shader_parameter/albedo_alpha = 0.5
 
 [node name="room_prot" unique_id=1307979828 instance=ExtResource("1_b0e46")]
+script = ExtResource("2_0gf6t")
 
 [node name="Room3x2" parent="." index="0" unique_id=1544168275]
 visible = false

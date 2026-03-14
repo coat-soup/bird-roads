@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShipRoomData" format=3 uid="uid://dcysymxha4tjh"]
+
+[ext_resource type="PackedScene" uid="uid://b7lvu22vkitj4" path="res://ships/rooms/models/mess_small.tscn" id="1_gg35b"]
+[ext_resource type="Script" uid="uid://hhx2pmgp564o" path="res://ships/scripts/ship_room_data.gd" id="2_05eky"]
+
+[resource]
+script = ExtResource("2_05eky")
+name = "Mess"
+size = Vector2i(2, 1)
+prefab = ExtResource("1_gg35b")
+metadata/_custom_type_script = "uid://hhx2pmgp564o"

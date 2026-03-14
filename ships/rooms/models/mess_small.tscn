@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://wqk8xmf04wbc" path="res://prototyping/rooms/room_prot.glb" id="1_arloj"]
 [ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="2_2qiyo"]
+[ext_resource type="Script" uid="uid://dexkl1fl81yeg" path="res://ships/scripts/ship_room.gd" id="2_adifp"]
 [ext_resource type="PackedScene" uid="uid://ch5ws2dsk0uvl" path="res://prototyping/human_reference.glb" id="3_rleer"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tuovh"]
@@ -53,6 +54,7 @@ shader_parameter/use_albedo_color = false
 shader_parameter/albedo_alpha = 0.5
 
 [node name="room_prot" unique_id=1478802349 instance=ExtResource("1_arloj")]
+script = ExtResource("2_adifp")
 
 [node name="Room3x2" parent="." index="0" unique_id=1544168275]
 visible = false

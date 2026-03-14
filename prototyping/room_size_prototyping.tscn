@@ -7,13 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dsfgsobsasgxb" path="res://prototyping/corridors/corridor_tee.tscn" id="6_dj0my"]
 [ext_resource type="PackedScene" uid="uid://be2h7ok4k2pxf" path="res://prototyping/corridors/corridor_elbow.tscn" id="6_hb8au"]
 [ext_resource type="PackedScene" uid="uid://c31tmc8x8kfu6" path="res://prototyping/corridors/corridor_junction.tscn" id="8_gea12"]
-[ext_resource type="PackedScene" uid="uid://dc67xhgdsfaep" path="res://prototyping/rooms/med_bay_small.tscn" id="9_dj0my"]
-[ext_resource type="PackedScene" uid="uid://sh8np8l6mpox" path="res://prototyping/rooms/bunk_room_medium.tscn" id="10_45sbi"]
-[ext_resource type="PackedScene" uid="uid://b7lvu22vkitj4" path="res://prototyping/rooms/mess_small.tscn" id="11_45sbi"]
-[ext_resource type="PackedScene" uid="uid://cd1jmul7hg3e5" path="res://prototyping/rooms/munitions_small.tscn" id="11_427k7"]
-[ext_resource type="PackedScene" uid="uid://q5va46g1xis8" path="res://prototyping/ships/prot_hull_medium.tscn" id="12_427k7"]
-[ext_resource type="PackedScene" uid="uid://cr2prc7066vc8" path="res://prototyping/airship_porthole_blockout.tscn" id="13_gga6o"]
-[ext_resource type="PackedScene" uid="uid://bhfabfs8iulg6" path="res://prototyping/ships/hull_emira.tscn" id="14_68unt"]
+[ext_resource type="PackedScene" uid="uid://dc67xhgdsfaep" path="res://ships/rooms/models/med_bay_small.tscn" id="9_dj0my"]
+[ext_resource type="PackedScene" uid="uid://sh8np8l6mpox" path="res://ships/rooms/models/bunk_room_medium.tscn" id="10_45sbi"]
+[ext_resource type="PackedScene" uid="uid://b7lvu22vkitj4" path="res://ships/rooms/models/mess_small.tscn" id="11_45sbi"]
+[ext_resource type="PackedScene" uid="uid://cd1jmul7hg3e5" path="res://ships/rooms/models/munitions_small.tscn" id="11_427k7"]
 [ext_resource type="PackedScene" uid="uid://bjt4s60gkfm2t" path="res://prototyping/ships/hull_lancer.tscn" id="15_mkcgc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3tw78"]
@@ -170,81 +167,96 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 [node name="room_prot6" parent="." unique_id=1835838540 instance=ExtResource("11_45sbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
 
-[node name="prot_hull_medium" parent="." unique_id=1631090322 instance=ExtResource("12_427k7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.810955, 0, -3.0988884)
-
-[node name="corridor_prot" parent="prot_hull_medium" unique_id=1956180560 instance=ExtResource("6_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, 0)
-
-[node name="corridor_prot3" parent="prot_hull_medium" unique_id=631775348 instance=ExtResource("6_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, 4)
-
-[node name="corridor_prot4" parent="prot_hull_medium" unique_id=341525689 instance=ExtResource("6_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 0, 4)
-
-[node name="room_prot" parent="prot_hull_medium" unique_id=692030550 instance=ExtResource("9_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -2)
-
-[node name="corridor_prot2" parent="prot_hull_medium" unique_id=1584896422 instance=ExtResource("5_op7uo")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 0, -4)
-
-[node name="human_reference" parent="prot_hull_medium" unique_id=1442934169 instance=ExtResource("3_kdgit")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.235939, 1.7175257, -13.768156)
-
-[node name="room_prot2" parent="prot_hull_medium" unique_id=127498153 instance=ExtResource("10_45sbi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
-
-[node name="room_prot3" parent="prot_hull_medium" unique_id=1072861533 instance=ExtResource("11_45sbi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="prot_hull_medium" unique_id=247503593]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="prot_hull_medium/StaticBody3D" unique_id=548739098]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25024414, 0.012939453)
-shape = SubResource("BoxShape3D_427k7")
-
-[node name="airship_porthole_blockout" parent="." unique_id=1255325083 instance=ExtResource("13_gga6o")]
-transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, 29.255312, 1.4194083, -2.29914)
-
-[node name="hull_emira" parent="." unique_id=1543213024 instance=ExtResource("14_68unt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.62974, 0, -6.814749)
-
 [node name="hull_lancer" parent="." unique_id=1744657069 instance=ExtResource("15_mkcgc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56, 1, -6.6580324)
-
-[node name="corridor_prot" parent="hull_lancer" unique_id=1700004869 instance=ExtResource("6_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.5095596, 0)
-
-[node name="room_prot4" parent="hull_lancer" unique_id=1072994894 instance=ExtResource("11_427k7")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -2, -1.5095596, -8)
-
-[node name="corridor_prot5" parent="hull_lancer" unique_id=1236975704 instance=ExtResource("6_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.5095596, -8)
-
-[node name="corridor_prot3" parent="hull_lancer" unique_id=1463309426 instance=ExtResource("6_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.5095596, 4)
-
-[node name="corridor_prot4" parent="hull_lancer" unique_id=1219676715 instance=ExtResource("6_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, -1.5095596, 4)
-
-[node name="room_prot" parent="hull_lancer" unique_id=1463932156 instance=ExtResource("9_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, -1.5095596, -2)
-
-[node name="corridor_prot2" parent="hull_lancer" unique_id=1205316224 instance=ExtResource("5_op7uo")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, -1.5095596, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.081558, -1.9188533, -6.6580324)
 
 [node name="human_reference" parent="hull_lancer" unique_id=1878871767 instance=ExtResource("3_kdgit")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.235939, 0.20796585, -13.768157)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5186272, 1.5845335, -4.8485174)
 
-[node name="room_prot2" parent="hull_lancer" unique_id=1872874013 instance=ExtResource("10_45sbi")]
+[node name="human_reference2" parent="hull_lancer" unique_id=225626600 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, -2.7692757, 1.5845335, 15.476985)
+
+[node name="human_reference3" parent="hull_lancer" unique_id=602662630 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
+
+[node name="hull_lancer3" parent="." unique_id=411870696 instance=ExtResource("15_mkcgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.08156, -1.9188533, -6.6580324)
+
+[node name="human_reference" parent="hull_lancer3" unique_id=2071360903 instance=ExtResource("3_kdgit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5186272, 1.5845335, -4.8485174)
+
+[node name="human_reference2" parent="hull_lancer3" unique_id=109880545 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, -2.7692757, 1.5845335, 15.476985)
+
+[node name="human_reference3" parent="hull_lancer3" unique_id=25929426 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
+
+[node name="hull_lancer4" parent="." unique_id=686122356 instance=ExtResource("15_mkcgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.08156, -1.9188533, -6.6580324)
+
+[node name="human_reference" parent="hull_lancer4" unique_id=1355033874 instance=ExtResource("3_kdgit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5186272, 1.5845335, -4.8485174)
+
+[node name="human_reference2" parent="hull_lancer4" unique_id=567830189 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, -2.7692757, 1.5845335, 15.476985)
+
+[node name="human_reference3" parent="hull_lancer4" unique_id=1119020818 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
+
+[node name="hull_lancer5" parent="." unique_id=1784738059 instance=ExtResource("15_mkcgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.08156, -1.9188533, -6.6580324)
+
+[node name="human_reference" parent="hull_lancer5" unique_id=1548987091 instance=ExtResource("3_kdgit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5186272, 1.5845335, -4.8485174)
+
+[node name="human_reference2" parent="hull_lancer5" unique_id=1413673189 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, -2.7692757, 1.5845335, 15.476985)
+
+[node name="human_reference3" parent="hull_lancer5" unique_id=2038917995 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
+
+[node name="hull_lancer2" parent="." unique_id=1846940104 instance=ExtResource("15_mkcgc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.94667, -1.9188533, -6.6580324)
+
+[node name="corridor_prot" parent="hull_lancer2" unique_id=516419166 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.5095596, 0)
+
+[node name="room_prot4" parent="hull_lancer2" unique_id=1127046233 instance=ExtResource("11_427k7")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -2, -1.5095596, -8)
+
+[node name="corridor_prot5" parent="hull_lancer2" unique_id=490805098 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.5095596, -8)
+
+[node name="corridor_prot3" parent="hull_lancer2" unique_id=1527673226 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.5095596, 4)
+
+[node name="corridor_prot4" parent="hull_lancer2" unique_id=1941981962 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, -1.5095596, 4)
+
+[node name="room_prot" parent="hull_lancer2" unique_id=1189442622 instance=ExtResource("9_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, -1.5095596, -2)
+
+[node name="corridor_prot2" parent="hull_lancer2" unique_id=1584896422 instance=ExtResource("5_op7uo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, -1.5095596, -4)
+
+[node name="human_reference" parent="hull_lancer2" unique_id=2064370354 instance=ExtResource("3_kdgit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5186272, 1.5845335, -4.8485174)
+
+[node name="human_reference2" parent="hull_lancer2" unique_id=1502090672 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, -2.7692757, 1.5845335, 15.476985)
+
+[node name="human_reference3" parent="hull_lancer2" unique_id=2020529182 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
+
+[node name="room_prot2" parent="hull_lancer2" unique_id=1531013146 instance=ExtResource("10_45sbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5095596, -11.999999)
 
-[node name="room_prot3" parent="hull_lancer" unique_id=1919245723 instance=ExtResource("11_45sbi")]
+[node name="room_prot3" parent="hull_lancer2" unique_id=1826663072 instance=ExtResource("11_45sbi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5095596, 8)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="hull_lancer" unique_id=1541901623]
+[node name="StaticBody3D" type="StaticBody3D" parent="hull_lancer2" unique_id=1623132283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5095596, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hull_lancer/StaticBody3D" unique_id=1028147666]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hull_lancer2/StaticBody3D" unique_id=363145646]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.031433105, -2.0074463)
 shape = SubResource("BoxShape3D_427k7")

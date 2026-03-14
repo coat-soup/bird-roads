@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 	var direction := (player.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if debug_mode:
-		player.velocity.y = (int(Input.is_key_pressed(KEY_SPACE)) - int(Input.is_key_pressed(KEY_CTRL))) * speed
+		player.velocity.y = (int(Input.is_key_pressed(KEY_SPACE)) - int(Input.is_key_pressed(KEY_CTRL))) * get_speed()
 	
 	# jump
 	if Input.is_action_just_pressed("jump") and player.is_on_floor():
@@ -116,4 +116,5 @@ func add_velocity_impulse(vel):
 	player.velocity += vel
 
 func get_speed() -> float:
-	return speed if !Input.is_action_pressed("sprint") else sprint_speed
+	var debug_mult = 3 if debug_mode and Input.is_action_pressed("sprint") else 1
+	return (speed if !Input.is_action_pressed("sprint") else sprint_speed) * debug_mult

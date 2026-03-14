@@ -2,6 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://lnxdkhfjrdwv" path="res://prototyping/ships/hull_lancer.glb" id="1_tb2ik"]
 [ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="2_bs686"]
+[ext_resource type="Script" uid="uid://cfhbwa22wk0gs" path="res://prototyping/ships/ship_interior_generator.gd" id="3_a4vm8"]
+[ext_resource type="Script" uid="uid://c7qcof0b3kyx6" path="res://ships/scripts/ship_room_slot.gd" id="3_k67kr"]
+[ext_resource type="PackedScene" uid="uid://dsfgsobsasgxb" path="res://prototyping/corridors/corridor_tee.tscn" id="3_pwok1"]
+[ext_resource type="PackedScene" uid="uid://dncxruqdyqw7b" path="res://prototyping/corridors/corridor_straight.tscn" id="6_jji0u"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xsg1k"]
 render_priority = 0
@@ -34,6 +38,9 @@ data = PackedVector3Array(-4.7142997, -1.2494, -14.0538, -4.4, 1.5372, -15.7513,
 radius = 6.0
 height = 53.034
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_spxh4"]
+size = Vector3(7.98, 0.06237793, 24.03247)
+
 [node name="hull_lancer" unique_id=411870696 instance=ExtResource("1_tb2ik")]
 
 [node name="Cube" parent="." index="0" unique_id=959307367]
@@ -56,3 +63,47 @@ visible = false
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="5" unique_id=1038719087]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 15.400628, 0)
 mesh = SubResource("CapsuleMesh_tb2ik")
+
+[node name="Interior" type="Node3D" parent="." index="6" unique_id=73392769]
+script = ExtResource("3_a4vm8")
+
+[node name="corridor_prot" parent="Interior" index="0" unique_id=1935301666 instance=ExtResource("3_pwok1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.5095596, 0)
+
+[node name="ShipRoomSlot" type="Marker3D" parent="Interior" index="1" unique_id=723038016]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -2, -1.5095596, -8)
+script = ExtResource("3_k67kr")
+
+[node name="ShipRoomSlot2" type="Marker3D" parent="Interior" index="2" unique_id=992791284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5095596, -11.999999)
+script = ExtResource("3_k67kr")
+size = Vector2i(2, 1)
+
+[node name="ShipRoomSlot3" type="Marker3D" parent="Interior" index="3" unique_id=1019253333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5095596, 8)
+script = ExtResource("3_k67kr")
+size = Vector2i(2, 1)
+
+[node name="ShipRoomSlot4" type="Marker3D" parent="Interior" index="4" unique_id=74153520]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -2, -1.5095596, -2)
+script = ExtResource("3_k67kr")
+size = Vector2i(1, 2)
+
+[node name="corridor_prot5" parent="Interior" index="5" unique_id=1721873024 instance=ExtResource("3_pwok1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.5095596, -8)
+
+[node name="corridor_prot3" parent="Interior" index="6" unique_id=1180689996 instance=ExtResource("3_pwok1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.5095596, 4)
+
+[node name="corridor_prot4" parent="Interior" index="7" unique_id=790204151 instance=ExtResource("3_pwok1")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, -1.5095596, 4)
+
+[node name="corridor_prot2" parent="Interior" index="8" unique_id=1584896422 instance=ExtResource("6_jji0u")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, -1.5095596, -4)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Interior" index="9" unique_id=1378432509]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5095596, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/StaticBody3D" index="0" unique_id=1747914592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.031433105, -2.0074463)
+shape = SubResource("BoxShape3D_spxh4")

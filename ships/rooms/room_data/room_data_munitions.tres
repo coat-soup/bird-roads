@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ShipRoomData" format=3 uid="uid://chv8xusmv8ssy"]
+
+[ext_resource type="Script" uid="uid://hhx2pmgp564o" path="res://ships/scripts/ship_room_data.gd" id="1_q4tqi"]
+[ext_resource type="PackedScene" uid="uid://cd1jmul7hg3e5" path="res://ships/rooms/models/munitions_small.tscn" id="1_yplcc"]
+
+[resource]
+script = ExtResource("1_q4tqi")
+name = "Munitions"
+size = Vector2i(1, 1)
+prefab = ExtResource("1_yplcc")
+metadata/_custom_type_script = "uid://hhx2pmgp564o"
