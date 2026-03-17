@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://t1cmy31vm0dq"]
+
+[ext_resource type="PackedScene" uid="uid://cjwfha7wwcwtf" path="res://ships/rooms/models/room_wall_solid.glb" id="1_g1a40"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cw2fi"]
+size = Vector3(4, 3, 0.05)
+
+[node name="room_wall_solid" unique_id=407512461 instance=ExtResource("1_g1a40")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=76280380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=342966506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5000634, 0.025285646)
+shape = SubResource("BoxShape3D_cw2fi")

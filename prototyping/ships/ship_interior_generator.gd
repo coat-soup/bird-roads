@@ -10,8 +10,6 @@ func _ready() -> void:
 
 
 func generate() -> void:
-	print("Generating ship interior")
-	
 	for room in rooms:
 		room.queue_free()
 	rooms.clear()
@@ -19,7 +17,6 @@ func generate() -> void:
 	for c in get_children():
 		var room_slot = c as ShipRoomSlot
 		if room_slot:
-			print("Found room slot. Spawning")
 			var room_data = pick_random_room(room_slot)
 			rooms.append(room_slot.spawn_room(room_data))
 			room_datas.append(room_data)
@@ -28,7 +25,6 @@ func generate() -> void:
 func pick_random_room(slot : ShipRoomSlot) -> ShipRoomData:
 	var n_rooms = ResourceData.rooms.size()
 	var random_start = randi() % n_rooms
-	print("random start: ", random_start)
 	for i in range(n_rooms):
 		var r = (random_start + i) % n_rooms
 		if ResourceData.rooms[r] not in room_datas and slot.can_fit_room(ResourceData.rooms[r]):

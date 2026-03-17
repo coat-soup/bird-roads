@@ -61,33 +61,37 @@ surface_material_override/0 = SubResource("ShaderMaterial_xsg1k")
 visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="5" unique_id=1038719087]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 15.400628, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.00021076202, 15.406179, -0.008612633)
 mesh = SubResource("CapsuleMesh_tb2ik")
 
 [node name="Interior" type="Node3D" parent="." index="6" unique_id=73392769]
 script = ExtResource("3_a4vm8")
 
-[node name="corridor_prot" parent="Interior" index="0" unique_id=1935301666 instance=ExtResource("3_pwok1")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.5095596, 0)
-
-[node name="ShipRoomSlot" type="Marker3D" parent="Interior" index="1" unique_id=723038016]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -2, -1.5095596, -8)
+[node name="ShipRoomSlot" type="Marker3D" parent="Interior" index="0" unique_id=723038016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -1.5095596, -8)
 script = ExtResource("3_k67kr")
+entrance = Vector2i(1, 0)
 
-[node name="ShipRoomSlot2" type="Marker3D" parent="Interior" index="2" unique_id=992791284]
+[node name="ShipRoomSlot2" type="Marker3D" parent="Interior" index="1" unique_id=992791284]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5095596, -11.999999)
 script = ExtResource("3_k67kr")
 size = Vector2i(2, 1)
+entrance = Vector2i(1, 1)
 
-[node name="ShipRoomSlot3" type="Marker3D" parent="Interior" index="3" unique_id=1019253333]
+[node name="ShipRoomSlot3" type="Marker3D" parent="Interior" index="2" unique_id=1019253333]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5095596, 8)
 script = ExtResource("3_k67kr")
 size = Vector2i(2, 1)
+entrance = Vector2i(1, -1)
 
-[node name="ShipRoomSlot4" type="Marker3D" parent="Interior" index="4" unique_id=74153520]
-transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -2, -1.5095596, -2)
+[node name="ShipRoomSlot4" type="Marker3D" parent="Interior" index="3" unique_id=74153520]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, -1.5095596, -2)
 script = ExtResource("3_k67kr")
-size = Vector2i(1, 2)
+size = Vector2i(2, 1)
+entrance = Vector2i(0, 1)
+
+[node name="corridor_prot" parent="Interior" index="4" unique_id=1935301666 instance=ExtResource("3_pwok1")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.5095596, 0)
 
 [node name="corridor_prot5" parent="Interior" index="5" unique_id=1721873024 instance=ExtResource("3_pwok1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.5095596, -8)

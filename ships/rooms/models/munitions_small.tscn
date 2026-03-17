@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://wqk8xmf04wbc" path="res://prototyping/rooms/room_prot.glb" id="1_b0e46"]
 [ext_resource type="Script" uid="uid://dexkl1fl81yeg" path="res://ships/scripts/ship_room.gd" id="2_0gf6t"]
 [ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="2_05bsq"]
+[ext_resource type="Script" uid="uid://8thncd0x5mft" path="res://ships/scripts/ship_room_prop_contstraint.gd" id="4_ruuvx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tuovh"]
 render_priority = 0
@@ -11,30 +12,6 @@ shader_parameter/world_uv = false
 shader_parameter/object_uv = false
 shader_parameter/object_uv_scale = Vector2(1, 1)
 shader_parameter/preset_color = 3
-shader_parameter/base_color = Color(0, 0, 0, 1)
-shader_parameter/metalic = 0.25
-shader_parameter/roughness = 0.75
-shader_parameter/grid_scale = 1.0
-shader_parameter/grid_width = 0.01
-shader_parameter/grid_color = Color(0.8, 0.8, 0.8, 1)
-shader_parameter/inside_scale = 1.0
-shader_parameter/inside_width = 0.01
-shader_parameter/inside_color = Color(0.8, 0.8, 0.8, 0.8)
-shader_parameter/checkered = true
-shader_parameter/sub_checkered_grid = false
-shader_parameter/checkered_color = Color(0.25, 0.25, 0.25, 1)
-shader_parameter/checkered_blend_color = 0.1
-shader_parameter/use_inside_uv = false
-shader_parameter/use_albedo_color = false
-shader_parameter/albedo_alpha = 0.5
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7esq"]
-render_priority = 0
-shader = ExtResource("2_05bsq")
-shader_parameter/world_uv = false
-shader_parameter/object_uv = false
-shader_parameter/object_uv_scale = Vector2(1, 1)
-shader_parameter/preset_color = 5
 shader_parameter/base_color = Color(0, 0, 0, 1)
 shader_parameter/metalic = 0.25
 shader_parameter/roughness = 0.75
@@ -100,6 +77,30 @@ shader_parameter/use_inside_uv = false
 shader_parameter/use_albedo_color = false
 shader_parameter/albedo_alpha = 0.5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w7esq"]
+render_priority = 0
+shader = ExtResource("2_05bsq")
+shader_parameter/world_uv = false
+shader_parameter/object_uv = false
+shader_parameter/object_uv_scale = Vector2(1, 1)
+shader_parameter/preset_color = 5
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/metalic = 0.25
+shader_parameter/roughness = 0.75
+shader_parameter/grid_scale = 1.0
+shader_parameter/grid_width = 0.01
+shader_parameter/grid_color = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/inside_scale = 1.0
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_color = Color(0.8, 0.8, 0.8, 0.8)
+shader_parameter/checkered = true
+shader_parameter/sub_checkered_grid = false
+shader_parameter/checkered_color = Color(0.25, 0.25, 0.25, 1)
+shader_parameter/checkered_blend_color = 0.1
+shader_parameter/use_inside_uv = false
+shader_parameter/use_albedo_color = false
+shader_parameter/albedo_alpha = 0.5
+
 [node name="room_prot" unique_id=1307979828 instance=ExtResource("1_b0e46")]
 script = ExtResource("2_0gf6t")
 
@@ -110,51 +111,58 @@ visible = false
 visible = false
 surface_material_override/0 = SubResource("ShaderMaterial_tuovh")
 
-[node name="Bed" type="CSGBox3D" parent="." index="2" unique_id=1066764259]
+[node name="Room2x1_m" parent="." index="2" unique_id=1316929891]
+visible = false
+surface_material_override/0 = SubResource("ShaderMaterial_45yda")
+
+[node name="Room1x1" parent="." index="3" unique_id=853577433]
+visible = false
+surface_material_override/0 = SubResource("ShaderMaterial_lagqe")
+
+[node name="ShipRoomPropConstraint" type="Node3D" parent="." index="4" unique_id=1983787015 node_paths=PackedStringArray("parent_room")]
+script = ExtResource("4_ruuvx")
+parent_room = NodePath("..")
+override_rotate_to_face_entrance = true
+metadata/_custom_type_script = "uid://8thncd0x5mft"
+
+[node name="Bed" type="CSGBox3D" parent="ShipRoomPropConstraint" index="0" unique_id=1066764259]
 transform = Transform3D(-4.371139e-08, 0, -1, -0.43824565, 0.89885527, 1.9156326e-08, 0.89885527, 0.43824565, -3.929021e-08, -0.0029722452, 0.508677, -1.3790284)
 use_collision = true
 size = Vector3(1, 0.34448242, 2.2353516)
 material = SubResource("ShaderMaterial_w7esq")
 
-[node name="Bed2" type="CSGBox3D" parent="." index="3" unique_id=195706439]
+[node name="Bed2" type="CSGBox3D" parent="ShipRoomPropConstraint" index="1" unique_id=195706439]
 transform = Transform3D(-4.371139e-08, 0, 1, -1, -4.371139e-08, -4.371139e-08, 4.371139e-08, -1, 1.9106855e-15, -0.0029722473, 0.4026813, -0.9327248)
 use_collision = true
 size = Vector3(0.79974365, 0.20947266, 2.2353516)
 material = SubResource("ShaderMaterial_w7esq")
 
-[node name="Bed5" type="CSGBox3D" parent="." index="4" unique_id=567293077]
+[node name="Bed5" type="CSGBox3D" parent="ShipRoomPropConstraint" index="2" unique_id=567293077]
 transform = Transform3D(-4.371139e-08, 0, 1, -1, -4.371139e-08, -4.371139e-08, 4.371139e-08, -1, 1.9106855e-15, 1.8169224, 1.3359929, 0.006522596)
 use_collision = true
 size = Vector3(0.79974365, 0.8010254, 0.35302734)
 material = SubResource("ShaderMaterial_w7esq")
 
-[node name="Bed6" type="CSGBox3D" parent="." index="5" unique_id=293894456]
+[node name="Bed6" type="CSGBox3D" parent="ShipRoomPropConstraint" index="3" unique_id=293894456]
 transform = Transform3D(-4.371139e-08, 0, 1, -1, -4.371139e-08, -4.371139e-08, 4.371139e-08, -1, 1.9106855e-15, 1.8169224, 1.3359929, 1.1795621)
 use_collision = true
 size = Vector3(0.79974365, 0.8010254, 0.35302734)
 material = SubResource("ShaderMaterial_w7esq")
 
-[node name="Bed7" type="CSGBox3D" parent="." index="6" unique_id=495630079]
+[node name="Bed7" type="CSGBox3D" parent="ShipRoomPropConstraint" index="4" unique_id=495630079]
 transform = Transform3D(-4.371139e-08, 0, 1, -1, -4.371139e-08, -4.371139e-08, 4.371139e-08, -1, 1.9106855e-15, -1.8063093, 1.1113683, 0.25520468)
 use_collision = true
 size = Vector3(1.2489929, 1.0509033, 0.35302734)
 material = SubResource("ShaderMaterial_w7esq")
 
-[node name="Bed4" type="CSGBox3D" parent="." index="7" unique_id=1785963504]
+[node name="Bed4" type="CSGBox3D" parent="ShipRoomPropConstraint" index="5" unique_id=1785963504]
 transform = Transform3D(-4.371139e-08, 0, 1, 8.742278e-08, -1, 3.821371e-15, 1, 8.742278e-08, 4.371139e-08, -0.0029722473, 1.605345, -1.3593948)
 use_collision = true
 size = Vector3(0.79974365, 0.08178711, 2.2353516)
 material = SubResource("ShaderMaterial_w7esq")
 
-[node name="Bed3" type="CSGBox3D" parent="." index="8" unique_id=2109617856]
+[node name="Bed3" type="CSGBox3D" parent="ShipRoomPropConstraint" index="6" unique_id=2109617856]
 transform = Transform3D(-4.371139e-08, 0, 1, -1, -4.371139e-08, -4.371139e-08, 4.371139e-08, -1, 1.9106855e-15, -0.0029722084, 1.2943058, -1.7989378)
 use_collision = true
 size = Vector3(2.5829926, 0.20947266, 2.2353516)
 material = SubResource("ShaderMaterial_w7esq")
-
-[node name="Room2x1_m" parent="." index="9" unique_id=1316929891]
-visible = false
-surface_material_override/0 = SubResource("ShaderMaterial_45yda")
-
-[node name="Room1x1" parent="." index="10" unique_id=853577433]
-surface_material_override/0 = SubResource("ShaderMaterial_lagqe")

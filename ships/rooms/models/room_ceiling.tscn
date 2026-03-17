@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bsji6w8xncklj"]
+
+[ext_resource type="PackedScene" uid="uid://dlbacfpvwb41a" path="res://ships/rooms/models/room_ceiling.glb" id="1_asi2w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xojev"]
+size = Vector3(4, 0.01, 4)
+
+[node name="room_ceiling" unique_id=1990515809 instance=ExtResource("1_asi2w")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=2079286947]
+transform = Transform3D(-1, -3.2584137e-07, 0, 3.2584137e-07, -1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1439868005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.005, 0)
+shape = SubResource("BoxShape3D_xojev")
