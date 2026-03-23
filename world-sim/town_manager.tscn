@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bfq2lvquh8frh"]
+
+[ext_resource type="Script" uid="uid://bd86hk4p17g2n" path="res://world-sim/town_manager.gd" id="1_fiutg"]
+[ext_resource type="Resource" uid="uid://brhww2v56nnmg" path="res://world-sim/town-data/town_junderswort.tres" id="2_8cy0n"]
+[ext_resource type="Texture2D" uid="uid://v6yip66y4y0h" path="res://icon.svg" id="3_ku658"]
+
+[node name="TownManagerJunderswort" type="Node2D" unique_id=905621928]
+script = ExtResource("1_fiutg")
+town_data = ExtResource("2_8cy0n")
+metadata/_custom_type_script = "uid://bd86hk4p17g2n"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1676756746]
+texture = ExtResource("3_ku658")
+
+[node name="TownName" type="Label" parent="." unique_id=244389161]
+offset_left = -52.0
+offset_top = 74.0
+offset_right = -12.0
+offset_bottom = 97.0
+text = "TOWN NAME"

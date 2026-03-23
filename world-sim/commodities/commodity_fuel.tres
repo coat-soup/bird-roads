@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Commodity" format=3 uid="uid://q8q0wkg3vbw4"]
+
+[ext_resource type="Script" uid="uid://c5t37egmjfq0t" path="res://world-sim/commodity.gd" id="1_isurb"]
+
+[resource]
+script = ExtResource("1_isurb")
+name = "fuel"
+debug_data_color = Color(1.347661e-06, 0.36987862, 0.9302664, 1)
+metadata/_custom_type_script = "uid://c5t37egmjfq0t"

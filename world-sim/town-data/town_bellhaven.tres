@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TownData" format=3 uid="uid://b8kvqircnhjw5"]
+
+[ext_resource type="Script" uid="uid://cb7xxhtblpb4e" path="res://world-sim/town_data.gd" id="1_vgmbf"]
+
+[resource]
+script = ExtResource("1_vgmbf")
+name = "Bellhaven"
+commodity_states = Dictionary[String, Vector2i]({
+"food": Vector2i(400, 350),
+"fuel": Vector2i(200, 200)
+})
+commodity_generators = Dictionary[String, int]({
+"fuel": 1
+})
+metadata/_custom_type_script = "uid://cb7xxhtblpb4e"

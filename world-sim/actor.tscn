@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://s15urpdpp2mo"]
+
+[ext_resource type="Script" uid="uid://b6tn0u6pml0qh" path="res://world-sim/actor.gd" id="1_tp1nj"]
+
+[node name="Actor" type="Node2D" unique_id=957499609]
+script = ExtResource("1_tp1nj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=486192242]
+offset_right = 10.0
+offset_bottom = 10.0

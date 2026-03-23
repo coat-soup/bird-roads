@@ -1,4 +1,5 @@
-extends CanvasItem
+class_name LineChart
+extends Control
 
 @export var update_interval : float = 0.2
 @export var width = 300
@@ -6,18 +7,18 @@ extends CanvasItem
 @export var data_max = 100.0
 
 var lines : Array[ChartLine] = []
+var chart_title : String = "Unlabeled graph"
+
+func _init(title: String, dmax : float, w : int = width, h : int = height) -> void:
+	chart_title = title
+	data_max = dmax
+	width = w
+	height = h
+	
+	custom_minimum_size = Vector2(width, height)
+
 
 func _ready() -> void:
-	for i in range(2):
-		var line = ChartLine.new()
-		lines.append(line)
-		line.length = width
-		line.height = height
-		line.data_max = data_max
-		add_child(line)
-		line.default_color = [Color.AQUA, Color.CRIMSON, Color.BLUE, Color.ORANGE, Color.GREEN][i]
-		line.is_dotted = i % 2 == 0
-	
 	var v_border = Line2D.new()
 	add_child(v_border)
 	v_border.width = 2.0
@@ -44,7 +45,25 @@ func _ready() -> void:
 	h_border.add_point(Vector2(0, height))
 	h_border.add_point(Vector2(width, height))
 	
-	tick()
+	var title = Label.new()
+	add_child(title)
+	title.text = chart_title
+	title.position.y = height + 5
+	title.size.x = width
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	
+	#tick()
+
+
+func add_line(color : Color, is_dotted : bool):
+	var line = ChartLine.new()
+	lines.append(line)
+	line.length = width
+	line.height = height
+	line.data_max = data_max
+	add_child(line)
+	line.default_color = color
+	line.is_dotted = is_dotted
 
 
 func tick():

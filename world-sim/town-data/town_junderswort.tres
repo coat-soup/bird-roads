@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TownData" format=3 uid="uid://brhww2v56nnmg"]
+
+[ext_resource type="Script" uid="uid://cb7xxhtblpb4e" path="res://world-sim/town_data.gd" id="1_q0cq7"]
+
+[resource]
+script = ExtResource("1_q0cq7")
+name = "Junderswort"
+commodity_states = Dictionary[String, Vector2i]({
+"food": Vector2i(100, 100),
+"fuel": Vector2i(200, 50)
+})
+commodity_generators = Dictionary[String, int]({
+"fuel": 1
+})
+metadata/_custom_type_script = "uid://cb7xxhtblpb4e"

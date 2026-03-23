@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Commodity" format=3 uid="uid://c1jm7dqyfuvon"]
+
+[ext_resource type="Script" uid="uid://c5t37egmjfq0t" path="res://world-sim/commodity.gd" id="1_rok4h"]
+
+[resource]
+script = ExtResource("1_rok4h")
+name = "food"
+debug_data_color = Color(0.83309096, 0.5126392, 0, 1)
+metadata/_custom_type_script = "uid://c5t37egmjfq0t"

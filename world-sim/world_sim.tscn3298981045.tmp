@@ -2,10 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bfq2lvquh8frh" path="res://world-sim/town_manager.tscn" id="2_7luy3"]
 [ext_resource type="Script" uid="uid://bhan33fjolu6n" path="res://world-sim/town_commodity_graph_manager.gd" id="2_ee0db"]
-[ext_resource type="PackedScene" uid="uid://s15urpdpp2mo" path="res://world-sim/actor.tscn" id="2_j5eug"]
 [ext_resource type="Resource" uid="uid://b8kvqircnhjw5" path="res://world-sim/town-data/town_bellhaven.tres" id="3_ee0db"]
 [ext_resource type="Resource" uid="uid://bkc7rffkmjn8n" path="res://world-sim/town-data/town_thim.tres" id="4_j5eug"]
-[ext_resource type="Script" uid="uid://4qxbi6o5bxlt" path="res://world-sim/actor_spawner.gd" id="5_j5eug"]
 
 [node name="WorldSim" type="Node2D" unique_id=549169052]
 
@@ -13,16 +11,14 @@
 oversampling_override = 1.0
 title = "Charts"
 position = Vector2i(130, 36)
-size = Vector2i(900, 500)
+size = Vector2i(800, 500)
 
 [node name="CommodityCharts" type="GridContainer" parent="Window" unique_id=245786993 node_paths=PackedStringArray("town_holder")]
 offset_left = 91.0
 offset_top = 69.0
 offset_right = 91.0
 offset_bottom = 69.0
-theme_override_constants/h_separation = 60
-theme_override_constants/v_separation = 40
-columns = 3
+columns = 4
 script = ExtResource("2_ee0db")
 town_holder = NodePath("../../Towns")
 
@@ -35,14 +31,8 @@ position = Vector2(901, 793)
 position = Vector2(1551, 514)
 town_data = ExtResource("3_ee0db")
 
-[node name="TownManagerThim" parent="Towns" unique_id=34375030 instance=ExtResource("2_7luy3")]
+[node name="TownManagerTHim" parent="Towns" unique_id=34375030 instance=ExtResource("2_7luy3")]
 position = Vector2(949, 310)
 town_data = ExtResource("4_j5eug")
 
 [node name="Actors" type="Node2D" parent="." unique_id=905795027]
-script = ExtResource("5_j5eug")
-amount = 10
-spawn_point = Vector2(1400, 500)
-
-[node name="Actor" parent="Actors" unique_id=957499609 instance=ExtResource("2_j5eug")]
-position = Vector2(1552, 767)
