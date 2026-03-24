@@ -2,19 +2,25 @@
 
 [ext_resource type="PackedScene" uid="uid://lnxdkhfjrdwv" path="res://prototyping/ships/hull_lancer.glb" id="1_tb2ik"]
 [ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="2_bs686"]
-[ext_resource type="Script" uid="uid://cfhbwa22wk0gs" path="res://prototyping/ships/ship_interior_generator.gd" id="3_a4vm8"]
+[ext_resource type="Script" uid="uid://cfhbwa22wk0gs" path="res://ships/scripts/ship_interior_generator.gd" id="3_a4vm8"]
 [ext_resource type="Script" uid="uid://c7qcof0b3kyx6" path="res://ships/scripts/ship_room_slot.gd" id="3_k67kr"]
 [ext_resource type="PackedScene" uid="uid://dsfgsobsasgxb" path="res://prototyping/corridors/corridor_tee.tscn" id="3_pwok1"]
 [ext_resource type="PackedScene" uid="uid://dncxruqdyqw7b" path="res://prototyping/corridors/corridor_straight.tscn" id="6_jji0u"]
+[ext_resource type="Script" uid="uid://blre08ygw36o2" path="res://ships/scripts/ship_exterior_generator.gd" id="7_6aw4h"]
+[ext_resource type="PackedScene" uid="uid://os0babm3qgwb" path="res://ships/hull-parts/sail_back_webbed.glb" id="7_pwok1"]
+[ext_resource type="PackedScene" uid="uid://ctvm4kx1iygsm" path="res://ships/hull-parts/prop_long.glb" id="8_k67kr"]
+[ext_resource type="PackedScene" uid="uid://dh72ykrpb4wlx" path="res://ships/hull-parts/rudder_two_piece.glb" id="9_k67kr"]
+[ext_resource type="PackedScene" uid="uid://co7hx6m38drsy" path="res://ships/hull-parts/armor_winglets.glb" id="10_ewuet"]
+[ext_resource type="PackedScene" uid="uid://do11j5g8bryi" path="res://ships/hull-parts/rudder_curved.glb" id="11_jji0u"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xsg1k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jji0u"]
 render_priority = 0
 shader = ExtResource("2_bs686")
 shader_parameter/world_uv = false
 shader_parameter/object_uv = false
 shader_parameter/object_uv_scale = Vector2(1, 1)
 shader_parameter/preset_color = 0
-shader_parameter/base_color = Color(0.21604928, 0.24693468, 0.26366073, 1)
+shader_parameter/base_color = Color(0.015714372, 0.07880508, 0.17525342, 1)
 shader_parameter/metalic = 0.25
 shader_parameter/roughness = 0.75
 shader_parameter/grid_scale = 1.0
@@ -47,7 +53,7 @@ size = Vector3(7.98, 0.06237793, 24.03247)
 visible = false
 
 [node name="Cube_001" parent="." index="1" unique_id=1716026778]
-surface_material_override/0 = SubResource("ShaderMaterial_xsg1k")
+material_override = SubResource("ShaderMaterial_jji0u")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" index="0" unique_id=1668615851]
 
@@ -55,7 +61,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_xsg1k")
 shape = SubResource("ConcavePolygonShape3D_tb2ik")
 
 [node name="Cube_003" parent="." index="3" unique_id=127990734]
-surface_material_override/0 = SubResource("ShaderMaterial_xsg1k")
+material_override = SubResource("ShaderMaterial_jji0u")
 
 [node name="Cube_005" parent="." index="4" unique_id=338739189]
 visible = false
@@ -111,3 +117,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5095596, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/StaticBody3D" index="0" unique_id=1747914592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.031433105, -2.0074463)
 shape = SubResource("BoxShape3D_spxh4")
+
+[node name="Exterior" type="Node3D" parent="." index="7" unique_id=768816846]
+script = ExtResource("7_6aw4h")
+
+[node name="prop_long" parent="Exterior" index="0" unique_id=320777722 instance=ExtResource("8_k67kr")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.3179395e-07, 0, -19.029226)
+
+[node name="sail_back_webbed" parent="Exterior" index="1" unique_id=2446081 instance=ExtResource("7_pwok1")]
+transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, -8.3179395e-07, 0, -19.029226)
+
+[node name="rudder_two_piece" parent="Exterior" index="2" unique_id=768642129 instance=ExtResource("9_k67kr")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.3179395e-07, 0, -19.029226)
+
+[node name="armor_winglets" parent="Exterior" index="3" unique_id=1375071927 instance=ExtResource("10_ewuet")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.3179395e-07, 0, -19.029226)
+
+[node name="rudder_curved" parent="Exterior" index="4" unique_id=1565856043 instance=ExtResource("11_jji0u")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.3179395e-07, 0, -19.029226)
