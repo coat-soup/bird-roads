@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HullPartData" format=3 uid="uid://bxf1wo7p7ug5v"]
+
+[ext_resource type="PackedScene" uid="uid://ba612hmi7j3q7" path="res://ships/hull-parts/models/rudder_two_piece.tscn" id="1_gcpg5"]
+[ext_resource type="Script" uid="uid://cyvgr5gwdviy1" path="res://ships/scripts/hull_part_data.gd" id="2_fuhr7"]
+
+[resource]
+script = ExtResource("2_fuhr7")
+name = "Split Rudder"
+prefab = ExtResource("1_gcpg5")
+type = 2
+size = 1
+metadata/_custom_type_script = "uid://cyvgr5gwdviy1"

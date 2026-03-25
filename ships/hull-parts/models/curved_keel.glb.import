@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dh72ykrpb4wlx"
-path="res://.godot/imported/rudder_two_piece.glb-23543620ab0a4ef8c5dfce1ceeb7bce0.scn"
+uid="uid://dmvuld87phwrk"
+path="res://.godot/imported/curved_keel.glb-24e8cd62f1f1e359b1c30d42a1bf9cc2.scn"
 
 [deps]
 
-source_file="res://ships/hull-parts/rudder_two_piece.glb"
-dest_files=["res://.godot/imported/rudder_two_piece.glb-23543620ab0a4ef8c5dfce1ceeb7bce0.scn"]
+source_file="res://ships/hull-parts/models/curved_keel.glb"
+dest_files=["res://.godot/imported/curved_keel.glb-24e8cd62f1f1e359b1c30d42a1bf9cc2.scn"]
 
 [params]
 

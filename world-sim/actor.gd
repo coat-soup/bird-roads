@@ -8,10 +8,10 @@ var target : TownManager
 
 
 func _ready() -> void:
-	target = ResourceData.towns.pick_random()
+	target = Resources.towns.pick_random()
 
 
 func _physics_process(delta: float) -> void:
 	position += (target.position - position).normalized() * delta * speed
 	if position.distance_to(target.position) < 10:
-		target = ResourceData.towns.pick_random()
+		target = Resources.towns.pick_random()

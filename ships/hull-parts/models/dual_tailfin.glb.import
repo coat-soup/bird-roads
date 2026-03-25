@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://os0babm3qgwb"
-path="res://.godot/imported/sail_back_webbed.glb-7a5644e819ae946003101a5bde8dd286.scn"
+uid="uid://cnto2b5f0yyrl"
+path="res://.godot/imported/dual_tailfin.glb-978809e9e15f2c7a383c394e6e95f1ef.scn"
 
 [deps]
 
-source_file="res://ships/hull-parts/sail_back_webbed.glb"
-dest_files=["res://.godot/imported/sail_back_webbed.glb-7a5644e819ae946003101a5bde8dd286.scn"]
+source_file="res://ships/hull-parts/models/dual_tailfin.glb"
+dest_files=["res://.godot/imported/dual_tailfin.glb-978809e9e15f2c7a383c394e6e95f1ef.scn"]
 
 [params]
 

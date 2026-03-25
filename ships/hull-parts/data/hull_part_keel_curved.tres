@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HullPartData" format=3 uid="uid://bdjwmwsj1gwof"]
+
+[ext_resource type="PackedScene" uid="uid://bog5hlgq2hak7" path="res://ships/hull-parts/models/curved_keel.tscn" id="1_jofp4"]
+[ext_resource type="Script" uid="uid://cyvgr5gwdviy1" path="res://ships/scripts/hull_part_data.gd" id="2_qg13e"]
+
+[resource]
+script = ExtResource("2_qg13e")
+name = "Curved Keel"
+prefab = ExtResource("1_jofp4")
+size = 1
+metadata/_custom_type_script = "uid://cyvgr5gwdviy1"

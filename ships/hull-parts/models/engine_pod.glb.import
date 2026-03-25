@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://co7hx6m38drsy"
-path="res://.godot/imported/armor_winglets.glb-6608af01ee0fcd1ee8637c023fca5781.scn"
+uid="uid://vwv0h3ynpcnk"
+path="res://.godot/imported/engine_pod.glb-d7d785ff9922c53249ba2dffe354b448.scn"
 
 [deps]
 
-source_file="res://ships/hull-parts/armor_winglets.glb"
-dest_files=["res://.godot/imported/armor_winglets.glb-6608af01ee0fcd1ee8637c023fca5781.scn"]
+source_file="res://ships/hull-parts/models/engine_pod.glb"
+dest_files=["res://.godot/imported/engine_pod.glb-d7d785ff9922c53249ba2dffe354b448.scn"]
 
 [params]
 

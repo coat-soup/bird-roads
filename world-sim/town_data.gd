@@ -23,7 +23,7 @@ func _init() -> void:
 
 func load_commodity_dictionary():
 	var commodities : Array[Commodity]
-	ResourceData.load_resources(commodities, "res://world-sim/commodities/")
+	Resources.load_resources(commodities, "res://world-sim/commodities/")
 	
 	for c in commodities:
 		if !commodity_states.keys().has(c.name):

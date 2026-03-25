@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HullPartData" format=3 uid="uid://5eklwm1rgdhj"]
+
+[ext_resource type="PackedScene" uid="uid://cnito7ac63uo" path="res://ships/hull-parts/models/sail_webbed.tscn" id="1_itr01"]
+[ext_resource type="Script" uid="uid://cyvgr5gwdviy1" path="res://ships/scripts/hull_part_data.gd" id="2_itr01"]
+
+[resource]
+script = ExtResource("2_itr01")
+name = "Webbed Sail"
+prefab = ExtResource("1_itr01")
+type = 1
+size = 2
+metadata/_custom_type_script = "uid://cyvgr5gwdviy1"

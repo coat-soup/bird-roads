@@ -23,11 +23,11 @@ func generate() -> void:
 
 
 func pick_random_room(slot : ShipRoomSlot) -> ShipRoomData:
-	var n_rooms = ResourceData.rooms.size()
+	var n_rooms = Resources.rooms.size()
 	var random_start = randi() % n_rooms
 	for i in range(n_rooms):
 		var r = (random_start + i) % n_rooms
-		if ResourceData.rooms[r] not in room_datas and slot.can_fit_room(ResourceData.rooms[r]):
-			return ResourceData.rooms[r]
+		if Resources.rooms[r] not in room_datas and slot.can_fit_room(Resources.rooms[r]):
+			return Resources.rooms[r]
 	push_error("Couldn't find room.")
 	return null

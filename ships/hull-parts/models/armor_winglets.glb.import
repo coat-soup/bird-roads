@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://do11j5g8bryi"
-path="res://.godot/imported/rudder_curved.glb-4c5c971e38545c3814e1a49f3cbdfefe.scn"
+uid="uid://co7hx6m38drsy"
+path="res://.godot/imported/armor_winglets.glb-135962f1d83b5b592ab4145f09681ee8.scn"
 
 [deps]
 
-source_file="res://ships/hull-parts/rudder_curved.glb"
-dest_files=["res://.godot/imported/rudder_curved.glb-4c5c971e38545c3814e1a49f3cbdfefe.scn"]
+source_file="res://ships/hull-parts/models/armor_winglets.glb"
+dest_files=["res://.godot/imported/armor_winglets.glb-135962f1d83b5b592ab4145f09681ee8.scn"]
 
 [params]
 

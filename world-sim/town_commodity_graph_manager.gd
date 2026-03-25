@@ -14,7 +14,7 @@ func _ready() -> void:
 			var chart = LineChart.new(town_manager.town_data.name, 500, 200, 100)
 			charts.append(chart)
 			add_child(chart)
-			for c in ResourceData.commodities:
+			for c in Resources.commodities:
 				chart.add_line(c.debug_data_color, false)
 				chart.add_line(c.debug_data_color, true)
 		
@@ -23,15 +23,15 @@ func _ready() -> void:
 
 func tick():
 	for i in range(len(towns)):
-		for j in range(len(ResourceData.commodities)):
+		for j in range(len(Resources.commodities)):
 			# supply line
-			charts[i].lines[j*2].push_data(towns[i].town_data.commodity_states[ResourceData.commodities[j].name].x)
+			charts[i].lines[j*2].push_data(towns[i].town_data.commodity_states[Resources.commodities[j].name].x)
 			charts[i].lines[j*2].draw()
 			# desired supply line
-			charts[i].lines[j*2+1].push_data(towns[i].town_data.commodity_states[ResourceData.commodities[j].name].y)
+			charts[i].lines[j*2+1].push_data(towns[i].town_data.commodity_states[Resources.commodities[j].name].y)
 			charts[i].lines[j*2+1].draw()
 			
-			print("%s %s (supply: %d, target:%d)" % [towns[i].town_data.name, ResourceData.commodities[j].name, towns[i].town_data.commodity_states[ResourceData.commodities[j].name].x, towns[i].town_data.commodity_states[ResourceData.commodities[j].name].y])
+			print("%s %s (supply: %d, target:%d)" % [towns[i].town_data.name, Resources.commodities[j].name, towns[i].town_data.commodity_states[Resources.commodities[j].name].x, towns[i].town_data.commodity_states[Resources.commodities[j].name].y])
 	
 	await get_tree().create_timer(TownManager.TICK_INTERVAL).timeout
 	tick()

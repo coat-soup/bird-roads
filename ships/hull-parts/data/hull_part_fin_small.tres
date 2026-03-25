@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HullPartData" format=3 uid="uid://crxs6bgmobrxw"]
+
+[ext_resource type="PackedScene" uid="uid://b1k8ldobrhy6c" path="res://ships/hull-parts/models/small_fin.glb" id="1_ifq40"]
+[ext_resource type="Script" uid="uid://cyvgr5gwdviy1" path="res://ships/scripts/hull_part_data.gd" id="2_5syvi"]
+
+[resource]
+script = ExtResource("2_5syvi")
+name = "Small Fin"
+prefab = ExtResource("1_ifq40")
+type = 2
+metadata/_custom_type_script = "uid://cyvgr5gwdviy1"

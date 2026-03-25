@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ddgk3pptk816j"]
+
+[ext_resource type="PackedScene" uid="uid://do11j5g8bryi" path="res://ships/hull-parts/models/rudder_curved.glb" id="1_066aj"]
+
+[node name="rudder_curved" unique_id=1979964615 instance=ExtResource("1_066aj")]
