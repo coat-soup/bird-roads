@@ -177,7 +177,7 @@ transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.2588
 transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
 
 [node name="hull_lancer2" parent="." unique_id=1867110816 instance=ExtResource("15_mkcgc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.798832, -1.9188533, 50.538975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.798832, -1.9188533, 78.344086)
 
 [node name="human_reference" parent="hull_lancer2" unique_id=441581251 instance=ExtResource("3_kdgit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5186272, 1.5845335, -4.8485174)
@@ -189,7 +189,7 @@ transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.2588
 transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
 
 [node name="hull_lancer3" parent="." unique_id=510805144 instance=ExtResource("15_mkcgc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.860466, -1.9188533, 109.73988)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.860466, -1.9188533, 149.4582)
 
 [node name="human_reference" parent="hull_lancer3" unique_id=1617091003 instance=ExtResource("3_kdgit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5186272, 1.5845335, -4.8485174)
@@ -201,7 +201,7 @@ transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.2588
 transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
 
 [node name="hull_lancer4" parent="." unique_id=918261200 instance=ExtResource("15_mkcgc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.26937, -1.9188533, 191.22044)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.26937, -1.9188533, 230.93877)
 
 [node name="human_reference" parent="hull_lancer4" unique_id=2076263150 instance=ExtResource("3_kdgit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5186272, 1.5845335, -4.8485174)
@@ -213,7 +213,7 @@ transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.2588
 transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
 
 [node name="hull_lancer5" parent="." unique_id=117133026 instance=ExtResource("15_mkcgc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.9746, -1.9188533, 272.10773)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.9746, -1.9188533, 311.82605)
 
 [node name="human_reference" parent="hull_lancer5" unique_id=2126522984 instance=ExtResource("3_kdgit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5186272, 1.5845335, -4.8485174)

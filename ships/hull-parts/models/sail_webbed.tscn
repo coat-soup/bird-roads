@@ -1,14 +1,18 @@
 [gd_scene format=3 uid="uid://cnito7ac63uo"]
 
 [ext_resource type="PackedScene" uid="uid://os0babm3qgwb" path="res://ships/hull-parts/models/sail_back_webbed.glb" id="1_4tgv7"]
+[ext_resource type="Script" uid="uid://suwb0y10pmfp" path="res://ships/scripts/rigging_point.gd" id="2_wttjx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wttjx"]
 cull_mode = 2
 
 [node name="sail_webbed" unique_id=2023145969 instance=ExtResource("1_4tgv7")]
 
-[node name="Plane" parent="." index="5" unique_id=1849575472]
+[node name="Plane" parent="." index="4" unique_id=1299058372]
 surface_material_override/0 = SubResource("StandardMaterial3D_wttjx")
 
-[node name="Plane_001" parent="." index="6" unique_id=1127961495]
-surface_material_override/0 = SubResource("StandardMaterial3D_wttjx")
+[node name="RiggingPoint" type="Marker3D" parent="." index="5" unique_id=1000126782]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.545324, 1.6971684)
+script = ExtResource("2_wttjx")
+main_hull = false
+metadata/_custom_type_script = "uid://suwb0y10pmfp"

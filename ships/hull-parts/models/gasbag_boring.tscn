@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ikuuafwyfcep" path="res://ships/hull-parts/models/gasbag_boring.glb" id="1_274xa"]
 [ext_resource type="Script" uid="uid://b1gbofimjjgn7" path="res://ships/scripts/hull_part_slot.gd" id="2_6rpxe"]
+[ext_resource type="Script" uid="uid://suwb0y10pmfp" path="res://ships/scripts/rigging_point.gd" id="3_ns644"]
 
 [node name="gasbag_boring" unique_id=1180240849 instance=ExtResource("1_274xa")]
 
@@ -27,3 +28,47 @@ symmetrical = true
 size = 14
 allowed_types = 46
 metadata/_custom_type_script = "uid://b1gbofimjjgn7"
+
+[node name="RiggingPoint" type="Marker3D" parent="." index="4" unique_id=1452916668]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, -29.949543)
+script = ExtResource("3_ns644")
+metadata/_custom_type_script = "uid://suwb0y10pmfp"
+
+[node name="RiggingPoint2" type="Marker3D" parent="." index="5" unique_id=1371996842]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 29.95)
+script = ExtResource("3_ns644")
+metadata/_custom_type_script = "uid://suwb0y10pmfp"
+
+[node name="RiggingPoint7" type="Marker3D" parent="." index="6" unique_id=907547297]
+transform = Transform3D(1, 0, 0, 0, 1.3113416e-07, 1, 0, -1, 1.3113416e-07, 0, 5.9470453, 17.926628)
+script = ExtResource("3_ns644")
+main_hull = false
+only_receive = true
+metadata/_custom_type_script = "uid://suwb0y10pmfp"
+
+[node name="RiggingPoint8" type="Marker3D" parent="." index="7" unique_id=1558715805]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 5.947, -17.927)
+script = ExtResource("3_ns644")
+main_hull = false
+only_receive = true
+metadata/_custom_type_script = "uid://suwb0y10pmfp"
+
+[node name="RiggingPoint3" type="Marker3D" parent="." index="8" unique_id=240667555]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 5.6954575, -1.9170182, 15.950001)
+script = ExtResource("3_ns644")
+metadata/_custom_type_script = "uid://suwb0y10pmfp"
+
+[node name="RiggingPoint4" type="Marker3D" parent="." index="9" unique_id=1860381060]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -5.695, -1.917, 15.95)
+script = ExtResource("3_ns644")
+metadata/_custom_type_script = "uid://suwb0y10pmfp"
+
+[node name="RiggingPoint5" type="Marker3D" parent="." index="10" unique_id=39710592]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 5.6954575, -1.9170182, -15.95)
+script = ExtResource("3_ns644")
+metadata/_custom_type_script = "uid://suwb0y10pmfp"
+
+[node name="RiggingPoint6" type="Marker3D" parent="." index="11" unique_id=1736059]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -5.695, -1.917, -15.95)
+script = ExtResource("3_ns644")
+metadata/_custom_type_script = "uid://suwb0y10pmfp"
