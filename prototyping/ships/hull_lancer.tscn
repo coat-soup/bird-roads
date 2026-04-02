@@ -61,6 +61,7 @@ visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="5" unique_id=1038719087]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.00021076202, 15.406179, -0.008612633)
+visible = false
 mesh = SubResource("CapsuleMesh_tb2ik")
 
 [node name="Interior" type="Node3D" parent="." index="6" unique_id=73392769]
@@ -119,7 +120,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0994369e-07, 1.1986859, -20
 script = ExtResource("8_pwok1")
 allow_tall_both_ways = true
 size = 4
-allowed_types = 95
+allowed_types = 31
 metadata/_custom_type_script = "uid://b1gbofimjjgn7"
 
 [node name="HullPartSlot2" type="Marker3D" parent="Exterior" index="1" unique_id=2037083477]
@@ -146,4 +147,11 @@ script = ExtResource("8_pwok1")
 symmetrical = true
 size = 7
 allowed_types = 46
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"
+
+[node name="HullPartSlot" type="Marker3D" parent="." index="8" unique_id=1121342096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0711174, 15.240164, 0.25837868)
+script = ExtResource("8_pwok1")
+size = 14
+allowed_types = 64
 metadata/_custom_type_script = "uid://b1gbofimjjgn7"

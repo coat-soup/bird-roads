@@ -6,7 +6,7 @@ extends Marker3D
 
 @export_flags("Small", "Medium", "Large", "Extra Large") var size : int = 0b0110
 
-@export_flags("Structures", "Sails", "Fins", "Engines", "Tails", "Longsails", "Other") var allowed_types : int = 0b1001111 # (tails & longsails disabled by default)
+@export_flags("Structures", "Sails", "Fins", "Engines", "Tails", "Longsails", "Gasbag", "Other") var allowed_types : int = 0b10001111 # (tails, longsails, & gasbags disabled by default)
 
 
 func _ready() -> void:
@@ -28,5 +28,6 @@ func _ready() -> void:
 		part2.rotation = rotation
 		part2.scale.x = -1
 		part2.rotation.z = -rotation.z
+		part2.rotation.y = -rotation.y
 	
 	print(name, " possibilities: ", possibilities, "[", choice_id, "] -> ", part_data.name)

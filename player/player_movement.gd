@@ -27,7 +27,7 @@ var landing : bool
 signal jump_start
 signal jump_land
 
-var debug_mode = false
+var debug_mode = true
 
 var floor_obj : Node3D
 
@@ -116,5 +116,5 @@ func add_velocity_impulse(vel):
 	player.velocity += vel
 
 func get_speed() -> float:
-	var debug_mult = 3 if debug_mode and Input.is_action_pressed("sprint") else 1
+	var debug_mult = 8 if debug_mode and Input.is_action_pressed("sprint") else 3 if debug_mode else 1
 	return (speed if !Input.is_action_pressed("sprint") else sprint_speed) * debug_mult

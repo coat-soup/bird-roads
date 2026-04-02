@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://blp2c4ar2nj4m"]
+
+[ext_resource type="PackedScene" uid="uid://de0jqtdpwnqdl" path="res://ships/hull-parts/models/gasbag_fish.glb" id="1_mfeco"]
+[ext_resource type="Script" uid="uid://b1gbofimjjgn7" path="res://ships/scripts/hull_part_slot.gd" id="2_1ruam"]
+
+[node name="gasbag_fish" unique_id=564533196 instance=ExtResource("1_mfeco")]
+
+[node name="HullPartSlot" type="Marker3D" parent="." index="1" unique_id=2139486726]
+transform = Transform3D(-0.315376, -0.9489626, 0.0027845497, 0.94830006, -0.3150431, 0.03840525, -0.035567917, 0.014752597, 0.9992582, 0.89808804, 6.224862, -29.92011)
+script = ExtResource("2_1ruam")
+symmetrical = true
+size = 7
+allowed_types = 14
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"
+
+[node name="HullPartSlot2" type="Marker3D" parent="." index="2" unique_id=1060230435]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, -4.602263e-08, 6.5264378, -19.052328)
+script = ExtResource("2_1ruam")
+size = 15
+allowed_types = 46
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"
+
+[node name="HullPartSlot3" type="Marker3D" parent="." index="3" unique_id=1979939034]
+transform = Transform3D(0.35757083, -0.8973048, 0.25881904, 0.9289583, 0.37018454, 1.4901161e-08, -0.09581083, 0.2404321, 0.9659258, 5.216889, 1.6912832, -15.510685)
+script = ExtResource("2_1ruam")
+symmetrical = true
+size = 14
+allowed_types = 46
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"
+
+[node name="HullPartSlot4" type="Marker3D" parent="." index="4" unique_id=1027178374]
+transform = Transform3D(0.35757083, -0.8973048, -0.25881904, 0.9289583, 0.37018454, 1.4901161e-08, 0.0958108, -0.2404321, 0.9659258, 5.5751543, 0.71296144, 17.015993)
+script = ExtResource("2_1ruam")
+symmetrical = true
+size = 15
+allowed_types = 46
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"

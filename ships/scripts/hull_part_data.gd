@@ -4,7 +4,7 @@ extends Resource
 @export var name : String
 @export var prefab : PackedScene
 
-enum HullPartType {STRUCTURE, SAIL, FIN, ENGINE, TAIL, LONGSAIL, OTHER}
+enum HullPartType {STRUCTURE, SAIL, FIN, ENGINE, TAIL, LONGSAIL, GASBAG, OTHER}
 
 @export var type : HullPartType
 

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bbtumcrbhwqus"]
+
+[ext_resource type="PackedScene" uid="uid://ikuuafwyfcep" path="res://ships/hull-parts/models/gasbag_boring.glb" id="1_274xa"]
+[ext_resource type="Script" uid="uid://b1gbofimjjgn7" path="res://ships/scripts/hull_part_slot.gd" id="2_6rpxe"]
+
+[node name="gasbag_boring" unique_id=1180240849 instance=ExtResource("1_274xa")]
+
+[node name="HullPartSlot" type="Marker3D" parent="." index="1" unique_id=674152427]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -29.92011)
+script = ExtResource("2_6rpxe")
+allow_tall_both_ways = true
+size = 14
+allowed_types = 16
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"
+
+[node name="HullPartSlot2" type="Marker3D" parent="." index="2" unique_id=2103423375]
+transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 6, 0.0798893)
+script = ExtResource("2_6rpxe")
+size = 14
+allowed_types = 38
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"
+
+[node name="HullPartSlot3" type="Marker3D" parent="." index="3" unique_id=603995925]
+transform = Transform3D(-0.3951127, -0.9186327, 0, 0.9186327, -0.3951127, 0, 0, 0, 1, 5.6027126, 1.9518104, -15.510685)
+script = ExtResource("2_6rpxe")
+symmetrical = true
+size = 14
+allowed_types = 46
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"
