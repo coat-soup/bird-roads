@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func rig(points : Array[RiggingPoint]):
 	if only_receive: return
-	if main_hull and rigged_to_main_hull: return
+	if main_hull and rigged_to_main_hull: return # main hull points only need one pair-wise connection
 	
 	var best_point : RiggingPoint = null
 	var best_score : float = 0

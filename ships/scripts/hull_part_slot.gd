@@ -8,6 +8,7 @@ extends Marker3D
 
 @export_flags("Structures", "Sails", "Fins", "Engines", "Tails", "Longsails", "Gasbag", "Other") var allowed_types : int = 0b10001111 # (tails, longsails, & gasbags disabled by default)
 
+var part_data : HullPartData
 
 func _ready() -> void:
 	var possibilities : Array[HullPartData]
@@ -16,7 +17,7 @@ func _ready() -> void:
 			possibilities.append(p)
 	
 	var choice_id = randi() % len(possibilities)
-	var part_data = possibilities[choice_id]
+	part_data = possibilities[choice_id]
 	var part : Node3D = part_data.prefab.instantiate()
 	add_child(part)
 	#part.rotation.y = PI
@@ -30,4 +31,4 @@ func _ready() -> void:
 		part2.rotation.z = -rotation.z
 		part2.rotation.y = -rotation.y
 	
-	print(name, " possibilities: ", possibilities, "[", choice_id, "] -> ", part_data.name)
+	#print(name, " possibilities: ", possibilities, "[", choice_id, "] -> ", part_data.name)

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="HullPartData" format=3 uid="uid://bh638flf4w0q5"]
 
-[ext_resource type="PackedScene" uid="uid://vwv0h3ynpcnk" path="res://ships/hull-parts/models/engine_pod.glb" id="1_amlpi"]
+[ext_resource type="PackedScene" uid="uid://t5vfgedkfx67" path="res://ships/hull-parts/models/engine_pod.tscn" id="1_amlpi"]
 [ext_resource type="Script" uid="uid://cyvgr5gwdviy1" path="res://ships/scripts/hull_part_data.gd" id="2_geye0"]
 
 [resource]

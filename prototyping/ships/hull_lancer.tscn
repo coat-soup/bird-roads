@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dsfgsobsasgxb" path="res://prototyping/corridors/corridor_tee.tscn" id="3_pwok1"]
 [ext_resource type="PackedScene" uid="uid://dncxruqdyqw7b" path="res://prototyping/corridors/corridor_straight.tscn" id="6_jji0u"]
 [ext_resource type="Script" uid="uid://blre08ygw36o2" path="res://ships/scripts/ship_exterior_generator.gd" id="7_6aw4h"]
+[ext_resource type="Resource" uid="uid://j1qwb75wd3kk" path="res://ships/colour_palettes/color_palette_free_ships.tres" id="8_ewuet"]
 [ext_resource type="Script" uid="uid://b1gbofimjjgn7" path="res://ships/scripts/hull_part_slot.gd" id="8_pwok1"]
 [ext_resource type="Script" uid="uid://suwb0y10pmfp" path="res://ships/scripts/rigging_point.gd" id="9_k67kr"]
 
@@ -44,9 +45,9 @@ height = 53.034
 [sub_resource type="BoxShape3D" id="BoxShape3D_spxh4"]
 size = Vector3(7.98, 0.06237793, 24.03247)
 
-[node name="hull_lancer" unique_id=411870696 instance=ExtResource("1_tb2ik")]
+[node name="hull_lancer" unique_id=174990817 instance=ExtResource("1_tb2ik")]
 
-[node name="Cube_001" parent="." index="1" unique_id=1716026778]
+[node name="Cube_001" parent="." index="1" unique_id=1502544400]
 material_override = SubResource("ShaderMaterial_jji0u")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Cube_001" index="0" unique_id=1668615851]
@@ -54,10 +55,10 @@ material_override = SubResource("ShaderMaterial_jji0u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/StaticBody3D" index="0" unique_id=1268079692]
 shape = SubResource("ConcavePolygonShape3D_tb2ik")
 
-[node name="Cube_003" parent="." index="3" unique_id=127990734]
+[node name="Cube_003" parent="." index="3" unique_id=443094659]
 material_override = SubResource("ShaderMaterial_jji0u")
 
-[node name="Cube_005" parent="." index="4" unique_id=338739189]
+[node name="Cube_005" parent="." index="4" unique_id=1338615757]
 visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="5" unique_id=1038719087]
@@ -113,8 +114,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5095596, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.031433105, -2.0074463)
 shape = SubResource("BoxShape3D_spxh4")
 
-[node name="Exterior" type="Node3D" parent="." index="7" unique_id=768816846]
+[node name="Exterior" type="Node3D" parent="." index="7" unique_id=768816846 node_paths=PackedStringArray("hull_mesh")]
 script = ExtResource("7_6aw4h")
+color_swatches = Array[Color]([Color(0.66, 0.45056, 0.2904, 1), Color(0.30822706, 0.41885623, 0.6458225, 1), Color(0.54809403, 0.27592808, 0.25305656, 1), Color(0.4117647, 0.4117647, 0.4117647, 1), Color(0.6992277, 0.6746659, 0.32403976, 1), Color(0.2929932, 0.41421628, 0.24155709, 1)])
+hull_mesh = NodePath("../Cube_001")
+color_palette = ExtResource("8_ewuet")
 
 [node name="HullPartSlot" type="Marker3D" parent="Exterior" index="0" unique_id=2024805189]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0994369e-07, 1.1986859, -20.598524)
@@ -185,18 +189,4 @@ metadata/_custom_type_script = "uid://suwb0y10pmfp"
 [node name="RiggingPoint6" type="Marker3D" parent="Exterior" index="11" unique_id=1104502938]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -4.734, 1.559, 11.321)
 script = ExtResource("9_k67kr")
-metadata/_custom_type_script = "uid://suwb0y10pmfp"
-
-[node name="RiggingPoint7" type="Marker3D" parent="Exterior" index="12" unique_id=1276416151]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -2.5603547, 11.321)
-script = ExtResource("9_k67kr")
-main_hull = false
-only_receive = true
-metadata/_custom_type_script = "uid://suwb0y10pmfp"
-
-[node name="RiggingPoint8" type="Marker3D" parent="Exterior" index="13" unique_id=1025024127]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -2.5603535, -13.679)
-script = ExtResource("9_k67kr")
-main_hull = false
-only_receive = true
 metadata/_custom_type_script = "uid://suwb0y10pmfp"

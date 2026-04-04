@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://dxht53mlyl7ig"]
+
+[ext_resource type="PackedScene" uid="uid://dubf5k6i3mmdi" path="res://ships/hull-parts/ship_mat_cube_grid.glb" id="1_60npd"]
+[ext_resource type="Material" uid="uid://d4fyqk6747sea" path="res://ships/ship_hull_mat.tres" id="2_60npd"]
+
+[node name="ship_mat_cube_grid" unique_id=610518304 instance=ExtResource("1_60npd")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0" unique_id=1376304888]
+transform = Transform3D(0.86602545, 0.4330127, -0.25, 2.7805946e-08, 0.49999994, 0.86602545, 0.49999997, -0.75000006, 0.43301263, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Cube" parent="." index="1" unique_id=2073849310]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_001" parent="." index="2" unique_id=103434161]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_002" parent="." index="3" unique_id=690457357]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_003" parent="." index="4" unique_id=1103543400]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_004" parent="." index="5" unique_id=1400201833]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_005" parent="." index="6" unique_id=336784414]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_006" parent="." index="7" unique_id=1333484442]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_007" parent="." index="8" unique_id=523044895]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_008" parent="." index="9" unique_id=434932156]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_009" parent="." index="10" unique_id=1280705960]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_010" parent="." index="11" unique_id=1791642892]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_011" parent="." index="12" unique_id=1060440938]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_012" parent="." index="13" unique_id=1357853370]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_013" parent="." index="14" unique_id=542247605]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_014" parent="." index="15" unique_id=948706006]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_015" parent="." index="16" unique_id=2143413867]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_016" parent="." index="17" unique_id=1099759792]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_017" parent="." index="18" unique_id=2059878715]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_018" parent="." index="19" unique_id=1630881639]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_019" parent="." index="20" unique_id=1165748414]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_020" parent="." index="21" unique_id=1013485731]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_021" parent="." index="22" unique_id=231199167]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_022" parent="." index="23" unique_id=1220801461]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_023" parent="." index="24" unique_id=86483842]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Cube_024" parent="." index="25" unique_id=1232582134]
+surface_material_override/0 = ExtResource("2_60npd")
+
+[node name="Label3D" type="Label3D" parent="." index="26" unique_id=13073305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.001108, 8.060488, 0)
+pixel_size = 0.05
+text = "Hull metal"
+
+[node name="Label3D2" type="Label3D" parent="." index="27" unique_id=302875735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.265566, 4.0604877, 0)
+pixel_size = 0.05
+text = "Shiny metal"
+
+[node name="Label3D3" type="Label3D" parent="." index="28" unique_id=981110103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.326273, 0.060487747, 0)
+pixel_size = 0.05
+text = "Wood"
+
+[node name="Label3D4" type="Label3D" parent="." index="29" unique_id=1027490630]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.970758, -3.9395123, 0)
+pixel_size = 0.05
+text = "Gasbags/sails"
+
+[node name="Label3D5" type="Label3D" parent="." index="30" unique_id=1554238545]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.326273, -7.9395123, 0)
+pixel_size = 0.05
+text = "idk yet"

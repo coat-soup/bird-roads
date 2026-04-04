@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShipColorPalette" format=3 uid="uid://j1qwb75wd3kk"]
+
+[ext_resource type="Script" uid="uid://mwdcxrpxpyg4" path="res://ships/scripts/ship_colour_palette.gd" id="1_0o81h"]
+
+[resource]
+script = ExtResource("1_0o81h")
+primary_hull_colours = Array[Color]([Color(0.2159017, 0.21590173, 0.2159017, 1), Color(0.51136196, 0.21983507, 0.16713503, 1), Color(0.2990379, 0.37384996, 0.26952374, 1), Color(0.641934, 0.641934, 0.641934, 1), Color(0.33825848, 0.45542544, 0.5749419, 1), Color(0.5740002, 0.3939776, 0.25108838, 1)])
+secondary_hull_colours = Array[Color]([Color(0.8819366, 0.8819366, 0.88193655, 1), Color(0.5055476, 0.26791617, 0.43413693, 1), Color(0.43924937, 0.6505898, 0.72487134, 1), Color(0.3999414, 0.6857081, 0.61961854, 1), Color(0.86917, 0.16947505, 0.31548232, 1), Color(0.1148968, 0.11489681, 0.1148968, 1)])
+tertiary_hull_colours = Array[Color]([Color(0.71754724, 0.73749596, 0.82566285, 1), Color(0.65834004, 0.6583399, 0.6583399, 1)])
+primary_gasbag_colours = Array[Color]([Color(0.82606, 0.82606006, 0.82606, 1), Color(0.8627451, 0.8235294, 0.7490196, 1), Color(0.64, 0.6280533, 0.5376, 1), Color(0.6364218, 0.6819574, 0.7233123, 1), Color(0.68, 0.58004, 0.53720003, 1)])
+secondary_gasbag_colours = Array[Color]([Color(0.13334888, 0.20990834, 0.18216148, 1), Color(0.67600524, 0.52387905, 0.4400945, 1)])
+primary_sail_colours = Array[Color]([Color(0.9297146, 0.9297147, 0.9297146, 1), Color(0.8616473, 0.8220493, 0.74987787, 1), Color(0.87605345, 0.7943543, 0.6534668, 1), Color(0.6679095, 0.19530445, 0.2311633, 1), Color(0.14767182, 0.14767179, 0.14767179, 1), Color(0.21626166, 0.33575246, 0.7113543, 1), Color(0.39898616, 0.42040965, 0.3407668, 1), Color(0.32852232, 0.5018027, 0.5492196, 1)])
+secondary_sail_colours = Array[Color]([Color(0.8226632, 0.6336146, 0.83236444, 1), Color(0.7168113, 0.68240434, 1.1551381e-06, 1), Color(0.033853278, 0.033853278, 0.033853274, 1), Color(0.91314715, 0.7290248, 0.34272218, 1), Color(0.1554454, 0.60568875, 0.7294167, 1)])
+metadata/_custom_type_script = "uid://mwdcxrpxpyg4"

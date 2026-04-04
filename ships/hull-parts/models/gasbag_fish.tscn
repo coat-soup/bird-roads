@@ -72,11 +72,11 @@ script = ExtResource("3_h5kmy")
 metadata/_custom_type_script = "uid://suwb0y10pmfp"
 
 [node name="RiggingPoint5" type="Marker3D" parent="." index="11" unique_id=1212242095]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4.298446, -0.3892796, -15.95)
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.9659258, 0, 0.9659258, 0.258819, 4.298446, -0.3892796, -15.95)
 script = ExtResource("3_h5kmy")
 metadata/_custom_type_script = "uid://suwb0y10pmfp"
 
 [node name="RiggingPoint6" type="Marker3D" parent="." index="12" unique_id=1520199838]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -4.298, -0.389, -15.95)
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.9659258, 0, 0.9659258, 0.258819, -4.298, -0.389, -15.95)
 script = ExtResource("3_h5kmy")
 metadata/_custom_type_script = "uid://suwb0y10pmfp"
