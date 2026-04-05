@@ -1,7 +1,13 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://d4fyqk6747sea"]
 
 [ext_resource type="Shader" uid="uid://dto2mw0segs3s" path="res://ships/ship_hull_shader.gdshader" id="1_vksko"]
+[ext_resource type="Texture2D" uid="uid://qktyb3eht5qs" path="res://ships/textures/canvas_n.png" id="2_4nfww"]
 [ext_resource type="Texture2D" uid="uid://cw27ox2wtk5py" path="res://ships/bag_pattern.png" id="2_jxxtm"]
+[ext_resource type="Texture2D" uid="uid://cpxtki4mtx4kg" path="res://ships/textures/canvas.png" id="3_8afrt"]
+[ext_resource type="Texture2D" uid="uid://oeegppk8tih3" path="res://ships/textures/wood_planks.png" id="3_arrom"]
+[ext_resource type="Texture2D" uid="uid://bbyj14ao30nud" path="res://ships/textures/wood_planks_n.png" id="3_hm55d"]
+[ext_resource type="Texture2D" uid="uid://csc7bd7q67ofc" path="res://ships/textures/metal_n.png" id="4_0fclj"]
+[ext_resource type="Texture2D" uid="uid://h3rdpjvtw7d5" path="res://ships/textures/metal.png" id="5_uogop"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vksko"]
 noise_type = 2
@@ -23,3 +29,9 @@ shader_parameter/ex_quaternary_color = Color(0, 0, 0, 1)
 shader_parameter/ex_quintary_color = Color(0, 0, 0, 1)
 shader_parameter/voronoi_noise = SubResource("NoiseTexture2D_jxxtm")
 shader_parameter/pattern = ExtResource("2_jxxtm")
+shader_parameter/wood_tex = ExtResource("3_arrom")
+shader_parameter/wood_norm = ExtResource("3_hm55d")
+shader_parameter/canvas_tex = ExtResource("3_8afrt")
+shader_parameter/canvas_norm = ExtResource("2_4nfww")
+shader_parameter/metal_tex = ExtResource("5_uogop")
+shader_parameter/metal_norm = ExtResource("4_0fclj")

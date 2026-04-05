@@ -6,7 +6,7 @@ var rigging_points : Array[RiggingPoint]
 const SHIP_HULL_MAT = preload("uid://d4fyqk6747sea")
 
 
-@export var hull_mesh : MeshInstance3D
+@export var hull_mesh : Node3D
 @export var color_palette : ShipColorPalette
 
 
@@ -21,8 +21,7 @@ func _ready() -> void:
 	color_palette.resolve_palette()
 	recursive_set_child_materials(self, mat, HullPartData.HullPartType.STRUCTURE)
 	
-	hull_mesh.material_overlay = mat
-	color_palette.colourise_part(hull_mesh, HullPartData.HullPartType.STRUCTURE)
+	recursive_set_child_materials(hull_mesh, mat, HullPartData.HullPartType.STRUCTURE)
 
 
 func recursive_set_child_materials(node : Node, material : ShaderMaterial, part_type : HullPartData.HullPartType):

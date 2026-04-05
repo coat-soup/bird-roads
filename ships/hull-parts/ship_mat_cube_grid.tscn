@@ -25,18 +25,27 @@ surface_material_override/0 = ExtResource("2_60npd")
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_005" parent="." index="6" unique_id=336784414]
+instance_shader_parameters/primary_color = Color(0.22901776, 0.49976718, 0.58049107, 1)
+instance_shader_parameters/secondary_color = Color(0.9741916, 0, 0.32862478, 1)
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_006" parent="." index="7" unique_id=1333484442]
+instance_shader_parameters/primary_color = Color(0.22901776, 0.49976718, 0.58049107, 1)
+instance_shader_parameters/secondary_color = Color(0.9741916, 0, 0.32862478, 1)
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_007" parent="." index="8" unique_id=523044895]
+instance_shader_parameters/primary_color = Color(0.22901776, 0.49976718, 0.58049107, 1)
+instance_shader_parameters/secondary_color = Color(0.9741916, 0, 0.32862478, 1)
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_008" parent="." index="9" unique_id=434932156]
+instance_shader_parameters/secondary_color = Color(0, 0, 0, 1)
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_009" parent="." index="10" unique_id=1280705960]
+instance_shader_parameters/primary_color = Color(0.22901776, 0.49976718, 0.58049107, 1)
+instance_shader_parameters/secondary_color = Color(0.9741916, 0, 0.32862478, 1)
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_010" parent="." index="11" unique_id=1791642892]

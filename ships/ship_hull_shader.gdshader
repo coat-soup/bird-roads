@@ -1,10 +1,16 @@
 shader_type spatial;
+render_mode cull_disabled, ensure_correct_normals;
+
+#include "res://vfx/shaders/triplanar.gdshaderinc"
 
 uniform vec3 ex_primary_color : source_color;
 uniform vec3 ex_secondary_color : source_color;
 uniform vec3 ex_tertiary_color : source_color;
 uniform vec3 ex_quaternary_color : source_color;
 uniform vec3 ex_quintary_color : source_color;
+
+instance uniform int pattern_id = -1;
+instance uniform int flip_normals = 0;
 
 instance uniform vec3 primary_color : source_color;
 instance uniform vec3 secondary_color : source_color;
@@ -15,6 +21,12 @@ instance uniform vec3 quintary_color : source_color;
 uniform sampler2D voronoi_noise;
 
 uniform sampler2D pattern : filter_linear;
+uniform sampler2D wood_tex : filter_nearest;
+uniform sampler2D wood_norm : filter_nearest, hint_normal;
+uniform sampler2D canvas_tex : filter_nearest;
+uniform sampler2D canvas_norm : filter_nearest, hint_normal;
+uniform sampler2D metal_tex : filter_nearest;
+uniform sampler2D metal_norm : filter_nearest, hint_normal;
 
 // VERTEX COLOR R: color category
 // 0: primary colour group
@@ -33,7 +45,7 @@ uniform sampler2D pattern : filter_linear;
 varying flat vec3 vPos;
 
 void vertex() {
-	//color = COLOR;
+	if(flip_normals > 0) NORMAL = -NORMAL;
 }
 
 void fragment() {
@@ -46,26 +58,37 @@ void fragment() {
 	
 	vec3 pos = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).rgb / 20.0;
 	
+	if (pattern_id >= 0){
+		if(texture(pattern, UV.rg).r > 0.0) ALBEDO = vec3(secondary_color);
+	}
+	
 	if (COLOR.g < 0.05){ // standard metal
 		METALLIC = 1.0;
-		ROUGHNESS = mix(0.6, 0.7, texture(voronoi_noise, pos.rg + pos.gb - pos.br + pos.br).r);
+		ROUGHNESS = mix(0.8, 0.9, texture(voronoi_noise, pos.rg + pos.gb - pos.br + pos.br).r);
+		
+		ALBEDO *= triplanar(metal_tex, 0.08, INV_VIEW_MATRIX, VERTEX, NORMAL);
+		NORMAL_MAP = triplanar(metal_norm, 0.08, INV_VIEW_MATRIX, VERTEX, NORMAL);
 	}
-	else if (COLOR.g < 0.2){ // shiny metal
+	else if (COLOR.g < 0.2 ){ // shiny metal
 		ALBEDO = mix(ALBEDO, vec3(1.0), 0.5);
 		METALLIC = 1.0;
 		ROUGHNESS = mix(0.3, 0.4, texture(voronoi_noise, pos.rg + pos.gb - pos.br + pos.br).r);
 	}
 	else if (COLOR.g < 0.3){ // wood
 		ALBEDO = mix(ALBEDO, vec3(79, 44, 7)/600.0, 0.9);
+		ALBEDO = texture(wood_tex, pos.zx * 5.0).rgb * vec3(81, 55, 38)/255.0;
+		NORMAL_MAP = texture(wood_norm, pos.zx * 5.0).rgb;
 	}
 	else if (COLOR.g < 0.6){ // canvas
 		//ALBEDO = mix(ALBEDO, vec3(0.8), 0.4);
 		
-		if(texture(pattern, UV.rg).r > 0.0) ALBEDO = vec3(secondary_color);
+		//ALBEDO *= texture(canvas_tex, (pos.rg + pos.gb - pos.br + pos.br) * 5.0).rgb;
+		ALBEDO *= triplanar(canvas_tex, 0.08, INV_VIEW_MATRIX, VERTEX, NORMAL);
+		NORMAL_MAP = triplanar(canvas_norm, 0.08, INV_VIEW_MATRIX, VERTEX, NORMAL);
 	}
 	else{
 		
 	};
-	
-	ALBEDO = mix(ALBEDO, ALBEDO * 0.9, texture(voronoi_noise, pos.rg + pos.gb - pos.br + pos.br).r);
+	NORMAL_MAP_DEPTH = 1.0;
+	//ALBEDO = mix(ALBEDO, ALBEDO * 0.9, texture(voronoi_noise, pos.rg + pos.gb - pos.br + pos.br).r);
 }

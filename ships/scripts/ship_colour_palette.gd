@@ -4,8 +4,11 @@ extends Resource
 @export_category("Hull")
 @export var primary_hull_colours : Array[Color] = [Color.WHITE]
 @export var secondary_hull_colours : Array[Color] = [Color.WHITE]
-## Screws and bolts and things
-@export var tertiary_hull_colours : Array[Color] = [Color.WHITE]
+@export var underhull_colours : Array[Color] = [Color.WHITE]
+
+@export_category("Bits")
+@export var trim_colours : Array[Color] = [Color.WHITE]
+@export var rivet_colours : Array[Color] = [Color.WHITE]
 
 @export_category("Gasbags")
 @export var primary_gasbag_colours : Array[Color] = [Color.WHITE]
@@ -25,7 +28,7 @@ extends Resource
 
 var hull_a : Color
 var hull_b : Color
-var hull_c : Color
+var underhull : Color
 
 var bag_a : Color
 var bag_b : Color
@@ -37,11 +40,14 @@ var sail_b : Color
 var part_a : Color
 var part_b : Color
 
+var rivets : Color
+var trim : Color
+
 
 func resolve_palette():
 	hull_a = primary_hull_colours.pick_random()
 	hull_b = secondary_hull_colours.pick_random()
-	hull_c = tertiary_hull_colours.pick_random()
+	underhull = underhull_colours.pick_random()
 	
 	bag_a = primary_gasbag_colours.pick_random()
 	bag_b = secondary_gasbag_colours.pick_random()
@@ -52,24 +58,34 @@ func resolve_palette():
 	
 	part_a = primary_hull_part_colours.pick_random()
 	part_b = secondary_hull_part_colours.pick_random()
+	
+	rivets = rivet_colours.pick_random()
+	trim = trim_colours.pick_random()
 
 
 func colourise_part(mesh : MeshInstance3D, type : HullPartData.HullPartType):
 	match type:
 		HullPartData.HullPartType.STRUCTURE:
+			mesh.set_instance_shader_parameter("pattern_id", 0)
 			mesh.set_instance_shader_parameter("primary_color", hull_a)
 			mesh.set_instance_shader_parameter("secondary_color", hull_b)
-			mesh.set_instance_shader_parameter("tertiary_color", hull_c)
+			mesh.set_instance_shader_parameter("tertiary_color", underhull)
 		HullPartData.HullPartType.GASBAG:
+			mesh.set_instance_shader_parameter("pattern_id", 0)
 			mesh.set_instance_shader_parameter("primary_color", bag_a)
 			mesh.set_instance_shader_parameter("secondary_color", bag_b)
-		HullPartData.HullPartType.SAIL or HullPartData.HullPartType.LONGSAIL:
+		HullPartData.HullPartType.SAIL, HullPartData.HullPartType.LONGSAIL:
 			mesh.set_instance_shader_parameter("primary_color", sail_a if randf() < 0.3 else sail_a2)
 			mesh.set_instance_shader_parameter("secondary_color", sail_b)
 		HullPartData.HullPartType.TAIL:
-			mesh.set_instance_shader_parameter("primary_color", part_a)
+			mesh.set_instance_shader_parameter("primary_color", hull_a)
 			mesh.set_instance_shader_parameter("secondary_color", part_b)
 			mesh.set_instance_shader_parameter("tertiary_color", sail_a)
 		_:
-			mesh.set_instance_shader_parameter("primary_color", part_a)
+			mesh.set_instance_shader_parameter("primary_color", hull_a)
 			mesh.set_instance_shader_parameter("secondary_color", part_b)
+	
+	mesh.set_instance_shader_parameter("quaternary_color", trim)
+	mesh.set_instance_shader_parameter("quintary_color", rivets)
+	
+	if mesh.global_basis.determinant() < 0: mesh.set_instance_shader_parameter("flip_normals", 1)

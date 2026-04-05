@@ -30,5 +30,6 @@ func _ready() -> void:
 		part2.scale.x = -1
 		part2.rotation.z = -rotation.z
 		part2.rotation.y = -rotation.y
+		part2.reparent.call_deferred(self)
 	
 	#print(name, " possibilities: ", possibilities, "[", choice_id, "] -> ", part_data.name)
