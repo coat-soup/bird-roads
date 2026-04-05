@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://tg2vnbrk5iht"]
+
+[ext_resource type="PackedScene" uid="uid://d1hlxyokd0hmi" path="res://ships/hull-parts/models/gasbag_aux_medium_round.glb" id="1_bpkmv"]
+[ext_resource type="Script" uid="uid://b1gbofimjjgn7" path="res://ships/scripts/hull_part_slot.gd" id="2_cob6c"]
+[ext_resource type="Script" uid="uid://crdrhjekc8pb3" path="res://ships/scripts/random_child.gd" id="3_6ebcx"]
+
+[node name="gasbag_aux_medium_round" unique_id=1286751681 instance=ExtResource("1_bpkmv")]
+
+[node name="RandomChild" type="Node3D" parent="." index="1" unique_id=2126336578]
+script = ExtResource("3_6ebcx")
+metadata/_custom_type_script = "uid://crdrhjekc8pb3"
+
+[node name="HullPartSlot" type="Marker3D" parent="RandomChild" index="0" unique_id=1488576843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+script = ExtResource("2_cob6c")
+size = 1
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"
+
+[node name="Empty" type="Node3D" parent="RandomChild" index="1" unique_id=859310246]

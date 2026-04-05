@@ -14,6 +14,7 @@ var connections : Array[RiggingPoint]
 
 
 func _ready() -> void:
+	return
 	var p = self
 	while p != get_tree().root:
 		p = p.get_parent_node_3d()

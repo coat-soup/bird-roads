@@ -8,7 +8,7 @@ enum HullPartType {STRUCTURE, SAIL, FIN, ENGINE, TAIL, LONGSAIL, GASBAG, OTHER}
 
 @export var type : HullPartType
 
-@export_enum("Small", "Medium", "Large", "Extra Large") var size : int
+@export_enum("Small", "Medium", "Large", "Extra Large", "Main Slot") var size : int
 
 @export var tall_both_ways : bool = false
 

@@ -8,5 +8,5 @@ script = ExtResource("2_5b14f")
 name = "Boring Gasbag"
 prefab = ExtResource("1_aeffo")
 type = 6
-size = 2
+size = 4
 metadata/_custom_type_script = "uid://cyvgr5gwdviy1"

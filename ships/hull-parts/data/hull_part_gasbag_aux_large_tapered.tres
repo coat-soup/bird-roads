@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HullPartData" format=3 uid="uid://ddys0fhv8jnw6"]
+
+[ext_resource type="PackedScene" uid="uid://d2gkqwv5ub3uh" path="res://ships/hull-parts/models/gasbag_aux_large_tapered.tscn" id="1_enx8v"]
+[ext_resource type="Script" uid="uid://cyvgr5gwdviy1" path="res://ships/scripts/hull_part_data.gd" id="2_vmbrd"]
+
+[resource]
+script = ExtResource("2_vmbrd")
+name = "Large Tapered Aux Gasbag"
+prefab = ExtResource("1_enx8v")
+type = 6
+size = 2
+metadata/_custom_type_script = "uid://cyvgr5gwdviy1"

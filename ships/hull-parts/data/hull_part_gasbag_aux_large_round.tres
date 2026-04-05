@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HullPartData" format=3 uid="uid://chdx4mxgbsnxy"]
+
+[ext_resource type="PackedScene" uid="uid://dnmpglea6mir7" path="res://ships/hull-parts/models/gasbag_aux_large_round.tscn" id="1_eefwv"]
+[ext_resource type="Script" uid="uid://cyvgr5gwdviy1" path="res://ships/scripts/hull_part_data.gd" id="2_a5sj7"]
+
+[resource]
+script = ExtResource("2_a5sj7")
+name = "Large Round Aux Gasbag"
+prefab = ExtResource("1_eefwv")
+type = 6
+size = 2
+metadata/_custom_type_script = "uid://cyvgr5gwdviy1"

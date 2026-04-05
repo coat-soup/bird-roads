@@ -60,110 +60,113 @@ environment = SubResource("Environment_2voc4")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1415426541]
+[node name="Player" parent="." unique_id=657413655 instance=ExtResource("2_kdgit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.356152, 1.5000019, 0.45201564)
+
+[node name="LevelBlockout" type="Node3D" parent="." unique_id=87772489]
+visible = false
+
+[node name="human_reference" parent="LevelBlockout" unique_id=990238803 instance=ExtResource("3_kdgit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6331844, 0.007943034, -9.14816)
+
+[node name="human_reference2" parent="LevelBlockout" unique_id=1450689534 instance=ExtResource("3_kdgit")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.8868084, 0.007943034, 1.702843)
+
+[node name="human_reference3" parent="LevelBlockout" unique_id=2093689025 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -6.002021, 0.007943034, -8.108779)
+
+[node name="human_reference4" parent="LevelBlockout" unique_id=74027997 instance=ExtResource("3_kdgit")]
+transform = Transform3D(-0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, -0.49999997, -6.527805, 0.007943034, -1.9007561)
+
+[node name="corridor_prot2" parent="LevelBlockout" unique_id=1935301666 instance=ExtResource("8_gea12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="corridor_prot5" parent="LevelBlockout" unique_id=820509507 instance=ExtResource("5_op7uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1)
+
+[node name="corridor_prot6" parent="LevelBlockout" unique_id=1631976959 instance=ExtResource("6_dj0my")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -7)
+
+[node name="corridor_prot23" parent="LevelBlockout" unique_id=219630713 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0, -7)
+
+[node name="corridor_prot7" parent="LevelBlockout" unique_id=491863443 instance=ExtResource("5_op7uo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0, -3)
+
+[node name="corridor_prot8" parent="LevelBlockout" unique_id=803037373 instance=ExtResource("5_op7uo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -11)
+
+[node name="corridor_prot9" parent="LevelBlockout" unique_id=1977916860 instance=ExtResource("8_gea12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
+
+[node name="corridor_prot10" parent="LevelBlockout" unique_id=1203906294 instance=ExtResource("6_hb8au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
+
+[node name="corridor_prot11" parent="LevelBlockout" unique_id=2104843336 instance=ExtResource("5_op7uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -7)
+
+[node name="corridor_prot13" parent="LevelBlockout" unique_id=238559322 instance=ExtResource("6_dj0my")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -7)
+
+[node name="corridor_prot12" parent="LevelBlockout" unique_id=464833955 instance=ExtResource("5_op7uo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, -3)
+
+[node name="corridor_prot14" parent="LevelBlockout" unique_id=2095316980 instance=ExtResource("5_op7uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -7)
+
+[node name="corridor_prot15" parent="LevelBlockout" unique_id=2036209969 instance=ExtResource("5_op7uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 1)
+
+[node name="corridor_prot16" parent="LevelBlockout" unique_id=2108215589 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 1)
+
+[node name="corridor_prot17" parent="LevelBlockout" unique_id=1094339694 instance=ExtResource("5_op7uo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 5)
+
+[node name="corridor_prot18" parent="LevelBlockout" unique_id=1704979472 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 13)
+
+[node name="corridor_prot19" parent="LevelBlockout" unique_id=1875651496 instance=ExtResource("5_op7uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 13)
+
+[node name="corridor_prot20" parent="LevelBlockout" unique_id=1008555050 instance=ExtResource("5_op7uo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
+
+[node name="corridor_prot21" parent="LevelBlockout" unique_id=1612356578 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4, 0, 13)
+
+[node name="corridor_prot22" parent="LevelBlockout" unique_id=1376195827 instance=ExtResource("5_op7uo")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 9)
+
+[node name="room_prot" parent="LevelBlockout" unique_id=2063581993 instance=ExtResource("9_dj0my")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
+
+[node name="room_prot3" parent="LevelBlockout" unique_id=1307979828 instance=ExtResource("10_45sbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -11)
+
+[node name="room_prot4" parent="LevelBlockout" unique_id=160586938 instance=ExtResource("11_427k7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -11)
+
+[node name="corridor_prot" parent="LevelBlockout" unique_id=1632264079 instance=ExtResource("6_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -3)
+
+[node name="room_prot2" parent="LevelBlockout" unique_id=1478802349 instance=ExtResource("9_dj0my")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, 3)
+
+[node name="room_prot5" parent="LevelBlockout" unique_id=334034807 instance=ExtResource("11_427k7")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, -3)
+
+[node name="corridor_prot3" parent="LevelBlockout" unique_id=509403266 instance=ExtResource("8_gea12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="room_prot6" parent="LevelBlockout" unique_id=1835838540 instance=ExtResource("11_45sbi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="LevelBlockout" unique_id=1415426541]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.48628524, 0)
 use_collision = true
 size = Vector3(40, 0.95, 40)
 material = SubResource("ShaderMaterial_2voc4")
-
-[node name="Player" parent="." unique_id=657413655 instance=ExtResource("2_kdgit")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.356152, 1.5000019, 0.45201564)
-
-[node name="human_reference" parent="." unique_id=990238803 instance=ExtResource("3_kdgit")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6331844, 0.007943034, -9.14816)
-
-[node name="human_reference2" parent="." unique_id=1450689534 instance=ExtResource("3_kdgit")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -3.8868084, 0.007943034, 1.702843)
-
-[node name="human_reference3" parent="." unique_id=2093689025 instance=ExtResource("3_kdgit")]
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, -6.002021, 0.007943034, -8.108779)
-
-[node name="human_reference4" parent="." unique_id=74027997 instance=ExtResource("3_kdgit")]
-transform = Transform3D(-0.49999997, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, -0.49999997, -6.527805, 0.007943034, -1.9007561)
-
-[node name="corridor_prot2" parent="." unique_id=1935301666 instance=ExtResource("8_gea12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
-
-[node name="corridor_prot5" parent="." unique_id=820509507 instance=ExtResource("5_op7uo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 1)
-
-[node name="corridor_prot6" parent="." unique_id=1631976959 instance=ExtResource("6_dj0my")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -7)
-
-[node name="corridor_prot23" parent="." unique_id=219630713 instance=ExtResource("6_dj0my")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0, -7)
-
-[node name="corridor_prot7" parent="." unique_id=491863443 instance=ExtResource("5_op7uo")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 8, 0, -3)
-
-[node name="corridor_prot8" parent="." unique_id=803037373 instance=ExtResource("5_op7uo")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -11)
-
-[node name="corridor_prot9" parent="." unique_id=1977916860 instance=ExtResource("8_gea12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -7)
-
-[node name="corridor_prot10" parent="." unique_id=1203906294 instance=ExtResource("6_hb8au")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15)
-
-[node name="corridor_prot11" parent="." unique_id=2104843336 instance=ExtResource("5_op7uo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -7)
-
-[node name="corridor_prot13" parent="." unique_id=238559322 instance=ExtResource("6_dj0my")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -7)
-
-[node name="corridor_prot12" parent="." unique_id=464833955 instance=ExtResource("5_op7uo")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, -3)
-
-[node name="corridor_prot14" parent="." unique_id=2095316980 instance=ExtResource("5_op7uo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -7)
-
-[node name="corridor_prot15" parent="." unique_id=2036209969 instance=ExtResource("5_op7uo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 1)
-
-[node name="corridor_prot16" parent="." unique_id=2108215589 instance=ExtResource("6_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 1)
-
-[node name="corridor_prot17" parent="." unique_id=1094339694 instance=ExtResource("5_op7uo")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 5)
-
-[node name="corridor_prot18" parent="." unique_id=1704979472 instance=ExtResource("6_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 13)
-
-[node name="corridor_prot19" parent="." unique_id=1875651496 instance=ExtResource("5_op7uo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 13)
-
-[node name="corridor_prot20" parent="." unique_id=1008555050 instance=ExtResource("5_op7uo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13)
-
-[node name="corridor_prot21" parent="." unique_id=1612356578 instance=ExtResource("6_dj0my")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4, 0, 13)
-
-[node name="corridor_prot22" parent="." unique_id=1376195827 instance=ExtResource("5_op7uo")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12, 0, 9)
-
-[node name="room_prot" parent="." unique_id=2063581993 instance=ExtResource("9_dj0my")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -3)
-
-[node name="room_prot3" parent="." unique_id=1307979828 instance=ExtResource("10_45sbi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -11)
-
-[node name="room_prot4" parent="." unique_id=160586938 instance=ExtResource("11_427k7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -11)
-
-[node name="corridor_prot" parent="." unique_id=1632264079 instance=ExtResource("6_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -3)
-
-[node name="room_prot2" parent="." unique_id=1478802349 instance=ExtResource("9_dj0my")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 0, 3)
-
-[node name="room_prot5" parent="." unique_id=334034807 instance=ExtResource("11_427k7")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 4, 0, -3)
-
-[node name="corridor_prot3" parent="." unique_id=509403266 instance=ExtResource("8_gea12")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="room_prot6" parent="." unique_id=1835838540 instance=ExtResource("11_45sbi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
 
 [node name="hull_lancer" parent="." unique_id=1661131372 instance=ExtResource("15_mkcgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.28992, -1.9188533, -6.6580324)

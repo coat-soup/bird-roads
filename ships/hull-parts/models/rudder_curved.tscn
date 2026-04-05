@@ -7,14 +7,15 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wdwf2"]
 render_priority = 0
 shader = ExtResource("2_0ondy")
-shader_parameter/primary_color = Color(0.6880643, 0.48492527, 0.56726414, 1)
-shader_parameter/secondary_color = Color(0, 0, 0, 1)
-shader_parameter/tertiary_color = Color(0, 0, 0, 1)
-shader_parameter/quaternary_color = Color(0, 0, 0, 1)
+shader_parameter/ex_primary_color = Color(0, 0, 0, 1)
+shader_parameter/ex_secondary_color = Color(0, 0, 0, 1)
+shader_parameter/ex_tertiary_color = Color(0, 0, 0, 1)
+shader_parameter/ex_quaternary_color = Color(0, 0, 0, 1)
+shader_parameter/ex_quintary_color = Color(0, 0, 0, 1)
 
-[node name="rudder_curved" unique_id=1979964615 instance=ExtResource("1_066aj")]
+[node name="rudder_curved" unique_id=469837329 instance=ExtResource("1_066aj")]
 
-[node name="Cube" parent="." index="0" unique_id=312559532]
+[node name="Cube" parent="." index="0" unique_id=1817895961]
 surface_material_override/0 = SubResource("ShaderMaterial_wdwf2")
 
 [node name="RiggingPoint" type="Marker3D" parent="." index="2" unique_id=1984126363]

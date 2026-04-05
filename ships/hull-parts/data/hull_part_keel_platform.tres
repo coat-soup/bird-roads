@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HullPartData" format=3 uid="uid://cu678plqxrt2s"]
+
+[ext_resource type="PackedScene" uid="uid://bmrkieydlh022" path="res://ships/hull-parts/models/structure_platform_keel.tscn" id="1_qn00g"]
+[ext_resource type="Script" uid="uid://cyvgr5gwdviy1" path="res://ships/scripts/hull_part_data.gd" id="2_02krh"]
+
+[resource]
+script = ExtResource("2_02krh")
+name = "Platform Keel"
+prefab = ExtResource("1_qn00g")
+size = 3
+metadata/_custom_type_script = "uid://cyvgr5gwdviy1"

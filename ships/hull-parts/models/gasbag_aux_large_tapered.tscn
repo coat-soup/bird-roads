@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d2gkqwv5ub3uh"]
+
+[ext_resource type="PackedScene" uid="uid://dur0308rh0i2f" path="res://ships/hull-parts/models/gasbag_aux_large_tapered.glb" id="1_o5hhd"]
+[ext_resource type="Script" uid="uid://b1gbofimjjgn7" path="res://ships/scripts/hull_part_slot.gd" id="2_x5ufi"]
+
+[node name="gasbag_aux_large_tapered" unique_id=523714281 instance=ExtResource("1_o5hhd")]
+
+[node name="HullPartSlot" type="Marker3D" parent="." index="1" unique_id=711065470]
+transform = Transform3D(0.68798745, -0.72572255, 0, 0.72572255, 0.68798745, 0, 0, 0, 1, 4.7189617, -5.5863085, 6.3829303)
+script = ExtResource("2_x5ufi")
+symmetrical = true
+size = 3
+allowed_types = 142
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bmrkieydlh022"]
+
+[ext_resource type="PackedScene" uid="uid://dph4lk2p3orrp" path="res://ships/hull-parts/models/structure_platform_keel.glb" id="1_0vj80"]
+[ext_resource type="Script" uid="uid://crdrhjekc8pb3" path="res://ships/scripts/random_child.gd" id="2_6gire"]
+[ext_resource type="Script" uid="uid://b1gbofimjjgn7" path="res://ships/scripts/hull_part_slot.gd" id="3_feluk"]
+
+[node name="structure_platform_keel" unique_id=1203293046 instance=ExtResource("1_0vj80")]
+
+[node name="RandomChild" type="Node3D" parent="." index="4" unique_id=1894830323]
+script = ExtResource("2_6gire")
+metadata/_custom_type_script = "uid://crdrhjekc8pb3"
+
+[node name="TwoMediums" type="Node3D" parent="RandomChild" index="0" unique_id=891009416]
+
+[node name="HullPartSlot" type="Marker3D" parent="RandomChild/TwoMediums" index="0" unique_id=1190370024]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.429971e-09, -3.691503, 7.3801403)
+script = ExtResource("3_feluk")
+size = 2
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"
+
+[node name="HullPartSlot2" type="Marker3D" parent="RandomChild/TwoMediums" index="1" unique_id=741693209]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.429971e-09, -3.691503, -7.6198597)
+script = ExtResource("3_feluk")
+size = 2
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"
+
+[node name="SlotLarge" type="Marker3D" parent="RandomChild" index="1" unique_id=686932667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4100518e-08, -3.691503, 0)
+script = ExtResource("3_feluk")
+allowed_types = 207
+metadata/_custom_type_script = "uid://b1gbofimjjgn7"

@@ -25,7 +25,7 @@ transform = Transform3D(-0.066918276, -0.99775845, 0, 0.99775845, -0.066918276, 
 script = ExtResource("2_5sp1h")
 symmetrical = true
 size = 7
-allowed_types = 14
+allowed_types = 78
 metadata/_custom_type_script = "uid://b1gbofimjjgn7"
 
 [node name="RiggingPoint" type="Marker3D" parent="." index="4" unique_id=1779751052]
