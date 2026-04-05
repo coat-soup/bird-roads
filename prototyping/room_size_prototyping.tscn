@@ -168,7 +168,7 @@ use_collision = true
 size = Vector3(40, 0.95, 40)
 material = SubResource("ShaderMaterial_2voc4")
 
-[node name="hull_lancer" parent="." unique_id=1661131372 instance=ExtResource("15_mkcgc")]
+[node name="hull_lancer" parent="." unique_id=2107459164 instance=ExtResource("15_mkcgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.28992, -1.9188533, -6.6580324)
 
 [node name="human_reference" parent="hull_lancer" unique_id=1878871767 instance=ExtResource("3_kdgit")]
@@ -180,7 +180,7 @@ transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.2588
 [node name="human_reference3" parent="hull_lancer" unique_id=602662630 instance=ExtResource("3_kdgit")]
 transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
 
-[node name="hull_lancer2" parent="." unique_id=79713788 instance=ExtResource("15_mkcgc")]
+[node name="hull_lancer2" parent="." unique_id=1390246570 instance=ExtResource("15_mkcgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.798832, -1.9188533, 78.344086)
 
 [node name="human_reference" parent="hull_lancer2" unique_id=441581251 instance=ExtResource("3_kdgit")]
@@ -192,19 +192,25 @@ transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.2588
 [node name="human_reference3" parent="hull_lancer2" unique_id=1104576597 instance=ExtResource("3_kdgit")]
 transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
 
-[node name="hull_lancer3" parent="." unique_id=1679552282 instance=ExtResource("15_mkcgc")]
+[node name="hull_lancer3" parent="." unique_id=360153961 instance=ExtResource("15_mkcgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.860466, -1.9188533, 149.4582)
 
 [node name="human_reference" parent="hull_lancer3" unique_id=1617091003 instance=ExtResource("3_kdgit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5186272, 1.5845335, -4.8485174)
 
+[node name="human_reference4" parent="hull_lancer3" unique_id=832201365 instance=ExtResource("3_kdgit")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.10363, 0.8947787, 4.1514893)
+
 [node name="human_reference2" parent="hull_lancer3" unique_id=2048972525 instance=ExtResource("3_kdgit")]
 transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, -2.7692757, 1.5845335, 15.476985)
+
+[node name="human_reference5" parent="hull_lancer3" unique_id=1474237835 instance=ExtResource("3_kdgit")]
+transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.25881907, -1.2401657, -0.88592863, 15.47699)
 
 [node name="human_reference3" parent="hull_lancer3" unique_id=1819117511 instance=ExtResource("3_kdgit")]
 transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
 
-[node name="hull_lancer4" parent="." unique_id=1363190157 instance=ExtResource("15_mkcgc")]
+[node name="hull_lancer4" parent="." unique_id=1654380426 instance=ExtResource("15_mkcgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.26937, -1.9188533, 230.93877)
 
 [node name="human_reference" parent="hull_lancer4" unique_id=2076263150 instance=ExtResource("3_kdgit")]
@@ -216,7 +222,7 @@ transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.2588
 [node name="human_reference3" parent="hull_lancer4" unique_id=1547284765 instance=ExtResource("3_kdgit")]
 transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
 
-[node name="hull_lancer5" parent="." unique_id=1695413955 instance=ExtResource("15_mkcgc")]
+[node name="hull_lancer5" parent="." unique_id=2046664231 instance=ExtResource("15_mkcgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.9746, -1.9188533, 311.82605)
 
 [node name="human_reference" parent="hull_lancer5" unique_id=2126522984 instance=ExtResource("3_kdgit")]
@@ -228,7 +234,7 @@ transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.2588
 [node name="human_reference3" parent="hull_lancer5" unique_id=1267284051 instance=ExtResource("3_kdgit")]
 transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
 
-[node name="hull_lancer6" parent="." unique_id=1371083237 instance=ExtResource("15_mkcgc")]
+[node name="hull_lancer6" parent="." unique_id=669791551 instance=ExtResource("15_mkcgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.588135, -1.9188533, -95.69583)
 
 [node name="human_reference" parent="hull_lancer6" unique_id=1856005997 instance=ExtResource("3_kdgit")]
@@ -240,7 +246,7 @@ transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.2588
 [node name="human_reference3" parent="hull_lancer6" unique_id=240312796 instance=ExtResource("3_kdgit")]
 transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
 
-[node name="hull_lancer7" parent="." unique_id=1065676492 instance=ExtResource("15_mkcgc")]
+[node name="hull_lancer7" parent="." unique_id=401027214 instance=ExtResource("15_mkcgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.76938, -1.9188533, -167.02008)
 
 [node name="human_reference" parent="hull_lancer7" unique_id=964509334 instance=ExtResource("3_kdgit")]
@@ -252,7 +258,7 @@ transform = Transform3D(0.25881907, 0, 0.9659258, 0, 1, 0, -0.9659258, 0, 0.2588
 [node name="human_reference3" parent="hull_lancer7" unique_id=2083199728 instance=ExtResource("3_kdgit")]
 transform = Transform3D(0.99869096, 0, 0.051150605, 0, 1, 0, -0.051150605, 0, 0.99869096, 1.1676769, 1.5845344, 19.171936)
 
-[node name="hull_lancer8" parent="." unique_id=824662739 instance=ExtResource("15_mkcgc")]
+[node name="hull_lancer8" parent="." unique_id=700751162 instance=ExtResource("15_mkcgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.68713, -1.9188533, -240.46706)
 
 [node name="human_reference" parent="hull_lancer8" unique_id=1735769790 instance=ExtResource("3_kdgit")]

@@ -21,9 +21,9 @@ height = 53.034
 [sub_resource type="BoxShape3D" id="BoxShape3D_spxh4"]
 size = Vector3(7.98, 0.06237793, 24.03247)
 
-[node name="hull_lancer" unique_id=921766849 instance=ExtResource("1_tb2ik")]
+[node name="hull_lancer" unique_id=270389695 instance=ExtResource("1_tb2ik")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Hull/Deck" parent_id_path=PackedInt32Array(507142562) index="0" unique_id=241413939]
+[node name="StaticBody3D" type="StaticBody3D" parent="Hull/Deck" parent_id_path=PackedInt32Array(548604179) index="0" unique_id=241413939]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hull/Deck/StaticBody3D" index="0" unique_id=1416298997]
 shape = SubResource("ConcavePolygonShape3D_k67kr")

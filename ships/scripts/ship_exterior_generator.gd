@@ -9,9 +9,20 @@ const SHIP_HULL_MAT = preload("uid://d4fyqk6747sea")
 @export var hull_mesh : Node3D
 @export var color_palette : ShipColorPalette
 
+var seed : int
+var rand : RandomNumberGenerator
+
 
 func _ready() -> void:
-	recursive_resolve_slots(self)
+	seed = randi()
+	rand = RandomNumberGenerator.new()
+	rand.seed = seed
+	
+	var mat : ShaderMaterial = SHIP_HULL_MAT.duplicate()
+	color_palette.resolve_palette(rand)
+	
+	recursive_resolve_slots(self, mat, HullPartData.HullPartType.STRUCTURE)
+	recursive_resolve_slots(hull_mesh, mat, HullPartData.HullPartType.STRUCTURE)
 	
 	await get_tree().create_timer(0.5).timeout
 	
@@ -19,40 +30,27 @@ func _ready() -> void:
 	for i in range(n_points-1,-1,-1):
 		if !is_instance_valid(rigging_points[i]): rigging_points.remove_at(i)
 	for p in rigging_points: p.rig(rigging_points)
+
+
+func recursive_resolve_slots(node : Node, material : ShaderMaterial, part_type : HullPartData.HullPartType):	
+	var rope : RiggingPoint = node as RiggingPoint
+	if rope: rigging_points.append(rope)
 	
-	var mat : ShaderMaterial = SHIP_HULL_MAT.duplicate()
-	color_palette.resolve_palette()
-	recursive_set_child_materials(self, mat, HullPartData.HullPartType.STRUCTURE)
+	var random_child : RandomChild = node as RandomChild
+	if random_child: random_child.resolve(rand)
 	
-	recursive_set_child_materials(hull_mesh, mat, HullPartData.HullPartType.STRUCTURE)
-
-
-func recursive_resolve_slots(node : Node):
-	for child in node.get_children():
-		var random_child : RandomChild = child as RandomChild
-		if random_child: random_child.resolve()
-		var hull_slot : HullPartSlot = child as HullPartSlot
-		if hull_slot: hull_slot.resolve()
-		var rope : RiggingPoint = child as RiggingPoint
-		if rope: rigging_points.append(rope)
+	var hull_slot : HullPartSlot = node as HullPartSlot
+	if hull_slot:
+		if hull_slot.resolved: return
+		hull_slot.resolve(rand, self)
+		if hull_slot.part_data: part_type = hull_slot.part_data.type
+	
+	var mesh = node as MeshInstance3D
+	if mesh:
+		mesh.material_overlay = material
+		color_palette.colourise_part(mesh, part_type)
 		
-		recursive_resolve_slots(child)
-
-
-func recursive_set_child_materials(node : Node, material : ShaderMaterial, part_type : HullPartData.HullPartType):
-	for child in node.get_children():
-		var hull_slot : HullPartSlot = child as HullPartSlot
-		if hull_slot and hull_slot.part_data:
-			part_type = hull_slot.part_data.type
-		
-		var mesh = child as MeshInstance3D
-		if mesh:
-			mesh.material_overlay = material
-			color_palette.colourise_part(mesh, part_type)
-		
-		var rope = child as CSGBox3D
-		if rope:
-			rope.material_overlay = material
-			rope.set_instance_shader_parameter("quintary_color", Color(79, 79, 79) / 255)
-		
-		recursive_set_child_materials(child, material, part_type)
+	for child in node.get_children(): recursive_resolve_slots(child, material, part_type)
+	
+	if hull_slot and hull_slot.symmetrical:
+		hull_slot.symmetrise()

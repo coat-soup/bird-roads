@@ -44,23 +44,23 @@ var rivets : Color
 var trim : Color
 
 
-func resolve_palette():
-	hull_a = primary_hull_colours.pick_random()
-	hull_b = secondary_hull_colours.pick_random()
-	underhull = underhull_colours.pick_random()
+func resolve_palette(rand : RandomNumberGenerator):
+	hull_a = primary_hull_colours[rand.randi() % primary_hull_colours.size()]
+	hull_b = secondary_hull_colours[rand.randi() % secondary_hull_colours.size()]
+	underhull = underhull_colours[rand.randi() % underhull_colours.size()]
 	
-	bag_a = primary_gasbag_colours.pick_random()
-	bag_b = secondary_gasbag_colours.pick_random()
+	bag_a = primary_gasbag_colours[rand.randi() % primary_gasbag_colours.size()]
+	bag_b = secondary_gasbag_colours[rand.randi() % secondary_gasbag_colours.size()]
 	
-	sail_a = primary_sail_colours.pick_random()
-	sail_a2 = primary_sail_colours.pick_random() if randf() < multiple_sail_colour_chance else sail_a
-	sail_b = secondary_sail_colours.pick_random()
+	sail_a = primary_sail_colours[rand.randi() % primary_sail_colours.size()]
+	sail_a2 = primary_sail_colours[rand.randi() % primary_sail_colours.size()] if rand.randf() < multiple_sail_colour_chance else sail_a
+	sail_b = secondary_sail_colours[rand.randi() % secondary_sail_colours.size()]
 	
-	part_a = primary_hull_part_colours.pick_random()
-	part_b = secondary_hull_part_colours.pick_random()
+	part_a = primary_hull_part_colours[rand.randi() % primary_hull_part_colours.size()]
+	part_b = secondary_hull_part_colours[rand.randi() % secondary_hull_part_colours.size()]
 	
-	rivets = rivet_colours.pick_random()
-	trim = trim_colours.pick_random()
+	rivets = rivet_colours[rand.randi() % rivet_colours.size()]
+	trim = trim_colours[rand.randi() % trim_colours.size()]
 
 
 func colourise_part(mesh : MeshInstance3D, type : HullPartData.HullPartType):
@@ -87,5 +87,3 @@ func colourise_part(mesh : MeshInstance3D, type : HullPartData.HullPartType):
 	
 	mesh.set_instance_shader_parameter("quaternary_color", trim)
 	mesh.set_instance_shader_parameter("quintary_color", rivets)
-	
-	if mesh.global_basis.determinant() < 0: mesh.set_instance_shader_parameter("flip_normals", 1)
