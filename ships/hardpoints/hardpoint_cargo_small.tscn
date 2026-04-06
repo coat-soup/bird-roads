@@ -1,0 +1,55 @@
+[gd_scene format=4 uid="uid://c3426eusoe1hl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x408n"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uup48"]
+_surfaces = [{
+"aabb": AABB(-2, -0.14673603, -2, 4, 0.29347205, 4),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1dp1u"]
+resource_name = "hull_lancer_Cube_008"
+_surfaces = [{
+"aabb": AABB(-2, -0.14673603, -2, 4, 0.29347205, 4),
+"attribute_data": PackedByteArray("/1////+f/7//n////1//v/9f/7//n/9//5//v/9f/3//X/9//5//P/+f/3//X/8//1//P/+fAAD/n/8//18AAP8f/3//X/8//1//f/8f/z//n/9//9//P//f/3//n/8/"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_x408n"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP//VNUAAP//AABU1QAA/////1TVAAAAAAAAVNUAAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAFTV////////VNX/////AABU1f//AAD//1TV//8AAP///78AAP//////v/////////+/AAAAAP///78AAAAAAAD/v///AAD///+///8AAAAA/78AAAAA////v/////8AAP//AAD///////8AAP//AAD/////////////VNVU1VTVVNVU1VTVVNVU1f+//7//v/+//7//v/+//7+qKqoqqiqqKqoqqiqqKqoq/////////////////////wAA/38AAP9/AAD/fwAA/3//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_uup48")
+
+[node name="HardpointCargoSmall" type="Node3D" unique_id=1532715557]
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=283201137]
+transform = Transform3D(1, 0, 0, 0, 0.26703578, 0, 0, 0, 1, 0, 0.029325604, 0)
+mesh = SubResource("ArrayMesh_1dp1u")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=793128843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.524331, -1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=519316437]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.84723485, 0.52433074, -0.6208857)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=842486476]
+transform = Transform3D(0.92204565, 0, -0.38708112, 0, 1, 0, 0.38708112, 0, 0.92204565, -0.7970643, 0.52433074, 1.02457)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=704310759]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7754334, 0.52433074, 0.09884286)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=1653681210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7754334, 1.2799851, -0.35683492)
+size = Vector3(0.5, 0.5, 0.947583)

@@ -39,6 +39,11 @@ func recursive_resolve_slots(node : Node, material : ShaderMaterial, part_type :
 	var random_child : RandomChild = node as RandomChild
 	if random_child: random_child.resolve(rand)
 	
+	var hardpoint_slot : HardpointSlot = node as HardpointSlot
+	if hardpoint_slot:
+		if hardpoint_slot.resolved: return
+		hardpoint_slot.resolve(rand)
+	
 	var hull_slot : HullPartSlot = node as HullPartSlot
 	if hull_slot:
 		if hull_slot.resolved: return

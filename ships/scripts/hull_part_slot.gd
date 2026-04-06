@@ -23,7 +23,6 @@ func resolve(rand : RandomNumberGenerator, generator : ShipExteriorGenerator) ->
 		return
 	if resolved: return
 	
-	var rand_state : int = rand.state
 	
 	var possibilities : Array[HullPartData]
 	for p in Resources.hull_parts:

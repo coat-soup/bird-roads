@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HardpointData" format=3 uid="uid://d28k0bwmmgxej"]
+
+[ext_resource type="PackedScene" uid="uid://c3426eusoe1hl" path="res://ships/hardpoints/hardpoint_cargo_small.tscn" id="1_u5526"]
+[ext_resource type="Script" uid="uid://b7jxn5mebsi1k" path="res://ships/scripts/hardpoint_data.gd" id="2_ibd8p"]
+
+[resource]
+script = ExtResource("2_ibd8p")
+name = "Medium Cargo Platform"
+prefab = ExtResource("1_u5526")
+size = 1
+metadata/_custom_type_script = "uid://b7jxn5mebsi1k"

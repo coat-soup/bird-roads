@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="HardpointData" format=3 uid="uid://bg6ta033nb7rq"]
+
+[ext_resource type="PackedScene" uid="uid://dnwwcoa12xwkn" path="res://ships/hardpoints/weapons/weapon_platform_small.tscn" id="1_jo8wx"]
+[ext_resource type="Script" uid="uid://b7jxn5mebsi1k" path="res://ships/scripts/hardpoint_data.gd" id="1_kvrjf"]
+
+[resource]
+script = ExtResource("1_kvrjf")
+name = "Medium Weapon Platform"
+prefab = ExtResource("1_jo8wx")
+type = 1
+size = 1
+metadata/_custom_type_script = "uid://b7jxn5mebsi1k"
