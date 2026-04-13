@@ -14,7 +14,7 @@ func _init() -> void:
 	load_resources(hull_parts, "res://ships/hull-parts/data/")
 	load_resources(hardpoints, "res://ships/hardpoints/data/")
 	load_resources(ship_weapons, "res://ships/hardpoints/weapon_data/")
-
+	
 
 static func load_resources(array : Array, path : String):
 	var dir = DirAccess.open(path)

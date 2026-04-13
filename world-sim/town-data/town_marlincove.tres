@@ -12,14 +12,14 @@
 script = ExtResource("4_g6ex8")
 name = "Marlin Cove"
 commodity_states = Dictionary[ExtResource("1_rrp01"), Vector2i]({
-ExtResource("3_nmj7j"): Vector2i(60, 50),
-ExtResource("2_bsag3"): Vector2i(10, 40),
+ExtResource("3_nmj7j"): Vector2i(60, 60),
+ExtResource("2_bsag3"): Vector2i(40, 40),
 ExtResource("4_hl08w"): Vector2i(1, 0),
 ExtResource("5_b1u40"): Vector2i(0, 0),
 ExtResource("6_8ajb6"): Vector2i(0, 0)
 })
 commodity_generators = Dictionary[ExtResource("1_rrp01"), int]({
 ExtResource("2_bsag3"): 1,
-ExtResource("3_nmj7j"): 2
+ExtResource("3_nmj7j"): 4
 })
 metadata/_custom_type_script = "uid://cb7xxhtblpb4e"

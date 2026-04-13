@@ -3,7 +3,7 @@ extends Node2D
 
 @export var town_data : TownData
 
-const TICK_INTERVAL = 0.5
+const TICK_INTERVAL = 3.0
 
 func _init() -> void:
 	Resources.towns.append(self)
@@ -16,7 +16,7 @@ func _ready() -> void:
 func tick():
 	for c in town_data.commodity_generators.keys():
 		town_data.change_commodity(c, town_data.commodity_generators[c])
-	await get_tree().create_timer(TownManager.TICK_INTERVAL).timeout
+	await get_tree().create_timer(TownManager.TICK_INTERVAL / WorldSim.sim_speed).timeout
 	tick()
 
 

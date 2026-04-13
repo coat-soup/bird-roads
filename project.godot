@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://dwjbl3udkr17s"
 Resources="*uid://cj3tg5xvq1u2m"
+WorldSim="*uid://dgdbxouorqpe6"
 
 [display]
 

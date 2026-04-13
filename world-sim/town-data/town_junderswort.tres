@@ -12,13 +12,15 @@
 script = ExtResource("1_q0cq7")
 name = "Junderswort"
 commodity_states = Dictionary[ExtResource("1_o5apk"), Vector2i]({
-ExtResource("2_14a5m"): Vector2i(100, 100),
-ExtResource("3_30qcq"): Vector2i(200, 50),
+ExtResource("2_14a5m"): Vector2i(200, 200),
+ExtResource("3_30qcq"): Vector2i(50, 50),
 ExtResource("4_cil3i"): Vector2i(0, 0),
 ExtResource("5_6q13d"): Vector2i(0, 0),
 ExtResource("6_q6koy"): Vector2i(0, 0)
 })
 commodity_generators = Dictionary[ExtResource("1_o5apk"), int]({
-ExtResource("3_30qcq"): 1
+ExtResource("3_30qcq"): 1,
+ExtResource("2_14a5m"): -1,
+ExtResource("4_cil3i"): -2
 })
 metadata/_custom_type_script = "uid://cb7xxhtblpb4e"

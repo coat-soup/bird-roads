@@ -12,14 +12,15 @@
 script = ExtResource("4_ovjf0")
 name = "Senn"
 commodity_states = Dictionary[ExtResource("1_pb0jp"), Vector2i]({
-ExtResource("3_l6ukf"): Vector2i(60, 50),
-ExtResource("2_88ao0"): Vector2i(10, 40),
+ExtResource("3_l6ukf"): Vector2i(50, 50),
+ExtResource("2_88ao0"): Vector2i(40, 40),
 ExtResource("4_3ovd8"): Vector2i(0, 0),
 ExtResource("5_hejde"): Vector2i(0, 0),
 ExtResource("6_u3cno"): Vector2i(0, 0)
 })
 commodity_generators = Dictionary[ExtResource("1_pb0jp"), int]({
-ExtResource("2_88ao0"): 1,
-ExtResource("3_l6ukf"): -1
+ExtResource("2_88ao0"): -1,
+ExtResource("3_l6ukf"): -1,
+ExtResource("4_3ovd8"): -1
 })
 metadata/_custom_type_script = "uid://cb7xxhtblpb4e"

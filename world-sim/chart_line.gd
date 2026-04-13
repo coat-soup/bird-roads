@@ -19,7 +19,7 @@ func draw():
 	clear_points()
 	var ld : int = len(data)
 	for i in range(ld):
-		add_point(Vector2(i * length/float(ld), height - data[i] / data_max * height))
+		add_point(Vector2(i * length/float(ld), clamp(height - data[i] / data_max * height, 0, height)))
 
 ## max_poins < 0 = infinite
 func push_data(value : float, max_points : int = 30):

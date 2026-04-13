@@ -12,7 +12,7 @@
 script = ExtResource("1_fsnu0")
 name = "Thim"
 commodity_states = Dictionary[ExtResource("1_3qfvo"), Vector2i]({
-ExtResource("2_2pxkl"): Vector2i(50, 50),
+ExtResource("2_2pxkl"): Vector2i(40, 40),
 ExtResource("3_ajnrh"): Vector2i(80, 80),
 ExtResource("4_oai7j"): Vector2i(0, 0),
 ExtResource("5_uoh87"): Vector2i(0, 0),
@@ -20,6 +20,6 @@ ExtResource("6_f4sxt"): Vector2i(0, 0)
 })
 commodity_generators = Dictionary[ExtResource("1_3qfvo"), int]({
 ExtResource("3_ajnrh"): -1,
-ExtResource("2_2pxkl"): 1
+ExtResource("2_2pxkl"): 2
 })
 metadata/_custom_type_script = "uid://cb7xxhtblpb4e"

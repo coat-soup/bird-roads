@@ -77,4 +77,4 @@ town_data = ExtResource("11_lwq3h")
 
 [node name="Actors" type="Node2D" parent="." unique_id=905795027]
 script = ExtResource("5_j5eug")
-amount = 80
+amount = 200

@@ -12,14 +12,14 @@
 script = ExtResource("4_gs1db")
 name = "March's Rest"
 commodity_states = Dictionary[ExtResource("1_wbmk6"), Vector2i]({
-ExtResource("3_tpv6i"): Vector2i(60, 50),
-ExtResource("2_0q63h"): Vector2i(10, 40),
-ExtResource("4_iit41"): Vector2i(0, 0),
+ExtResource("3_tpv6i"): Vector2i(80, 80),
+ExtResource("2_0q63h"): Vector2i(40, 40),
+ExtResource("4_iit41"): Vector2i(30, 30),
 ExtResource("5_qn1i3"): Vector2i(0, 1),
 ExtResource("6_c46qv"): Vector2i(0, 0)
 })
 commodity_generators = Dictionary[ExtResource("1_wbmk6"), int]({
-ExtResource("2_0q63h"): 1,
-ExtResource("3_tpv6i"): -1
+ExtResource("2_0q63h"): -1,
+ExtResource("3_tpv6i"): 3
 })
 metadata/_custom_type_script = "uid://cb7xxhtblpb4e"

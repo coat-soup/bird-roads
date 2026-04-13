@@ -12,14 +12,14 @@
 script = ExtResource("4_atcl4")
 name = "Drackensfir"
 commodity_states = Dictionary[ExtResource("1_pwhui"), Vector2i]({
-ExtResource("3_tajf2"): Vector2i(60, 50),
+ExtResource("3_tajf2"): Vector2i(250, 250),
 ExtResource("2_ppybd"): Vector2i(10, 40),
 ExtResource("4_4r6m6"): Vector2i(80, 120),
 ExtResource("5_w0rlf"): Vector2i(0, 0),
 ExtResource("6_kxy86"): Vector2i(0, 0)
 })
 commodity_generators = Dictionary[ExtResource("1_pwhui"), int]({
-ExtResource("2_ppybd"): 1,
+ExtResource("2_ppybd"): 3,
 ExtResource("3_tajf2"): -1,
 ExtResource("4_4r6m6"): 1
 })

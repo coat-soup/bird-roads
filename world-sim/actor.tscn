@@ -1,10 +1,37 @@
 [gd_scene format=3 uid="uid://s15urpdpp2mo"]
 
 [ext_resource type="Script" uid="uid://b6tn0u6pml0qh" path="res://world-sim/actor.gd" id="1_tp1nj"]
+[ext_resource type="Script" uid="uid://bgx6upogv7qm8" path="res://world-sim/actor_gui_manager.gd" id="2_b8qj4"]
 
 [node name="Actor" type="Node2D" unique_id=957499609]
 script = ExtResource("1_tp1nj")
 
+[node name="ActorGUIManager" type="Control" parent="." unique_id=1207969750]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_b8qj4")
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=486192242]
-offset_right = 10.0
-offset_bottom = 10.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="NameLabel" type="Label" parent="." unique_id=1540645588]
+offset_left = -160.0
+offset_top = 8.0
+offset_right = 160.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 8
+text = "Ship"
+horizontal_alignment = 1

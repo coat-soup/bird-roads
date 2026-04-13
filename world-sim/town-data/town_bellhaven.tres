@@ -12,13 +12,14 @@
 script = ExtResource("1_vgmbf")
 name = "Bellhaven"
 commodity_states = Dictionary[ExtResource("1_gf272"), Vector2i]({
-ExtResource("2_x2vgf"): Vector2i(400, 350),
+ExtResource("2_x2vgf"): Vector2i(350, 350),
 ExtResource("3_315yw"): Vector2i(200, 200),
 ExtResource("4_8btya"): Vector2i(0, 0),
 ExtResource("5_gj6c4"): Vector2i(0, 0),
 ExtResource("6_m6iy2"): Vector2i(0, 0)
 })
 commodity_generators = Dictionary[ExtResource("1_gf272"), int]({
-ExtResource("2_x2vgf"): -1
+ExtResource("2_x2vgf"): -2,
+ExtResource("3_315yw"): -1
 })
 metadata/_custom_type_script = "uid://cb7xxhtblpb4e"

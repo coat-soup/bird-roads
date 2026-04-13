@@ -13,7 +13,7 @@ extends Resource
 @export var commodity_states : Dictionary[Commodity, Vector2i]
 
 ## Key: Commodity name
-## value: amount of added/subtraced commodity per tick
+## value: amount of added/subtracted commodity per tick
 @export var commodity_generators : Dictionary[Commodity, int]
 
 
@@ -32,5 +32,5 @@ func load_commodity_dictionary():
 func change_commodity(commodity : Commodity, amount : int):
 	commodity_states[commodity][0] += amount
 
-func local_commodity_value(commodity : Commodity) -> int:
-	return commodity_states[commodity][1] - commodity_states[commodity][0]
+func local_commodity_value(commodity : Commodity) -> float:
+	return float(commodity_states[commodity][1])/float(commodity_states[commodity][0])
