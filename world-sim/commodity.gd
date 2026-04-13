@@ -5,3 +5,6 @@ extends Resource
 @export var base_value : int = 10
 
 @export var debug_data_color : Color
+
+func _to_string() -> String:
+	return name

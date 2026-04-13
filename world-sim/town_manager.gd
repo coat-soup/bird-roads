@@ -14,7 +14,19 @@ func _ready() -> void:
 
 
 func tick():
-	for c in Resources.commodities:
-		town_data.commodity_states[c.name].x += randf() * 30 - 15
+	for c in town_data.commodity_generators.keys():
+		town_data.change_commodity(c, town_data.commodity_generators[c])
 	await get_tree().create_timer(TownManager.TICK_INTERVAL).timeout
 	tick()
+
+
+func sell_to_town(commodity : Commodity, amount : int) -> float:
+	var money : int = commodity.base_value * amount
+	town_data.change_commodity(commodity, amount)
+	return money
+
+
+func buy_from_town(commodity : Commodity, amount : int) -> float:
+	var money : int = commodity.base_value * amount
+	town_data.change_commodity(commodity, -amount)
+	return money

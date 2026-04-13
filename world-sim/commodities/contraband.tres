@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Commodity" format=3 uid="uid://cfgm8dnb4rclk"]
+
+[ext_resource type="Script" uid="uid://c5t37egmjfq0t" path="res://world-sim/commodity.gd" id="1_gclyd"]
+
+[resource]
+script = ExtResource("1_gclyd")
+name = "contraband"
+base_value = 20
+debug_data_color = Color(0.6686927, 0.0008085966, 0.7523596, 1)
+metadata/_custom_type_script = "uid://c5t37egmjfq0t"

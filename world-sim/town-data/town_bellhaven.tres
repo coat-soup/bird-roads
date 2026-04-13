@@ -1,15 +1,24 @@
 [gd_resource type="Resource" script_class="TownData" format=3 uid="uid://b8kvqircnhjw5"]
 
+[ext_resource type="Script" uid="uid://c5t37egmjfq0t" path="res://world-sim/commodity.gd" id="1_gf272"]
 [ext_resource type="Script" uid="uid://cb7xxhtblpb4e" path="res://world-sim/town_data.gd" id="1_vgmbf"]
+[ext_resource type="Resource" uid="uid://c1jm7dqyfuvon" path="res://world-sim/commodities/commodity_food.tres" id="2_x2vgf"]
+[ext_resource type="Resource" uid="uid://q8q0wkg3vbw4" path="res://world-sim/commodities/commodity_fuel.tres" id="3_315yw"]
+[ext_resource type="Resource" uid="uid://binprq4rbvnxy" path="res://world-sim/commodities/commodity_industrial.tres" id="4_8btya"]
+[ext_resource type="Resource" uid="uid://dl85x78aag1x" path="res://world-sim/commodities/commodity_weapons.tres" id="5_gj6c4"]
+[ext_resource type="Resource" uid="uid://cfgm8dnb4rclk" path="res://world-sim/commodities/contraband.tres" id="6_m6iy2"]
 
 [resource]
 script = ExtResource("1_vgmbf")
 name = "Bellhaven"
-commodity_states = Dictionary[String, Vector2i]({
-"food": Vector2i(400, 350),
-"fuel": Vector2i(200, 200)
+commodity_states = Dictionary[ExtResource("1_gf272"), Vector2i]({
+ExtResource("2_x2vgf"): Vector2i(400, 350),
+ExtResource("3_315yw"): Vector2i(200, 200),
+ExtResource("4_8btya"): Vector2i(0, 0),
+ExtResource("5_gj6c4"): Vector2i(0, 0),
+ExtResource("6_m6iy2"): Vector2i(0, 0)
 })
-commodity_generators = Dictionary[String, int]({
-"fuel": 1
+commodity_generators = Dictionary[ExtResource("1_gf272"), int]({
+ExtResource("2_x2vgf"): -1
 })
 metadata/_custom_type_script = "uid://cb7xxhtblpb4e"

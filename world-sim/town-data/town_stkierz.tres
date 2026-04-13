@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="TownData" format=3 uid="uid://vpr3rxejgirg"]
+
+[ext_resource type="Script" uid="uid://c5t37egmjfq0t" path="res://world-sim/commodity.gd" id="1_rj3re"]
+[ext_resource type="Resource" uid="uid://q8q0wkg3vbw4" path="res://world-sim/commodities/commodity_fuel.tres" id="2_a1cmf"]
+[ext_resource type="Resource" uid="uid://c1jm7dqyfuvon" path="res://world-sim/commodities/commodity_food.tres" id="3_qstjh"]
+[ext_resource type="Resource" uid="uid://binprq4rbvnxy" path="res://world-sim/commodities/commodity_industrial.tres" id="4_0yvle"]
+[ext_resource type="Script" uid="uid://cb7xxhtblpb4e" path="res://world-sim/town_data.gd" id="4_lwmy1"]
+[ext_resource type="Resource" uid="uid://dl85x78aag1x" path="res://world-sim/commodities/commodity_weapons.tres" id="5_hd4fg"]
+[ext_resource type="Resource" uid="uid://cfgm8dnb4rclk" path="res://world-sim/commodities/contraband.tres" id="6_86fd6"]
+
+[resource]
+script = ExtResource("4_lwmy1")
+name = "St Kierz"
+commodity_states = Dictionary[ExtResource("1_rj3re"), Vector2i]({
+ExtResource("3_qstjh"): Vector2i(60, 50),
+ExtResource("2_a1cmf"): Vector2i(10, 40),
+ExtResource("4_0yvle"): Vector2i(0, 0),
+ExtResource("5_hd4fg"): Vector2i(0, 0),
+ExtResource("6_86fd6"): Vector2i(1, 0)
+})
+commodity_generators = Dictionary[ExtResource("1_rj3re"), int]({
+ExtResource("3_qstjh"): -2
+})
+metadata/_custom_type_script = "uid://cb7xxhtblpb4e"

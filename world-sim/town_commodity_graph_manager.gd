@@ -25,13 +25,14 @@ func tick():
 	for i in range(len(towns)):
 		for j in range(len(Resources.commodities)):
 			# supply line
-			charts[i].lines[j*2].push_data(towns[i].town_data.commodity_states[Resources.commodities[j].name].x)
+			print("adding ", Resources.commodities[j] ," supply line to ", towns[i].name)
+			charts[i].lines[j*2].push_data(towns[i].town_data.commodity_states[Resources.commodities[j]].x)
 			charts[i].lines[j*2].draw()
 			# desired supply line
-			charts[i].lines[j*2+1].push_data(towns[i].town_data.commodity_states[Resources.commodities[j].name].y)
+			charts[i].lines[j*2+1].push_data(towns[i].town_data.commodity_states[Resources.commodities[j]].y)
 			charts[i].lines[j*2+1].draw()
 			
-			print("%s %s (supply: %d, target:%d)" % [towns[i].town_data.name, Resources.commodities[j].name, towns[i].town_data.commodity_states[Resources.commodities[j].name].x, towns[i].town_data.commodity_states[Resources.commodities[j].name].y])
+			print("%s %s (supply: %d, target:%d)" % [towns[i].town_data.name, Resources.commodities[j].name, towns[i].town_data.commodity_states[Resources.commodities[j]].x, towns[i].town_data.commodity_states[Resources.commodities[j]].y])
 	
 	await get_tree().create_timer(TownManager.TICK_INTERVAL).timeout
 	tick()

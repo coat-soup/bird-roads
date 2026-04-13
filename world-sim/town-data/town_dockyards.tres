@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="TownData" format=3 uid="uid://b8ul63tobn0jp"]
+
+[ext_resource type="Script" uid="uid://c5t37egmjfq0t" path="res://world-sim/commodity.gd" id="1_o8rin"]
+[ext_resource type="Resource" uid="uid://q8q0wkg3vbw4" path="res://world-sim/commodities/commodity_fuel.tres" id="2_ndthf"]
+[ext_resource type="Resource" uid="uid://c1jm7dqyfuvon" path="res://world-sim/commodities/commodity_food.tres" id="3_cobjn"]
+[ext_resource type="Resource" uid="uid://binprq4rbvnxy" path="res://world-sim/commodities/commodity_industrial.tres" id="4_1ceme"]
+[ext_resource type="Script" uid="uid://cb7xxhtblpb4e" path="res://world-sim/town_data.gd" id="4_8fah3"]
+[ext_resource type="Resource" uid="uid://dl85x78aag1x" path="res://world-sim/commodities/commodity_weapons.tres" id="5_ophqc"]
+[ext_resource type="Resource" uid="uid://cfgm8dnb4rclk" path="res://world-sim/commodities/contraband.tres" id="6_ichy1"]
+
+[resource]
+script = ExtResource("4_8fah3")
+name = "Dockyards"
+commodity_states = Dictionary[ExtResource("1_o8rin"), Vector2i]({
+ExtResource("3_cobjn"): Vector2i(60, 50),
+ExtResource("2_ndthf"): Vector2i(10, 40),
+ExtResource("4_1ceme"): Vector2i(200, 200),
+ExtResource("5_ophqc"): Vector2i(0, 0),
+ExtResource("6_ichy1"): Vector2i(0, 0)
+})
+commodity_generators = Dictionary[ExtResource("1_o8rin"), int]({
+ExtResource("2_ndthf"): -2,
+ExtResource("3_cobjn"): -1,
+ExtResource("4_1ceme"): 4
+})
+metadata/_custom_type_script = "uid://cb7xxhtblpb4e"

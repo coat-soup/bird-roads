@@ -2,17 +2,24 @@
 
 [ext_resource type="PackedScene" uid="uid://bfq2lvquh8frh" path="res://world-sim/town_manager.tscn" id="2_7luy3"]
 [ext_resource type="Script" uid="uid://bhan33fjolu6n" path="res://world-sim/town_commodity_graph_manager.gd" id="2_ee0db"]
-[ext_resource type="PackedScene" uid="uid://s15urpdpp2mo" path="res://world-sim/actor.tscn" id="2_j5eug"]
 [ext_resource type="Resource" uid="uid://b8kvqircnhjw5" path="res://world-sim/town-data/town_bellhaven.tres" id="3_ee0db"]
+[ext_resource type="Resource" uid="uid://brhww2v56nnmg" path="res://world-sim/town-data/town_junderswort.tres" id="3_tm5gi"]
 [ext_resource type="Resource" uid="uid://bkc7rffkmjn8n" path="res://world-sim/town-data/town_thim.tres" id="4_j5eug"]
+[ext_resource type="Resource" uid="uid://pc8idacivpsg" path="res://world-sim/town-data/town_newport.tres" id="5_7u1kd"]
 [ext_resource type="Script" uid="uid://4qxbi6o5bxlt" path="res://world-sim/actor_spawner.gd" id="5_j5eug"]
+[ext_resource type="Resource" uid="uid://bcgyix0c1e3ta" path="res://world-sim/town-data/town_drackensfir.tres" id="6_tm5gi"]
+[ext_resource type="Resource" uid="uid://6lpfe6ydst2e" path="res://world-sim/town-data/town_marchsrest.tres" id="7_a8mio"]
+[ext_resource type="Resource" uid="uid://dvd80in6rofjn" path="res://world-sim/town-data/town_senn.tres" id="8_csp8q"]
+[ext_resource type="Resource" uid="uid://cdptlx33xn5cb" path="res://world-sim/town-data/town_marlincove.tres" id="9_u0c18"]
+[ext_resource type="Resource" uid="uid://b8ul63tobn0jp" path="res://world-sim/town-data/town_dockyards.tres" id="10_sksac"]
+[ext_resource type="Resource" uid="uid://vpr3rxejgirg" path="res://world-sim/town-data/town_stkierz.tres" id="11_lwq3h"]
 
 [node name="WorldSim" type="Node2D" unique_id=549169052]
 
 [node name="Window" type="Window" parent="." unique_id=2014495586]
 oversampling_override = 1.0
 title = "Charts"
-position = Vector2i(130, 36)
+position = Vector2i(0, 36)
 size = Vector2i(900, 500)
 
 [node name="CommodityCharts" type="GridContainer" parent="Window" unique_id=245786993 node_paths=PackedStringArray("town_holder")]
@@ -29,20 +36,45 @@ town_holder = NodePath("../../Towns")
 [node name="Towns" type="Node2D" parent="." unique_id=1829793786]
 
 [node name="TownManagerJunderswort" parent="Towns" unique_id=905621928 instance=ExtResource("2_7luy3")]
-position = Vector2(901, 793)
+position = Vector2(500, 400)
+town_data = ExtResource("3_tm5gi")
 
 [node name="TownManagerBellhaven" parent="Towns" unique_id=134558062 instance=ExtResource("2_7luy3")]
-position = Vector2(1551, 514)
+position = Vector2(800, 200)
 town_data = ExtResource("3_ee0db")
 
 [node name="TownManagerThim" parent="Towns" unique_id=34375030 instance=ExtResource("2_7luy3")]
-position = Vector2(949, 310)
+position = Vector2(1500, 800)
 town_data = ExtResource("4_j5eug")
+
+[node name="TownManagerNewport" parent="Towns" unique_id=188761065 instance=ExtResource("2_7luy3")]
+position = Vector2(1800, 500)
+town_data = ExtResource("5_7u1kd")
+
+[node name="TownManagerDrackensfir" parent="Towns" unique_id=899749861 instance=ExtResource("2_7luy3")]
+position = Vector2(200, 100)
+town_data = ExtResource("6_tm5gi")
+
+[node name="TownManagerMarchsRests" parent="Towns" unique_id=1671506984 instance=ExtResource("2_7luy3")]
+position = Vector2(250, 900)
+town_data = ExtResource("7_a8mio")
+
+[node name="TownManagerSenn" parent="Towns" unique_id=799926542 instance=ExtResource("2_7luy3")]
+position = Vector2(1100, 400)
+town_data = ExtResource("8_csp8q")
+
+[node name="TownManagerMarlinCove" parent="Towns" unique_id=1995854281 instance=ExtResource("2_7luy3")]
+position = Vector2(600, 600)
+town_data = ExtResource("9_u0c18")
+
+[node name="TownManagerDockyards" parent="Towns" unique_id=1477104955 instance=ExtResource("2_7luy3")]
+position = Vector2(900, 700)
+town_data = ExtResource("10_sksac")
+
+[node name="TownManagerStKierz" parent="Towns" unique_id=128604483 instance=ExtResource("2_7luy3")]
+position = Vector2(1600, 300)
+town_data = ExtResource("11_lwq3h")
 
 [node name="Actors" type="Node2D" parent="." unique_id=905795027]
 script = ExtResource("5_j5eug")
-amount = 10
-spawn_point = Vector2(1400, 500)
-
-[node name="Actor" parent="Actors" unique_id=957499609 instance=ExtResource("2_j5eug")]
-position = Vector2(1552, 767)
+amount = 80

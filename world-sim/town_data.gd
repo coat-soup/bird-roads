@@ -10,11 +10,11 @@ extends Resource
 ## Key: Commodity name
 ## x: supply
 ## y: target_supply
-@export var commodity_states : Dictionary[String, Vector2i]
+@export var commodity_states : Dictionary[Commodity, Vector2i]
 
 ## Key: Commodity name
 ## value: amount of added/subtraced commodity per tick
-@export var commodity_generators : Dictionary[String, int]
+@export var commodity_generators : Dictionary[Commodity, int]
 
 
 func _init() -> void:
@@ -26,5 +26,11 @@ func load_commodity_dictionary():
 	Resources.load_resources(commodities, "res://world-sim/commodities/")
 	
 	for c in commodities:
-		if !commodity_states.keys().has(c.name):
-			commodity_states[c.name] = Vector2i(0,0)
+		if !commodity_states.keys().has(c):
+			commodity_states[c] = Vector2i(0,0)
+
+func change_commodity(commodity : Commodity, amount : int):
+	commodity_states[commodity][0] += amount
+
+func local_commodity_value(commodity : Commodity) -> int:
+	return commodity_states[commodity][1] - commodity_states[commodity][0]

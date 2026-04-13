@@ -1,15 +1,24 @@
 [gd_resource type="Resource" script_class="TownData" format=3 uid="uid://brhww2v56nnmg"]
 
+[ext_resource type="Script" uid="uid://c5t37egmjfq0t" path="res://world-sim/commodity.gd" id="1_o5apk"]
 [ext_resource type="Script" uid="uid://cb7xxhtblpb4e" path="res://world-sim/town_data.gd" id="1_q0cq7"]
+[ext_resource type="Resource" uid="uid://c1jm7dqyfuvon" path="res://world-sim/commodities/commodity_food.tres" id="2_14a5m"]
+[ext_resource type="Resource" uid="uid://q8q0wkg3vbw4" path="res://world-sim/commodities/commodity_fuel.tres" id="3_30qcq"]
+[ext_resource type="Resource" uid="uid://binprq4rbvnxy" path="res://world-sim/commodities/commodity_industrial.tres" id="4_cil3i"]
+[ext_resource type="Resource" uid="uid://dl85x78aag1x" path="res://world-sim/commodities/commodity_weapons.tres" id="5_6q13d"]
+[ext_resource type="Resource" uid="uid://cfgm8dnb4rclk" path="res://world-sim/commodities/contraband.tres" id="6_q6koy"]
 
 [resource]
 script = ExtResource("1_q0cq7")
 name = "Junderswort"
-commodity_states = Dictionary[String, Vector2i]({
-"food": Vector2i(100, 100),
-"fuel": Vector2i(200, 50)
+commodity_states = Dictionary[ExtResource("1_o5apk"), Vector2i]({
+ExtResource("2_14a5m"): Vector2i(100, 100),
+ExtResource("3_30qcq"): Vector2i(200, 50),
+ExtResource("4_cil3i"): Vector2i(0, 0),
+ExtResource("5_6q13d"): Vector2i(0, 0),
+ExtResource("6_q6koy"): Vector2i(0, 0)
 })
-commodity_generators = Dictionary[String, int]({
-"fuel": 1
+commodity_generators = Dictionary[ExtResource("1_o5apk"), int]({
+ExtResource("3_30qcq"): 1
 })
 metadata/_custom_type_script = "uid://cb7xxhtblpb4e"

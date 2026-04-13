@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="TownData" format=3 uid="uid://6lpfe6ydst2e"]
+
+[ext_resource type="Script" uid="uid://c5t37egmjfq0t" path="res://world-sim/commodity.gd" id="1_wbmk6"]
+[ext_resource type="Resource" uid="uid://q8q0wkg3vbw4" path="res://world-sim/commodities/commodity_fuel.tres" id="2_0q63h"]
+[ext_resource type="Resource" uid="uid://c1jm7dqyfuvon" path="res://world-sim/commodities/commodity_food.tres" id="3_tpv6i"]
+[ext_resource type="Script" uid="uid://cb7xxhtblpb4e" path="res://world-sim/town_data.gd" id="4_gs1db"]
+[ext_resource type="Resource" uid="uid://binprq4rbvnxy" path="res://world-sim/commodities/commodity_industrial.tres" id="4_iit41"]
+[ext_resource type="Resource" uid="uid://dl85x78aag1x" path="res://world-sim/commodities/commodity_weapons.tres" id="5_qn1i3"]
+[ext_resource type="Resource" uid="uid://cfgm8dnb4rclk" path="res://world-sim/commodities/contraband.tres" id="6_c46qv"]
+
+[resource]
+script = ExtResource("4_gs1db")
+name = "March's Rest"
+commodity_states = Dictionary[ExtResource("1_wbmk6"), Vector2i]({
+ExtResource("3_tpv6i"): Vector2i(60, 50),
+ExtResource("2_0q63h"): Vector2i(10, 40),
+ExtResource("4_iit41"): Vector2i(0, 0),
+ExtResource("5_qn1i3"): Vector2i(0, 1),
+ExtResource("6_c46qv"): Vector2i(0, 0)
+})
+commodity_generators = Dictionary[ExtResource("1_wbmk6"), int]({
+ExtResource("2_0q63h"): 1,
+ExtResource("3_tpv6i"): -1
+})
+metadata/_custom_type_script = "uid://cb7xxhtblpb4e"
