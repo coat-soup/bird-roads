@@ -30,7 +30,7 @@ func load_commodity_dictionary():
 			commodity_states[c] = Vector2i(0,0)
 
 func change_commodity(commodity : Commodity, amount : int):
-	commodity_states[commodity][0] += amount
+	commodity_states[commodity].x += amount
 
 func local_commodity_value(commodity : Commodity) -> float:
-	return float(commodity_states[commodity][1])/float(commodity_states[commodity][0])
+	return float(commodity_states[commodity][1])/float(max(1, commodity_states[commodity].x))

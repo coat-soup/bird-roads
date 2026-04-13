@@ -11,7 +11,7 @@ func _ready() -> void:
 		var town_manager = child as TownManager
 		if town_manager:
 			towns.append(town_manager)
-			var chart = LineChart.new(town_manager.town_data.name, 500, 200, 100)
+			var chart = LineChart.new(town_manager.town_data.name, 400, 200, 100)
 			charts.append(chart)
 			add_child(chart)
 			for c in Resources.commodities:
@@ -25,10 +25,10 @@ func tick():
 	for i in range(len(towns)):
 		for j in range(len(Resources.commodities)):
 			# supply line
-			charts[i].lines[j*2].push_data(towns[i].town_data.commodity_states[Resources.commodities[j]].x)
+			charts[i].lines[j*2].push_data(towns[i].town_data.commodity_states[Resources.commodities[j]].x, 200)
 			charts[i].lines[j*2].draw()
 			# desired supply line
-			charts[i].lines[j*2+1].push_data(towns[i].town_data.commodity_states[Resources.commodities[j]].y)
+			charts[i].lines[j*2+1].push_data(towns[i].town_data.commodity_states[Resources.commodities[j]].y, 200)
 			charts[i].lines[j*2+1].draw()
 			
 			#print("%s %s (supply: %d, target:%d)" % [towns[i].town_data.name, Resources.commodities[j].name, towns[i].town_data.commodity_states[Resources.commodities[j]].x, towns[i].town_data.commodity_states[Resources.commodities[j]].y])

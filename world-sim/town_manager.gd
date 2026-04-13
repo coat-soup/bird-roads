@@ -3,7 +3,7 @@ extends Node2D
 
 @export var town_data : TownData
 
-const TICK_INTERVAL = 3.0
+const TICK_INTERVAL = 10.0
 
 func _init() -> void:
 	Resources.towns.append(self)
@@ -30,3 +30,6 @@ func buy_from_town(commodity : Commodity, amount : int) -> float:
 	var money : int = commodity.base_value * amount
 	town_data.change_commodity(commodity, -amount)
 	return money
+
+func _to_string() -> String:
+	return town_data.name

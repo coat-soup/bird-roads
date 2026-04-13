@@ -15,8 +15,8 @@ commodity_states = Dictionary[ExtResource("1_o8rin"), Vector2i]({
 ExtResource("3_cobjn"): Vector2i(50, 50),
 ExtResource("2_ndthf"): Vector2i(10, 40),
 ExtResource("4_1ceme"): Vector2i(200, 200),
-ExtResource("5_ophqc"): Vector2i(0, 0),
-ExtResource("6_ichy1"): Vector2i(0, 0)
+ExtResource("5_ophqc"): Vector2i(200, 200),
+ExtResource("6_ichy1"): Vector2i(30, 30)
 })
 commodity_generators = Dictionary[ExtResource("1_o8rin"), int]({
 ExtResource("2_ndthf"): -2,

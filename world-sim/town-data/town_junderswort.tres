@@ -14,7 +14,7 @@ name = "Junderswort"
 commodity_states = Dictionary[ExtResource("1_o5apk"), Vector2i]({
 ExtResource("2_14a5m"): Vector2i(200, 200),
 ExtResource("3_30qcq"): Vector2i(50, 50),
-ExtResource("4_cil3i"): Vector2i(0, 0),
+ExtResource("4_cil3i"): Vector2i(150, 150),
 ExtResource("5_6q13d"): Vector2i(0, 0),
 ExtResource("6_q6koy"): Vector2i(0, 0)
 })

@@ -35,6 +35,7 @@ var floor_obj : Node3D
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera.current = true
+	if debug_mode: collision_shape_3d.disabled = true
 
 
 func _input(_event: InputEvent) -> void:

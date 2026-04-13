@@ -14,8 +14,8 @@ name = "Marlin Cove"
 commodity_states = Dictionary[ExtResource("1_rrp01"), Vector2i]({
 ExtResource("3_nmj7j"): Vector2i(60, 60),
 ExtResource("2_bsag3"): Vector2i(40, 40),
-ExtResource("4_hl08w"): Vector2i(1, 0),
-ExtResource("5_b1u40"): Vector2i(0, 0),
+ExtResource("4_hl08w"): Vector2i(60, 60),
+ExtResource("5_b1u40"): Vector2i(150, 150),
 ExtResource("6_8ajb6"): Vector2i(0, 0)
 })
 commodity_generators = Dictionary[ExtResource("1_rrp01"), int]({

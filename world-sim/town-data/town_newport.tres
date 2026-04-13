@@ -14,7 +14,7 @@ name = "Newport"
 commodity_states = Dictionary[ExtResource("1_mcyeu"), Vector2i]({
 ExtResource("3_ohll0"): Vector2i(180, 180),
 ExtResource("2_h6qja"): Vector2i(40, 40),
-ExtResource("4_uwuw3"): Vector2i(0, 0),
+ExtResource("4_uwuw3"): Vector2i(60, 60),
 ExtResource("5_s8mxd"): Vector2i(0, 0),
 ExtResource("6_housk"): Vector2i(0, 0)
 })
