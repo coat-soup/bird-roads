@@ -3,7 +3,7 @@ extends Node2D
 
 @export var town_data : TownData
 
-const TICK_INTERVAL = 10.0
+const TICK_INTERVAL = 3.0
 
 func _init() -> void:
 	Resources.towns.append(self)

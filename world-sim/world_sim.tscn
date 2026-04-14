@@ -19,7 +19,7 @@
 [node name="Window" type="Window" parent="." unique_id=2014495586]
 oversampling_override = 1.0
 title = "Charts"
-position = Vector2i(3602, 752)
+position = Vector2i(213, 36)
 size = Vector2i(850, 620)
 
 [node name="CommodityCharts" type="GridContainer" parent="Window" unique_id=245786993 node_paths=PackedStringArray("town_holder")]
@@ -77,4 +77,4 @@ town_data = ExtResource("11_lwq3h")
 
 [node name="Actors" type="Node2D" parent="." unique_id=905795027]
 script = ExtResource("5_j5eug")
-amount = 1
+amount = 60

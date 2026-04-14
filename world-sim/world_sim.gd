@@ -2,6 +2,9 @@ extends Node
 
 var sim_speed : float = 20.0
 
+var actors : Array[Actor]
+
+
 func _ready() -> void:
 	for c in Resources.commodities:
 		var genbalance = 0
