@@ -12,8 +12,24 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_b8qj4")
+debug_faction_colours = Array[Color]([Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0, 0, 1, 1), Color(1, 0.5137255, 0, 1), Color(1, 1, 0, 1), Color(0, 1, 0, 1), Color(1, 0, 1, 1)])
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=486192242]
+[node name="Clickbox" type="Control" parent="." unique_id=1701322232]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Clickbox" unique_id=486192242]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -26,6 +42,7 @@ offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 1
 
 [node name="NameLabel" type="Label" parent="." unique_id=1540645588]
 offset_left = -160.0
@@ -34,4 +51,93 @@ offset_right = 160.0
 offset_bottom = 31.0
 theme_override_font_sizes/font_size = 8
 text = "Ship"
+horizontal_alignment = 1
+
+[node name="InfoBox" type="Control" parent="." unique_id=733575105]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -73.0
+offset_top = -114.0
+offset_right = 77.0
+offset_bottom = -14.0
+
+[node name="ColorRect" type="ColorRect" parent="InfoBox" unique_id=1578240043]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.73167926, 0.58984846, 0.44588667, 1)
+
+[node name="NameLabel" type="Label" parent="InfoBox" unique_id=891789778]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -160.0
+offset_right = 160.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 17
+text = "SHIP NAME"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="InfoBox" unique_id=330750949]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -62.0
+offset_top = -22.0
+offset_right = 62.0
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="CargoLabel" type="Label" parent="InfoBox/GridContainer" unique_id=1576002031]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "CARGO:"
+horizontal_alignment = 1
+
+[node name="PowerLabel" type="Label" parent="InfoBox/GridContainer" unique_id=1633641900]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "POWER:"
+horizontal_alignment = 1
+
+[node name="SpeedLabel" type="Label" parent="InfoBox/GridContainer" unique_id=610427990]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "SPEED:"
+horizontal_alignment = 1
+
+[node name="ExtraLabel" type="Label" parent="InfoBox/GridContainer" unique_id=960054326]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "OTHER:"
+horizontal_alignment = 1
+
+[node name="FactionOccupationLabel" type="Label" parent="InfoBox" unique_id=391743597]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -24.0
+offset_right = 160.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 17
+text = "Faction occupation"
 horizontal_alignment = 1
