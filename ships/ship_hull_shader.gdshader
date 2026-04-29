@@ -56,7 +56,8 @@ void fragment() {
 	else if (COLOR.r < 0.6) ALBEDO = vec3(quaternary_color);
 	else ALBEDO = vec3(quintary_color);
 	
-	vec3 pos = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).rgb / 20.0;
+	vec3 pos = (inverse(MODEL_MATRIX) * INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).rgb / 20.0;
+	//pos = VERTEX / 20.0;
 	
 	if (pattern_id >= 0){
 		if(texture(pattern, UV.rg).r > 0.0) ALBEDO = vec3(secondary_color);
@@ -66,8 +67,8 @@ void fragment() {
 		METALLIC = 1.0;
 		ROUGHNESS = mix(0.8, 0.9, texture(voronoi_noise, pos.rg + pos.gb - pos.br + pos.br).r);
 		
-		ALBEDO *= triplanar(metal_tex, 0.08, INV_VIEW_MATRIX, VERTEX, NORMAL);
-		NORMAL_MAP = triplanar(metal_norm, 0.08, INV_VIEW_MATRIX, VERTEX, NORMAL);
+		ALBEDO *= triplanar(metal_tex, 0.08, inverse(MODEL_MATRIX) * INV_VIEW_MATRIX, VERTEX, NORMAL);
+		NORMAL_MAP = triplanar(metal_norm, 0.08, inverse(MODEL_MATRIX) * INV_VIEW_MATRIX, VERTEX, NORMAL);
 	}
 	else if (COLOR.g < 0.2 ){ // shiny metal
 		ALBEDO = mix(ALBEDO, vec3(1.0), 0.5);
@@ -83,8 +84,8 @@ void fragment() {
 		//ALBEDO = mix(ALBEDO, vec3(0.8), 0.4);
 		
 		//ALBEDO *= texture(canvas_tex, (pos.rg + pos.gb - pos.br + pos.br) * 5.0).rgb;
-		ALBEDO *= triplanar(canvas_tex, 0.08, INV_VIEW_MATRIX, VERTEX, NORMAL);
-		NORMAL_MAP = triplanar(canvas_norm, 0.08, INV_VIEW_MATRIX, VERTEX, NORMAL);
+		ALBEDO *= triplanar(canvas_tex, 0.08, inverse(MODEL_MATRIX) * INV_VIEW_MATRIX, VERTEX, NORMAL);
+		NORMAL_MAP = triplanar(canvas_norm, 0.08, inverse(MODEL_MATRIX) * INV_VIEW_MATRIX, VERTEX, NORMAL);
 	}
 	else{
 		

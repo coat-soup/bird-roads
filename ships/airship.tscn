@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://ydtdxfa65jl0"]
+
+[ext_resource type="Script" uid="uid://cl3whss8bqpj2" path="res://ships/scripts/airship.gd" id="1_2omcc"]
+[ext_resource type="Script" uid="uid://cjgwu3c30dijs" path="res://ships/scripts/airship_movement_manager.gd" id="1_3ha1r"]
+[ext_resource type="PackedScene" uid="uid://bjt4s60gkfm2t" path="res://prototyping/ships/hull_lancer.tscn" id="1_swygn"]
+[ext_resource type="Script" uid="uid://bfj51xxaikpcp" path="res://world-sim/actor_data.gd" id="2_seusg"]
+[ext_resource type="Script" uid="uid://djhjtgojkfdes" path="res://ships/airship_player_controller.gd" id="5_0s8cv"]
+
+[sub_resource type="Resource" id="Resource_0s8cv"]
+script = ExtResource("2_seusg")
+speed = 30.0
+ship_name = "Jezabel"
+metadata/_custom_type_script = "uid://bfj51xxaikpcp"
+
+[sub_resource type="Curve" id="Curve_0s8cv"]
+_data = [Vector2(0, 0.10344815), 0.0, 0.6913994, 0, 0, Vector2(1, 1), 0.6236484, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_mq1uw"]
+_limits = [0.0, 1.0, 0.0, 2.0]
+_data = [Vector2(0.9972452, 0), 0.0, 0.0, 0, 0, Vector2(2, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5nyth"]
+_data = [Vector2(0.5123967, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.49742264), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_swygn"]
+radius = 5.288574
+height = 46.572388
+
+[node name="Airship" type="Node3D" unique_id=254215350]
+script = ExtResource("1_2omcc")
+actor_data = SubResource("Resource_0s8cv")
+
+[node name="Rigidbody" type="RigidBody3D" parent="." unique_id=947988495 node_paths=PackedStringArray("airship")]
+collision_layer = 4
+collision_mask = 12
+gravity_scale = 0.0
+angular_damp = 1.0
+script = ExtResource("1_3ha1r")
+airship = NodePath("..")
+rotation_speed_curve = SubResource("Curve_0s8cv")
+rotation_correction_curve = SubResource("Curve_mq1uw")
+rotation_force_curve = SubResource("Curve_5nyth")
+
+[node name="hull_lancer" parent="Rigidbody" unique_id=242663195 instance=ExtResource("1_swygn")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rigidbody" unique_id=604350542]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.2221451, -0.22369385)
+shape = SubResource("CapsuleShape3D_swygn")
+
+[node name="PlayerInput" type="Node" parent="Rigidbody" unique_id=1428899710]
+script = ExtResource("5_0s8cv")
+
+[node name="Camera3D" type="Camera3D" parent="Rigidbody" unique_id=1972443226]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 4.261636, -5.2543416)
+
+[node name="Camera3D2" type="Camera3D" parent="Rigidbody" unique_id=77238779]
+transform = Transform3D(-1, 0, 8.742278e-08, 8.685845e-09, 0.9950521, 0.09935448, -8.699022e-08, 0.09935448, -0.9950521, 0, 47.49194, -91.739204)
+
+[node name="VJoy" type="Control" parent="Rigidbody" unique_id=658231879]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1214.0
+offset_top = 1180.0
+offset_right = 1254.0
+offset_bottom = 1220.0
+
+[node name="ColorRect" type="ColorRect" parent="Rigidbody/VJoy" unique_id=983703484]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="Line2D" type="Line2D" parent="Rigidbody/VJoy" unique_id=1526830432]
+points = PackedVector2Array(0, 0, 22.75, 0)
+width = 3.0
+
+[node name="Label" type="Label" parent="Rigidbody/VJoy" unique_id=1990037347]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 96.0
+offset_right = 32.0
+offset_bottom = 119.0
