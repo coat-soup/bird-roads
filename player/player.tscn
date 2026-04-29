@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cjg11usfhasse"]
 
+[ext_resource type="Script" uid="uid://dwcnw574emhne" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Script" uid="uid://c0c8otvncddg5" path="res://player/player_movement.gd" id="1_u3ln2"]
+[ext_resource type="Script" uid="uid://b17egmjgll7mj" path="res://system/player_interaction_manager.gd" id="2_g1dw6"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_765p8"]
 radius = 0.3
@@ -10,10 +12,18 @@ height = 1.8
 radius = 0.3
 height = 1.8
 
-[node name="Player" type="CharacterBody3D" unique_id=657413655 groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=657413655 node_paths=PackedStringArray("movement_manager") groups=["player"]]
 collision_layer = 2
 collision_mask = 3
+floor_max_angle = 1.0471976
 platform_on_leave = 1
+script = ExtResource("1_rkbax")
+movement_manager = NodePath("MovementManager")
+
+[node name="PlayerInteractionManager" type="Node" parent="." unique_id=1712060894 node_paths=PackedStringArray("camera")]
+script = ExtResource("2_g1dw6")
+camera = NodePath("../CameraPivot/Camera")
+metadata/_custom_type_script = "uid://b17egmjgll7mj"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=892348718]
 cast_shadow = 0
@@ -34,6 +44,5 @@ camera_pivot = NodePath("../CameraPivot")
 camera = NodePath("../CameraPivot/Camera")
 
 [node name="Floorcast" type="RayCast3D" parent="MovementManager" unique_id=456867915]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.991744, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.88753194, 0)
 target_position = Vector3(0, -0.3, 0)
-collision_mask = 32

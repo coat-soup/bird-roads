@@ -2,6 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="2_bxs55"]
 [ext_resource type="PackedScene" uid="uid://ydtdxfa65jl0" path="res://ships/airship.tscn" id="3_bxs55"]
+[ext_resource type="PackedScene" uid="uid://cjg11usfhasse" path="res://player/player.tscn" id="3_hhrd0"]
+[ext_resource type="PackedScene" uid="uid://difyp7n3arn8r" path="res://ui/ui.tscn" id="4_hhrd0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hhrd0"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -53,79 +55,84 @@ shadow_enabled = true
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1121209724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023010254, -15.011285, 11.423279)
 use_collision = true
-collision_layer = 5
+collision_layer = 9
 size = Vector3(96.90222, 30, 62.846558)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1937721072]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.215881, -45.92083, -48.993828)
 use_collision = true
-collision_layer = 5
+collision_layer = 9
 size = Vector3(142.14636, 151.56665, 62.846558)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=2017192745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.145496, -41.48101, -72)
 use_collision = true
-collision_layer = 5
+collision_layer = 9
 size = Vector3(102, 82.93945, 40)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1079504390]
 transform = Transform3D(0.43783772, 0, 0.89905405, 0, 1, 0, -0.89905405, 0, 0.43783772, 53.818233, -15.011285, 3.1914425)
 use_collision = true
-collision_layer = 5
+collision_layer = 9
 size = Vector3(141.61621, 30, 40)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=1809645698]
 transform = Transform3D(0.43783772, 0, 0.89905405, -0.12172025, 0.9907928, 0.059277542, -0.8907763, -0.13538702, 0.43380648, 47.517612, -15.011285, 170.12305)
 use_collision = true
-collision_layer = 5
+collision_layer = 9
 size = Vector3(141.61621, 30, 54.016113)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="." unique_id=1291494032]
 transform = Transform3D(-4.371139e-08, 0.9999999, 0, -1, -4.3711385e-08, 0, 0, 0, 0.9999999, -242.57193, -15.01127, 316.1046)
 use_collision = true
-collision_layer = 5
+collision_layer = 9
 size = Vector3(141.61621, 30, 54.016113)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="CSGBox3D10" type="CSGBox3D" parent="." unique_id=394989640]
 transform = Transform3D(-4.371139e-08, 0.9999999, 0, -1, -4.3711385e-08, 0, 0, 0, 0.9999999, -77.43207, -15.011254, 259.52344)
 use_collision = true
-collision_layer = 5
+collision_layer = 9
 size = Vector3(141.61621, 30, 54.016113)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="." unique_id=857000631]
 transform = Transform3D(-4.371139e-08, 0.9999999, 0, -1, -4.3711385e-08, 0, 0, 0, 0.9999999, -8.176712, -15.011254, 325.8606)
 use_collision = true
-collision_layer = 5
+collision_layer = 9
 size = Vector3(141.61621, 30, 54.016113)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="." unique_id=1948792808]
 transform = Transform3D(-0.876047, -0.13531521, 0.46285146, -0.12172025, 0.99079293, 0.05927754, -0.46661103, -0.0044085053, -0.8844516, -33.348255, -15.011285, 170.12305)
 use_collision = true
-collision_layer = 5
+collision_layer = 9
 size = Vector3(141.61621, 30, 54.016113)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=1879121102]
 transform = Transform3D(0.43783772, 0, 0.89905405, 0, 1, 0, -0.89905405, 0, 0.43783772, -26.810848, -93.011284, -36.074776)
 use_collision = true
-collision_layer = 5
+collision_layer = 9
 size = Vector3(141.61621, 30, 219.36426)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=536103971]
 transform = Transform3D(0.43783772, 0, 0.89905405, 0.67436963, 0.66133803, -0.3284168, -0.5945786, 0.750088, 0.28955874, 51.08025, -5.8704147, -35.139107)
 use_collision = true
-collision_layer = 5
+collision_layer = 9
 size = Vector3(129.10938, 30, 40)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="Airship" parent="." unique_id=254215350 instance=ExtResource("3_bxs55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.850098, 15.23126, 42.475197)
+
+[node name="Player" parent="." unique_id=657413655 instance=ExtResource("3_hhrd0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.892542, 19.482376, 38.180557)
+
+[node name="UI" parent="." unique_id=1305395705 instance=ExtResource("4_hhrd0")]

@@ -29,13 +29,15 @@ point_count = 2
 radius = 5.288574
 height = 46.572388
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0s8cv"]
+
 [node name="Airship" type="Node3D" unique_id=254215350]
 script = ExtResource("1_2omcc")
 actor_data = SubResource("Resource_0s8cv")
 
-[node name="Rigidbody" type="RigidBody3D" parent="." unique_id=947988495 node_paths=PackedStringArray("airship")]
-collision_layer = 4
-collision_mask = 12
+[node name="Movement" type="RigidBody3D" parent="." unique_id=947988495 node_paths=PackedStringArray("airship")]
+collision_layer = 8
+collision_mask = 8
 gravity_scale = 0.0
 angular_damp = 1.0
 script = ExtResource("1_3ha1r")
@@ -44,41 +46,22 @@ rotation_speed_curve = SubResource("Curve_0s8cv")
 rotation_correction_curve = SubResource("Curve_mq1uw")
 rotation_force_curve = SubResource("Curve_5nyth")
 
-[node name="hull_lancer" parent="Rigidbody" unique_id=242663195 instance=ExtResource("1_swygn")]
+[node name="hull_lancer" parent="Movement" unique_id=242663195 instance=ExtResource("1_swygn")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rigidbody" unique_id=604350542]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Movement" unique_id=604350542]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.2221451, -0.22369385)
 shape = SubResource("CapsuleShape3D_swygn")
 
-[node name="PlayerInput" type="Node" parent="Rigidbody" unique_id=1428899710]
+[node name="CSGBox3D" type="CSGBox3D" parent="Movement" unique_id=1139777492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4029648, -3.3501291)
+
+[node name="Interactable" type="StaticBody3D" parent="Movement/CSGBox3D" unique_id=1154739986 node_paths=PackedStringArray("movement", "camera")]
 script = ExtResource("5_0s8cv")
+movement = NodePath("../..")
+camera = NodePath("Camera3D")
 
-[node name="Camera3D" type="Camera3D" parent="Rigidbody" unique_id=1972443226]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 4.261636, -5.2543416)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Movement/CSGBox3D/Interactable" unique_id=944801888]
+shape = SubResource("BoxShape3D_0s8cv")
 
-[node name="Camera3D2" type="Camera3D" parent="Rigidbody" unique_id=77238779]
-transform = Transform3D(-1, 0, 8.742278e-08, 8.685845e-09, 0.9950521, 0.09935448, -8.699022e-08, 0.09935448, -0.9950521, 0, 47.49194, -91.739204)
-
-[node name="VJoy" type="Control" parent="Rigidbody" unique_id=658231879]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1214.0
-offset_top = 1180.0
-offset_right = 1254.0
-offset_bottom = 1220.0
-
-[node name="ColorRect" type="ColorRect" parent="Rigidbody/VJoy" unique_id=983703484]
-layout_mode = 0
-offset_right = 10.0
-offset_bottom = 10.0
-
-[node name="Line2D" type="Line2D" parent="Rigidbody/VJoy" unique_id=1526830432]
-points = PackedVector2Array(0, 0, 22.75, 0)
-width = 3.0
-
-[node name="Label" type="Label" parent="Rigidbody/VJoy" unique_id=1990037347]
-layout_mode = 0
-offset_left = -8.0
-offset_top = 96.0
-offset_right = 32.0
-offset_bottom = 119.0
+[node name="Camera3D" type="Camera3D" parent="Movement/CSGBox3D/Interactable" unique_id=969510234]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.46767, -0.9292779)

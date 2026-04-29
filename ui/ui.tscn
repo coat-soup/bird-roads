@@ -1,0 +1,491 @@
+[gd_scene format=3 uid="uid://difyp7n3arn8r"]
+
+[ext_resource type="Script" uid="uid://cdowqp6lhrrnu" path="res://ui/ui_manager.gd" id="1_nb4k0"]
+[ext_resource type="Script" uid="uid://cvuyhpcgogj7u" path="res://ui/options_menu_manager.gd" id="2_ks8t7"]
+[ext_resource type="Script" uid="uid://btf4aohl8oc3c" path="res://ui/settings_panel_manager.gd" id="3_wl5ax"]
+
+[sub_resource type="Animation" id="Animation_68x3x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4x3be"]
+resource_name = "chat_fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g04y5"]
+_data = {
+&"RESET": SubResource("Animation_68x3x"),
+&"chat_fade": SubResource("Animation_4x3be")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f6mhv"]
+
+[node name="UI" type="Control" unique_id=1305395705 groups=["ui"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_nb4k0")
+
+[node name="HUD" type="Control" parent="." unique_id=948998298]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="InteractText" type="Label" parent="HUD" unique_id=1228796245]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -275.0
+offset_right = 250.0
+offset_bottom = -233.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(250, 0)
+theme_override_font_sizes/font_size = 30
+text = "INTERACT TEXT"
+horizontal_alignment = 1
+
+[node name="ChatBox" type="Label" parent="HUD" unique_id=663801753]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2179.0
+offset_right = -1320.0
+offset_bottom = -259.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 3000)
+vertical_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HUD/ChatBox" unique_id=1779517976]
+libraries/ = SubResource("AnimationLibrary_g04y5")
+
+[node name="HealthBar" type="ProgressBar" parent="HUD" unique_id=1194808047]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -135.0
+offset_right = 439.0
+offset_bottom = -85.0
+grow_vertical = 0
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="HUD" unique_id=274577045]
+modulate = Color(1, 1, 0, 1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -169.0
+offset_right = 439.0
+offset_bottom = -145.0
+grow_vertical = 0
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="CrosshairHolder" type="Control" parent="HUD" unique_id=1031290244]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Crosshair" type="TextureRect" parent="HUD/CrosshairHolder" unique_id=363529951]
+visible = false
+modulate = Color(1, 1, 1, 0.392157)
+texture_filter = 1
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(16, 16)
+mouse_filter = 2
+
+[node name="Hitmarker" type="TextureRect" parent="HUD/CrosshairHolder" unique_id=586705960]
+visible = false
+modulate = Color(1, 0.65, 0, 0.392157)
+texture_filter = 1
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+rotation = -0.785397
+scale = Vector2(3, 3)
+pivot_offset = Vector2(16, 16)
+mouse_filter = 2
+
+[node name="BlockDurabilityBar" type="TextureProgressBar" parent="HUD/CrosshairHolder" unique_id=767449065]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 324.0
+offset_right = 59.0
+offset_bottom = 442.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.03999, 1)
+fill_mode = 3
+nine_patch_stretch = true
+tint_under = Color(0.458405, 0.458405, 0.458405, 1)
+tint_over = Color(0.695503, 0.695503, 0.695503, 1)
+tint_progress = Color(0.931289, 0.872475, 0, 1)
+
+[node name="MissionPanel" type="VBoxContainer" parent="HUD" unique_id=1480240326]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -500.0
+offset_bottom = 200.0
+grow_horizontal = 0
+
+[node name="MissionTitleLabel" type="Label" parent="HUD/MissionPanel" unique_id=370477524]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "MISSION TITLE"
+horizontal_alignment = 1
+
+[node name="MissionObjectivesLabel" type="Label" parent="HUD/MissionPanel" unique_id=1488621273]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "- Objective 1
+- Objective 2"
+horizontal_alignment = 1
+
+[node name="OptionsPanel" type="Control" parent="." unique_id=1554298044]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ks8t7")
+
+[node name="Background" type="ColorRect" parent="OptionsPanel" unique_id=1808769750]
+material = SubResource("ShaderMaterial_f6mhv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.18, 0.18, 0.501961)
+
+[node name="ButtonHolder" type="VBoxContainer" parent="OptionsPanel" unique_id=227970191]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -100.0
+offset_right = 125.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReturnButton" type="Button" parent="OptionsPanel/ButtonHolder" unique_id=1959821332]
+custom_minimum_size = Vector2(0, 47.745)
+layout_mode = 2
+text = "RETURN TO GAME"
+
+[node name="QuitButton" type="Button" parent="OptionsPanel/ButtonHolder" unique_id=565041587]
+custom_minimum_size = Vector2(0, 47.745)
+layout_mode = 2
+text = "QUIT GAME"
+
+[node name="SettingsButton" type="Button" parent="OptionsPanel/ButtonHolder" unique_id=67571727]
+custom_minimum_size = Vector2(0, 47.745)
+layout_mode = 2
+text = "OPTIONS"
+
+[node name="GameInfoLabel" type="RichTextLabel" parent="OptionsPanel" unique_id=700820679]
+modulate = Color(1, 1, 1, 0.356863)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -35.0
+offset_right = 515.0
+offset_bottom = -12.0
+grow_vertical = 0
+text = "Dungeon Crawler - vx.x.xn"
+scroll_active = false
+
+[node name="SettingsPanel" type="Control" parent="OptionsPanel" unique_id=790096805]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_wl5ax")
+
+[node name="Background" type="ColorRect" parent="OptionsPanel/SettingsPanel" unique_id=421081308]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.18, 0.18, 0.501961)
+
+[node name="TitleBackground" type="ColorRect" parent="OptionsPanel/SettingsPanel" unique_id=1700600990]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -97.0
+offset_top = 444.0
+offset_right = 97.0
+offset_bottom = 497.0
+grow_horizontal = 2
+color = Color(0.18, 0.18, 0.18, 1)
+
+[node name="Label" type="Label" parent="OptionsPanel/SettingsPanel/TitleBackground" unique_id=2132481922]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -69.0
+offset_top = -21.0
+offset_right = 69.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/SettingsPanel" unique_id=245919596]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -8.0
+offset_right = 250.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sensetivity" type="Control" parent="OptionsPanel/SettingsPanel/VBoxContainer" unique_id=2013475206]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="SensetivityLabel" type="Label" parent="OptionsPanel/SettingsPanel/VBoxContainer/Sensetivity" unique_id=1597276797]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 25.0
+text = "Sensetivity"
+
+[node name="SensetivityValueLabel" type="Label" parent="OptionsPanel/SettingsPanel/VBoxContainer/Sensetivity" unique_id=1675420889]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 650.0
+offset_bottom = 25.0
+text = "1.0"
+
+[node name="SensetivitySlider" type="HSlider" parent="OptionsPanel/SettingsPanel/VBoxContainer/Sensetivity" unique_id=1403924342]
+layout_mode = 0
+offset_left = 225.0
+offset_right = 558.0
+offset_bottom = 22.0
+max_value = 2.0
+step = 0.05
+value = 1.0
+
+[node name="Volume" type="Control" parent="OptionsPanel/SettingsPanel/VBoxContainer" unique_id=889203026]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="OptionsPanel/SettingsPanel/VBoxContainer/Volume" unique_id=1009563269]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 25.0
+text = "Volume"
+
+[node name="VolumeValueLabel" type="Label" parent="OptionsPanel/SettingsPanel/VBoxContainer/Volume" unique_id=1369391008]
+layout_mode = 0
+offset_left = 150.0
+offset_right = 650.0
+offset_bottom = 25.0
+text = "1.0"
+
+[node name="VolumeSlider" type="HSlider" parent="OptionsPanel/SettingsPanel/VBoxContainer/Volume" unique_id=2065762503]
+layout_mode = 0
+offset_left = 225.0
+offset_right = 558.0
+offset_bottom = 22.0
+max_value = 2.0
+step = 0.05
+value = 1.0
+
+[node name="SaveButton" type="Button" parent="OptionsPanel/SettingsPanel" unique_id=1752701929]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -516.0
+offset_right = -273.0
+offset_bottom = -485.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "SAVE"
+
+[node name="ResetButton" type="Button" parent="OptionsPanel/SettingsPanel" unique_id=129741107]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -516.0
+offset_right = 79.0
+offset_bottom = -485.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "RESET TO DEFUALTS"
+
+[node name="CancelButton" type="Button" parent="OptionsPanel/SettingsPanel" unique_id=1816710961]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 253.0
+offset_top = -516.0
+offset_right = 322.0
+offset_bottom = -485.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "CANCEL"
+
+[node name="ControlHints" type="Label" parent="OptionsPanel" unique_id=1874273954]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -74.5
+offset_top = -520.0
+offset_right = 74.5
+offset_bottom = -315.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="AirshipHUD" type="Control" parent="." unique_id=981961215]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="VirtualJoystick" type="Control" parent="AirshipHUD" unique_id=2064560593]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -135.0
+offset_right = 20.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Pip" type="Control" parent="AirshipHUD/VirtualJoystick" unique_id=1741418000]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="AirshipHUD/VirtualJoystick/Pip" unique_id=102224184]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 3.0
+rotation = 0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+
+[node name="Line2D" type="Line2D" parent="AirshipHUD/VirtualJoystick" unique_id=1413439724]
+points = PackedVector2Array(0, 0, 22.75, 0)
+width = 3.0

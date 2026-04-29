@@ -2,7 +2,7 @@ extends Node3D
 
 class_name PlayerMovement
 
-@export var player : CharacterBody3D
+@export var player : Player
 
 @export var camera_pivot: Node3D
 @export var camera: Camera3D
@@ -27,51 +27,66 @@ var landing : bool
 signal jump_start
 signal jump_land
 
-var debug_mode = true
-
 var floor_obj : Node3D
+
+var time_in_air : float = 0.0
 
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	camera.current = true
-	if debug_mode: collision_shape_3d.disabled = true
+	if player.debug_mode: collision_shape_3d.disabled = true
 
 
 func _input(_event: InputEvent) -> void:
+	if !player.active: return
+	
 	if Input.is_key_pressed(KEY_SEMICOLON):
-		debug_mode = !debug_mode
-		if debug_mode:
+		player.debug_mode = !player.debug_mode
+		if player.debug_mode:
 			collision_shape_3d.disabled = true
 		else:
 			collision_shape_3d.disabled = false
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if !player.active: return
+	
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		player.rotate_y(-event.relative.x * sensetivity)
+		player.global_rotate(Vector3.UP, -event.relative.x * sensetivity)
 		camera_pivot.rotate_x(-event.relative.y * sensetivity)
 		camera_pivot.rotation.x = clamp(camera_pivot.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 
 func _process(delta: float) -> void:
-	player.rotation.z = lerp_angle(player.rotation.z, 0, delta * 10)
+	var tilt_axis = global_basis.y.cross(Vector3.UP).normalized()
+	var angle = global_basis.y.signed_angle_to(Vector3.UP, tilt_axis)
+	if angle > 0.01:
+		player.global_rotate(tilt_axis, angle * delta * 10)
+	#player.rotation.z = lerp_angle(player.rotation.z, 0, delta * 3)
 	
-	
+	if floorcast.get_collider():
+		time_in_air = 0
+		if floorcast.get_collider() != player.get_parent():
+			player.reparent(floorcast.get_collider())
+			print("reparenting player to ", player.get_parent())
+	else:
+		time_in_air += delta
+		if time_in_air > 1.5 and player.get_parent() != get_tree().root: player.reparent(get_tree().root)
 	
 	# gravity
-	if not player.is_on_floor() and !debug_mode:
+	if not player.is_on_floor() and !player.debug_mode:
 		player.velocity += player.get_gravity() * delta
 	
 	# input
-	var input_dir := Input.get_vector("left", "right", "up", "down")
+	var input_dir := Input.get_vector("left", "right", "up", "down") if player.active else Vector2.ZERO
 	var direction := (player.global_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
-	if debug_mode:
+	if player.debug_mode:
 		player.velocity.y = (int(Input.is_key_pressed(KEY_SPACE)) - int(Input.is_key_pressed(KEY_CTRL))) * get_speed()
 	
 	# jump
-	if Input.is_action_just_pressed("jump") and player.is_on_floor():
+	if Input.is_action_just_pressed("jump") and player.is_on_floor() and player.active:
 		jump_start.emit()
 		player.velocity.y = jump_velocity
 		
@@ -116,6 +131,7 @@ static func bob_calc(time : float) -> float:
 func add_velocity_impulse(vel):
 	player.velocity += vel
 
+
 func get_speed() -> float:
-	var debug_mult = 8 if debug_mode and Input.is_action_pressed("sprint") else 3 if debug_mode else 1
+	var debug_mult = 8 if player.debug_mode and Input.is_action_pressed("sprint") else 3 if player.debug_mode else 1
 	return (speed if !Input.is_action_pressed("sprint") else sprint_speed) * debug_mult
