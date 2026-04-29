@@ -23,6 +23,11 @@ var roll_input : float = 0
 
 
 func _physics_process(delta: float) -> void:
+	thrust_input = clamp(thrust_input, -1.0, 1.0)
+	lift_input = clamp(lift_input, -1.0, 1.0)
+	strafe_input = clamp(strafe_input, -1.0, 1.0)
+	roll_input = clamp(roll_input, -1.0, 1.0)
+	
 	apply_central_force(global_basis.x * acceleration * strafe_input * 0.4)
 	apply_central_force(global_basis.y * acceleration * lift_input * 0.4)
 	if get_directional_speed_ratio() <= 1.0: apply_central_force(global_basis.z * acceleration * thrust_input)

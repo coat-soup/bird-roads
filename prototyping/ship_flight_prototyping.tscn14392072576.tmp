@@ -116,52 +116,10 @@ size = Vector3(141.61621, 30, 54.016113)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=1879121102]
-transform = Transform3D(0.43783772, 0, 0.89905405, 0, 1, 0, -0.89905405, 0, 0.43783772, -26.810848, -132.7962, -36.074776)
+transform = Transform3D(0.43783772, 0, 0.89905405, 0, 1, 0, -0.89905405, 0, 0.43783772, -26.810848, -93.011284, -36.074776)
 use_collision = true
 collision_layer = 9
-size = Vector3(141.61621, 109.569824, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D16" type="CSGBox3D" parent="." unique_id=954470099]
-transform = Transform3D(-0.2808342, 0, 0.95975626, 0, 1, 0, -0.95975626, 0, -0.2808342, 72.67175, -54.799667, -390.68774)
-use_collision = true
-collision_layer = 9
-size = Vector3(141.61621, 235.43042, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D17" type="CSGBox3D" parent="." unique_id=1711412324]
-transform = Transform3D(-0.9139779, 0, -0.40576383, 0, 1, 0, 0.40576383, 0, -0.9139779, 134.26555, -135.4171, -413.6439)
-use_collision = true
-collision_layer = 9
-size = Vector3(141.61621, 235.43042, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="." unique_id=1940566989]
-transform = Transform3D(-0.26458007, 0, 0.96436375, 0, 1, 0, -0.96436375, 0, -0.26458007, -18.39286, -157.2785, 304.60782)
-use_collision = true
-collision_layer = 9
-size = Vector3(205.24902, 158.53442, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="." unique_id=945184785]
-transform = Transform3D(-0.24539904, 0.3738135, 0.89445114, 0.098903604, 0.9275039, -0.3604922, -0.96436375, 0, -0.26458007, -170.68085, -157.2785, 304.60782)
-use_collision = true
-collision_layer = 9
-size = Vector3(205.24902, 158.53442, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="." unique_id=540248385]
-transform = Transform3D(-0.9855378, 0.14139302, 0.09339821, 0.09890359, 0.9275038, -0.36049214, -0.13759826, -0.3460412, -0.9280744, -117.0712, -157.2785, 304.60782)
-use_collision = true
-collision_layer = 9
-size = Vector3(205.24902, 158.53442, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="." unique_id=550653843]
-transform = Transform3D(-0.9855378, 0.14139302, 0.09339822, 0.14176689, 0.9898965, -0.0026530325, -0.09282966, 0.010626137, -0.99562526, -110.663216, -212.64497, 81.21395)
-use_collision = true
-collision_layer = 9
-size = Vector3(205.24902, 67.89368, 219.36426)
+size = Vector3(141.61621, 30, 219.36426)
 material = SubResource("ShaderMaterial_2thv5")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=536103971]
@@ -181,7 +139,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.10455, 15.23126, 42.47519
 active = true
 
 [node name="AIAirshipWaypoints" parent="Airship2/Movement/AIController" index="0" unique_id=1240303359 node_paths=PackedStringArray("waypoints")]
-waypoints = [NodePath("../../../../AIWaypoints/Marker3D"), NodePath("../../../../AIWaypoints/Marker3D2"), NodePath("../../../../AIWaypoints/Marker3D3"), NodePath("../../../../AIWaypoints/Marker3D4"), NodePath("../../../../AIWaypoints/Marker3D5"), NodePath("../../../../AIWaypoints/Marker3D6"), NodePath("../../../../AIWaypoints/Marker3D7"), NodePath("../../../../AIWaypoints/Marker3D8"), NodePath("../../../../AIWaypoints/Marker3D9"), NodePath("../../../../AIWaypoints/Marker3D10")]
+waypoints = [NodePath("../../../../AIWaypoints/Marker3D"), NodePath("../../../../AIWaypoints/Marker3D2"), NodePath("../../../../AIWaypoints/Marker3D3"), NodePath("../../../../AIWaypoints/Marker3D4"), NodePath("../../../../AIWaypoints/Marker3D5"), NodePath("../../../../AIWaypoints/Marker3D6"), NodePath("../../../../AIWaypoints/Marker3D7")]
 
 [node name="Player" parent="." unique_id=657413655 instance=ExtResource("3_hhrd0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.892542, 19.482376, 38.180557)
@@ -206,18 +164,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.76115, 38.35841, 269.8255
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 183.46135, 10.455753, 50.98262)
 
 [node name="Marker3D6" type="Marker3D" parent="AIWaypoints" unique_id=1457439410]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.66484, -35.182835, -180.18948)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.66484, 38.35841, -180.18948)
 
 [node name="Marker3D7" type="Marker3D" parent="AIWaypoints" unique_id=697161653]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -242.92953, -59.266994, -127.31221)
-
-[node name="Marker3D8" type="Marker3D" parent="AIWaypoints" unique_id=1240806718]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.96505, -79.41559, 105.12818)
-
-[node name="Marker3D9" type="Marker3D" parent="AIWaypoints" unique_id=397697688]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.60052, -67.70109, 63.63719)
-
-[node name="Marker3D10" type="Marker3D" parent="AIWaypoints" unique_id=196392819]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.40909, 90.47526, 125.17064)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.779068, 118.75836, 24.47493)
 
 [editable path="Airship2"]

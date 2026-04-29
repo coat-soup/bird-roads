@@ -69,7 +69,6 @@ func _process(delta: float) -> void:
 		time_in_air = 0
 		if floorcast.get_collider() != player.get_parent():
 			player.reparent(floorcast.get_collider())
-			print("reparenting player to ", player.get_parent())
 	else:
 		time_in_air += delta
 		if time_in_air > 1.5 and player.get_parent() != get_tree().root: player.reparent(get_tree().root)

@@ -4,7 +4,9 @@
 [ext_resource type="Script" uid="uid://cjgwu3c30dijs" path="res://ships/scripts/airship_movement_manager.gd" id="1_3ha1r"]
 [ext_resource type="PackedScene" uid="uid://bjt4s60gkfm2t" path="res://prototyping/ships/hull_lancer.tscn" id="1_swygn"]
 [ext_resource type="Script" uid="uid://bfj51xxaikpcp" path="res://world-sim/actor_data.gd" id="2_seusg"]
-[ext_resource type="Script" uid="uid://djhjtgojkfdes" path="res://ships/airship_player_controller.gd" id="5_0s8cv"]
+[ext_resource type="Script" uid="uid://djhjtgojkfdes" path="res://ships/scripts/airship_player_controller.gd" id="5_0s8cv"]
+[ext_resource type="Script" uid="uid://61wl05o4gntr" path="res://ships/scripts/airship_ai_controller.gd" id="6_mq1uw"]
+[ext_resource type="Script" uid="uid://85bwq26quwdk" path="res://ships/scripts/ai_airship_waypoints.gd" id="7_5nyth"]
 
 [sub_resource type="Resource" id="Resource_0s8cv"]
 script = ExtResource("2_seusg")
@@ -65,3 +67,10 @@ shape = SubResource("BoxShape3D_0s8cv")
 
 [node name="Camera3D" type="Camera3D" parent="Movement/CSGBox3D/Interactable" unique_id=969510234]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.46767, -0.9292779)
+
+[node name="AIController" type="Node" parent="Movement" unique_id=1181289627 node_paths=PackedStringArray("movement")]
+script = ExtResource("6_mq1uw")
+movement = NodePath("..")
+
+[node name="AIAirshipWaypoints" type="Node" parent="Movement/AIController" unique_id=1240303359]
+script = ExtResource("7_5nyth")
