@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://ydtdxfa65jl0" path="res://ships/airship.tscn" id="3_bxs55"]
 [ext_resource type="PackedScene" uid="uid://cjg11usfhasse" path="res://player/player.tscn" id="3_hhrd0"]
 [ext_resource type="PackedScene" uid="uid://difyp7n3arn8r" path="res://ui/ui.tscn" id="4_hhrd0"]
+[ext_resource type="ArrayMesh" uid="uid://18b3bjqlju1b" path="res://vfx/meshes/cloud_mesh.obj" id="6_0lb2m"]
+[ext_resource type="Material" uid="uid://c808jmbnontqo" path="res://vfx/materials/cloud_mat.tres" id="6_36kbg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hhrd0"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -43,6 +45,35 @@ shader_parameter/use_inside_uv = false
 shader_parameter/use_albedo_color = false
 shader_parameter/albedo_alpha = 0.5
 
+[sub_resource type="Curve" id="Curve_36kbg"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1511254, 1), 0.0, 0.0, 0, 0, Vector2(0.82636654, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_teuy2"]
+curve = SubResource("Curve_36kbg")
+
+[sub_resource type="Curve" id="Curve_0lb2m"]
+_data = [Vector2(0, 0.77266836), 0.0, 0.0, 0, 0, Vector2(0.50482315, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.7389896), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_36kbg"]
+curve = SubResource("Curve_0lb2m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_teuy2"]
+emission_shape_scale = Vector3(300, 150, 300)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_36kbg")
+alpha_curve = SubResource("CurveTexture_teuy2")
+
+[sub_resource type="SphereMesh" id="SphereMesh_fmess"]
+material = ExtResource("6_36kbg")
+radius = 200.0
+height = 300.0
+radial_segments = 32
+rings = 16
+
 [node name="Node3D" type="Node3D" unique_id=434323374]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1501100120]
@@ -51,125 +82,6 @@ environment = SubResource("Environment_cks8e")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=822605352]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1121209724]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023010254, -15.011285, 11.423279)
-use_collision = true
-collision_layer = 9
-size = Vector3(96.90222, 30, 62.846558)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="." unique_id=1937721072]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.215881, -45.92083, -48.993828)
-use_collision = true
-collision_layer = 9
-size = Vector3(142.14636, 151.56665, 62.846558)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=2017192745]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.145496, -41.48101, -72)
-use_collision = true
-collision_layer = 9
-size = Vector3(102, 82.93945, 40)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1079504390]
-transform = Transform3D(0.43783772, 0, 0.89905405, 0, 1, 0, -0.89905405, 0, 0.43783772, 53.818233, -15.011285, 3.1914425)
-use_collision = true
-collision_layer = 9
-size = Vector3(141.61621, 30, 40)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="." unique_id=1809645698]
-transform = Transform3D(0.43783772, 0, 0.89905405, -0.12172025, 0.9907928, 0.059277542, -0.8907763, -0.13538702, 0.43380648, 47.517612, -15.011285, 170.12305)
-use_collision = true
-collision_layer = 9
-size = Vector3(141.61621, 30, 54.016113)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="." unique_id=1291494032]
-transform = Transform3D(-4.371139e-08, 0.9999999, 0, -1, -4.3711385e-08, 0, 0, 0, 0.9999999, -242.57193, -15.01127, 316.1046)
-use_collision = true
-collision_layer = 9
-size = Vector3(141.61621, 30, 54.016113)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="." unique_id=394989640]
-transform = Transform3D(-4.371139e-08, 0.9999999, 0, -1, -4.3711385e-08, 0, 0, 0, 0.9999999, -77.43207, -15.011254, 259.52344)
-use_collision = true
-collision_layer = 9
-size = Vector3(141.61621, 30, 54.016113)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D11" type="CSGBox3D" parent="." unique_id=857000631]
-transform = Transform3D(-4.371139e-08, 0.9999999, 0, -1, -4.3711385e-08, 0, 0, 0, 0.9999999, -8.176712, -15.011254, 325.8606)
-use_collision = true
-collision_layer = 9
-size = Vector3(141.61621, 30, 54.016113)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="." unique_id=1948792808]
-transform = Transform3D(-0.876047, -0.13531521, 0.46285146, -0.12172025, 0.99079293, 0.05927754, -0.46661103, -0.0044085053, -0.8844516, -33.348255, -15.011285, 170.12305)
-use_collision = true
-collision_layer = 9
-size = Vector3(141.61621, 30, 54.016113)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="." unique_id=1879121102]
-transform = Transform3D(0.43783772, 0, 0.89905405, 0, 1, 0, -0.89905405, 0, 0.43783772, -26.810848, -132.7962, -36.074776)
-use_collision = true
-collision_layer = 9
-size = Vector3(141.61621, 109.569824, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D16" type="CSGBox3D" parent="." unique_id=954470099]
-transform = Transform3D(-0.2808342, 0, 0.95975626, 0, 1, 0, -0.95975626, 0, -0.2808342, 72.67175, -54.799667, -390.68774)
-use_collision = true
-collision_layer = 9
-size = Vector3(141.61621, 235.43042, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D17" type="CSGBox3D" parent="." unique_id=1711412324]
-transform = Transform3D(-0.9139779, 0, -0.40576383, 0, 1, 0, 0.40576383, 0, -0.9139779, 134.26555, -135.4171, -413.6439)
-use_collision = true
-collision_layer = 9
-size = Vector3(141.61621, 235.43042, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="." unique_id=1940566989]
-transform = Transform3D(-0.26458007, 0, 0.96436375, 0, 1, 0, -0.96436375, 0, -0.26458007, -18.39286, -157.2785, 304.60782)
-use_collision = true
-collision_layer = 9
-size = Vector3(205.24902, 158.53442, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="." unique_id=945184785]
-transform = Transform3D(-0.24539904, 0.3738135, 0.89445114, 0.098903604, 0.9275039, -0.3604922, -0.96436375, 0, -0.26458007, -170.68085, -157.2785, 304.60782)
-use_collision = true
-collision_layer = 9
-size = Vector3(205.24902, 158.53442, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="." unique_id=540248385]
-transform = Transform3D(-0.9855378, 0.14139302, 0.09339821, 0.09890359, 0.9275038, -0.36049214, -0.13759826, -0.3460412, -0.9280744, -117.0712, -157.2785, 304.60782)
-use_collision = true
-collision_layer = 9
-size = Vector3(205.24902, 158.53442, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="." unique_id=550653843]
-transform = Transform3D(-0.9855378, 0.14139302, 0.09339822, 0.14176689, 0.9898965, -0.0026530325, -0.09282966, 0.010626137, -0.99562526, -110.663216, -212.64497, 81.21395)
-use_collision = true
-collision_layer = 9
-size = Vector3(205.24902, 67.89368, 219.36426)
-material = SubResource("ShaderMaterial_2thv5")
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=536103971]
-transform = Transform3D(0.43783772, 0, 0.89905405, 0.67436963, 0.66133803, -0.3284168, -0.5945786, 0.750088, 0.28955874, 51.08025, -5.8704147, -35.139107)
-use_collision = true
-collision_layer = 9
-size = Vector3(129.10938, 30, 40)
-material = SubResource("ShaderMaterial_2thv5")
 
 [node name="Airship" parent="." unique_id=254215350 instance=ExtResource("3_bxs55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.850098, 15.23126, 42.475197)
@@ -219,5 +131,417 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.60052, -67.70109, 63.6371
 
 [node name="Marker3D10" type="Marker3D" parent="AIWaypoints" unique_id=196392819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174.40909, 90.47526, 125.17064)
+
+[node name="Cloud" type="Node3D" parent="." unique_id=1048077381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 58.358147, 166.17294, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cloud" unique_id=810094705]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -208.13531, 0, 0)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Cloud" unique_id=1127608431]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 36.020355, 17.155888, 142.30473)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Cloud" unique_id=1127561018]
+transform = Transform3D(2.9624567, 0, 4.027884, 0, 5, 0, -4.027884, 0, 2.9624567, 161.7382, 23.930592, -109.30951)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Cloud" unique_id=1100326381]
+transform = Transform3D(2.9624567, 0, 4.027884, 0, 5, 0, -4.027884, 0, 2.9624567, 173.65834, 23.930607, 100.93829)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Cloud" unique_id=1181216734]
+transform = Transform3D(-4.635134, 0, 1.8749754, 0, 5, 0, -1.8749754, 0, -4.635134, -168.27948, 23.930622, -222.77408)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Cloud" unique_id=588565615]
+transform = Transform3D(-0.10759141, 0, 4.9988422, 0, 5, 0, -4.9988422, 0, -0.10759141, 14.960159, 23.930622, -223.11603)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Cloud" unique_id=130023405]
+transform = Transform3D(-2.951408, 0, 4.035987, 0, 5, 0, -4.035987, 0, -2.951408, 150.70967, 23.930637, 190.68513)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Cloud" unique_id=1900077702]
+transform = Transform3D(-4.788611, 0, -1.4384738, 0, 5, 0, 1.4384736, 0, -4.788611, -44.5224, 53.2954, 170.48567)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Cloud" unique_id=1681856695]
+transform = Transform3D(-4.743746, 0, 1.5801504, -1.1837915, 3.3119237, -3.553843, -1.0466676, -3.745819, -3.1421847, -56.582794, 105.80492, -7.5014715)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Cloud" unique_id=1812408509]
+transform = Transform3D(-4.743746, 0, 1.5801504, 0, 5, 0, -1.5801504, 0, -4.743746, -60.190384, 22.565525, 33.168106)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="Cloud2" type="Node3D" parent="." unique_id=1131549523]
+transform = Transform3D(-0.30617723, 0, 0.95197463, 0, 1, 0, -0.9519745, 0, -0.30617726, 883.256, -350.2735, -93.079865)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cloud2" unique_id=1925781471]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -208.13531, 0, 0)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Cloud2" unique_id=1891600852]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 36.020355, 17.155888, 142.30473)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Cloud2" unique_id=663283296]
+transform = Transform3D(2.9624567, 0, 4.027884, 0, 5, 0, -4.027884, 0, 2.9624567, 161.7382, 23.930592, -109.30951)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Cloud2" unique_id=253048394]
+transform = Transform3D(2.9624567, 0, 4.027884, 0, 5, 0, -4.027884, 0, 2.9624567, 173.65834, 23.930607, 100.93829)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Cloud2" unique_id=347387257]
+transform = Transform3D(-4.635134, 0, 1.8749754, 0, 5, 0, -1.8749754, 0, -4.635134, -168.27948, 23.930622, -222.77408)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Cloud2" unique_id=2102891340]
+transform = Transform3D(-0.10759141, 0, 4.9988422, 0, 5, 0, -4.9988422, 0, -0.10759141, 14.960159, 23.930622, -223.11603)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Cloud2" unique_id=1240747174]
+transform = Transform3D(-2.951408, 0, 4.035987, 0, 5, 0, -4.035987, 0, -2.951408, 150.70967, 23.930637, 190.68513)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Cloud2" unique_id=1853442431]
+transform = Transform3D(-4.788611, 0, -1.4384738, 0, 5, 0, 1.4384736, 0, -4.788611, -44.5224, 53.2954, 170.48567)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Cloud2" unique_id=1575658851]
+transform = Transform3D(-4.743746, 0, 1.5801504, -1.1837915, 3.3119237, -3.553843, -1.0466676, -3.745819, -3.1421847, -56.582794, 105.80492, -7.5014715)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Cloud2" unique_id=1700247784]
+transform = Transform3D(-4.743746, 0, 1.5801504, 0, 5, 0, -1.5801504, 0, -4.743746, -60.190384, 22.565525, 33.168106)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="Cloud3" type="Node3D" parent="." unique_id=450129261]
+transform = Transform3D(-0.30617723, 0, 0.95197463, 0, 1, 0, -0.9519745, 0, -0.30617726, 603.7077, -350.2735, -325.3742)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cloud3" unique_id=588371261]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -208.13531, 0, 0)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Cloud3" unique_id=1657826261]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 36.020355, 17.155888, 142.30473)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Cloud3" unique_id=1684947665]
+transform = Transform3D(2.9624567, 0, 4.027884, 0, 5, 0, -4.027884, 0, 2.9624567, 161.7382, 23.930592, -109.30951)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Cloud3" unique_id=1878974144]
+transform = Transform3D(2.9624567, 0, 4.027884, 0, 5, 0, -4.027884, 0, 2.9624567, 173.65834, 23.930607, 100.93829)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Cloud3" unique_id=56043393]
+transform = Transform3D(-4.635134, 0, 1.8749754, 0, 5, 0, -1.8749754, 0, -4.635134, -168.27948, 23.930622, -222.77408)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Cloud3" unique_id=2063371609]
+transform = Transform3D(-0.10759141, 0, 4.9988422, 0, 5, 0, -4.9988422, 0, -0.10759141, 14.960159, 23.930622, -223.11603)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Cloud3" unique_id=1421112757]
+transform = Transform3D(-2.951408, 0, 4.035987, 0, 5, 0, -4.035987, 0, -2.951408, 150.70967, 23.930637, 190.68513)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Cloud3" unique_id=394846858]
+transform = Transform3D(-4.788611, 0, -1.4384738, 0, 5, 0, 1.4384736, 0, -4.788611, -44.5224, 53.2954, 170.48567)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Cloud3" unique_id=737694192]
+transform = Transform3D(-4.743746, 0, 1.5801504, -1.1837915, 3.3119237, -3.553843, -1.0466676, -3.745819, -3.1421847, -56.582794, 105.80492, -7.5014715)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Cloud3" unique_id=862277897]
+transform = Transform3D(-4.743746, 0, 1.5801504, 0, 5, 0, -1.5801504, 0, -4.743746, -60.190384, 22.565525, 33.168106)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="Cloud4" type="Node3D" parent="." unique_id=1420880172]
+transform = Transform3D(-0.30617723, 0, 0.95197463, 0, 1, 0, -0.9519745, 0, -0.30617726, 1051.3696, -350.27344, -519.10474)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cloud4" unique_id=63835960]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -208.13531, 0, 0)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Cloud4" unique_id=1323987784]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 36.020355, 17.155888, 142.30473)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Cloud4" unique_id=1873165139]
+transform = Transform3D(2.9624567, 0, 4.027884, 0, 5, 0, -4.027884, 0, 2.9624567, 161.7382, 23.930592, -109.30951)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Cloud4" unique_id=144046978]
+transform = Transform3D(2.9624567, 0, 4.027884, 0, 5, 0, -4.027884, 0, 2.9624567, 173.65834, 23.930607, 100.93829)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Cloud4" unique_id=1354550172]
+transform = Transform3D(-4.635134, 0, 1.8749754, 0, 5, 0, -1.8749754, 0, -4.635134, -168.27948, 23.930622, -222.77408)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Cloud4" unique_id=1845914401]
+transform = Transform3D(-0.10759141, 0, 4.9988422, 0, 5, 0, -4.9988422, 0, -0.10759141, 14.960159, 23.930622, -223.11603)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Cloud4" unique_id=955453810]
+transform = Transform3D(-2.951408, 0, 4.035987, 0, 5, 0, -4.035987, 0, -2.951408, 150.70967, 23.930637, 190.68513)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Cloud4" unique_id=1477207516]
+transform = Transform3D(-4.788611, 0, -1.4384738, 0, 5, 0, 1.4384736, 0, -4.788611, -44.5224, 53.2954, 170.48567)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Cloud4" unique_id=581986476]
+transform = Transform3D(-4.743746, 0, 1.5801504, -1.1837915, 3.3119237, -3.553843, -1.0466676, -3.745819, -3.1421847, -56.582794, 105.80492, -7.5014715)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Cloud4" unique_id=1683104427]
+transform = Transform3D(-4.743746, 0, 1.5801504, 0, 5, 0, -1.5801504, 0, -4.743746, -60.190384, 22.565525, 33.168106)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="Cloud5" type="Node3D" parent="." unique_id=44480201]
+transform = Transform3D(-0.10976721, -0.6930186, 0.71251416, -0.9394239, -0.16184488, -0.30214068, 0.32470587, -0.70251787, -0.63327307, 917.953, -180.13435, -519.10474)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cloud5" unique_id=551085906]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -208.13531, 0, 0)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Cloud5" unique_id=2073626503]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 36.020355, 17.155888, 142.30473)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Cloud5" unique_id=1521782569]
+transform = Transform3D(2.9624567, 0, 4.027884, 0, 5, 0, -4.027884, 0, 2.9624567, 161.7382, 23.930592, -109.30951)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Cloud5" unique_id=35999293]
+transform = Transform3D(2.9624567, 0, 4.027884, 0, 5, 0, -4.027884, 0, 2.9624567, 173.65834, 23.930607, 100.93829)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Cloud5" unique_id=234487453]
+transform = Transform3D(-4.635134, 0, 1.8749754, 0, 5, 0, -1.8749754, 0, -4.635134, -168.27948, 23.930622, -222.77408)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Cloud5" unique_id=1154536579]
+transform = Transform3D(-0.10759141, 0, 4.9988422, 0, 5, 0, -4.9988422, 0, -0.10759141, 14.960159, 23.930622, -223.11603)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Cloud5" unique_id=564625635]
+transform = Transform3D(-2.951408, 0, 4.035987, 0, 5, 0, -4.035987, 0, -2.951408, 150.70967, 23.930637, 190.68513)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="Cloud5" unique_id=1909335145]
+transform = Transform3D(-4.788611, 0, -1.4384738, 0, 5, 0, 1.4384736, 0, -4.788611, -44.5224, 53.2954, 170.48567)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="Cloud5" unique_id=1587637633]
+transform = Transform3D(-4.743746, 0, 1.5801504, -1.1837915, 3.3119237, -3.553843, -1.0466676, -3.745819, -3.1421847, -56.582794, 105.80492, -7.5014715)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="Cloud5" unique_id=168899986]
+transform = Transform3D(-4.743746, 0, 1.5801504, 0, 5, 0, -1.5801504, 0, -4.743746, -60.190384, 22.565525, 33.168106)
+mesh = ExtResource("6_0lb2m")
+surface_material_override/0 = ExtResource("6_36kbg")
+
+[node name="Level" type="Node3D" parent="." unique_id=1290577455]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Level" unique_id=1121209724]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023010254, -15.011285, 11.423279)
+use_collision = true
+collision_layer = 9
+size = Vector3(96.90222, 30, 62.846558)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Level" unique_id=1937721072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.215881, -45.92083, -48.993828)
+use_collision = true
+collision_layer = 9
+size = Vector3(142.14636, 151.56665, 62.846558)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Level" unique_id=2017192745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.145496, -41.48101, -72)
+use_collision = true
+collision_layer = 9
+size = Vector3(102, 82.93945, 40)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Level" unique_id=1079504390]
+transform = Transform3D(0.43783772, 0, 0.89905405, 0, 1, 0, -0.89905405, 0, 0.43783772, 53.818233, -15.011285, 3.1914425)
+use_collision = true
+collision_layer = 9
+size = Vector3(141.61621, 30, 40)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Level" unique_id=1809645698]
+transform = Transform3D(0.43783772, 0, 0.89905405, -0.12172025, 0.9907928, 0.059277542, -0.8907763, -0.13538702, 0.43380648, 47.517612, -15.011285, 170.12305)
+use_collision = true
+collision_layer = 9
+size = Vector3(141.61621, 30, 54.016113)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Level" unique_id=1291494032]
+transform = Transform3D(-4.371139e-08, 0.9999999, 0, -1, -4.3711385e-08, 0, 0, 0, 0.9999999, -242.57193, -15.01127, 316.1046)
+use_collision = true
+collision_layer = 9
+size = Vector3(141.61621, 30, 54.016113)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Level" unique_id=394989640]
+transform = Transform3D(-4.371139e-08, 0.9999999, 0, -1, -4.3711385e-08, 0, 0, 0, 0.9999999, -77.43207, -15.011254, 259.52344)
+use_collision = true
+collision_layer = 9
+size = Vector3(141.61621, 30, 54.016113)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Level" unique_id=857000631]
+transform = Transform3D(-4.371139e-08, 0.9999999, 0, -1, -4.3711385e-08, 0, 0, 0, 0.9999999, -8.176712, -15.011254, 325.8606)
+use_collision = true
+collision_layer = 9
+size = Vector3(141.61621, 30, 54.016113)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Level" unique_id=1948792808]
+transform = Transform3D(-0.876047, -0.13531521, 0.46285146, -0.12172025, 0.99079293, 0.05927754, -0.46661103, -0.0044085053, -0.8844516, -33.348255, -15.011285, 170.12305)
+use_collision = true
+collision_layer = 9
+size = Vector3(141.61621, 30, 54.016113)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Level" unique_id=1879121102]
+transform = Transform3D(0.43783772, 0, 0.89905405, 0, 1, 0, -0.89905405, 0, 0.43783772, -26.810848, -132.7962, -36.074776)
+use_collision = true
+collision_layer = 9
+size = Vector3(141.61621, 109.569824, 219.36426)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Level" unique_id=954470099]
+transform = Transform3D(-0.2808342, 0, 0.95975626, 0, 1, 0, -0.95975626, 0, -0.2808342, 72.67175, -54.799667, -390.68774)
+use_collision = true
+collision_layer = 9
+size = Vector3(141.61621, 235.43042, 219.36426)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Level" unique_id=1711412324]
+transform = Transform3D(-0.9139779, 0, -0.40576383, 0, 1, 0, 0.40576383, 0, -0.9139779, 134.26555, -135.4171, -413.6439)
+use_collision = true
+collision_layer = 9
+size = Vector3(141.61621, 235.43042, 219.36426)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Level" unique_id=1940566989]
+transform = Transform3D(-0.26458007, 0, 0.96436375, 0, 1, 0, -0.96436375, 0, -0.26458007, -18.39286, -157.2785, 304.60782)
+use_collision = true
+collision_layer = 9
+size = Vector3(205.24902, 158.53442, 219.36426)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Level" unique_id=945184785]
+transform = Transform3D(-0.24539904, 0.3738135, 0.89445114, 0.098903604, 0.9275039, -0.3604922, -0.96436375, 0, -0.26458007, -170.68085, -157.2785, 304.60782)
+use_collision = true
+collision_layer = 9
+size = Vector3(205.24902, 158.53442, 219.36426)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Level" unique_id=540248385]
+transform = Transform3D(-0.9855378, 0.14139302, 0.09339821, 0.09890359, 0.9275038, -0.36049214, -0.13759826, -0.3460412, -0.9280744, -117.0712, -157.2785, 304.60782)
+use_collision = true
+collision_layer = 9
+size = Vector3(205.24902, 158.53442, 219.36426)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Level" unique_id=550653843]
+transform = Transform3D(-0.9855378, 0.14139302, 0.09339822, 0.14176689, 0.9898965, -0.0026530325, -0.09282966, 0.010626137, -0.99562526, -110.663216, -212.64497, 81.21395)
+use_collision = true
+collision_layer = 9
+size = Vector3(205.24902, 67.89368, 219.36426)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Level" unique_id=536103971]
+transform = Transform3D(0.43783772, 0, 0.89905405, 0.67436963, 0.66133803, -0.3284168, -0.5945786, 0.750088, 0.28955874, 51.08025, -5.8704147, -35.139107)
+use_collision = true
+collision_layer = 9
+size = Vector3(129.10938, 30, 40)
+material = SubResource("ShaderMaterial_2thv5")
+
+[node name="ParticlesCloud" type="GPUParticles3D" parent="." unique_id=518679503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -720.86694, 136.07675, -345.33203)
+lifetime = 30.0
+preprocess = 10.0
+visibility_aabb = AABB(-419.41974, -415.59018, -420.41208, 806.47516, 765.86035, 899.37445)
+process_material = SubResource("ParticleProcessMaterial_teuy2")
+draw_pass_1 = SubResource("SphereMesh_fmess")
+
+[node name="ParticlesCloud2" type="GPUParticles3D" parent="." unique_id=670644594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -692.7391, 136.07675, 337.51657)
+amount = 16
+lifetime = 30.0
+preprocess = 10.0
+visibility_aabb = AABB(-419.41974, -415.59018, -420.41208, 806.47516, 765.86035, 899.37445)
+process_material = SubResource("ParticleProcessMaterial_teuy2")
+draw_pass_1 = SubResource("SphereMesh_fmess")
+
+[node name="ParticlesCloud3" type="GPUParticles3D" parent="." unique_id=1562241926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.433838, 2.844925, 384.1026)
+amount = 16
+lifetime = 30.0
+preprocess = 10.0
+visibility_aabb = AABB(-419.41974, -415.59018, -420.41208, 806.47516, 765.86035, 899.37445)
+process_material = SubResource("ParticleProcessMaterial_teuy2")
+draw_pass_1 = SubResource("SphereMesh_fmess")
 
 [editable path="Airship2"]

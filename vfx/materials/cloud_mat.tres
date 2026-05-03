@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c808jmbnontqo"]
+
+[ext_resource type="Shader" uid="uid://nhp5lehiaha6" path="res://vfx/shaders/cloud_shader.gdshader" id="1_ncse7"]
+
+[sub_resource type="Gradient" id="Gradient_ncse7"]
+offsets = PackedFloat32Array(0, 0.5236593)
+colors = PackedColorArray(0.56641936, 0.645004, 0.75478125, 1, 0.27719998, 0.30813998, 0.42, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5i31h"]
+gradient = SubResource("Gradient_ncse7")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2thv5"]
+frequency = 0.0029
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0lb2m"]
+noise = SubResource("FastNoiseLite_2thv5")
+seamless = true
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ncse7")
+shader_parameter/noise = SubResource("NoiseTexture2D_0lb2m")
+shader_parameter/height_gradient = SubResource("GradientTexture1D_5i31h")
