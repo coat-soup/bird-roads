@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://sh8np8l6mpox" path="res://ships/rooms/models/bunk_room_medium.tscn" id="10_45sbi"]
 [ext_resource type="PackedScene" uid="uid://b7lvu22vkitj4" path="res://ships/rooms/models/mess_small.tscn" id="11_45sbi"]
 [ext_resource type="PackedScene" uid="uid://cd1jmul7hg3e5" path="res://ships/rooms/models/munitions_small.tscn" id="11_427k7"]
+[ext_resource type="PackedScene" uid="uid://difyp7n3arn8r" path="res://ui/ui.tscn" id="13_gga6o"]
 [ext_resource type="PackedScene" uid="uid://bjt4s60gkfm2t" path="res://prototyping/ships/hull_lancer.tscn" id="15_mkcgc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3tw78"]
@@ -191,3 +192,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.76938, -1.9188533, -167.0
 
 [node name="hull_lancer8" parent="." unique_id=1702804539 instance=ExtResource("15_mkcgc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.68713, -1.9188533, -240.46706)
+
+[node name="UI" parent="." unique_id=1305395705 instance=ExtResource("13_gga6o")]

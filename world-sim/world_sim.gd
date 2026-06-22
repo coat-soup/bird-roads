@@ -1,6 +1,6 @@
 extends Node
 
-var sim_speed : float = 1.0
+var sim_speed : float = 15.0
 
 var actors : Array[Actor]
 
