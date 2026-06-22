@@ -1,16 +1,13 @@
 class_name AirshipPlayerController
-extends Interactable
+extends Controllable
 
 @export var movement : AirshipMovementManager
 @export var mouse_sensetivity : float = 0.005
 
-@export var controlled : bool = false
-@export var camera : Camera3D
 
-
-func _ready() -> void:
-	interacted.connect(on_interacted)
-
+func on_interacted():
+	super.on_interacted()
+	GameManager.ui.toggle_airship_hud(controlled)
 
 func _input(event: InputEvent) -> void:
 	if !controlled: return
@@ -27,18 +24,3 @@ func _input(event: InputEvent) -> void:
 		movement.joystick_input += Vector2(-event.relative.x, event.relative.y) * mouse_sensetivity
 		movement.joystick_input = movement.joystick_input.limit_length()
 		GameManager.ui.update_virtual_joystick(movement.joystick_input)
-
-
-func on_interacted():
-	print("interacted. active: ", active, " curcontrolled: ", controlled)
-	controlled = !controlled
-	GameManager.player.active = !controlled
-	GameManager.ui.toggle_airship_hud(controlled)
-	
-	if active:
-		active = false
-		camera.make_current()
-	else:
-		GameManager.player.movement_manager.camera.make_current()
-		await get_tree().create_timer(0.3).timeout
-		active = true

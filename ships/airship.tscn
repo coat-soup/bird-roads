@@ -54,18 +54,21 @@ rotation_force_curve = SubResource("Curve_5nyth")
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.2221451, -0.22369385)
 shape = SubResource("CapsuleShape3D_swygn")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Movement" unique_id=1139777492]
+[node name="Helm" type="CSGBox3D" parent="Movement" unique_id=1139777492]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4029648, -3.3501291)
 
-[node name="Interactable" type="StaticBody3D" parent="Movement/CSGBox3D" unique_id=1154739986 node_paths=PackedStringArray("movement", "camera")]
+[node name="Controllable" type="StaticBody3D" parent="Movement/Helm" unique_id=1154739986 node_paths=PackedStringArray("movement", "camera")]
 script = ExtResource("5_0s8cv")
 movement = NodePath("../..")
+mouse_sensetivity = null
+controlled = null
 camera = NodePath("Camera3D")
+prompt_text = "Control Helm"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Movement/CSGBox3D/Interactable" unique_id=944801888]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Movement/Helm/Controllable" unique_id=944801888]
 shape = SubResource("BoxShape3D_0s8cv")
 
-[node name="Camera3D" type="Camera3D" parent="Movement/CSGBox3D/Interactable" unique_id=969510234]
+[node name="Camera3D" type="Camera3D" parent="Movement/Helm/Controllable" unique_id=969510234]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.46767, -0.9292779)
 
 [node name="AIController" type="Node" parent="Movement" unique_id=1181289627 node_paths=PackedStringArray("movement")]

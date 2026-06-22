@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://oakg2fjwqcpm"]
+
+[ext_resource type="PackedScene" uid="uid://cu56hygrcutnw" path="res://ships/hardpoints/weapons/cannon_basic_handheld.glb" id="1_hfnd5"]
+[ext_resource type="Script" uid="uid://1u6bkn1c1smx" path="res://ships/hardpoints/weapons/cannon_controller.gd" id="2_es551"]
+[ext_resource type="Script" uid="uid://caatudlr0bdf6" path="res://ships/scripts/cannon.gd" id="2_ldnv6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hfnd5"]
+size = Vector3(2, 2, 2)
+
+[node name="cannon_basic_handheld" unique_id=942342330 node_paths=PackedStringArray("yaw_obj", "pitch_obj") instance=ExtResource("1_hfnd5")]
+script = ExtResource("2_ldnv6")
+yaw_obj = NodePath("Yaw")
+pitch_obj = NodePath("Yaw/Pitch")
+pitch_min = -40.0
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Yaw/Pitch" parent_id_path=PackedInt32Array(431174754) index="0" unique_id=1982730829]
+transform = Transform3D(8.526513e-14, 1.0000001, 4.3772857e-08, 6.140962e-11, 4.3772836e-08, -1.0000007, -0.99999976, 6.3948846e-14, -6.151687e-11, 0, 0.8493778, -1.6308335)
+remote_path = NodePath("../../../Camera3D")
+update_rotation = false
+update_scale = false
+
+[node name="Camera3D" type="Camera3D" parent="." index="4" unique_id=160089326]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.7742426, -1.7037028)
+
+[node name="Controllable" type="StaticBody3D" parent="." index="5" unique_id=1761888689 node_paths=PackedStringArray("cannon", "camera")]
+transform = Transform3D(1, -1.03181016e-07, 4.5101853e-15, 0, -4.371139e-08, -1, 1.03181016e-07, 1, -4.371139e-08, 0, 0.90488964, 0)
+script = ExtResource("2_es551")
+cannon = NodePath("..")
+camera = NodePath("../Camera3D")
+prompt_text = "Controll Cannon"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Controllable" index="0" unique_id=1231030396]
+shape = SubResource("BoxShape3D_hfnd5")

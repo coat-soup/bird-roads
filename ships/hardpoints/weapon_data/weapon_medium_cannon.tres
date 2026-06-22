@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ShipWeaponData" format=3 uid="uid://buxyydyq3k2lh"]
 
 [ext_resource type="Script" uid="uid://b2mi8tka0ae7o" path="res://ships/scripts/ship_weapon_data.gd" id="1_j4m8h"]
-[ext_resource type="PackedScene" uid="uid://cu56hygrcutnw" path="res://ships/hardpoints/weapons/cannon_basic_handheld.glb" id="1_urmus"]
+[ext_resource type="PackedScene" uid="uid://oakg2fjwqcpm" path="res://ships/hardpoints/weapons/cannon_basic_handheld.tscn" id="1_urmus"]
 
 [resource]
 script = ExtResource("1_j4m8h")
