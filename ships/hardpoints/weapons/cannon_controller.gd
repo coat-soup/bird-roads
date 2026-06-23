@@ -14,3 +14,5 @@ func _input(event: InputEvent) -> void:
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 		camera.rotation.z = 0
 		cannon.target_rotation = Vector3(-camera.rotation.x + PI/2 * 0, camera.rotation.y + PI, 0)
+	
+	if Input.is_action_just_pressed("fire_1"): cannon.fire()

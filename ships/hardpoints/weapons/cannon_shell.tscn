@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://fsrynxk0xgbc"]
+
+[ext_resource type="Script" uid="uid://doyckji4q6huc" path="res://ships/hardpoints/weapons/cannon_shell.gd" id="1_h5ith"]
+[ext_resource type="PackedScene" uid="uid://cwulpm0i82q41" path="res://ships/hardpoints/weapon_data/shell.glb" id="1_oxoxs"]
+
+[node name="CannonShell" type="Node3D" unique_id=1590272973]
+script = ExtResource("1_h5ith")
+
+[node name="shell" parent="." unique_id=1329470181 instance=ExtResource("1_oxoxs")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)

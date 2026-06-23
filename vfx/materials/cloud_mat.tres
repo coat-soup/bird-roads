@@ -21,3 +21,5 @@ render_priority = 0
 shader = ExtResource("1_ncse7")
 shader_parameter/noise = SubResource("NoiseTexture2D_0lb2m")
 shader_parameter/height_gradient = SubResource("GradientTexture1D_5i31h")
+shader_parameter/depth_fade_dist = 50.0
+shader_parameter/camera_fade_dist = 100.0

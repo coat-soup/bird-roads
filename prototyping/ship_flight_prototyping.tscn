@@ -557,4 +557,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6222777, 0.06482975, 34.75
 [node name="human_reference" parent="." unique_id=990238803 instance=ExtResource("8_36kbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.891804, -0.01128459, 31.401098)
 
+[node name="Label3D" type="Label3D" parent="human_reference" unique_id=2116117008]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9570087, 0)
+text = "Paquito"
+
 [editable path="Airship2"]
