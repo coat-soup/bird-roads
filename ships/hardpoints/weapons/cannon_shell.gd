@@ -15,6 +15,7 @@ var layer_mask := [1]
 var ignore_list : Array[RID] = [self]
 
 var velocity := Vector3.ZERO
+var parent_velocity := Vector3.ZERO
 
 var active = true
 
@@ -37,13 +38,12 @@ func _physics_process(delta: float) -> void:
 			global_position = result.position
 			handle_impact()
 	
-	global_position += velocity * delta
+	global_position += (velocity + parent_velocity) * delta
 	velocity.y -= drop_rate * delta
 	look_at(global_position - velocity)
 
 
 func handle_impact():
-	print("hit")
 	var particles : Node3D = preload("res://vfx/scenes/explosion_particles.tscn").instantiate()
 	get_tree().root.add_child(particles)
 	particles.global_position = global_position

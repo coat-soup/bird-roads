@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cu56hygrcutnw" path="res://ships/hardpoints/weapons/cannon_basic_handheld.glb" id="1_hfnd5"]
 [ext_resource type="Script" uid="uid://1u6bkn1c1smx" path="res://ships/hardpoints/weapons/cannon_controller.gd" id="2_es551"]
 [ext_resource type="Script" uid="uid://caatudlr0bdf6" path="res://ships/scripts/cannon.gd" id="2_ldnv6"]
+[ext_resource type="Script" uid="uid://btcfa5xfartvr" path="res://ships/hardpoints/weapons/cannon_ai_controller.gd" id="4_hqq00"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hfnd5"]
 size = Vector3(2, 2, 2)
@@ -35,3 +36,6 @@ prompt_text = "Controll Cannon"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Controllable" index="0" unique_id=1231030396]
 shape = SubResource("BoxShape3D_hfnd5")
+
+[node name="AIController" type="Node" parent="." index="6" unique_id=1230178264]
+script = ExtResource("4_hqq00")

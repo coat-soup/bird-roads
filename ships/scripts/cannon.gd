@@ -9,7 +9,7 @@ var time_to_fire : float = 0.0
 @export var pitch_obj : Node3D
 @export var muzzle_point : Node3D
 
-var target_rotation : Vector3
+var target_rotation : Vector2
 
 @export var pitch_min : float = -30
 @export var pitch_max : float = 40
@@ -17,7 +17,7 @@ var target_rotation : Vector3
 var airship : Airship
 
 func _ready() -> void:
-	target_rotation = Vector3(pitch_obj.rotation.x, yaw_obj.rotation.x, 0)
+	target_rotation = Vector2(pitch_obj.rotation.x, yaw_obj.rotation.x)
 	
 	var parent = get_parent_node_3d()
 	while parent != null and not airship:
@@ -26,9 +26,6 @@ func _ready() -> void:
 
 
 func fire():
-	if airship: print("ON AIRSHIP!!!!!")
-	else: print("NAIRSHIPPP")
-	
 	if time_to_fire > 0: return
 	
 	time_to_fire = 1.0/fire_rate
@@ -37,6 +34,7 @@ func fire():
 	get_tree().root.add_child(shell)
 	shell.global_position = muzzle_point.global_position
 	shell.global_rotation = muzzle_point.global_rotation
+	if airship: shell.parent_velocity = airship.movement.linear_velocity
 	shell._ready()
 
 

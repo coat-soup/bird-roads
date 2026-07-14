@@ -33,7 +33,7 @@ height = 46.572388
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0s8cv"]
 
-[node name="Airship" type="Node3D" unique_id=254215350]
+[node name="Airship" type="Node3D" unique_id=254215350 groups=["Airship"]]
 script = ExtResource("1_2omcc")
 actor_data = SubResource("Resource_0s8cv")
 
