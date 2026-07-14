@@ -12,5 +12,8 @@ enum HullPartType {STRUCTURE, SAIL, FIN, ENGINE, TAIL, LONGSAIL, GASBAG, OTHER}
 
 @export var tall_both_ways : bool = false
 
+## only applicable for engines and fins/sails
+@export var power : int = 0
+
 func _to_string() -> String:
 	return name

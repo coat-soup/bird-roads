@@ -9,7 +9,7 @@ enum Faction {FREE, PIRATE, PEOPLE, CROWN, RADICALS, CHURCH, MERCHANTS}
 
 @export var speed : float = 50
 @export var cargo_capacity : int = 5
-@export var combat_power : int = 2
+@export var combat_power : int = 4
 
 @export var ship_name : String
 
@@ -17,7 +17,7 @@ enum Faction {FREE, PIRATE, PEOPLE, CROWN, RADICALS, CHURCH, MERCHANTS}
 func _init(premade : bool = false) -> void:
 	if ship_name == "": ship_name = random_ship_name()
 	
-	speed += randf_range(-10,10)
+	speed += randi_range(-10,10)
 	cargo_capacity += randi_range(-3,3)
 	
 	const faction_weights : Dictionary[Faction, float] = {

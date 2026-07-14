@@ -8,4 +8,5 @@ script = ExtResource("2_5syvi")
 name = "Small Fin"
 prefab = ExtResource("1_ifq40")
 type = 2
+power = 3
 metadata/_custom_type_script = "uid://cyvgr5gwdviy1"

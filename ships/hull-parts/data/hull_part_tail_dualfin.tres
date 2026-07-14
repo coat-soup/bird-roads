@@ -9,4 +9,5 @@ name = "Dual Tailfin"
 prefab = ExtResource("1_7uhfg")
 type = 4
 size = 2
+power = 10
 metadata/_custom_type_script = "uid://cyvgr5gwdviy1"

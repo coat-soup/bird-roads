@@ -16,6 +16,9 @@ var resolved : bool = false
 var override_rand : RandomNumberGenerator = null
 var part : Node3D
 
+var type : int = -1
+
+
 func resolve(rand : RandomNumberGenerator, generator : ShipExteriorGenerator) -> void:
 	if rand.randf() > resolve_chance:
 		resolved = true
@@ -28,6 +31,14 @@ func resolve(rand : RandomNumberGenerator, generator : ShipExteriorGenerator) ->
 	for p in Resources.hull_parts:
 		if ((1 << p.type) & allowed_types) != 0 and ((1 << p.size) & size) != 0 and (allow_tall_both_ways or !p.tall_both_ways):
 			possibilities.append(p)
+	
+	if len(possibilities) == 0:
+		print("no hull part matching possibilites ", String.num_int64(allowed_types, 2).pad_zeros(8), " and sizes ", String.num_int64(size, 2).pad_zeros(5))
+		resolved = true
+		var box = CSGBox3D.new()
+		add_child(box)
+		box.name = String.num_int64(size, 2).pad_zeros(5)
+		return
 	
 	var choice_id = rand.randi() % len(possibilities)
 	part_data = possibilities[choice_id]
@@ -42,6 +53,8 @@ func resolve(rand : RandomNumberGenerator, generator : ShipExteriorGenerator) ->
 
 func symmetrise():
 	#await get_tree().create_timer(0.5).timeout
+	
+	if !part: return
 	
 	var slot2 = part.duplicate()
 	get_parent().add_child(slot2)

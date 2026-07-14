@@ -48,3 +48,18 @@ static func get_rotation_towards(self_pos: Vector3, target_pos: Vector3) -> Vect
 	
 	var basis = Basis(right, up, forward)
 	return basis.get_euler()
+
+
+static func bit_count(mask: int) -> int:
+	var count := 0
+	while mask != 0:
+		count += mask & 1
+		mask >>= 1
+	return count
+
+## given a bitmask, will return the index of the first bit set to 1 from the right (eg in 0b001101, will return 4)
+static func get_highest_set_bit_in_mask(mask: int) -> int:
+	for i in range(4, -1, -1):
+		if mask & (1 << i):
+			return i
+	return -1
