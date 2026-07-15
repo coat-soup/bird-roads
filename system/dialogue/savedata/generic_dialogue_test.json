@@ -1,0 +1,91 @@
+{
+	"@GraphNode@52": {
+		"connections": [
+			{
+				"from_node": "GenericDialogueChoiceNode",
+				"from_port": 0,
+				"keep_alive": false,
+				"to_node": "@GraphNode@52",
+				"to_port": 0
+			}
+		],
+		"node_name": "@GraphNode@52",
+		"node_pos": [
+			1572.0,
+			489.000061035156
+		],
+		"text": "*makes horse noise*",
+		"type": "generic_dialogue"
+	},
+	"@GraphNode@60": {
+		"connections": [
+			{
+				"from_node": "GenericDialogueChoiceNode",
+				"from_port": 1,
+				"keep_alive": false,
+				"to_node": "@GraphNode@60",
+				"to_port": 0
+			}
+		],
+		"node_name": "@GraphNode@60",
+		"node_pos": [
+			1572.0,
+			634.45458984375
+		],
+		"text": "Well that's a bit much...",
+		"type": "generic_dialogue"
+	},
+	"GenericDialogueChoiceNode": {
+		"connections": [
+			{
+				"from_node": "GenericDialogueNode",
+				"from_port": 0,
+				"keep_alive": false,
+				"to_node": "GenericDialogueChoiceNode",
+				"to_port": 0
+			},
+			{
+				"from_node": "GenericDialogueChoiceNode",
+				"from_port": 1,
+				"keep_alive": false,
+				"to_node": "@GraphNode@60",
+				"to_port": 0
+			},
+			{
+				"from_node": "GenericDialogueChoiceNode",
+				"from_port": 0,
+				"keep_alive": false,
+				"to_node": "@GraphNode@52",
+				"to_port": 0
+			}
+		],
+		"node_name": "GenericDialogueChoiceNode",
+		"node_pos": [
+			1008.36364746094,
+			525.363647460938
+		],
+		"option_texts": [
+			"Hey",
+			"I will eat your children"
+		],
+		"type": "dialogue_choice"
+	},
+	"GenericDialogueNode": {
+		"connections": [
+			{
+				"from_node": "GenericDialogueNode",
+				"from_port": 0,
+				"keep_alive": false,
+				"to_node": "GenericDialogueChoiceNode",
+				"to_port": 0
+			}
+		],
+		"node_name": "GenericDialogueNode",
+		"node_pos": [
+			553.818237304688,
+			525.363647460938
+		],
+		"text": "Hi there!",
+		"type": "generic_dialogue"
+	}
+}

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cdc3h7rup5cyr"]
+
+[ext_resource type="Script" uid="uid://ru7iagre1uf8" path="res://system/dialogue/editor/dialogue_node.gd" id="1_nst0v"]
+
+[node name="GenericDialogueNode" type="GraphNode" unique_id=125538808]
+resizable = true
+title = "Speech"
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+slot/1/left_enabled = false
+slot/1/left_type = 0
+slot/1/left_color = Color(1, 1, 1, 1)
+slot/1/left_icon = null
+slot/1/right_enabled = false
+slot/1/right_type = 0
+slot/1/right_color = Color(1, 1, 1, 1)
+slot/1/right_icon = null
+slot/1/draw_stylebox = true
+script = ExtResource("1_nst0v")
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=1834638951]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Write your dialogue here!"
+wrap_mode = 1
+
+[node name="Label" type="Label" parent="." unique_id=1339123820]
+layout_mode = 2

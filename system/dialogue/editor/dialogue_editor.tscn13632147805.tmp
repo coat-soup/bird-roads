@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://ckj8kne2k3mib"]
+
+[ext_resource type="Script" uid="uid://caipyyndc66u6" path="res://system/dialogue_editor.gd" id="1_tsuc7"]
+[ext_resource type="Script" uid="uid://d3d8pxknapy3n" path="res://system/dialogue/editor/dialogue_save_load_popup.gd" id="2_v10pw"]
+
+[node name="DialogueEditor" type="Control" unique_id=800914625]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tsuc7")
+
+[node name="GraphEdit" type="GraphEdit" parent="." unique_id=933747139]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.99500006
+anchor_bottom = 0.99200004
+offset_top = 48.0
+offset_right = 12.799805
+offset_bottom = 9.519897
+right_disconnects = true
+
+[node name="TopBar" type="ColorRect" parent="." unique_id=218412017]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.046000004
+offset_bottom = -16.240005
+color = Color(0.14767182, 0.14767179, 0.14767179, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar" unique_id=1810646618]
+clip_contents = true
+custom_minimum_size = Vector2(2530, 0)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 4.0
+offset_right = 95.0
+offset_bottom = 44.0
+alignment = 2
+
+[node name="AddChoiceButton" type="Button" parent="TopBar/HBoxContainer" unique_id=576718447]
+layout_mode = 2
+text = "Add Choice +"
+
+[node name="AddNodeButton" type="Button" parent="TopBar/HBoxContainer" unique_id=745622042]
+layout_mode = 2
+text = "Add Node +"
+
+[node name="Control" type="Control" parent="TopBar/HBoxContainer" unique_id=2007406333]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="SaveButton" type="Button" parent="TopBar/HBoxContainer" unique_id=442785975]
+layout_mode = 2
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="TopBar/HBoxContainer" unique_id=2080877125]
+layout_mode = 2
+text = "Load"
+
+[node name="SaveLoadPopup" type="Control" parent="." unique_id=585488197]
+anchors_preset = 0
+offset_left = 1040.0
+offset_top = 616.0
+offset_right = 1540.0
+offset_bottom = 776.0
+script = ExtResource("2_v10pw")
+
+[node name="ColorRect" type="ColorRect" parent="SaveLoadPopup" unique_id=250453251]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 160.0
+color = Color(0.50140655, 0.5014065, 0.5014065, 1)
+
+[node name="Label" type="Label" parent="SaveLoadPopup" unique_id=1057603040]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 9.0
+offset_right = 367.0
+offset_bottom = 51.0
+theme_override_font_sizes/font_size = 30
+text = "SAVE DIALOGUE"
+
+[node name="TextEdit" type="TextEdit" parent="SaveLoadPopup" unique_id=591966026]
+custom_minimum_size = Vector2(450, 40)
+layout_mode = 0
+offset_left = 24.0
+offset_top = 60.0
+offset_right = 474.0
+offset_bottom = 100.0
+placeholder_text = "Dialogue name..."
+
+[node name="ActionButton" type="Button" parent="SaveLoadPopup" unique_id=1637773558]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 114.0
+offset_right = 183.0
+offset_bottom = 145.0
+text = "SAVE"
+
+[node name="CancelButton" type="Button" parent="SaveLoadPopup" unique_id=865080997]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 114.0
+offset_right = 371.0
+offset_bottom = 145.0
+text = "CANCEL"
