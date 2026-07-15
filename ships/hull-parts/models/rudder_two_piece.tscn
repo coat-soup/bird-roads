@@ -1,5 +1,21 @@
 [gd_scene format=3 uid="uid://ba612hmi7j3q7"]
 
 [ext_resource type="PackedScene" uid="uid://dh72ykrpb4wlx" path="res://ships/hull-parts/models/rudder_two_piece.glb" id="1_w0ija"]
+[ext_resource type="Script" uid="uid://dye501xwaopfx" path="res://ships/scripts/ship_component.gd" id="2_iqjsx"]
+[ext_resource type="Script" uid="uid://dnsudx5smiiah" path="res://ships/scripts/control_surface_animator.gd" id="3_a5mj8"]
 
-[node name="rudder_two_piece" unique_id=785668594 instance=ExtResource("1_w0ija")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_a5mj8"]
+size = Vector3(0.475, 5.435, 4.798)
+
+[node name="rudder_two_piece" unique_id=481432776 instance=ExtResource("1_w0ija")]
+script = ExtResource("2_iqjsx")
+
+[node name="Rotator" parent="." index="5" unique_id=1173085005 node_paths=PackedStringArray("ship_component")]
+script = ExtResource("3_a5mj8")
+ship_component = NodePath("..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="6" unique_id=899969375]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=67546879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2175293, -0.26416016)
+shape = SubResource("BoxShape3D_a5mj8")

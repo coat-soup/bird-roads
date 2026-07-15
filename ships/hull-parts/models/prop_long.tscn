@@ -1,5 +1,134 @@
 [gd_scene format=3 uid="uid://pjyfwgk0gcmw"]
 
 [ext_resource type="PackedScene" uid="uid://ctvm4kx1iygsm" path="res://ships/hull-parts/models/prop_long.glb" id="1_hnwhx"]
+[ext_resource type="Script" uid="uid://dye501xwaopfx" path="res://ships/scripts/ship_component.gd" id="2_ytwon"]
+[ext_resource type="Script" uid="uid://dlmbfqp8jdh20" path="res://ships/scripts/ship_engine_animator.gd" id="3_fdotn"]
+
+[sub_resource type="Animation" id="Animation_hnwhx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube_002:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cube_003:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ytwon"]
+resource_name = "prop_spin"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cube_001:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(-6.2831855, 1.5707964, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cube_002:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(6.2831855, 1.5707964, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cube_003:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 1.5707964, 0), Vector3(-6.2831855, 1.5707964, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fdotn"]
+_data = {
+&"RESET": SubResource("Animation_hnwhx"),
+&"prop_spin": SubResource("Animation_ytwon")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fdotn"]
+size = Vector3(1.87, 1.849, 8.038)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fdotn"]
+height = 2.85083
+radius = 1.5610352
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8of30"]
+height = 1.7642822
+radius = 3.3544922
 
 [node name="prop_long" unique_id=1935447706 instance=ExtResource("1_hnwhx")]
+script = ExtResource("2_ytwon")
+
+[node name="Cube_001" parent="." index="1" unique_id=1142011936]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -8.001042)
+
+[node name="Cube_002" parent="." index="2" unique_id=2065597766]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -9.925766)
+
+[node name="Cube_003" parent="." index="3" unique_id=2120701308]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -11.161971)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7" unique_id=1573796691 node_paths=PackedStringArray("ship_component")]
+libraries/ = SubResource("AnimationLibrary_fdotn")
+autoplay = &"prop_spin"
+speed_scale = 2.0
+script = ExtResource("3_fdotn")
+ship_component = NodePath("..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="8" unique_id=746633934]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1725341262]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4243164, -3.5187988)
+shape = SubResource("BoxShape3D_fdotn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1564123702]
+transform = Transform3D(1, 0, 0, 0, 0, 0.99999994, 0, -0.99999994, 0, 0, 0, -10.724053)
+shape = SubResource("CylinderShape3D_fdotn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2" unique_id=1547342203]
+transform = Transform3D(1, 0, 0, 0, 0, 0.99999994, 0, -0.99999994, 0, 0, 0, -8.416356)
+shape = SubResource("CylinderShape3D_8of30")

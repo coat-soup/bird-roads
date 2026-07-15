@@ -14,6 +14,8 @@ enum HullPartType {STRUCTURE, SAIL, FIN, ENGINE, TAIL, LONGSAIL, GASBAG, OTHER}
 
 ## only applicable for engines and fins/sails
 @export var power : int = 0
+## -1 if undamageable
+@export var durability : int = -1
 
 func _to_string() -> String:
 	return name

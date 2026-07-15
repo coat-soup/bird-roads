@@ -44,14 +44,16 @@ func resolve(rand : RandomNumberGenerator, generator : ShipExteriorGenerator) ->
 	part_data = possibilities[choice_id]
 	part = part_data.prefab.instantiate()
 	add_child(part)
-	#part.rotation.y = PI
+	
+	var component = part as ShipComponent
+	if component: component.setup(part_data, generator.airship)
 	
 	resolved = true
 	
 	#print(name, " possibilities: ", possibilities, "[", choice_id, "] -> ", part_data.name)
 
 
-func symmetrise():
+func symmetrise(generator : ShipExteriorGenerator):
 	#await get_tree().create_timer(0.5).timeout
 	
 	if !part: return
@@ -68,6 +70,9 @@ func symmetrise():
 	slot2.reparent(self)
 	
 	recursive_flip_normals(slot2)
+	
+	var component = slot2 as ShipComponent
+	if component: component.setup(part_data, generator.airship)
 
 func recursive_flip_normals(node : Node):
 	for child in node.get_children():

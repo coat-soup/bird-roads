@@ -10,6 +10,8 @@ var airship : Airship
 @export var hull_mesh : Node3D
 @export var color_palette : ShipColorPalette
 
+@export var name_label : Label3D
+
 var seed : int
 var rand : RandomNumberGenerator
 
@@ -38,6 +40,8 @@ func _ready() -> void:
 	
 	
 	print("generating exterior of ship with speed: ", airship.actor_data.speed, ",  cargo: ", airship.actor_data.cargo_capacity, ", power: ", airship.actor_data.combat_power)
+	
+	name_label.text = airship.actor_data.ship_name
 	
 	speed_req = airship.actor_data.speed
 	power_req = airship.actor_data.combat_power
@@ -91,16 +95,13 @@ func recursive_resolve_slots(node : Node, material : ShaderMaterial, part_type :
 			elif selected_type == 1: hull_slot.allowed_types &= 0b00010110
 		
 		hull_slot.resolve(rand, self)
+		if hull_slot.part_data: part_type = hull_slot.part_data.type
 		if hull_slot.part_data:
 			if hull_slot.part_data.type == HullPartData.HullPartType.ENGINE: speed_req -= hull_slot.part_data.power
 			elif (hull_slot.part_data.type == HullPartData.HullPartType.TAIL
 				or hull_slot.part_data.type == HullPartData.HullPartType.FIN
 				or hull_slot.part_data.type == HullPartData.HullPartType.SAIL): maneouvrability_req -= hull_slot.part_data.power
-		#if (structurised and !do_non_structure) or do_non_structure:
-		#	hull_slot.resolve(rand, self)
-		#	if hull_slot.part_data: part_type = hull_slot.part_data.type
-		#else:
-		#	queued_component_slots.append(hull_slot)
+
 	
 	var mesh = node as MeshInstance3D
 	if mesh:
@@ -110,7 +111,7 @@ func recursive_resolve_slots(node : Node, material : ShaderMaterial, part_type :
 	for child in node.get_children(): recursive_resolve_slots(child, material, part_type, do_non_structure)
 	
 	if hull_slot and hull_slot.symmetrical:
-		hull_slot.symmetrise()
+		hull_slot.symmetrise(self)
 
 
 func order_hull_slots(a : HullPartSlot, b : HullPartSlot) -> bool:
