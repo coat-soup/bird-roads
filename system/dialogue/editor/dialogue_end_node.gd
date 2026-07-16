@@ -1,15 +1,14 @@
-class_name GenericDialogueNode
+class_name DialogueEndNode
 extends DialogueEditorNode
 
 
 func get_json_dict(connections_list : Array[Dictionary]) -> Dictionary:
 	return {
-		"type" : "generic_dialogue",
+		"type" : "end",
 		"node_name" : name,
 		"connections" : prune_connections(connections_list),
-		"node_pos" : [position.x, position.y],
-		"text" : $TextEdit.text
+		"node_pos" : [position.x, position.y]
 	}
 
 func setup_from_json_dict(data : Dictionary):
-	$TextEdit.text = data["text"]
+	pass

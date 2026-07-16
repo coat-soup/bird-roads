@@ -3,6 +3,9 @@ extends Control
 
 const GENERIC_DIALOGUE_NODE = preload("uid://cdc3h7rup5cyr")
 const GENERIC_DIALOGUE_CHOICE_NODE = preload("uid://bvbyksccwwjgl")
+const DIALOGUE_START_NODE = preload("uid://bx1a82okis5do")
+const DIALOGUE_END_NODE = preload("uid://b2rthdsdvqsie")
+
 
 @onready var graph: GraphEdit = $GraphEdit
 
@@ -19,20 +22,24 @@ var loaded_dialogue : String = ""
 func _ready() -> void:
 	save_button.pressed.connect(on_save_dialogue_pressed)
 	load_button.pressed.connect(on_load_dialogue_pressed)
-	add_node_button.pressed.connect(add_dialogue_node.bind(Vector2(500,500)))
-	add_choice_button.pressed.connect(add_choice_node.bind(Vector2(500,500)))
+	add_node_button.pressed.connect(add_node.bind(GENERIC_DIALOGUE_NODE, Vector2(500,500)))
+	add_choice_button.pressed.connect(add_node.bind(GENERIC_DIALOGUE_CHOICE_NODE, Vector2(500,500)))
 	graph.connection_request.connect(on_connection_request)
 	graph.disconnection_request.connect(on_disconnection_request)
 	
 	saveload_popup.close()
+	
+	add_node(DIALOGUE_START_NODE, Vector2(300, 600))
+	add_node(DIALOGUE_END_NODE, Vector2(1700, 600))
 
 
 func _input(event: InputEvent) -> void:
 	if saveload_popup.visible: return
 	
 	if Input.is_action_just_pressed("fire_1"):
-		if Input.is_key_pressed(KEY_D): add_dialogue_node(get_viewport().get_mouse_position() - Vector2(100,100))
-		if Input.is_key_pressed(KEY_C): add_choice_node(get_viewport().get_mouse_position() - Vector2(100,100))
+		var pos = (graph.get_local_mouse_position() + graph.scroll_offset) / graph.zoom
+		if Input.is_key_pressed(KEY_D): add_node(GENERIC_DIALOGUE_NODE, pos - Vector2(100,100))
+		if Input.is_key_pressed(KEY_C): add_node(GENERIC_DIALOGUE_CHOICE_NODE, get_viewport().get_mouse_position() - Vector2(100,100))
 
 
 func on_connection_request(from_node: StringName, from_port: int, to_node: StringName, to_port: int):
@@ -44,17 +51,10 @@ func on_disconnection_request(from_node: StringName, from_port: int, to_node: St
 	graph.disconnect_node(from_node, from_port, to_node, to_port)
 
 
-func add_dialogue_node(pos : Vector2) -> GenericDialogueNode:
-	var node : GenericDialogueNode = GENERIC_DIALOGUE_NODE.instantiate() as GenericDialogueNode
+func add_node(node_scene : PackedScene, pos : Vector2) -> DialogueEditorNode:
+	var node : DialogueEditorNode = node_scene.instantiate() as DialogueEditorNode
 	node.position_offset = pos
-	node.editor = self
-	graph.add_child(node)
-	return node
-
-
-func add_choice_node(pos : Vector2) -> DialogueChoiceNode:
-	var node : DialogueChoiceNode = GENERIC_DIALOGUE_CHOICE_NODE.instantiate() as DialogueChoiceNode
-	node.position_offset = pos
+	#node.set_position(pos)
 	node.editor = self
 	graph.add_child(node)
 	return node
@@ -114,7 +114,7 @@ func load_dialogue(dialogue_name : String):
 	var file = FileAccess.open(filepath, FileAccess.ModeFlags.READ)
 	
 	if not file:
-		print("File not found.")
+		print("Dialogue file", dialogue_name, " not found.")
 		return
 	
 	var json_text = file.get_as_text()
@@ -127,12 +127,17 @@ func load_dialogue(dialogue_name : String):
 		var node_data : Dictionary = json.data[node_name]
 		var node : DialogueEditorNode = null
 		var pos : Vector2 = Vector2(node_data["node_pos"][0], node_data["node_pos"][1])
-		if node_data["type"] == "generic_dialogue": node = add_dialogue_node(pos)
-		elif node_data["type"] == "dialogue_choice": node = add_choice_node(pos)
+		if node_data["type"] == "generic_dialogue": node = add_node(GENERIC_DIALOGUE_NODE, pos)
+		elif node_data["type"] == "dialogue_choice": node = add_node(GENERIC_DIALOGUE_CHOICE_NODE, pos)
+		elif node_data["type"] == "start": node = add_node(DIALOGUE_START_NODE, pos)
+		elif node_data["type"] == "end": node = add_node(DIALOGUE_END_NODE, pos)
+		else:
+			push_error("Invalid dialogue node type '", node_data["type"], "'")
 		
 		for c in node_data["connections"]: connection_list.append(c)
 		
-		node.title_edit.text = rename_node(node, node_name)
+		var t = rename_node(node, node_name)
+		if node.node_renameable: node.title_edit.text = t
 		node.setup_from_json_dict(node_data)
 	
 	for c in connection_list:

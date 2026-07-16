@@ -8,8 +8,6 @@
 [ext_resource type="Material" uid="uid://c808jmbnontqo" path="res://vfx/materials/cloud_mat.tres" id="6_36kbg"]
 [ext_resource type="PackedScene" uid="uid://oakg2fjwqcpm" path="res://ships/hardpoints/weapons/cannon_basic_handheld.tscn" id="7_0lb2m"]
 [ext_resource type="PackedScene" uid="uid://ch5ws2dsk0uvl" path="res://prototyping/human_reference.glb" id="8_36kbg"]
-[ext_resource type="Script" uid="uid://cunym4tqnigl6" path="res://system/interactable.gd" id="9_teuy2"]
-[ext_resource type="Script" uid="uid://buhkjagifl6q4" path="res://system/dialogue/dialogue_trigger.gd" id="10_fmess"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hhrd0"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -77,8 +75,6 @@ radius = 200.0
 height = 300.0
 radial_segments = 32
 rings = 16
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fmess"]
 
 [node name="Node3D" type="Node3D" unique_id=434323374]
 
@@ -576,7 +572,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6222777, 0.06482975, 34.75
 transform = Transform3D(0.5589614, 0, 0.8291937, 0, 1, 0, -0.8291937, 0, 0.5589614, -47.95346, 0.065, 42)
 
 [node name="Camera3D" parent="cannon_basic_handheld2" index="4" unique_id=160089326]
-transform = Transform3D(-1.0000001, -3.7252583e-09, -8.940697e-08, -3.7252619e-09, 1, 2.9802393e-08, 8.940697e-08, 2.9802393e-08, -1.0000001, 0, 1.7742426, -1.7037029)
+transform = Transform3D(-1.0000001, -3.7252645e-09, -8.940697e-08, -3.7252668e-09, 1, 2.9802383e-08, 8.940697e-08, 2.9802383e-08, -1.0000001, 0, 1.7742426, -1.7037029)
 
 [node name="AIController" parent="cannon_basic_handheld2" index="6" unique_id=1230178264 node_paths=PackedStringArray("target")]
 target = NodePath("../../Airship2/Movement")
@@ -587,20 +583,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.891804, -0.01128459, 31.4
 [node name="Label3D" type="Label3D" parent="human_reference" unique_id=2116117008]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9570087, 0)
 text = "Paquito"
-
-[node name="Hitbox" type="StaticBody3D" parent="human_reference" unique_id=249693191]
-script = ExtResource("9_teuy2")
-prompt_text = "Speak"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="human_reference/Hitbox" unique_id=412332875]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86015666, 0)
-shape = SubResource("CapsuleShape3D_fmess")
-
-[node name="DialogueTrigger" type="Node" parent="human_reference" unique_id=1991523374 node_paths=PackedStringArray("interactable_trigger")]
-script = ExtResource("10_fmess")
-dialogue_name = "paquito"
-interactable_trigger = NodePath("../Hitbox")
-metadata/_custom_type_script = "uid://buhkjagifl6q4"
 
 [editable path="Airship2"]
 [editable path="Airship3"]

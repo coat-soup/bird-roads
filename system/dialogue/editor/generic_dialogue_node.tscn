@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cdc3h7rup5cyr"]
 
-[ext_resource type="Script" uid="uid://ru7iagre1uf8" path="res://system/dialogue/editor/dialogue_node.gd" id="1_nst0v"]
+[ext_resource type="Script" uid="uid://ru7iagre1uf8" path="res://system/dialogue/editor/generic_dialogue_node.gd" id="1_nst0v"]
 
 [node name="GenericDialogueNode" type="GraphNode" unique_id=125538808]
 resizable = true
@@ -32,5 +32,9 @@ size_flags_vertical = 3
 placeholder_text = "Write your dialogue here!"
 wrap_mode = 1
 
-[node name="Label" type="Label" parent="." unique_id=1339123820]
+[node name="ClearOldTextButton" type="CheckBox" parent="." unique_id=1862360061]
 layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_font_sizes/font_size = 10
+button_pressed = true
+text = "Clear old text"

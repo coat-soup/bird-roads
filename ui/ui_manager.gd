@@ -5,6 +5,8 @@ class_name UIManager
 @onready var hud: Control = $HUD
 @onready var options_panel: OptionsMenuManager = $OptionsPanel
 
+@onready var dialogue: DialogueUIManager = $DialoguePanel
+
 @onready var interact_text: Label = $HUD/InteractText
 
 @onready var health_bar: ProgressBar = $HUD/HealthBar

@@ -1,0 +1,205 @@
+{
+	"DialogueEndNode": {
+		"connections": [],
+		"node_name": "DialogueEndNode",
+		"node_pos": [
+			2006.82836914063,
+			894.942810058594
+		],
+		"type": "end"
+	},
+	"DialogueStartNode": {
+		"connections": [
+			{
+				"from_node": "DialogueStartNode",
+				"from_port": 0,
+				"to_node": "Intro",
+				"to_port": 0
+			}
+		],
+		"node_name": "DialogueStartNode",
+		"node_pos": [
+			531.179077148438,
+			486.148101806641
+		],
+		"type": "start"
+	},
+	"Face Response": {
+		"connections": [
+			{
+				"from_node": "Face Response",
+				"from_port": 0,
+				"to_node": "Speech",
+				"to_port": 0
+			}
+		],
+		"node_name": "Face Response",
+		"node_pos": [
+			1308.88610839844,
+			805.207397460938
+		],
+		"text": "Why thank you.",
+		"type": "generic_dialogue"
+	},
+	"Game Description": {
+		"connections": [
+			{
+				"from_node": "Game Description",
+				"from_port": 0,
+				"to_node": "Speech",
+				"to_port": 0
+			}
+		],
+		"node_name": "Game Description",
+		"node_pos": [
+			1278.97436523438,
+			396.412689208984
+		],
+		"text": "This is the Bird Roads. It's an open-world narrative adventure. You get your own airship and crew and can sail all over the place, making discoveries, fighting enemies, and influencing the world through different factions. Enjoy!",
+		"type": "generic_dialogue"
+	},
+	"Intro": {
+		"connections": [
+			{
+				"from_node": "Intro",
+				"from_port": 0,
+				"to_node": "Questions",
+				"to_port": 0
+			}
+		],
+		"node_name": "Intro",
+		"node_pos": [
+			710.64990234375,
+			476.177520751953
+		],
+		"text": "Hi my name's paquito!",
+		"type": "generic_dialogue"
+	},
+	"Questions": {
+		"connections": [
+			{
+				"from_node": "Questions",
+				"from_port": 0,
+				"to_node": "Game Description",
+				"to_port": 0
+			},
+			{
+				"from_node": "Questions",
+				"from_port": 1,
+				"to_node": "Selfinfo",
+				"to_port": 0
+			},
+			{
+				"from_node": "Questions",
+				"from_port": 4,
+				"to_node": "DialogueEndNode",
+				"to_port": 0
+			},
+			{
+				"from_node": "Questions",
+				"from_port": 2,
+				"to_node": "Speech3",
+				"to_port": 0
+			},
+			{
+				"from_node": "Questions",
+				"from_port": 3,
+				"to_node": "Face Response",
+				"to_port": 0
+			}
+		],
+		"node_name": "Questions",
+		"node_pos": [
+			1019.73858642578,
+			486.148101806641
+		],
+		"option_texts": [
+			"What is this game?",
+			"Who are you?",
+			"Option 3",
+			"You have a nice face Paquito.",
+			"Nevermind, I have to go."
+		],
+		"type": "dialogue_choice"
+	},
+	"Reask": {
+		"connections": [
+			{
+				"from_node": "Reask",
+				"from_port": 1,
+				"to_node": "DialogueEndNode",
+				"to_port": 0
+			},
+			{
+				"from_node": "Reask",
+				"from_port": 0,
+				"to_node": "Questions",
+				"to_port": 0
+			}
+		],
+		"node_name": "Reask",
+		"node_pos": [
+			1757.56323242188,
+			685.560180664063
+		],
+		"option_texts": [
+			"Yes!",
+			"No, that's all thanks."
+		],
+		"type": "dialogue_choice"
+	},
+	"Selfinfo": {
+		"connections": [
+			{
+				"from_node": "Selfinfo",
+				"from_port": 0,
+				"to_node": "Speech",
+				"to_port": 0
+			}
+		],
+		"node_name": "Selfinfo",
+		"node_pos": [
+			1298.91552734375,
+			545.971740722656
+		],
+		"text": "I'm paquito. Currently a placeholder NPC to test dialogue. I'm not real.",
+		"type": "generic_dialogue"
+	},
+	"Speech": {
+		"connections": [
+			{
+				"from_node": "Speech",
+				"from_port": 0,
+				"to_node": "Reask",
+				"to_port": 0
+			}
+		],
+		"node_name": "Speech",
+		"node_pos": [
+			1568.12182617188,
+			685.560180664063
+		],
+		"text": "Any more questions?",
+		"type": "generic_dialogue"
+	},
+	"Speech3": {
+		"connections": [],
+		"node_name": "Speech3",
+		"node_pos": [
+			1308.88610839844,
+			685.560180664063
+		],
+		"text": "Response 3!",
+		"type": "generic_dialogue"
+	},
+	"Speech5": {
+		"connections": [],
+		"node_name": "Speech5",
+		"node_pos": [
+			1269.00366210938,
+			1024.56066894531
+		],
+		"text": "",
+		"type": "generic_dialogue"
+	}
+}

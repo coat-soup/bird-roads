@@ -13,7 +13,7 @@ func _ready() -> void:
 func add_choice():
 	var new_choice = $Choice.duplicate()
 	add_child(new_choice)
-	var index = get_child_count() - 2
+	var index = get_child_count() - 3
 	move_child(new_choice, index)
 	(new_choice.get_child(0) as TextEdit).text = ""
 	(new_choice.get_child(0) as TextEdit).placeholder_text = "Dialogue Option " + str(index+1)
@@ -35,8 +35,9 @@ func get_json_dict(connections_list : Array[Dictionary]) -> Dictionary:
 		"type" : "dialogue_choice",
 		"node_name" : name,
 		"connections" : prune_connections(connections_list),
-		"node_pos" : [position.x, position.y],
-		"option_texts" : option_texts
+		"node_pos" : [position_offset.x, position_offset.y],
+		"option_texts" : option_texts,
+		"clear_text" : $ClearOldTextButton.button_pressed
 	}
 
 
@@ -46,3 +47,5 @@ func setup_from_json_dict(data : Dictionary):
 		var choice = get_child(i)
 		var text_edit = choice.get_child(0) as TextEdit if choice.get_child_count() > 0 else null
 		if choice as HBoxContainer and text_edit: text_edit.text = data["option_texts"][i]
+	
+	if data.has("clear_text"): $ClearOldTextButton.button_pressed = data["clear_text"]

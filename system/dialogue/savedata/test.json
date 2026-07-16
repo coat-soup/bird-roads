@@ -3,8 +3,8 @@
 		"connections": [],
 		"node_name": "And two",
 		"node_pos": [
-			1821.64465332031,
-			789.348571777344
+			1461.1259765625,
+			807.083801269531
 		],
 		"text": "",
 		"type": "generic_dialogue"
@@ -13,21 +13,21 @@
 		"connections": [
 			{
 				"from_node": "Choic2e",
-				"from_port": 0.0,
+				"from_port": 0,
 				"to_node": "One",
-				"to_port": 0.0
+				"to_port": 0
 			},
 			{
 				"from_node": "Choic2e",
-				"from_port": 1.0,
+				"from_port": 1,
 				"to_node": "And two",
-				"to_port": 0.0
+				"to_port": 0
 			}
 		],
 		"node_name": "Choic2e",
 		"node_pos": [
-			1391.89270019531,
-			723.23291015625
+			1380.0,
+			580.0
 		],
 		"option_texts": [
 			"EFE",
@@ -39,15 +39,15 @@
 		"connections": [
 			{
 				"from_node": "Expo",
-				"from_port": 0.0,
+				"from_port": 0,
 				"to_node": "Choic2e",
-				"to_port": 0.0
+				"to_port": 0
 			}
 		],
 		"node_name": "Expo",
 		"node_pos": [
-			995.198486328125,
-			640.588256835938
+			735.187866210938,
+			566.252075195313
 		],
 		"text": "WFWA",
 		"type": "generic_dialogue"
@@ -56,15 +56,15 @@
 		"connections": [
 			{
 				"from_node": "Intro",
-				"from_port": 0.0,
+				"from_port": 0,
 				"to_node": "Expo",
-				"to_port": 0.0
+				"to_port": 0
 			}
 		],
 		"node_name": "Intro",
 		"node_pos": [
-			532.388549804688,
-			706.703979492188
+			332.17822265625,
+			519.71533203125
 		],
 		"text": "AFA",
 		"type": "generic_dialogue"
@@ -73,8 +73,18 @@
 		"connections": [],
 		"node_name": "One",
 		"node_pos": [
-			1838.17358398438,
-			624.059326171875
+			1255.86267089844,
+			468.399536132813
+		],
+		"text": "",
+		"type": "generic_dialogue"
+	},
+	"Speech": {
+		"connections": [],
+		"node_name": "Speech",
+		"node_pos": [
+			742.704650878906,
+			735.24169921875
 		],
 		"text": "",
 		"type": "generic_dialogue"

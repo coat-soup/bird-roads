@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cdowqp6lhrrnu" path="res://ui/ui_manager.gd" id="1_nb4k0"]
 [ext_resource type="Script" uid="uid://cvuyhpcgogj7u" path="res://ui/options_menu_manager.gd" id="2_ks8t7"]
 [ext_resource type="Script" uid="uid://btf4aohl8oc3c" path="res://ui/settings_panel_manager.gd" id="3_wl5ax"]
+[ext_resource type="Script" uid="uid://dgcpb1432tg8y" path="res://ui/dialogue_ui_manager.gd" id="4_vkava"]
 
 [sub_resource type="Animation" id="Animation_68x3x"]
 length = 0.001
@@ -491,3 +492,102 @@ mouse_filter = 2
 [node name="Line2D" type="Line2D" parent="AirshipHUD/VirtualJoystick" unique_id=1413439724]
 points = PackedVector2Array(0, 0, 22.75, 0)
 width = 3.0
+
+[node name="DialoguePanel" type="Control" parent="." unique_id=1833718544]
+layout_mode = 1
+anchor_left = 0.32500002
+anchor_top = 0.726
+anchor_right = 0.675
+anchor_bottom = 0.934
+offset_left = -0.7999878
+offset_top = -0.44006348
+offset_right = 0.79992676
+offset_bottom = 0.6801758
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_vkava")
+
+[node name="Background" type="ColorRect" parent="DialoguePanel" unique_id=1109187546]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.3665946, 0.3665946, 0.36659458, 1)
+
+[node name="NameBar" type="ColorRect" parent="DialoguePanel" unique_id=21610984]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.16600001
+offset_bottom = -49.906265
+grow_horizontal = 2
+color = Color(0.5689727, 0.56897277, 0.5689727, 1)
+
+[node name="NameLabel" type="Label" parent="DialoguePanel/NameBar" unique_id=1986268183]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -11.5
+offset_right = 75.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Character Name"
+horizontal_alignment = 1
+
+[node name="TextContainer" type="VBoxContainer" parent="DialoguePanel" unique_id=1951486817]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.799927
+offset_top = 75.0
+offset_right = -40.799927
+offset_bottom = -24.640137
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialoguePanel/TextContainer" unique_id=1348326751]
+layout_mode = 2
+text = "CharacterDialogue!"
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="DialoguePanel/TextContainer" unique_id=19492543]
+layout_mode = 2
+theme_override_constants/table_h_separation = 5
+text = "2. Option two!"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="DialoguePanel/TextContainer" unique_id=381834821]
+layout_mode = 2
+text = "1. Option one!"
+fit_content = true
+
+[node name="ContinueText" type="RichTextLabel" parent="DialoguePanel" unique_id=77180936]
+modulate = Color(0, 1, 1, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -98.39996
+offset_top = -59.640137
+offset_right = 98.39996
+offset_bottom = -19.640137
+grow_horizontal = 2
+grow_vertical = 0
+bbcode_enabled = true
+text = "> Continue"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1

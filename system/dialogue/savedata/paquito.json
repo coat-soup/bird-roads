@@ -1,0 +1,215 @@
+{
+	"DialogueEndNode2": {
+		"connections": [],
+		"node_name": "DialogueEndNode2",
+		"node_pos": [
+			2331.04296875,
+			668.789367675781
+		],
+		"type": "end"
+	},
+	"DialogueStartNode2": {
+		"connections": [
+			{
+				"from_node": "DialogueStartNode2",
+				"from_port": 0.0,
+				"to_node": "Intro",
+				"to_port": 0.0
+			}
+		],
+		"node_name": "DialogueStartNode2",
+		"node_pos": [
+			190.333740234375,
+			510.218322753906
+		],
+		"type": "start"
+	},
+	"Face Response": {
+		"clear_text": true,
+		"connections": [
+			{
+				"from_node": "Face Response",
+				"from_port": 0.0,
+				"to_node": "Speech",
+				"to_port": 0.0
+			}
+		],
+		"node_name": "Face Response",
+		"node_pos": [
+			1392.83081054688,
+			774.50341796875
+		],
+		"text": "Why thank you.",
+		"type": "generic_dialogue"
+	},
+	"Game Description": {
+		"clear_text": true,
+		"connections": [
+			{
+				"from_node": "Game Description",
+				"from_port": 0.0,
+				"to_node": "Speech",
+				"to_port": 0.0
+			}
+		],
+		"node_name": "Game Description",
+		"node_pos": [
+			1379.61657714844,
+			351.647277832031
+		],
+		"text": "This is the Bird Roads. It's an open-world narrative adventure. You get your own airship and crew and can sail all over the place, making discoveries, fighting enemies, and influencing the world through different factions. Enjoy!",
+		"type": "generic_dialogue"
+	},
+	"Intro": {
+		"clear_text": true,
+		"connections": [
+			{
+				"from_node": "Intro",
+				"from_port": 0.0,
+				"to_node": "Questions",
+				"to_port": 0.0
+			}
+		],
+		"node_name": "Intro",
+		"node_pos": [
+			388.547546386719,
+			483.789825439453
+		],
+		"text": "Hi my name's paquito!",
+		"type": "generic_dialogue"
+	},
+	"Questions": {
+		"clear_text": true,
+		"connections": [
+			{
+				"from_node": "Questions",
+				"from_port": 0.0,
+				"to_node": "Game Description",
+				"to_port": 0.0
+			},
+			{
+				"from_node": "Questions",
+				"from_port": 1.0,
+				"to_node": "Selfinfo",
+				"to_port": 0.0
+			},
+			{
+				"from_node": "Questions",
+				"from_port": 2.0,
+				"to_node": "Speech3",
+				"to_port": 0.0
+			},
+			{
+				"from_node": "Questions",
+				"from_port": 3.0,
+				"to_node": "Face Response",
+				"to_port": 0.0
+			}
+		],
+		"node_name": "Questions",
+		"node_pos": [
+			800.0,
+			380.0
+		],
+		"option_texts": [
+			"What is this game?",
+			"Who are you?",
+			"Option 3",
+			"You have a nice face Paquito.",
+			"Nevermind, I have to go."
+		],
+		"type": "dialogue_choice"
+	},
+	"Reask": {
+		"clear_text": false,
+		"connections": [
+			{
+				"from_node": "Reask",
+				"from_port": 0.0,
+				"to_node": "Questions",
+				"to_port": 0.0
+			},
+			{
+				"from_node": "Reask",
+				"from_port": 1.0,
+				"to_node": "DialogueEndNode2",
+				"to_port": 0.0
+			}
+		],
+		"node_name": "Reask",
+		"node_pos": [
+			2640.0,
+			440.0
+		],
+		"option_texts": [
+			"Yes!",
+			"No, that's all thanks."
+		],
+		"type": "dialogue_choice"
+	},
+	"Selfinfo": {
+		"clear_text": true,
+		"connections": [
+			{
+				"from_node": "Selfinfo",
+				"from_port": 0.0,
+				"to_node": "Speech",
+				"to_port": 0.0
+			}
+		],
+		"node_name": "Selfinfo",
+		"node_pos": [
+			1406.04504394531,
+			483.789825439453
+		],
+		"text": "I'm paquito. Currently a placeholder NPC to test dialogue. I'm not real.",
+		"type": "generic_dialogue"
+	},
+	"Speech": {
+		"clear_text": true,
+		"connections": [
+			{
+				"from_node": "Speech",
+				"from_port": 0.0,
+				"to_node": "Reask",
+				"to_port": 0.0
+			}
+		],
+		"node_name": "Speech",
+		"node_pos": [
+			1762.82983398438,
+			734.860595703125
+		],
+		"text": "Any more questions?",
+		"type": "generic_dialogue"
+	},
+	"Speech3": {
+		"clear_text": true,
+		"connections": [
+			{
+				"from_node": "Speech3",
+				"from_port": 0.0,
+				"to_node": "Speech",
+				"to_port": 0.0
+			}
+		],
+		"node_name": "Speech3",
+		"node_pos": [
+			1406.04504394531,
+			642.36083984375
+		],
+		"text": "Response 3!",
+		"type": "generic_dialogue"
+	},
+	"Speech5": {
+		"clear_text": true,
+		"connections": [],
+		"node_name": "Speech5",
+		"node_pos": [
+			1339.97375488281,
+			999.145690917969
+		],
+		"text": "",
+		"type": "generic_dialogue"
+	}
+}
