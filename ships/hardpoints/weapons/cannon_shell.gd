@@ -55,7 +55,7 @@ func handle_impact(hit_result = null):
 	
 	if radius <= 0 and hit_result:
 		var health : Health = hit_result.collider as Health
-		if health: health.take_damage(damage)
+		if health: health.take_damage(damage, self)
 	elif radius > 0:
 		var space_state = get_world_3d().direct_space_state
 	
@@ -71,5 +71,15 @@ func handle_impact(hit_result = null):
 		for result in results:
 			var health = result.collider as Health
 			if health and !healths.has(health): healths.append(health)
-		for health in healths: health.take_damage(damage)
+		for health in healths: health.take_damage(damage, self)
+	
+	if hit_result:
+		var p : Node = hit_result.collider
+		while p != get_tree().root:
+			var airship_movement : AirshipMovementManager = p as AirshipMovementManager
+			if airship_movement:
+				airship_movement.apply_force(global_basis.z * 1000/damage, global_position - airship_movement.global_position)
+				break
+			p = p.get_parent()
+		
 	queue_free()

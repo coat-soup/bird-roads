@@ -5,6 +5,8 @@ signal damaged
 signal healed
 signal died
 
+var last_damage_source : Node
+
 @export var max_health : float
 var cur_health : float
 
@@ -12,8 +14,9 @@ func _ready() -> void:
 	cur_health = max_health
 
 
-func take_damage(amount : float):
+func take_damage(amount : float, source : Node = null):
 	cur_health = max(cur_health - amount, 0)
+	last_damage_source = source
 	
 	damaged.emit()
 	

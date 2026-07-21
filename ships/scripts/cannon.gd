@@ -34,7 +34,9 @@ func fire():
 	get_tree().root.add_child(shell)
 	shell.global_position = muzzle_point.global_position
 	shell.global_rotation = muzzle_point.global_rotation
-	if airship: shell.parent_velocity = airship.movement.linear_velocity
+	if airship:
+		shell.parent_velocity = airship.movement.linear_velocity
+		airship.movement.apply_force(-muzzle_point.global_basis.z * 20, global_position - airship.movement.global_position)
 	shell._ready()
 
 
