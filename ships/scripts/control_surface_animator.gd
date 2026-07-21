@@ -24,7 +24,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if not ship_component.airship: return
+	if not ship_component.airship or ship_component.broken: return
 	
 	var pitch_effect = ship_component.airship.movement.joystick_input.y * pitch_mul
 	var yaw_effect = ship_component.airship.movement.joystick_input.x * yaw_mul

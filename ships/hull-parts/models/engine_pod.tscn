@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dye501xwaopfx" path="res://ships/scripts/ship_component.gd" id="2_ovp8h"]
 [ext_resource type="Material" uid="uid://d4fyqk6747sea" path="res://ships/ship_hull_mat.tres" id="2_yyfql"]
 [ext_resource type="Script" uid="uid://dlmbfqp8jdh20" path="res://ships/scripts/ship_engine_animator.gd" id="4_5oqn8"]
+[ext_resource type="Script" uid="uid://dagvkdjs33wwf" path="res://system/health.gd" id="5_bvjc3"]
 
 [sub_resource type="Animation" id="Animation_yyfql"]
 length = 0.001
@@ -46,8 +47,9 @@ _data = {
 height = 5.1866455
 radius = 1.4506836
 
-[node name="engine_pod" unique_id=1275211068 instance=ExtResource("1_703md")]
+[node name="engine_pod" unique_id=1275211068 node_paths=PackedStringArray("health") instance=ExtResource("1_703md")]
 script = ExtResource("2_ovp8h")
+health = NodePath("StaticBody3D")
 
 [node name="Circle" parent="." index="0" unique_id=1696580083]
 surface_material_override/0 = ExtResource("2_yyfql")
@@ -73,7 +75,9 @@ script = ExtResource("4_5oqn8")
 ship_component = NodePath("..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="6" unique_id=1838846854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2726867, -1.1121664)
+script = ExtResource("5_bvjc3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=578493462]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.345797, -1.1578526)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.07311034, -0.045686245)
 shape = SubResource("CylinderShape3D_yyfql")

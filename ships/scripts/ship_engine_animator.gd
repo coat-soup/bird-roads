@@ -12,4 +12,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not ship_component.airship: return
 	
-	speed_scale = lerp(speed_scale, original_speed * ship_component.airship.movement.thrust_input, delta * 3)
+	var target_speed : float = original_speed * ship_component.airship.movement.thrust_input
+	if ship_component.broken: target_speed = 0
+	speed_scale = lerp(speed_scale, target_speed, delta * 3)

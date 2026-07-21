@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://dye501xwaopfx" path="res://ships/scripts/ship_component.gd" id="2_jvneu"]
 [ext_resource type="Script" uid="uid://suwb0y10pmfp" path="res://ships/scripts/rigging_point.gd" id="2_r7gnj"]
 [ext_resource type="Script" uid="uid://dnsudx5smiiah" path="res://ships/scripts/control_surface_animator.gd" id="3_wdwf2"]
+[ext_resource type="Script" uid="uid://dagvkdjs33wwf" path="res://system/health.gd" id="6_sv75h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wdwf2"]
 render_priority = 0
@@ -18,8 +19,9 @@ shader_parameter/ex_quintary_color = Color(0, 0, 0, 1)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_jvneu"]
 points = PackedVector3Array(-3.172628, 1.5512285, -0.1309964, -3.172628, 1.5512285, 0.13099632, 2.9260669, 1.5512285, -0.1309964, -2.7061732, -0.25470638, -0.1309964, 2.9260669, 1.5512285, 0.13097069, -2.7061732, -0.25470638, 0.13097069, 0.8552809, -5.0004163, 0.13097069, 1.8751459, -4.847784, 0.13097069, 3.172027, -4.607292, 0.13097069, 3.172027, -4.607292, -0.1309964, 0.8552809, -5.0004163, -0.1309964, 1.8751459, -4.847784, -0.1309964)
 
-[node name="rudder_curved" unique_id=1290204354 instance=ExtResource("1_066aj")]
+[node name="rudder_curved" unique_id=1290204354 node_paths=PackedStringArray("health") instance=ExtResource("1_066aj")]
 script = ExtResource("2_jvneu")
+health = NodePath("StaticBody3D")
 
 [node name="Cube" parent="." index="0" unique_id=496724909]
 surface_material_override/0 = SubResource("ShaderMaterial_wdwf2")
@@ -43,7 +45,9 @@ only_receive = true
 metadata/_custom_type_script = "uid://suwb0y10pmfp"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="6" unique_id=507476656]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.8705683, -1.0119133)
+script = ExtResource("6_sv75h")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1915560637]
-transform = Transform3D(0, 0, 1.3095667, 0, 1.3095667, 0, -1.3095667, 0, 0, 0, -1.6042483, 0.6980317)
+transform = Transform3D(0, 0, 1.3095667, 0, 1.3095667, 0, -1.3095667, 0, 0, 0, 2.26632, 1.709945)
 shape = SubResource("ConvexPolygonShape3D_jvneu")

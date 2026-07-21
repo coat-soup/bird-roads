@@ -19,6 +19,7 @@ instance uniform vec3 quaternary_color : source_color;
 instance uniform vec3 quintary_color : source_color;
 
 uniform sampler2D voronoi_noise;
+uniform sampler2D damage_noise;
 
 uniform sampler2D pattern : filter_linear;
 uniform sampler2D wood_tex : filter_nearest;
@@ -27,6 +28,8 @@ uniform sampler2D canvas_tex : filter_nearest;
 uniform sampler2D canvas_norm : filter_nearest, hint_normal;
 uniform sampler2D metal_tex : filter_nearest;
 uniform sampler2D metal_norm : filter_nearest, hint_normal;
+
+instance uniform float damage_ratio = 0.0;
 
 // VERTEX COLOR R: color category
 // 0: primary colour group
@@ -49,6 +52,8 @@ void vertex() {
 }
 
 void fragment() {
+	ALPHA_SCISSOR_THRESHOLD = 0.5;
+	
 	// weird conversion for some reason: blender r=0.25 -> godot r is much lower
 	if (COLOR.r < 0.05) ALBEDO = vec3(primary_color);
 	else if (COLOR.r < 0.2) ALBEDO = vec3(secondary_color);
@@ -83,13 +88,17 @@ void fragment() {
 	else if (COLOR.g < 0.6){ // canvas
 		//ALBEDO = mix(ALBEDO, vec3(0.8), 0.4);
 		
-		//ALBEDO *= texture(canvas_tex, (pos.rg + pos.gb - pos.br + pos.br) * 5.0).rgb;
+		//ALBEDO *= texture(canvas_tex, texture(canvas_tex, (pos.rg + pos.gb - pos.br + pos.br) * 5.0).rgb;
 		ALBEDO *= triplanar(canvas_tex, 0.08, inverse(MODEL_MATRIX) * INV_VIEW_MATRIX, VERTEX, NORMAL);
 		NORMAL_MAP = triplanar(canvas_norm, 0.08, inverse(MODEL_MATRIX) * INV_VIEW_MATRIX, VERTEX, NORMAL);
+		if (texture(damage_noise, (pos.rg + pos.gb - pos.br + pos.br) / 3.0).r < damage_ratio/2.0) ALPHA = 0.0;
 	}
 	else{
 		
 	};
 	NORMAL_MAP_DEPTH = 1.0;
 	//ALBEDO = mix(ALBEDO, ALBEDO * 0.9, texture(voronoi_noise, pos.rg + pos.gb - pos.br + pos.br).r);
+	
+	if (texture(damage_noise, pos.rg + pos.gb - pos.br + pos.br).r < damage_ratio/2.0) ALBEDO = ALBEDO * 0.3;
+	NORMAL_MAP = mix(NORMAL_MAP, texture(damage_noise, pos.rg + pos.gb - pos.br + pos.br).rgb, damage_ratio);
 }

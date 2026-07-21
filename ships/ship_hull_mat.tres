@@ -9,6 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://csc7bd7q67ofc" path="res://ships/textures/metal_n.png" id="4_0fclj"]
 [ext_resource type="Texture2D" uid="uid://h3rdpjvtw7d5" path="res://ships/textures/metal.png" id="5_uogop"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_0fclj"]
+noise_type = 0
+frequency = 0.0133
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uogop"]
+noise = SubResource("FastNoiseLite_0fclj")
+
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vksko"]
 noise_type = 2
 frequency = 0.048
@@ -28,6 +36,7 @@ shader_parameter/ex_tertiary_color = Color(0, 0, 0, 1)
 shader_parameter/ex_quaternary_color = Color(0, 0, 0, 1)
 shader_parameter/ex_quintary_color = Color(0, 0, 0, 1)
 shader_parameter/voronoi_noise = SubResource("NoiseTexture2D_jxxtm")
+shader_parameter/damage_noise = SubResource("NoiseTexture2D_uogop")
 shader_parameter/pattern = ExtResource("2_jxxtm")
 shader_parameter/wood_tex = ExtResource("3_arrom")
 shader_parameter/wood_norm = ExtResource("3_hm55d")

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cnto2b5f0yyrl" path="res://ships/hull-parts/models/dual_tailfin.glb" id="1_x8jb5"]
 [ext_resource type="Script" uid="uid://dye501xwaopfx" path="res://ships/scripts/ship_component.gd" id="2_uycdy"]
 [ext_resource type="Script" uid="uid://dnsudx5smiiah" path="res://ships/scripts/control_surface_animator.gd" id="2_vdjdp"]
+[ext_resource type="Script" uid="uid://dagvkdjs33wwf" path="res://system/health.gd" id="4_q2t1b"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uycdy"]
 height = 8.487427
@@ -11,19 +12,22 @@ radius = 1.4384766
 [sub_resource type="BoxShape3D" id="BoxShape3D_uycdy"]
 size = Vector3(0.435, 16.435, 3.733)
 
-[node name="dual_tailfin" unique_id=787013017 instance=ExtResource("1_x8jb5")]
+[node name="dual_tailfin" unique_id=787013017 node_paths=PackedStringArray("health") instance=ExtResource("1_x8jb5")]
 script = ExtResource("2_uycdy")
+health = NodePath("StaticBody3D")
 
 [node name="Rotator" parent="." index="6" unique_id=948824186 node_paths=PackedStringArray("ship_component")]
 script = ExtResource("2_vdjdp")
 ship_component = NodePath("..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="7" unique_id=1435897790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.517872)
+script = ExtResource("4_q2t1b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1127948158]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.7248976e-07, -3.946106)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1.7248976e-07, 1.5717659)
 shape = SubResource("CylinderShape3D_uycdy")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1750486261]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.244355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.7264833)
 shape = SubResource("BoxShape3D_uycdy")

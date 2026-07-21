@@ -105,7 +105,7 @@ func recursive_resolve_slots(node : Node, material : ShaderMaterial, part_type :
 	
 	var mesh = node as MeshInstance3D
 	if mesh:
-		mesh.material_overlay = material
+		mesh.material_override = material
 		color_palette.colourise_part(mesh, part_type)
 		
 	for child in node.get_children(): recursive_resolve_slots(child, material, part_type, do_non_structure)

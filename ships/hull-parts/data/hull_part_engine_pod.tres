@@ -9,4 +9,5 @@ name = "Engine Pod"
 prefab = ExtResource("1_amlpi")
 type = 3
 power = 12
+durability = 100
 metadata/_custom_type_script = "uid://cyvgr5gwdviy1"

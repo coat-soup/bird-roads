@@ -25,6 +25,7 @@ surface_material_override/0 = ExtResource("2_60npd")
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_005" parent="." index="6" unique_id=336784414]
+instance_shader_parameters/damage_ratio = 0.89
 instance_shader_parameters/primary_color = Color(0.22901776, 0.49976718, 0.58049107, 1)
 instance_shader_parameters/secondary_color = Color(0.9741916, 0, 0.32862478, 1)
 surface_material_override/0 = ExtResource("2_60npd")
@@ -61,9 +62,11 @@ surface_material_override/0 = ExtResource("2_60npd")
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_014" parent="." index="15" unique_id=948706006]
+instance_shader_parameters/damage_ratio = 0.0
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_015" parent="." index="16" unique_id=2143413867]
+instance_shader_parameters/flip_normals = 0
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_016" parent="." index="17" unique_id=1099759792]

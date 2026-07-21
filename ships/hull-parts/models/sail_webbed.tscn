@@ -1,12 +1,26 @@
 [gd_scene format=3 uid="uid://cnito7ac63uo"]
 
 [ext_resource type="PackedScene" uid="uid://os0babm3qgwb" path="res://ships/hull-parts/models/sail_back_webbed.glb" id="1_4tgv7"]
+[ext_resource type="Script" uid="uid://dye501xwaopfx" path="res://ships/scripts/ship_component.gd" id="2_lco8n"]
 [ext_resource type="Script" uid="uid://suwb0y10pmfp" path="res://ships/scripts/rigging_point.gd" id="2_wttjx"]
+[ext_resource type="Script" uid="uid://dagvkdjs33wwf" path="res://system/health.gd" id="3_5bqkb"]
 
-[node name="sail_webbed" unique_id=483202248 instance=ExtResource("1_4tgv7")]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wttjx"]
+points = PackedVector3Array(-3.2662034, 19.753557, -0.19346075, -3.2662034, 19.753557, 0.19342677, 0.7186971, 20.532612, -0.19346075, -0.19664907, -0.03724447, -0.19346075, 1.1051192, 20.514353, 0.19346465, 0.7186971, 20.532612, 0.19342677, -0.19664907, -0.03724447, 0.19342677, 1.1051192, 20.514353, -0.19346075, -0.18509483, -0.07579139, -0.19346075, 9.849049, 0.19200829, 0.19342677, 7.4945683, 6.3919764, 0.19342677, -0.18509483, -0.07579139, 0.19342677, -0.046444893, -0.19346094, 0.19342677, 9.849049, -0.19346094, 0.19342677, 7.4945683, 6.3919764, -0.19346075, -0.046444893, -0.19346094, -0.19346075, 9.849049, 0.19200829, -0.19346075, 9.849049, -0.19346094, -0.19346075)
+
+[node name="sail_webbed" unique_id=483202248 node_paths=PackedStringArray("health") instance=ExtResource("1_4tgv7")]
+script = ExtResource("2_lco8n")
+health = NodePath("StaticBody3D")
 
 [node name="RiggingPoint" type="Marker3D" parent="." index="2" unique_id=1000126782]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9.545324, 1.6971684)
 script = ExtResource("2_wttjx")
 main_hull = false
 metadata/_custom_type_script = "uid://suwb0y10pmfp"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3" unique_id=1742670634]
+script = ExtResource("3_5bqkb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=944830269]
+transform = Transform3D(-1.1920929e-07, -3.2782555e-07, 1, -0.98813534, -0.15358567, -1.1920929e-07, 0.15358567, -0.98813534, -3.5762787e-07, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_wttjx")

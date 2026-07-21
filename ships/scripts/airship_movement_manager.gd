@@ -28,9 +28,9 @@ func _physics_process(delta: float) -> void:
 	strafe_input = clamp(strafe_input, -1.0, 1.0)
 	roll_input = clamp(roll_input, -1.0, 1.0)
 	
-	apply_central_force(global_basis.x * acceleration * strafe_input * 0.4)
-	apply_central_force(global_basis.y * acceleration * lift_input * 0.4)
-	if get_directional_speed_ratio() <= 1.0: apply_central_force(global_basis.z * acceleration * thrust_input)
+	apply_central_force(global_basis.x * acceleration * strafe_input * 0.4 * airship.thrust_ratio)
+	apply_central_force(global_basis.y * acceleration * lift_input * 0.4 * airship.thrust_ratio)
+	if get_directional_speed_ratio() <= 1.0 * airship.thrust_ratio: apply_central_force(global_basis.z * acceleration * thrust_input * airship.thrust_ratio)
 	
 	
 	var local_vel = global_basis.inverse() * angular_velocity
@@ -44,14 +44,15 @@ func _physics_process(delta: float) -> void:
 	var roll_force = rotation_force_curve.sample(min(1.0, overturn.y)) if sign(roll_input) == sign(rotation.z) else 1.0
 	var pitch_force = rotation_force_curve.sample(min(1.0, overturn.x)) if sign(j.y) == sign(rotation.x) else 1.0
 	
-	apply_torque(global_basis.x * j.y * angular_acceleration * pitch_force)
-	apply_torque(global_basis.y * j.x * angular_acceleration * 2)
-	apply_torque(global_basis.z * roll_input * angular_acceleration * roll_force * 0.2)
+	apply_torque(global_basis.x * j.y * angular_acceleration * pitch_force * airship.turn_ratio)
+	apply_torque(global_basis.y * j.x * angular_acceleration * 2 * airship.turn_ratio)
+	apply_torque(global_basis.z * roll_input * angular_acceleration * roll_force * 0.2 * airship.turn_ratio)
 	
 	
 	apply_torque(global_basis.x * -sign(rotation.x) * rotation_correction_curve.sample(overturn.x) * 50)
 	apply_torque(global_basis.z * -sign(rotation.z) * rotation_correction_curve.sample(overturn.y) * 10)
 	
+	# drag/slow-down back to desired speed
 	var veldiff : Vector3 = Vector3(
 		max(0, get_directional_speed_ratio(global_basis.x, airship.actor_data.speed * 0.4) - strafe_input),
 		max(0, get_directional_speed_ratio(global_basis.y, airship.actor_data.speed * 0.4) - lift_input),

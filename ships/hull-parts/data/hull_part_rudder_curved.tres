@@ -10,4 +10,5 @@ prefab = ExtResource("1_mn2bc")
 type = 2
 size = 1
 power = 8
+durability = 100
 metadata/_custom_type_script = "uid://cyvgr5gwdviy1"
