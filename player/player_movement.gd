@@ -31,6 +31,8 @@ var floor_obj : Node3D
 
 var time_in_air : float = 0.0
 
+var on_ladder : Ladder = null
+
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -65,16 +67,16 @@ func _process(delta: float) -> void:
 		player.global_rotate(tilt_axis, angle * delta * 10)
 	#player.rotation.z = lerp_angle(player.rotation.z, 0, delta * 3)
 	
-	if floorcast.get_collider():
+	if floorcast.get_collider() or on_ladder:
 		time_in_air = 0
-		if floorcast.get_collider() != player.get_parent():
+		if floorcast.get_collider() != player.get_parent() and not on_ladder:
 			player.reparent(floorcast.get_collider())
 	else:
 		time_in_air += delta
 		if time_in_air > 1.5 and player.get_parent() != get_tree().root: player.reparent(get_tree().root)
 	
 	# gravity
-	if not player.is_on_floor() and !player.debug_mode:
+	if not player.is_on_floor() and !player.debug_mode and not on_ladder:
 		player.velocity += player.get_gravity() * delta
 	
 	# input
@@ -84,12 +86,17 @@ func _process(delta: float) -> void:
 	if player.debug_mode:
 		player.velocity.y = (int(Input.is_key_pressed(KEY_SPACE)) - int(Input.is_key_pressed(KEY_CTRL))) * get_speed()
 	
+	if on_ladder:
+		if Input.is_action_just_pressed("jump"):
+			jump_start.emit()
+			on_ladder = null
+			player.velocity = jump_velocity * (-camera.global_basis.z * Vector3(1,0,1)).normalized()
+		else:
+			player.velocity = on_ladder.global_basis.y * -input_dir.y * get_speed() * (-1 if camera_pivot.rotation.x < deg_to_rad(-45) else 1)
 	# jump
-	if Input.is_action_just_pressed("jump") and player.is_on_floor() and player.active:
+	elif Input.is_action_just_pressed("jump") and player.is_on_floor() and player.active:
 		jump_start.emit()
 		player.velocity.y = jump_velocity
-		
-	
 	elif player.is_on_floor():
 		if direction:
 			player.velocity.x = direction.x * get_speed()
@@ -119,7 +126,7 @@ func _process(delta: float) -> void:
 		bob_bottom.emit()
 	elif b/BOB_AMP > 0.95:
 		bob_top.emit()
-
+	
 	player.move_and_slide()
 
 

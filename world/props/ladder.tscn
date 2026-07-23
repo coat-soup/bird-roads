@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b4u8rhmao3py0"]
+
+[ext_resource type="PackedScene" uid="uid://ceorue7173e6a" path="res://world/props/ladder_segment.glb" id="1_dbckh"]
+[ext_resource type="Script" uid="uid://b6of31faj8ats" path="res://world/scripts/ladder.gd" id="1_x3j0u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x3j0u"]
+size = Vector3(1, 2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q3axe"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tith6"]
+size = Vector3(1.5, 1.0172119, 1.5)
+
+[node name="Ladder" type="Node3D" unique_id=288771121 node_paths=PackedStringArray("collision_shape", "area_shape")]
+script = ExtResource("1_x3j0u")
+force_side_on_top = null
+collision_shape = NodePath("Collision/CollisionShape3D")
+area_shape = NodePath("Area/CollisionShape3D2")
+
+[node name="Collision" type="StaticBody3D" parent="." unique_id=1806544709]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collision" unique_id=27728845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_x3j0u")
+
+[node name="Area" type="Area3D" parent="." unique_id=1313439371]
+collision_mask = 2
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Area" unique_id=2059811295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_q3axe")
+
+[node name="AreaBottom" type="Area3D" parent="." unique_id=1450492283]
+collision_mask = 2
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="AreaBottom" unique_id=1732718877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49190673, 0)
+shape = SubResource("BoxShape3D_tith6")
+
+[node name="Segments" type="Node3D" parent="." unique_id=1093771356]
+
+[node name="@Node3D@64211" type="Node3D" parent="Segments" unique_id=1847256221 instance=ExtResource("1_dbckh")]
+
+[node name="@Node3D@64212" type="Node3D" parent="Segments" unique_id=1449622728 instance=ExtResource("1_dbckh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://b1gbofimjjgn7" path="res://ships/scripts/hull_part_slot.gd" id="8_pwok1"]
 [ext_resource type="Script" uid="uid://suwb0y10pmfp" path="res://ships/scripts/rigging_point.gd" id="9_k67kr"]
 [ext_resource type="Script" uid="uid://by720oy317wk4" path="res://ships/scripts/hardpoint_slot.gd" id="11_jji0u"]
+[ext_resource type="PackedScene" uid="uid://b4u8rhmao3py0" path="res://world/props/ladder.tscn" id="12_6aw4h"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_k67kr"]
 data = PackedVector3Array(4.1115, 1.5702, 15.1278, -3.0096998, 1.5702, 17.988499, -4.1116, 1.5702, 15.1278, 4.1115, 1.5702, 15.1278, 3.0096, 1.5702, 17.988499, -3.0096998, 1.5702, 17.988499, 4.5043, 1.5702, 12.6171, 4.1115, 1.5702, 15.1278, -4.1116, 1.5702, 15.1278, 3.0096, 1.5702, 17.988499, -1.7450999, 1.5702, 20.3081, -3.0096998, 1.5702, 17.988499, 4.5043, 1.5702, 12.6171, -4.1116, 1.5702, 15.1278, -4.5044, 1.5702, 12.6171, 3.0096, 1.5702, 17.988499, 1.745, 1.5702, 20.3081, -1.7450999, 1.5702, 20.3081, 1.745, 1.5702, 20.3081, -0.0777, 1.5702, 22.3231, -1.7450999, 1.5702, 20.3081, 1.745, 1.5702, 20.3081, 0.077599995, 1.5702, 22.3231, -0.0777, 1.5702, 22.3231, 4.5590997, 1.5702, 10.7563, 4.5043, 1.5702, 12.6171, -4.5044, 1.5702, 12.6171, 4.5590997, 1.5702, 10.7563, -4.5044, 1.5702, 12.6171, -4.5590997, 1.5702, 10.7563, -3.0001, 1.5702, 5, 4.5590997, 1.5702, 10.7563, -4.5590997, 1.5702, 10.7563, -4.5590997, 1.5702, -8.4776, -3.0001, 1.5702, 5, -4.5590997, 1.5702, 10.7563, -3.0001, 1.5702, 5, -1, 1.5702, 5, 4.5590997, 1.5702, 10.7563, -4.5590997, 1.5702, -8.4776, -3.0001, 1.5702, 2.9995, -3.0001, 1.5702, 5, -1, 1.5702, 5, 4.5590997, 1.5702, -8.4776, 4.5590997, 1.5702, 10.7563, -4.5590997, 1.5702, -8.4776, -1, 1.5702, 2.9995, -3.0001, 1.5702, 2.9995, -1, 1.5702, 2.9995, 4.5590997, 1.5702, -8.4776, -1, 1.5702, 5, 4.5590997, 1.5702, -8.4776, -1, 1.5702, 2.9995, -4.5590997, 1.5702, -8.4776, -2.8662, 2.5556998, -20.0147, 1.1575, 2.5556998, -20.874199, 2.8660998, 2.5556998, -20.0147, -2.8662, 2.5556998, -20.0147, -1.1577, 2.5556998, -20.874199, 1.1575, 2.5556998, -20.874199, -4.2552, 2.5556998, -15.7513, -2.8662, 2.5556998, -20.0147, 2.8660998, 2.5556998, -20.0147, -4.2552, 2.5556998, -15.7513, 2.8660998, 2.5556998, -20.0147, 4.2551, 2.5556998, -15.7513, 4.2551, 2.5556998, -15.7513, -4.5590997, 2.5556998, -14.054, -4.2552, 2.5556998, -15.7513, 4.2551, 2.5556998, -15.7513, 4.5590997, 2.5556998, -14.054, -4.5590997, 2.5556998, -14.054, 4.5590997, 2.5556998, -14.054, -4.5590997, 2.5556998, -10.1202, -4.5590997, 2.5556998, -14.054, 4.5590997, 2.5556998, -14.054, 4.5590997, 2.5556998, -10.1202, -4.5590997, 2.5556998, -10.1202, -4.5590997, 1.5702, -8.4776, 4.5590997, 2.5556998, -10.1202, 4.5590997, 1.5702, -8.4776, -4.5590997, 1.5702, -8.4776, -4.5590997, 2.5556998, -10.1202, 4.5590997, 2.5556998, -10.1202)
@@ -23,6 +24,12 @@ data = PackedVector3Array(1.8044, 1.5702, 20.308199, 3.1121, 2.5702999, 17.98869
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_spxh4"]
 size = Vector3(7.98, 0.06237793, 24.03247)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6aw4h"]
+size = Vector3(1, 4, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_etoac"]
+size = Vector3(1, 4, 1)
 
 [node name="hull_lancer" unique_id=242663195 instance=ExtResource("1_tb2ik")]
 
@@ -88,6 +95,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4682415, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interior/StaticBody3D" index="0" unique_id=1747914592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.031433105, -2.0074463)
 shape = SubResource("BoxShape3D_spxh4")
+
+[node name="Ladder" parent="Interior" index="10" unique_id=288771121 instance=ExtResource("12_6aw4h")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.9567647, -1.4709907, 3.9999793)
+height = 4
+force_side_on_top = true
+
+[node name="CollisionShape3D" parent="Interior/Ladder/Collision" parent_id_path=PackedInt32Array(288771121, 1806544709) index="0" unique_id=27728845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_6aw4h")
+
+[node name="CollisionShape3D2" parent="Interior/Ladder/Area" parent_id_path=PackedInt32Array(288771121, 1313439371) index="0" unique_id=2059811295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("BoxShape3D_etoac")
+
+[node name="@Node3D@66927" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="1" unique_id=1847256221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="@Node3D@66928" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="2" unique_id=1847256221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="@Node3D@66929" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="3" unique_id=1847256221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Exterior" type="Node3D" parent="." index="2" unique_id=768816846 node_paths=PackedStringArray("hull_mesh", "name_label")]
 script = ExtResource("7_6aw4h")
@@ -244,3 +273,5 @@ transform = Transform3D(2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, 2.9802322e-08, 4.72
 modulate = Color(0.51718444, 0.5171845, 0.51718444, 1)
 text = "Boaty McBoatface"
 font_size = 100
+
+[editable path="Interior/Ladder"]
