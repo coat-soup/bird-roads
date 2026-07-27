@@ -62,7 +62,8 @@ func on_body_exited(body : Node3D):
 	if player:
 		if player.movement_manager.on_ladder:
 			player.movement_manager.on_ladder = null
-			player.velocity = global_basis.x * 5 * sign(-global_basis.x.dot(player.movement_manager.camera.global_basis.z)) + global_basis.y * 3
+			if force_side_on_top:
+				player.velocity = global_basis.x * 5 * sign(-global_basis.x.dot(player.movement_manager.camera.global_basis.z)) + global_basis.y * 3
 		#await get_tree().create_timer(0.5).timeout
 		player_exited = true
 
