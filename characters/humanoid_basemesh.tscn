@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://cqlhivc5tvwoj"]
+
+[ext_resource type="PackedScene" uid="uid://bnwtd4f60kyom" path="res://characters/humanoid_basemesh.glb" id="1_elxk8"]
+[ext_resource type="Script" uid="uid://bcxj6tvc27lj5" path="res://characters/humanoid_skeleton_controller.gd" id="2_6tyi7"]
+
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_elxk8"]
+angle = 5.3787556
+
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_6tyi7"]
+angle = 3.7603118
+
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_di882"]
+angle = 2.475226
+
+[node name="humanoid_basemesh" unique_id=1819910534 instance=ExtResource("1_elxk8")]
+script = ExtResource("2_6tyi7")
+
+[node name="SpineCCDIK3D" type="CCDIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(86870139) index="1" unique_id=24609732]
+transform = Transform3D(1, 0, 0, 0, 0.91790026, -0.39681152, 0, 0.39681152, 0.91790026, 0, 0, 0)
+setting_count = 1
+settings/0/target_node = NodePath("../../../Pivot/SpineTarget")
+settings/0/root_bone_name = "Spine"
+settings/0/root_bone = 1
+settings/0/end_bone_name = "Neck"
+settings/0/end_bone = 3
+settings/0/extend_end_bone = false
+settings/0/joint_count = 3
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = SubResource("JointLimitationCone3D_elxk8")
+settings/0/joints/0/limitation/right_axis = 0
+settings/0/joints/0/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = SubResource("JointLimitationCone3D_6tyi7")
+settings/0/joints/1/limitation/right_axis = 0
+settings/0/joints/1/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
+settings/0/joints/2/rotation_axis = 3
+settings/0/joints/2/limitation = SubResource("JointLimitationCone3D_di882")
+settings/0/joints/2/limitation/right_axis = 0
+settings/0/joints/2/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
+
+[node name="HeadLookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(86870139) index="2" unique_id=248053691]
+target_node = NodePath("../../../Pivot/HeadTarget")
+bone_name = "Head"
+bone = 4
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 6.2831855
+primary_damp_threshold = 1.0
+secondary_limit_angle = 6.2831855
+secondary_damp_threshold = 1.0
+
+[node name="SpineBoneTwistDisperser3D" type="BoneTwistDisperser3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(86870139) index="3" unique_id=1770572332]
+transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
+setting_count = 1
+settings/0/root_bone_name = "Spine"
+settings/0/root_bone = 1
+settings/0/end_bone_name = "Head"
+settings/0/end_bone = 4
+settings/0/extend_end_bone = true
+settings/0/end_bone_direction = 6
+settings/0/twist_from_rest = true
+settings/0/disperse_mode = 0
+settings/0/joint_count = 4
+
+[node name="LimitAngularVelocityModifier3D" type="LimitAngularVelocityModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(86870139) index="4" unique_id=1081945482]
+chain_count = 1
+joint_count = 4
+chains/0/root_bone_name = "Spine"
+chains/0/root_bone = 1
+chains/0/end_bone_name = "Head"
+chains/0/end_bone = 4
+
+[node name="HeadRollLimitCopyTransformModifier3D" type="CopyTransformModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(86870139) index="5" unique_id=162404142]
+setting_count = 1
+settings/0/amount = 1.0
+settings/0/apply_bone_name = "Head"
+settings/0/apply_bone = 4
+settings/0/reference_type = 1
+settings/0/reference_node = NodePath("../../../Pivot/HeadTarget")
+settings/0/copy = 0
+settings/0/axes = 0
+settings/0/invert = 0
+settings/0/additive = false
+
+[node name="RHTwoBoneIK3D" type="TwoBoneIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(86870139) index="6" unique_id=1832653635]
+setting_count = 1
+settings/0/target_node = NodePath("../../../Pivot/Gun/RHTarget")
+settings/0/pole_node = NodePath("../../../ChestBoneAttachment3D/RHPole")
+settings/0/root_bone_name = "Arm_Upper.R"
+settings/0/root_bone = 24
+settings/0/middle_bone_name = "Arm_Lower.R"
+settings/0/middle_bone = 25
+settings/0/pole_direction = 0
+settings/0/end_bone_name = "Hand.R"
+settings/0/end_bone = 26
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = false
+
+[node name="RHCopyTransformModifier3D" type="CopyTransformModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(86870139) index="7" unique_id=1287749125]
+setting_count = 1
+settings/0/amount = 1.0
+settings/0/apply_bone_name = "Hand.R"
+settings/0/apply_bone = 26
+settings/0/reference_type = 1
+settings/0/reference_node = NodePath("../../../Pivot/Gun/RHTarget")
+settings/0/copy = 2
+settings/0/axes = 7
+settings/0/invert = 0
+settings/0/additive = false
+
+[node name="Pivot" type="Marker3D" parent="." index="1" unique_id=1170510801]
+transform = Transform3D(1, 0, 0, 0, 1.0000002, 0, 0, 0, 0.9999999, 3.7294073e-10, 1.0338095, 0.029782925)
+
+[node name="SpineTarget" type="Marker3D" parent="Pivot" index="0" unique_id=1232779373]
+transform = Transform3D(0.99999994, -2.9802322e-08, 2.6077032e-07, -2.9802322e-08, 0.9999999, -4.991889e-07, -2.0116568e-07, 4.6938658e-07, 1.0000001, 0, 1.0397519, 0)
+
+[node name="HeadTarget" type="Marker3D" parent="Pivot" index="1" unique_id=60569524]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.9999998, 0, 0, 0, 1, 0.043745663, -0.014148593, 0.98291904)
+
+[node name="Gun" type="Node3D" parent="Pivot" index="2" unique_id=1231313916]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999999, -0.08734543, 0.31458735, 0.5055313)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Pivot/Gun" index="0" unique_id=1903217138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012646437, 0)
+size = Vector3(0.05, 0.07529297, 0.05)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Pivot/Gun" index="1" unique_id=1732948085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05565536, 0.063943505)
+size = Vector3(0.05, 0.06357422, 0.20354614)
+
+[node name="RHTarget" type="Marker3D" parent="Pivot/Gun" index="2" unique_id=1565076560]
+transform = Transform3D(-0.9801401, -0.032724388, -0.19558787, -0.19148009, -0.10037979, 0.97634995, -0.051583514, 0.99441093, 0.09212026, -0.027870566, 0.012476921, -0.102748364)
+
+[node name="ChestBoneAttachment3D" type="BoneAttachment3D" parent="." index="2" unique_id=979231396]
+transform = Transform3D(-0.2084786, -0.9778231, 0.019967856, 0.97745925, -0.2090097, -0.029808624, 0.033321038, 0.013303303, 0.9993561, -0.080551766, 1.484221, -0.01376891)
+bone_name = "Shoulder.R"
+bone_idx = 23
+use_external_skeleton = true
+external_skeleton = NodePath("../Armature/Skeleton3D")
+
+[node name="RHPole" type="Marker3D" parent="ChestBoneAttachment3D" index="0" unique_id=786529867]
+transform = Transform3D(1, -5.455513e-08, 1.4901161e-08, 4.976755e-09, 1.0000001, -3.0500814e-08, 0, -2.7939677e-09, 1.0000002, -0.43429208, 1.0669978, 0.035259046)
