@@ -14,7 +14,7 @@ func try_add_connection(nodes : Array[NavigationNode], dims : Vector3i, pos : Ve
 	if abs(node.global_position.y - global_position.y) > step_height: return false
 	
 	var space_state = get_world_3d().direct_space_state
-	var query = PhysicsRayQueryParameters3D.create(global_position, node.global_position)
+	var query = PhysicsRayQueryParameters3D.create(global_position, node.global_position, Util.layer_mask([1]))
 	var results = space_state.intersect_ray(query)
 	if len(results) > 0: return false
 	

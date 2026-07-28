@@ -3,15 +3,18 @@ class_name NavigationGraph
 extends Area3D
 
 @export_tool_button("Generate Graph", "Callable") var generate_action = generate
+@export var debug_visualise : bool = true
 
 @export var spacing : float = 2.0
 @export var vertical_spacing : float = 5.0
 @export var step_height : float = 1.0
+@export var wall_dist : float = 0.5
 
 @export var nodes : Array[NavigationNode]
 
 
 func _ready() -> void:
+	collision_mask = Util.layer_mask([2])
 	if !Engine.is_editor_hint(): body_entered.connect(on_body_entered)
 	#print("MY NODES: ", nodes)
 
@@ -40,11 +43,10 @@ func generate():
 		if shape.shape is BoxShape3D:
 			var dims : Vector3i = Vector3i(round(shape.shape.size.x / spacing), round(shape.shape.size.y / vertical_spacing), round(shape.shape.size.z / spacing))
 			for y in range(dims.y):
-				print("ydim!")
 				for z in range(dims.z):
 					for x in range(dims.x):
 						var origin_pos = (shape.global_position - shape.shape.size/2.0) + Vector3(x * spacing, y * vertical_spacing, z * spacing) + Vector3(0,vertical_spacing/2,0)
-						var query = PhysicsRayQueryParameters3D.create(origin_pos, origin_pos - Vector3(0, vertical_spacing, 0))
+						var query = PhysicsRayQueryParameters3D.create(origin_pos, origin_pos - Vector3(0, vertical_spacing, 0), Util.layer_mask([1]))
 						var result = space_state.intersect_ray(query)
 						if not result:
 							nodes.append(null)
@@ -55,6 +57,27 @@ func generate():
 						node.global_position = result.position + Vector3(0,0.7,0)
 						nodes.append(node)
 						node.grid_pos = Vector3i(x,y,z)
+						
+						# finetune node position
+						var results : Array[Dictionary]
+						var n_rays : int = 8
+						for i in range(n_rays):
+							results.append(space_state.intersect_ray(PhysicsRayQueryParameters3D.create(
+								node.global_position,
+								node.global_position + Vector3.FORWARD.rotated(Vector3.UP, 2 * PI * float(i)/float(n_rays)) * wall_dist,
+								Util.layer_mask([1])
+							)))
+						
+						var closest_i = -1
+						var closest_d = 0
+						for i in range(n_rays):
+							if not results[i]: continue
+							var d = results[i].position.distance_to(node.global_position)
+							if closest_i == -1 or d < closest_d:
+								closest_i = i
+								closest_d = d
+						if closest_i != -1:
+							node.global_position += (node.global_position - results[closest_i].position).normalized() * (wall_dist - closest_d)
 			
 			# connect them
 			for node in nodes:
@@ -85,6 +108,7 @@ func generate():
 
 
 func _process(delta: float) -> void:
+	if not debug_visualise: return
 	for node in nodes:
 		if not node: continue
 		DebugDraw3D.scoped_config().set_thickness(0.1)
@@ -93,4 +117,12 @@ func _process(delta: float) -> void:
 		for c in node.connections:
 			if not c or not is_instance_valid(c): continue
 			DebugDraw3D.draw_line(node.global_position, c.global_position, Color.YELLOW)
+		
+		DebugDraw3D.scoped_config().set_thickness(0.005)
+		for i in range(8):
+							DebugDraw3D.draw_line(
+								node.global_position,
+								node.global_position + Vector3.FORWARD.rotated(Vector3.UP, 2 * PI * float(i)/float(8)) * wall_dist,
+								Color.AQUA
+							)
 		

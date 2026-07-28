@@ -7,8 +7,12 @@ const TICK_RATE : float = 5
 @export var graph : NavigationGraph
 @export var character : Character
 
+@export var string_pull_dist : int = 3
+
+
 var path : Array[NavigationNode]
 var cur_node : NavigationNode
+
 
 func _ready() -> void:
 	tick()
@@ -30,9 +34,14 @@ func get_path_to_position(pos : Vector3):
 	path = NavGraphAStar.get_path_between_points(cur_node, end)
 
 
+func optimise_path():
+	for i in range(path):
+		pass
+
+
 func _process(delta: float) -> void:
 	if len(path) < 1: return
-	DebugDraw3D.scoped_config().set_thickness(0.5)
+	DebugDraw3D.scoped_config().set_thickness(0.2)
 	DebugDraw3D.draw_sphere(path[0].global_position)
 	DebugDraw3D.draw_sphere(path[-1].global_position)
 	
@@ -42,16 +51,33 @@ func _process(delta: float) -> void:
 
 func get_next_node_in_path() -> NavigationNode:
 	if len(path) == 0: return null
-	if character.global_position.distance_to(path[0].global_position) < graph.spacing * 0.5:
-		path.remove_at(0)
-		if len(path) == 0:
-			finished_path.emit()
-			return null
-	return path[0]
+	for i in range(len(path)):
+		if character.global_position.distance_to(path[i].global_position) < graph.spacing * 0.5:
+			if i < len(path): path = path.slice(i+1)
+			if len(path) == 0:
+				finished_path.emit()
+				return null
+			break
+	var pull_ahead : int = 0
+	var space_state = character.get_world_3d().direct_space_state
+	for i in range(min(string_pull_dist, len(path)-1), -1, -1):
+		var query = PhysicsShapeQueryParameters3D.new()
+		query.collision_mask = Util.layer_mask([1])
+		query.shape = SphereShape3D.new()
+		query.shape.radius = 0.4
+		query.transform.origin = character.global_position + Vector3.UP * 0.5
+		query.motion = path[i].global_position - character.global_position
+		var result = space_state.cast_motion(query)
+		if result[0] == 1.0:
+			pull_ahead = i
+			break
+	
+	return path[pull_ahead]
 
 
 func tick():
-	cur_node = get_node_closest_to_position(character.global_position)
+	if graph:
+		cur_node = get_node_closest_to_position(character.global_position)
 	
 	await get_tree().create_timer(1.0/TICK_RATE).timeout
 	tick()
