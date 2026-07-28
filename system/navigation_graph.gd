@@ -8,7 +8,19 @@ extends Area3D
 @export var vertical_spacing : float = 5.0
 @export var step_height : float = 1.0
 
-var nodes : Array[NavigationNode]
+@export var nodes : Array[NavigationNode]
+
+
+func _ready() -> void:
+	if !Engine.is_editor_hint(): body_entered.connect(on_body_entered)
+	#print("MY NODES: ", nodes)
+
+
+func on_body_entered(body : Node3D):
+	var character = body as Character
+	if character:
+		character.movement_manager.agent.graph = self
+		print(character, " navgraph set to ", self)
 
 
 func generate():

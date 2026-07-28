@@ -1,7 +1,7 @@
 class_name NavigationNode
 extends Node3D
 
-var connections : Array[NavigationNode]
+@export var connections : Array[NavigationNode]
 var grid_pos : Vector3i
 
 

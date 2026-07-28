@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ce5f8uh1vxyq3"]
+
+[ext_resource type="Script" uid="uid://dlwr3a0ws6tc4" path="res://characters/character.gd" id="1_mdkfl"]
+[ext_resource type="Script" uid="uid://bmeiruye264wk" path="res://characters/character_movement.gd" id="1_qqr4u"]
+[ext_resource type="Script" uid="uid://crmry8vklmu4x" path="res://characters/navigation_mesh_agent.gd" id="2_3fwhk"]
+[ext_resource type="PackedScene" uid="uid://cqlhivc5tvwoj" path="res://characters/humanoid_basemesh.tscn" id="3_3fwhk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fwhk"]
+radius = 0.3623047
+height = 1.8374023
+
+[node name="Character" type="CharacterBody3D" unique_id=1004033952 node_paths=PackedStringArray("movement_manager")]
+script = ExtResource("1_mdkfl")
+movement_manager = NodePath("CharacterMovement")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=233325845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9187012, 0)
+shape = SubResource("CapsuleShape3D_3fwhk")
+
+[node name="CharacterMovement" type="Node" parent="." unique_id=220496512 node_paths=PackedStringArray("character", "agent")]
+script = ExtResource("1_qqr4u")
+character = NodePath("..")
+agent = NodePath("../NavigationMeshAgent")
+metadata/_custom_type_script = "uid://bmeiruye264wk"
+
+[node name="NavigationMeshAgent" type="Node" parent="." unique_id=1415843504 node_paths=PackedStringArray("character")]
+script = ExtResource("2_3fwhk")
+character = NodePath("..")
+metadata/_custom_type_script = "uid://crmry8vklmu4x"
+
+[node name="humanoid_basemesh" parent="." unique_id=1819910534 instance=ExtResource("3_3fwhk")]
