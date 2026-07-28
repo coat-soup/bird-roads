@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cqbkyhs6g8trq"
-path="res://.godot/imported/Minecraft - by BennyFonts1002 - from fontstruct.ttf-d00da6aa22af37f0ca8eab1d542fffac.fontdata"
+path="res://.godot/imported/Minecraft - by BennyFonts1002 - from fontstruct.ttf-ecdfc0d223dd79cb007768c530b39881.fontdata"
 
 [deps]
 
-source_file="res://examples_dd3d/Minecraft - by BennyFonts1002 - from fontstruct.ttf"
-dest_files=["res://.godot/imported/Minecraft - by BennyFonts1002 - from fontstruct.ttf-d00da6aa22af37f0ca8eab1d542fffac.fontdata"]
+source_file="res://addons/debug_draw_3d/examples_dd3d/Minecraft - by BennyFonts1002 - from fontstruct.ttf"
+dest_files=["res://.godot/imported/Minecraft - by BennyFonts1002 - from fontstruct.ttf-ecdfc0d223dd79cb007768c530b39881.fontdata"]
 
 [params]
 
