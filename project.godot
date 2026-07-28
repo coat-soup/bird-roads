@@ -22,6 +22,10 @@ Resources="*uid://cj3tg5xvq1u2m"
 WorldSim="*uid://dgdbxouorqpe6"
 Settings="*uid://dvkrd38om2xmu"
 
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
+
 [display]
 
 window/size/viewport_width=2560
