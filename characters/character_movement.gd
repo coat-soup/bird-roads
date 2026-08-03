@@ -9,15 +9,6 @@ extends Node3D
 var time_in_air : float = 0
 
 
-func _ready() -> void:
-	agent.finished_path.connect(on_finished_path)
-
-
-func on_finished_path():
-	await get_tree().create_timer(1.0).timeout
-	while len(agent.path) == 0:
-		agent.random_path()
-
 
 func _physics_process(delta: float) -> void:
 	var direction : Vector3 = Vector3.ZERO

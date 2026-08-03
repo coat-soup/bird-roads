@@ -34,9 +34,8 @@ func get_path_to_position(pos : Vector3):
 	path = NavGraphAStar.get_path_between_points(cur_node, end)
 
 
-func optimise_path():
-	for i in range(path):
-		pass
+func clear_path():
+	path = []
 
 
 func _process(delta: float) -> void:
