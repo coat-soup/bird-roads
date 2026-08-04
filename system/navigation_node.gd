@@ -4,6 +4,8 @@ extends Node3D
 @export var connections : Array[NavigationNode]
 var grid_pos : Vector3i
 
+@export var cover_directions : Array[Vector3]
+
 
 func try_add_connection(nodes : Array[NavigationNode], dims : Vector3i, pos : Vector3i, step_height : float) -> bool:
 	if pos.x < 0 or pos.x >= dims.x or pos.y < 0 or pos.y >= dims.y or pos.z < 0 or pos.z >= dims.z: return false

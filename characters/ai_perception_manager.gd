@@ -18,7 +18,7 @@ func tick():
 	var bodies = get_overlapping_bodies()
 	for body in bodies:
 		var char : Character = body as Character
-		if not char or char == character: continue
+		if not char or char == character or not can_see_target(char): continue
 		var stim : AIPerceptionStimulus = null
 		for s in stimuli: if s.source_node == char:
 			stim = s

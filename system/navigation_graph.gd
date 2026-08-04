@@ -9,6 +9,7 @@ extends Area3D
 @export var vertical_spacing : float = 5.0
 @export var step_height : float = 1.0
 @export var wall_dist : float = 0.5
+@export var cover_dist : float = 0.7
 
 @export var nodes : Array[NavigationNode]
 
@@ -62,7 +63,7 @@ func generate():
 						for i in range(n_rays):
 							results.append(space_state.intersect_ray(PhysicsRayQueryParameters3D.create(
 								node.global_position,
-								node.global_position + Vector3.FORWARD.rotated(Vector3.UP, 2 * PI * float(i)/float(n_rays)) * wall_dist,
+								node.global_position + Vector3.FORWARD.rotated(Vector3.UP, 2 * PI * float(i)/float(n_rays)) * max(wall_dist, cover_dist),
 								Util.layer_mask([1])
 							)))
 						
@@ -71,7 +72,14 @@ func generate():
 						for i in range(n_rays):
 							if not results[i]: continue
 							var d = results[i].position.distance_to(node.global_position)
-							if closest_i == -1 or d < closest_d:
+							if d <= cover_dist:
+								var cover_r = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(
+									Vector3.UP * 1.5 + node.global_position,
+									Vector3.UP * 1.5 + node.global_position + (results[i].position - node.global_position) * 1.1,
+									Util.layer_mask([1])
+								))
+								if not cover_r: node.cover_directions.append((results[i].position - node.global_position).normalized())
+							if d <= wall_dist and (closest_i == -1 or d < closest_d):
 								closest_i = i
 								closest_d = d
 						if closest_i != -1:
@@ -110,17 +118,18 @@ func _process(delta: float) -> void:
 	for node in nodes:
 		if not node: continue
 		DebugDraw3D.scoped_config().set_thickness(0.1)
-		DebugDraw3D.draw_box(node.global_position, Quaternion.IDENTITY, Vector3.ONE * 0.2, Color.RED, true)
-		DebugDraw3D.scoped_config().set_thickness(0.05)
+		var color = Color.RED if node.cover_directions.size() == 0 else Color.BLUE_VIOLET
+		DebugDraw3D.draw_box(node.global_position, Quaternion.IDENTITY, Vector3.ONE * 0.2, color, true)
+		DebugDraw3D.scoped_config().set_thickness(0.02)
 		for c in node.connections:
 			if not c or not is_instance_valid(c): continue
 			DebugDraw3D.draw_line(node.global_position, c.global_position, Color.YELLOW)
 		
-		DebugDraw3D.scoped_config().set_thickness(0.005)
-		for i in range(8):
-							DebugDraw3D.draw_line(
-								node.global_position,
-								node.global_position + Vector3.FORWARD.rotated(Vector3.UP, 2 * PI * float(i)/float(8)) * wall_dist,
-								Color.AQUA
-							)
+		# DebugDraw3D.scoped_config().set_thickness(0.005)
+		# for i in range(8):
+		# 					DebugDraw3D.draw_line(
+		# 						node.global_position,
+		# 						node.global_position + Vector3.FORWARD.rotated(Vector3.UP, 2 * PI * float(i)/float(8)) * max(wall_dist, cover_dist),
+		# 						Color.AQUA
+		# 					)
 		

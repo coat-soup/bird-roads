@@ -29,9 +29,13 @@ func random_path():
 	path = NavGraphAStar.get_path_between_points(cur_node, end)
 
 
-func get_path_to_position(pos : Vector3):
+func set_path_to_position(pos : Vector3):
 	var end = get_node_closest_to_position(pos)
 	path = NavGraphAStar.get_path_between_points(cur_node, end)
+
+
+func set_path_to_node(node : NavigationNode):
+	path = NavGraphAStar.get_path_between_points(cur_node, node)
 
 
 func clear_path():
@@ -80,6 +84,22 @@ func tick():
 	
 	await get_tree().create_timer(1.0/TICK_RATE).timeout
 	tick()
+
+
+func get_closest_cover_node(danger_position : Vector3, min_distance_to_danger : float = 10.0) -> NavigationNode:
+	var visited : Array[NavigationNode] = []
+	var breadth_first_queue : Array[NavigationNode] = [cur_node]
+	while breadth_first_queue.size() > 0:
+		var node : NavigationNode = breadth_first_queue.pop_front()
+		if not node.cover_directions.is_empty() and node.global_position.distance_to(danger_position) >= min_distance_to_danger: for dir in node.cover_directions:
+			if dir.dot((danger_position - character.global_position).normalized()) > 0.5:
+				return node
+		
+		visited.append(node)
+		for c in node.connections:
+			if not visited.has(c): breadth_first_queue.append(c)
+		
+	return null
 
 
 func get_node_closest_to_position(pos : Vector3) -> NavigationNode:
