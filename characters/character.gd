@@ -5,3 +5,4 @@ extends CharacterBody3D
 @export var nav_agent : NavigationMeshAgent
 @export var speed : float = 5
 @export var behaviour_manager : CharacterBehaviourManager
+@export var perception_manager : AIPerceptionManager

@@ -21,9 +21,7 @@ func _ready() -> void:
 
 func on_body_entered(body : Node3D):
 	var character = body as Character
-	if character:
-		character.movement_manager.agent.graph = self
-		print(character, " navgraph set to ", self)
+	if character: character.movement_manager.agent.graph = self
 
 
 func generate():

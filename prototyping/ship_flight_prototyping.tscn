@@ -6948,7 +6948,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.15285, -0.011281967, 11.5
 [node name="NavigationMeshAgent" parent="Character" index="2" unique_id=1415843504 node_paths=PackedStringArray("graph")]
 graph = NodePath("../../NavGraph")
 
-[node name="Character2" parent="." unique_id=1004033952 instance=ExtResource("15_ou1bv")]
+[node name="Character3" parent="." unique_id=1004033952 instance=ExtResource("15_ou1bv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.415337, -0.011281967, 14.622213)
+
+[node name="NavigationMeshAgent" parent="Character3" index="2" unique_id=1415843504 node_paths=PackedStringArray("graph")]
+graph = NodePath("../../NavGraph")
+
+[node name="Character2" parent="." unique_id=1309507419 instance=ExtResource("15_ou1bv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.344957, 17.298443, 42.475197)
 
 [editable path="Airship"]
@@ -6956,3 +6962,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.344957, 17.298443, 42.4751
 [editable path="Airship3"]
 [editable path="cannon_basic_handheld2"]
 [editable path="Character"]
+[editable path="Character3"]

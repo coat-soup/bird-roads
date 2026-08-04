@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://cex6wsasao1mk" path="res://system/actions/ai_action.gd" id="7_vliyq"]
 [ext_resource type="Script" uid="uid://b3p34ew3trqr0" path="res://system/actions/action_patrol.gd" id="8_qulg7"]
 [ext_resource type="Script" uid="uid://brlnxjke2ut2h" path="res://system/actions/action_debug_followcam.gd" id="9_vliyq"]
+[ext_resource type="Script" uid="uid://dukjahnplaub1" path="res://characters/ai_perception_manager.gd" id="10_qulg7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fwhk"]
 radius = 0.3623047
@@ -26,13 +27,17 @@ action_name = &"followcam"
 blocking = true
 metadata/_custom_type_script = "uid://brlnxjke2ut2h"
 
-[node name="Character" type="CharacterBody3D" unique_id=1004033952 node_paths=PackedStringArray("movement_manager", "nav_agent", "behaviour_manager")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_vliyq"]
+radius = 20.0
+
+[node name="Character" type="CharacterBody3D" unique_id=1004033952 node_paths=PackedStringArray("movement_manager", "nav_agent", "behaviour_manager", "perception_manager")]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_mdkfl")
 movement_manager = NodePath("CharacterMovement")
 nav_agent = NodePath("NavigationMeshAgent")
 behaviour_manager = NodePath("BehaviourManager")
+perception_manager = NodePath("AIPerceptionManager")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=233325845]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9187012, 0)
@@ -51,7 +56,8 @@ script = ExtResource("2_3fwhk")
 character = NodePath("..")
 metadata/_custom_type_script = "uid://crmry8vklmu4x"
 
-[node name="humanoid_basemesh" parent="." unique_id=1819910534 instance=ExtResource("3_3fwhk")]
+[node name="humanoid_basemesh" parent="." unique_id=1819910534 node_paths=PackedStringArray("character") instance=ExtResource("3_3fwhk")]
+character = NodePath("..")
 
 [node name="BehaviourManager" type="Node" parent="." unique_id=806000344]
 script = ExtResource("5_b1u1o")
@@ -65,3 +71,11 @@ metadata/_custom_type_script = "uid://cepsuqd062a4x"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9082468, 0)
 text = "[action1, action2, action3]"
 font_size = 16
+
+[node name="AIPerceptionManager" type="Area3D" parent="." unique_id=51887596]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("10_qulg7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AIPerceptionManager" unique_id=1319667380]
+shape = SubResource("SphereShape3D_vliyq")
