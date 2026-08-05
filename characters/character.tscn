@@ -8,9 +8,12 @@
 [ext_resource type="Script" uid="uid://cepsuqd062a4x" path="res://system/actions/action_manager.gd" id="6_f0775"]
 [ext_resource type="Script" uid="uid://cex6wsasao1mk" path="res://system/actions/ai_action.gd" id="7_vliyq"]
 [ext_resource type="Script" uid="uid://b3p34ew3trqr0" path="res://system/actions/action_patrol.gd" id="8_qulg7"]
-[ext_resource type="Script" uid="uid://brlnxjke2ut2h" path="res://system/actions/action_debug_followcam.gd" id="9_vliyq"]
 [ext_resource type="Script" uid="uid://bcbvv2bh4tjxd" path="res://system/actions/action_take_cover.gd" id="10_4kffy"]
 [ext_resource type="Script" uid="uid://dukjahnplaub1" path="res://characters/ai_perception_manager.gd" id="10_qulg7"]
+[ext_resource type="Script" uid="uid://b567710rit15p" path="res://system/actions/action_fire_weapon.gd" id="11_i1355"]
+[ext_resource type="Script" uid="uid://dagvkdjs33wwf" path="res://system/health.gd" id="12_bnq0n"]
+[ext_resource type="Script" uid="uid://bepefth7s5b42" path="res://system/weapons/weapon_manager.gd" id="13_hgjqb"]
+[ext_resource type="Script" uid="uid://qxmnckg3bboc" path="res://system/weapons/weapon.gd" id="14_3h56x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fwhk"]
 radius = 0.3623047
@@ -22,22 +25,22 @@ action_name = &"patrol"
 blocking = true
 metadata/_custom_type_script = "uid://b3p34ew3trqr0"
 
-[sub_resource type="Resource" id="Resource_qulg7"]
-script = ExtResource("9_vliyq")
-action_name = &"followcam"
-blocking = true
-metadata/_custom_type_script = "uid://brlnxjke2ut2h"
-
 [sub_resource type="Resource" id="Resource_bnq0n"]
 script = ExtResource("10_4kffy")
 action_name = &"take_cover"
 blocking = true
 metadata/_custom_type_script = "uid://bcbvv2bh4tjxd"
 
+[sub_resource type="Resource" id="Resource_qci4v"]
+script = ExtResource("11_i1355")
+action_name = &"fire_weapon"
+metadata/_custom_type_script = "uid://b567710rit15p"
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_vliyq"]
 radius = 20.0
 
-[node name="Character" type="CharacterBody3D" unique_id=1004033952 node_paths=PackedStringArray("movement_manager", "nav_agent", "behaviour_manager", "perception_manager")]
+[node name="Character" type="CharacterBody3D" unique_id=1004033952 node_paths=PackedStringArray("movement_manager", "nav_agent", "behaviour_manager", "perception_manager", "health", "weapon_manager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2711295, 0.7428549, -0.36787367)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_mdkfl")
@@ -45,6 +48,8 @@ movement_manager = NodePath("CharacterMovement")
 nav_agent = NodePath("NavigationMeshAgent")
 behaviour_manager = NodePath("BehaviourManager")
 perception_manager = NodePath("AIPerceptionManager")
+health = NodePath("Health")
+weapon_manager = NodePath("WeaponManager")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=233325845]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08129883, 0)
@@ -73,7 +78,7 @@ script = ExtResource("5_b1u1o")
 
 [node name="ActionManager" type="Node" parent="." unique_id=559648473]
 script = ExtResource("6_f0775")
-action_set = Array[ExtResource("7_vliyq")]([SubResource("Resource_4kffy"), SubResource("Resource_qulg7"), SubResource("Resource_bnq0n")])
+action_set = Array[ExtResource("7_vliyq")]([SubResource("Resource_4kffy"), SubResource("Resource_bnq0n"), SubResource("Resource_qci4v")])
 metadata/_custom_type_script = "uid://cepsuqd062a4x"
 
 [node name="ActionDebugLabel" type="Label3D" parent="." unique_id=312549926]
@@ -88,3 +93,36 @@ script = ExtResource("10_qulg7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AIPerceptionManager" unique_id=1319667380]
 shape = SubResource("SphereShape3D_vliyq")
+
+[node name="Health" type="Node" parent="." unique_id=711726928]
+script = ExtResource("12_bnq0n")
+metadata/_custom_type_script = "uid://dagvkdjs33wwf"
+
+[node name="WeaponManager" type="Node3D" parent="." unique_id=1281329497 node_paths=PackedStringArray("character", "cur_weapon", "skeleton")]
+script = ExtResource("13_hgjqb")
+character = NodePath("..")
+cur_weapon = NodePath("Gun")
+skeleton = NodePath("../humanoid_basemesh")
+metadata/_custom_type_script = "uid://bepefth7s5b42"
+
+[node name="Gun" type="Node3D" parent="WeaponManager" unique_id=1510310055 node_paths=PackedStringArray("weapon_manager", "hand_ik_target", "muzzle_point")]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999999, -0.08734543, 0.31458735, 0.5055313)
+script = ExtResource("14_3h56x")
+fire_rate = 3.0
+weapon_manager = NodePath("..")
+hand_ik_target = NodePath("RHTarget")
+muzzle_point = NodePath("Marker3D")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="WeaponManager/Gun" unique_id=1358458237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012646437, 0)
+size = Vector3(0.05, 0.07529297, 0.05)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="WeaponManager/Gun" unique_id=887366027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05565536, 0.063943505)
+size = Vector3(0.05, 0.06357422, 0.20354614)
+
+[node name="RHTarget" type="Marker3D" parent="WeaponManager/Gun" unique_id=284087660]
+transform = Transform3D(-0.9801401, -0.032724388, -0.19558787, -0.19148009, -0.10037979, 0.97634995, -0.051583514, 0.99441093, 0.09212026, -0.027870566, 0.012476921, -0.102748364)
+
+[node name="Marker3D" type="Marker3D" parent="WeaponManager/Gun" unique_id=1846333080]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.061840534, 0.18055473)

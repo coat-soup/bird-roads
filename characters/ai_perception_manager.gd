@@ -28,6 +28,7 @@ func tick():
 			var type = AIPerceptionStimulus.StimulusType.TRACKED_ENEMY
 			stim = AIPerceptionStimulus.new(type, char, Vector3.ZERO)
 			stimuli.append(stim)
+			char.health.died.connect(on_stimulus_character_died.bind(char))
 			perception_updated.emit()
 	
 	for i in range(len(stimuli)-1, -1, -1):
@@ -35,6 +36,8 @@ func tick():
 			or stimuli[i].stimulus_type == AIPerceptionStimulus.StimulusType.VISUAL_ATTENTION):
 			stimuli[i].time_since_live += 1.0/tick_speed
 			if stimuli[i].time_since_live >= dead_stim_remove_time:
+				var char = stimuli[i].source_node as Character
+				if char: char.health.died.disconnect(on_stimulus_character_died)
 				stimuli.remove_at(i)
 				perception_updated.emit()
 		else:
@@ -42,6 +45,14 @@ func tick():
 	
 	await get_tree().create_timer(1.0/tick_speed).timeout
 	tick()
+
+
+func on_stimulus_character_died(char : Character):
+	for i in range(len(stimuli)):
+		if stimuli[i].source_node == char:
+			stimuli.remove_at(i)
+			break
+	char.health.died.disconnect(on_stimulus_character_died)
 
 
 func can_see_target(char : Character) -> bool:

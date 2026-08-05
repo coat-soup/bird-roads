@@ -6,3 +6,13 @@ extends CharacterBody3D
 @export var speed : float = 5
 @export var behaviour_manager : CharacterBehaviourManager
 @export var perception_manager : AIPerceptionManager
+@export var health : Health
+@export var weapon_manager : WeaponManager
+
+
+func _ready() -> void:
+	health.died.connect(die)
+
+
+func die():
+	queue_free()

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://big4223brww7b"]
+
+[sub_resource type="Curve" id="Curve_huwei"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.09195402, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_54scl"]
+curve = SubResource("Curve_huwei")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vn885"]
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+scale_min = 0.099999994
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_54scl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubdyb"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_b58uj"]
+material = SubResource("StandardMaterial3D_ubdyb")
+
+[node name="BulletImpactParticles" type="Node3D" unique_id=1724998965]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=2036126519]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_vn885")
+draw_pass_1 = SubResource("SphereMesh_b58uj")

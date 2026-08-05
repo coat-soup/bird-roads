@@ -7,7 +7,7 @@ signal died
 
 var last_damage_source : Node
 
-@export var max_health : float
+@export var max_health : float = 100
 var cur_health : float
 
 func _ready() -> void:
