@@ -10,5 +10,11 @@ func _ready() -> void:
 		skeleton.set_hand_ik_target(cur_weapon.hand_ik_target)
 		skeleton.weapon_rt.remote_path = skeleton.weapon_rt.get_path_to(cur_weapon)
 
+
 func try_fire_weapon():
-	if not cur_weapon.waiting_to_fire: cur_weapon.fire()
+	cur_weapon.fire()
+
+
+func try_reload_weapon():
+	if not cur_weapon.reloading and cur_weapon.cur_ammo < cur_weapon.magazine_size:
+		cur_weapon.reload()

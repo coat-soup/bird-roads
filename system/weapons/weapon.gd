@@ -8,7 +8,9 @@ var waiting_to_fire : bool = false
 @export var magazine_size : int = 10
 var cur_ammo : int
 
+@export var reload_time : float = 4.0
 @export var range : float = 50.0
+var reloading : bool = false
 
 @export var weapon_manager : WeaponManager
 
@@ -23,9 +25,20 @@ func _ready() -> void:
 	cur_ammo = magazine_size
 
 
+func reload():
+	if cur_ammo >= magazine_size or reloading: return
+	reloading = true
+	await get_tree().create_timer(reload_time).timeout
+	cur_ammo = magazine_size
+	reloading = false
+
+
 func fire():
-	waiting_to_fire = true
+	if cur_ammo <= 0 or waiting_to_fire or reloading: return
+	
 	cur_ammo -= 1
+	
+	if cur_ammo > 0: waiting_to_fire = true
 	
 	var muzzle_particles = MUZZLE_FLASH_PARTICLES.instantiate()
 	muzzle_point.add_child(muzzle_particles)
@@ -47,5 +60,9 @@ func fire():
 		if character and character.health:
 			character.health.take_damage(damage)
 	
-	await get_tree().create_timer(1.0/fire_rate).timeout
-	waiting_to_fire = false
+	if cur_ammo > 0:
+		await get_tree().create_timer(1.0/fire_rate).timeout
+		waiting_to_fire = false
+		if (weapon_manager.character and 
+		weapon_manager.character.behaviour_manager.action_manager.is_performing_action_by_name("fire_weapon")):
+			fire()

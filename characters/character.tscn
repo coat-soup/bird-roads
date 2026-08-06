@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://bcbvv2bh4tjxd" path="res://system/actions/action_take_cover.gd" id="10_4kffy"]
 [ext_resource type="Script" uid="uid://dukjahnplaub1" path="res://characters/ai_perception_manager.gd" id="10_qulg7"]
 [ext_resource type="Script" uid="uid://b567710rit15p" path="res://system/actions/action_fire_weapon.gd" id="11_i1355"]
+[ext_resource type="Script" uid="uid://0pj0db48qaoq" path="res://system/actions/action_reload_weapon.gd" id="11_qci4v"]
 [ext_resource type="Script" uid="uid://dagvkdjs33wwf" path="res://system/health.gd" id="12_bnq0n"]
 [ext_resource type="Script" uid="uid://bepefth7s5b42" path="res://system/weapons/weapon_manager.gd" id="13_hgjqb"]
 [ext_resource type="Script" uid="uid://qxmnckg3bboc" path="res://system/weapons/weapon.gd" id="14_3h56x"]
@@ -35,6 +36,11 @@ metadata/_custom_type_script = "uid://bcbvv2bh4tjxd"
 script = ExtResource("11_i1355")
 action_name = &"fire_weapon"
 metadata/_custom_type_script = "uid://b567710rit15p"
+
+[sub_resource type="Resource" id="Resource_qnu6j"]
+script = ExtResource("11_qci4v")
+action_name = &"reload"
+metadata/_custom_type_script = "uid://0pj0db48qaoq"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vliyq"]
 radius = 20.0
@@ -78,7 +84,7 @@ script = ExtResource("5_b1u1o")
 
 [node name="ActionManager" type="Node" parent="." unique_id=559648473]
 script = ExtResource("6_f0775")
-action_set = Array[ExtResource("7_vliyq")]([SubResource("Resource_4kffy"), SubResource("Resource_bnq0n"), SubResource("Resource_qci4v")])
+action_set = Array[ExtResource("7_vliyq")]([SubResource("Resource_4kffy"), SubResource("Resource_bnq0n"), SubResource("Resource_qci4v"), SubResource("Resource_qnu6j")])
 metadata/_custom_type_script = "uid://cepsuqd062a4x"
 
 [node name="ActionDebugLabel" type="Label3D" parent="." unique_id=312549926]

@@ -13,6 +13,7 @@ extends CharacterBody3D
 func _ready() -> void:
 	health.died.connect(die)
 
-
+## disabled for enemy combat debugging
 func die():
-	queue_free()
+	pass
+	#queue_free()
