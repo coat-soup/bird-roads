@@ -12,6 +12,7 @@ extends Area3D
 @export var cover_dist : float = 0.7
 
 @export var nodes : Array[NavigationNode]
+@export var cover_nodes : Array[int]
 
 
 func _ready() -> void:
@@ -28,6 +29,7 @@ func on_body_entered(body : Node3D):
 func generate():
 	for node in nodes: if node and is_instance_valid(node): node.queue_free()
 	nodes = []
+	cover_nodes = []
 	
 	var space_state = get_world_3d().direct_space_state
 	
@@ -78,13 +80,15 @@ func generate():
 									Vector3.UP * 1.5 + node.global_position + (results[i].position - node.global_position) * 1.1,
 									Util.layer_mask([1])
 								))
-								if not cover_r: node.cover_directions.append((results[i].position - node.global_position).normalized())
+								if not cover_r:
+									node.cover_directions.append((results[i].position - node.global_position).normalized())
 							if d <= wall_dist and (closest_i == -1 or d < closest_d):
 								closest_i = i
 								closest_d = d
 						if closest_i != -1:
 							node.global_position += (node.global_position - results[closest_i].position).normalized() * (wall_dist - closest_d)
-			
+						if not node.cover_directions.is_empty(): cover_nodes.append(nodes.size()-1)
+						
 			# connect them
 			for node in nodes:
 				if not node: continue
@@ -110,6 +114,8 @@ func generate():
 			collision_shape.transform.origin.y += 1
 			node.clear_connections()
 			node.queue_free()
+			var cover_id = cover_nodes.find(nodes[i])
+			if cover_id != -1: cover_nodes.remove_at(cover_id)
 			nodes[i] = null
 
 

@@ -59,3 +59,15 @@ func can_see_target(char : Character) -> bool:
 	var space_state = get_world_3d().direct_space_state
 	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(character.global_position + Vector3.UP * 0.5, char.global_position + Vector3.UP * 0.5, Util.layer_mask([1,2]), [character]))
 	return result and result.collider == char
+
+
+func get_main_target() -> Node3D:
+	if stimuli.is_empty(): return null
+	var stims = stimuli
+	stims.sort_custom(func(a : AIPerceptionStimulus, b : AIPerceptionStimulus):
+		if a.stimulus_type == AIPerceptionStimulus.StimulusType.TRACKED_ENEMY and b.stimulus_type != AIPerceptionStimulus.StimulusType.TRACKED_ENEMY: return true
+		elif a.stimulus_type != AIPerceptionStimulus.StimulusType.TRACKED_ENEMY and b.stimulus_type == AIPerceptionStimulus.StimulusType.TRACKED_ENEMY: return false
+		else: return a.time_since_live < b.time_since_live
+		)
+		
+	return stims[0].source_node if stims[0].stimulus_type == AIPerceptionStimulus.StimulusType.TRACKED_ENEMY else null

@@ -3,7 +3,8 @@ extends AIAction
 
 
 func get_weight(character : Character) -> float:
-	return 0.5
+	if character.perception_manager.stimuli.size() > 0: return 0.0
+	return 0.5 - min(0.0, character.behaviour_manager.boredom/5.0)
 
 
 func perform_action(character : Character):

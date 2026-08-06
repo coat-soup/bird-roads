@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cepsuqd062a4x" path="res://system/actions/action_manager.gd" id="6_f0775"]
 [ext_resource type="Script" uid="uid://cex6wsasao1mk" path="res://system/actions/ai_action.gd" id="7_vliyq"]
 [ext_resource type="Script" uid="uid://b3p34ew3trqr0" path="res://system/actions/action_patrol.gd" id="8_qulg7"]
-[ext_resource type="Script" uid="uid://bcbvv2bh4tjxd" path="res://system/actions/action_take_cover.gd" id="10_4kffy"]
+[ext_resource type="Script" uid="uid://bcbvv2bh4tjxd" path="res://system/actions/action_move_post.gd" id="10_4kffy"]
 [ext_resource type="Script" uid="uid://dukjahnplaub1" path="res://characters/ai_perception_manager.gd" id="10_qulg7"]
 [ext_resource type="Script" uid="uid://b567710rit15p" path="res://system/actions/action_fire_weapon.gd" id="11_i1355"]
 [ext_resource type="Script" uid="uid://0pj0db48qaoq" path="res://system/actions/action_reload_weapon.gd" id="11_qci4v"]
@@ -28,7 +28,7 @@ metadata/_custom_type_script = "uid://b3p34ew3trqr0"
 
 [sub_resource type="Resource" id="Resource_bnq0n"]
 script = ExtResource("10_4kffy")
-action_name = &"take_cover"
+action_name = &"move_post"
 blocking = true
 metadata/_custom_type_script = "uid://bcbvv2bh4tjxd"
 
