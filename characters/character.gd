@@ -9,11 +9,20 @@ extends CharacterBody3D
 @export var health : Health
 @export var weapon_manager : WeaponManager
 
+@export var debug_immortal : bool = false
 
 func _ready() -> void:
 	health.died.connect(die)
+	
+	if debug_immortal:
+		health.max_health = 1000000
+		health.cur_health = health.max_health
+		health.damaged.connect(on_debug_immortal_take_damage)
 
-## disabled for enemy combat debugging
+
+func on_debug_immortal_take_damage():
+	health.cur_health = health.max_health
+
+
 func die():
-	pass
-	#queue_free()
+	queue_free()

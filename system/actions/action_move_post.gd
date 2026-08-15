@@ -5,13 +5,14 @@ extends AIAction
 func get_weight(character : Character) -> float:
 	var target = character.perception_manager.get_main_target()
 	if not target: return 0.0
-	return character.behaviour_manager.boredom / 2.0 - 10 + get_post_cost(character, character.nav_agent.cur_node, target, character.get_world_3d().direct_space_state)
+	return -10 + get_post_cost(character, character.nav_agent.cur_node, target, character.get_world_3d().direct_space_state)
 
 
 func perform_action(character : Character):
+	print("MOVING POST!")
 	var costs = get_post_costs(character)
 	if not costs.is_empty():
-		var lowest_i = costs[0]
+		var lowest_i = 0
 		for i in range(len(costs)):
 			if costs[i] < costs[lowest_i]: lowest_i = i
 		character.nav_agent.set_path_to_node(character.nav_agent.graph.nodes[character.nav_agent.graph.cover_nodes[lowest_i]])
@@ -19,6 +20,7 @@ func perform_action(character : Character):
 		
 		character.nav_agent.finished_path.connect(on_finished_path.bind(character))
 	else: end_action(character)
+
 
 func end_action(character : Character):
 	super.end_action(character)
@@ -57,6 +59,7 @@ func get_post_cost(character : Character, post_node : NavigationNode, target : N
 		Util.layer_mask([1,2]), [character, target]
 	)) else 0.0
 	
-	var c_stay = post_node.global_position.distance_to(character.nav_agent.cur_node.global_position) / 10.0
+	var c_stay = character.behaviour_manager.boredom / max(post_node.global_position.distance_to(character.nav_agent.cur_node.global_position), 1.0)
+	#if post_node == character.nav_agent.cur_node: c_stay += character.behaviour_manager.boredom
 	
 	return c_distance_to_target + c_distance_from_self + c_cover + c_los + c_stay

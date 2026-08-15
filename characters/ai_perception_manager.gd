@@ -15,6 +15,7 @@ func _ready() -> void: tick()
 
 
 func tick():
+	# get new stimuli loop
 	var bodies = get_overlapping_bodies()
 	for body in bodies:
 		var char : Character = body as Character
@@ -71,3 +72,9 @@ func get_main_target() -> Node3D:
 		)
 		
 	return stims[0].source_node if stims[0].stimulus_type == AIPerceptionStimulus.StimulusType.TRACKED_ENEMY else null
+
+
+func _process(delta: float) -> void:
+	var t = ""
+	for stim in stimuli: t += stim.source_node.name + ": " + str(stim.time_since_live) + "s,"
+	$"../ActionDebugLabel/StimuliDebugLabel".text = "[" + t.left(t.length() - 1) + "]"

@@ -46,9 +46,10 @@ metadata/_custom_type_script = "uid://0pj0db48qaoq"
 radius = 20.0
 
 [node name="Character" type="CharacterBody3D" unique_id=1004033952 node_paths=PackedStringArray("movement_manager", "nav_agent", "behaviour_manager", "perception_manager", "health", "weapon_manager")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2711295, 0.7428549, -0.36787367)
 collision_layer = 2
 collision_mask = 3
+floor_block_on_wall = false
+safe_margin = 0.002
 script = ExtResource("1_mdkfl")
 movement_manager = NodePath("CharacterMovement")
 nav_agent = NodePath("NavigationMeshAgent")
@@ -92,6 +93,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90824676, 0)
 text = "[action1, action2, action3]"
 font_size = 16
 
+[node name="StimuliDebugLabel" type="Label3D" parent="ActionDebugLabel" unique_id=399014076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.116060734, 0)
+text = "[char1: 0s, char2: 0.5s]"
+font_size = 16
+
 [node name="AIPerceptionManager" type="Area3D" parent="." unique_id=51887596]
 collision_layer = 0
 collision_mask = 2
@@ -132,3 +138,11 @@ transform = Transform3D(-0.9801401, -0.032724388, -0.19558787, -0.19148009, -0.1
 
 [node name="Marker3D" type="Marker3D" parent="WeaponManager/Gun" unique_id=1846333080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.061840534, 0.18055473)
+
+[node name="ShinCast" type="RayCast3D" parent="." unique_id=885693660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4746396, 0)
+target_position = Vector3(0, 0, 0.5)
+
+[node name="HeadCast" type="RayCast3D" parent="." unique_id=1880657670]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5406869, 0)
+target_position = Vector3(0, 0, 0.5)

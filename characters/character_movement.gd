@@ -8,6 +8,9 @@ extends Node3D
 
 var time_in_air : float = 0
 
+@onready var shin_cast: RayCast3D = $"../ShinCast"
+@onready var head_cast: RayCast3D = $"../HeadCast"
+
 
 
 func _physics_process(delta: float) -> void:
@@ -33,8 +36,14 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			character.velocity.x = direction.x * character.speed
 			character.velocity.z = direction.z * character.speed
+			
+			if abs(next_node.global_position.y - character.global_position.y) > 0.2 and shin_cast.is_colliding() and not head_cast.is_colliding():
+				character.velocity.y += 5
 		else:
 			character.velocity.x = lerp(character.velocity.x, direction.x * character.speed, delta * 10)
 			character.velocity.z = lerp(character.velocity.z, direction.z * character.speed, delta * 10)
+	
+	shin_cast.target_position = direction.normalized() * 0.6
+	head_cast.target_position = shin_cast.target_position
 	
 	character.move_and_slide()
