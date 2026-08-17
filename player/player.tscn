@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dwcnw574emhne" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Script" uid="uid://c0c8otvncddg5" path="res://player/player_movement.gd" id="1_u3ln2"]
 [ext_resource type="Script" uid="uid://b17egmjgll7mj" path="res://system/player_interaction_manager.gd" id="2_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://de3aw0wlfn7wf" path="res://player/fps_arms.glb" id="3_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://k1pdslv2wulr" path="res://characters/weapons/revolver.glb" id="3_yw30f"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_765p8"]
 radius = 0.3
@@ -34,6 +36,12 @@ shape = SubResource("CapsuleShape3D_ybx0f")
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1597075800]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732802, 0)
+
+[node name="fps_arms" parent="CameraPivot" unique_id=1282534546 instance=ExtResource("3_qjkh3")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.298, -0.087)
+
+[node name="revolver" parent="CameraPivot" unique_id=447568728 instance=ExtResource("3_yw30f")]
+transform = Transform3D(-0.9998586, 0.0066114357, 0.015462081, 0.0066727274, 0.9999701, 0.003916387, -0.01543573, 0.0040189913, -0.9998728, 0.47463673, -0.22669011, -0.8359199)
 
 [node name="Camera" type="Camera3D" parent="CameraPivot" unique_id=1289026910]
 

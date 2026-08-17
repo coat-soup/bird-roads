@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://dagvkdjs33wwf" path="res://system/health.gd" id="12_bnq0n"]
 [ext_resource type="Script" uid="uid://bepefth7s5b42" path="res://system/weapons/weapon_manager.gd" id="13_hgjqb"]
 [ext_resource type="Script" uid="uid://qxmnckg3bboc" path="res://system/weapons/weapon.gd" id="14_3h56x"]
+[ext_resource type="PackedScene" uid="uid://k1pdslv2wulr" path="res://characters/weapons/revolver.glb" id="16_qci4v"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fwhk"]
 radius = 0.3623047
@@ -125,19 +126,13 @@ weapon_manager = NodePath("..")
 hand_ik_target = NodePath("RHTarget")
 muzzle_point = NodePath("Marker3D")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="WeaponManager/Gun" unique_id=1358458237]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.012646437, 0)
-size = Vector3(0.05, 0.07529297, 0.05)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="WeaponManager/Gun" unique_id=887366027]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05565536, 0.063943505)
-size = Vector3(0.05, 0.06357422, 0.20354614)
-
 [node name="RHTarget" type="Marker3D" parent="WeaponManager/Gun" unique_id=284087660]
-transform = Transform3D(-0.9801401, -0.032724388, -0.19558787, -0.19148009, -0.10037979, 0.97634995, -0.051583514, 0.99441093, 0.09212026, -0.027870566, 0.012476921, -0.102748364)
+transform = Transform3D(-0.9801401, -0.032724388, -0.19558787, -0.19148012, -0.1003798, 0.97635007, -0.051583514, 0.99441093, 0.09212026, -0.027870566, -0.06187758, -0.14524037)
 
 [node name="Marker3D" type="Marker3D" parent="WeaponManager/Gun" unique_id=1846333080]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.061840534, 0.18055473)
+
+[node name="revolver" parent="WeaponManager/Gun" unique_id=447568728 instance=ExtResource("16_qci4v")]
 
 [node name="ShinCast" type="RayCast3D" parent="." unique_id=885693660]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4746396, 0)

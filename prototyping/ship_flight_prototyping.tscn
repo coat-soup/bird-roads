@@ -4264,7 +4264,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6222777, 0.06482975, 34.75
 transform = Transform3D(0.5589614, 0, 0.8291937, 0, 1, 0, -0.8291937, 0, 0.5589614, -47.95346, 0.065, 42)
 
 [node name="Camera3D" parent="cannon_basic_handheld2" index="4" unique_id=160089326]
-transform = Transform3D(-1.0000001, -3.7251713e-09, -8.940697e-08, -3.725174e-09, 1, 2.9802425e-08, 8.940697e-08, 2.9802422e-08, -1.0000001, 0, 1.7742426, -1.7037029)
+transform = Transform3D(-1.0000001, -3.7251704e-09, -8.940697e-08, -3.7251704e-09, 1, 2.9802422e-08, 8.940697e-08, 2.9802422e-08, -1.0000001, 0, 1.7742426, -1.7037029)
 
 [node name="AIController" parent="cannon_basic_handheld2" index="6" unique_id=1230178264 node_paths=PackedStringArray("target")]
 target = NodePath("../../Airship2/Movement")
@@ -4299,6 +4299,7 @@ force_side_on_top = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.02496, 0.8374176, -1.4582953)
 collision_mask = 2
 script = ExtResource("12_7xl7w")
+debug_visualise = false
 vertical_spacing = 4.0
 step_height = 1.5
 wall_dist = 1.0
