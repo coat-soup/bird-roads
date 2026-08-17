@@ -4264,7 +4264,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6222777, 0.06482975, 34.75
 transform = Transform3D(0.5589614, 0, 0.8291937, 0, 1, 0, -0.8291937, 0, 0.5589614, -47.95346, 0.065, 42)
 
 [node name="Camera3D" parent="cannon_basic_handheld2" index="4" unique_id=160089326]
-transform = Transform3D(-1.0000001, -3.725158e-09, -8.940697e-08, -3.7251584e-09, 1, 2.9802425e-08, 8.940697e-08, 2.9802422e-08, -1.0000001, 0, 1.7742426, -1.7037029)
+transform = Transform3D(-1.0000001, -3.7251509e-09, -8.940697e-08, -3.725153e-09, 1, 2.9802422e-08, 8.940697e-08, 2.9802422e-08, -1.0000001, 0, 1.7742426, -1.7037029)
 
 [node name="AIController" parent="cannon_basic_handheld2" index="6" unique_id=1230178264 node_paths=PackedStringArray("target")]
 target = NodePath("../../Airship2/Movement")
@@ -6788,21 +6788,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.676758, -0.14870197, 29.33
 script = ExtResource("13_7xl7w")
 connections = [NodePath("../@Node3D@82190"), NodePath("../@Node3D@82212"), NodePath("../@Node3D@82191")]
 
-[node name="Character" parent="." unique_id=1050266761 instance=ExtResource("15_ou1bv")]
+[node name="Character" parent="." unique_id=1004033952 instance=ExtResource("15_ou1bv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.15285, 0.7392473, 11.528217)
 debug_immortal = true
 
 [node name="NavigationMeshAgent" parent="Character" index="2" unique_id=1415843504 node_paths=PackedStringArray("graph")]
 graph = NodePath("../../NavGraph")
 
-[node name="Character3" parent="." unique_id=1004033952 instance=ExtResource("15_ou1bv")]
+[node name="Character3" parent="." unique_id=1866199318 instance=ExtResource("15_ou1bv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.415337, 0.7392473, 14.622213)
 debug_immortal = true
 
 [node name="NavigationMeshAgent" parent="Character3" index="2" unique_id=1415843504 node_paths=PackedStringArray("graph")]
 graph = NodePath("../../NavGraph")
 
-[node name="Character2" parent="." unique_id=1309507419 instance=ExtResource("15_ou1bv")]
+[node name="Character2" parent="." unique_id=451668898 instance=ExtResource("15_ou1bv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.344957, 18.089922, 42.475197)
 
 [editable path="Airship"]

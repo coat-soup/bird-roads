@@ -2,13 +2,14 @@ class_name Weapon
 extends Node3D
 
 signal fired
+signal reload_started
 
 @export var damage : int = 12
 
 @export var fire_rate : float = 5
 var waiting_to_fire : bool = false
 @export var magazine_size : int = 10
-var cur_ammo : int
+var cur_ammo : int = 1
 
 @export var reload_time : float = 4.0
 @export var range : float = 50.0
@@ -35,7 +36,12 @@ func _ready() -> void:
 func reload():
 	if cur_ammo >= magazine_size or reloading: return
 	reloading = true
+	if animation_player:
+		animation_player.speed_scale = animation_player.get_animation("Armature|reload").length / (reload_time)
+		animation_player.play("Armature|reload")
+	reload_started.emit()
 	await get_tree().create_timer(reload_time).timeout
+	animation_player.speed_scale = 1.0
 	cur_ammo = magazine_size
 	reloading = false
 
