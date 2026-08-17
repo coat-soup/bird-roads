@@ -14,8 +14,7 @@
 [ext_resource type="Script" uid="uid://0pj0db48qaoq" path="res://system/actions/action_reload_weapon.gd" id="11_qci4v"]
 [ext_resource type="Script" uid="uid://dagvkdjs33wwf" path="res://system/health.gd" id="12_bnq0n"]
 [ext_resource type="Script" uid="uid://bepefth7s5b42" path="res://system/weapons/weapon_manager.gd" id="13_hgjqb"]
-[ext_resource type="Script" uid="uid://qxmnckg3bboc" path="res://system/weapons/weapon.gd" id="14_3h56x"]
-[ext_resource type="PackedScene" uid="uid://k1pdslv2wulr" path="res://characters/weapons/revolver.glb" id="16_qci4v"]
+[ext_resource type="PackedScene" uid="uid://gs3fu7jvum7m" path="res://characters/weapons/revolver.tscn" id="15_i1355"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fwhk"]
 radius = 0.3623047
@@ -114,25 +113,13 @@ metadata/_custom_type_script = "uid://dagvkdjs33wwf"
 [node name="WeaponManager" type="Node3D" parent="." unique_id=1281329497 node_paths=PackedStringArray("character", "cur_weapon", "skeleton")]
 script = ExtResource("13_hgjqb")
 character = NodePath("..")
-cur_weapon = NodePath("Gun")
+cur_weapon = NodePath("revolver")
 skeleton = NodePath("../humanoid_basemesh")
 metadata/_custom_type_script = "uid://bepefth7s5b42"
 
-[node name="Gun" type="Node3D" parent="WeaponManager" unique_id=1510310055 node_paths=PackedStringArray("weapon_manager", "hand_ik_target", "muzzle_point")]
+[node name="revolver" parent="WeaponManager" unique_id=725224190 node_paths=PackedStringArray("weapon_manager") instance=ExtResource("15_i1355")]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999999, -0.08734543, 0.31458735, 0.5055313)
-script = ExtResource("14_3h56x")
-fire_rate = 3.0
 weapon_manager = NodePath("..")
-hand_ik_target = NodePath("RHTarget")
-muzzle_point = NodePath("Marker3D")
-
-[node name="RHTarget" type="Marker3D" parent="WeaponManager/Gun" unique_id=284087660]
-transform = Transform3D(-0.9801401, -0.032724388, -0.19558787, -0.19148012, -0.1003798, 0.97635007, -0.051583514, 0.99441093, 0.09212026, -0.027870566, -0.06187758, -0.14524037)
-
-[node name="Marker3D" type="Marker3D" parent="WeaponManager/Gun" unique_id=1846333080]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.061840534, 0.18055473)
-
-[node name="revolver" parent="WeaponManager/Gun" unique_id=447568728 instance=ExtResource("16_qci4v")]
 
 [node name="ShinCast" type="RayCast3D" parent="." unique_id=885693660]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4746396, 0)

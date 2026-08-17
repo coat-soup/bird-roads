@@ -20,13 +20,37 @@ vertex_color_use_as_albedo = true
 [sub_resource type="SphereMesh" id="SphereMesh_b58uj"]
 material = SubResource("StandardMaterial3D_ubdyb")
 
+[sub_resource type="Animation" id="Animation_huwei"]
+resource_name = "start"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_54scl"]
+_data = {
+&"start": SubResource("Animation_huwei")
+}
+
 [node name="BulletImpactParticles" type="Node3D" unique_id=1724998965]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=2036126519]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, -1, 0, 1.3113416e-07, -5.7320566e-15, 1, -1, 4.371139e-08, 1.3113416e-07, 0, 0, 0)
 emitting = false
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_vn885")
 draw_pass_1 = SubResource("SphereMesh_b58uj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=565896843]
+libraries/ = SubResource("AnimationLibrary_54scl")
+autoplay = &"start"

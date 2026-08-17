@@ -4,6 +4,8 @@ extends Node3D
 @export var character : Character
 @export var cur_weapon : Weapon
 @export var skeleton : HumanoidSkeletonController
+@export var player : Player
+
 
 func _ready() -> void:
 	if skeleton and cur_weapon:
