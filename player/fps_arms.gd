@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 	
 	rotation.x = lerp(rotation.x, -sway.y * sway_strength, delta * 10)
 	rotation.y = lerp(rotation.y, sway.x * sway_strength - PI, delta * 10)
-	rotation.z = lerp(rotation.z, Input.get_axis("left", "right") * sway_strength * 0.08, delta * 5)
+	rotation.z = lerp(rotation.z, Input.get_axis("left", "right") * sway_strength * 0.08, delta *  5)
 
 
 func add_jump_sway():

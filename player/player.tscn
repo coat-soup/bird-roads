@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://42sl1srtmsdc" path="res://player/fps_arms.tscn" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://2wwqylg0tbhs" path="res://system/weapons/player_weapon_manager.gd" id="5_qjkh3"]
 [ext_resource type="PackedScene" uid="uid://gs3fu7jvum7m" path="res://characters/weapons/revolver.tscn" id="6_g6k8r"]
+[ext_resource type="PackedScene" uid="uid://cm4vcg2sie1cd" path="res://characters/weapons/break_action.fbx" id="8_hg6s5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_765p8"]
 radius = 0.3
@@ -56,6 +57,9 @@ noise = SubResource("FastNoiseLite_boad6")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.1511463, 0)
 player = NodePath("../../../..")
 
+[node name="break_action" parent="CameraPivot/RecoilManager/Camera/fps_arms" unique_id=1246912879 instance=ExtResource("8_hg6s5")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.31364697, 0.0035591125, 0.7160189)
+
 [node name="MovementManager" type="Node3D" parent="." unique_id=805829882 node_paths=PackedStringArray("player", "camera_pivot", "camera")]
 script = ExtResource("1_u3ln2")
 player = NodePath("..")
@@ -75,5 +79,6 @@ player = NodePath("..")
 metadata/_custom_type_script = "uid://2wwqylg0tbhs"
 
 [node name="revolver" parent="PlayerWeaponManager" unique_id=725224190 instance=ExtResource("6_g6k8r")]
+visible = false
 
 [editable path="CameraPivot/RecoilManager/Camera/fps_arms"]
