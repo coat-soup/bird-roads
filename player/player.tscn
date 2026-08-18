@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://dwcnw574emhne" path="res://player/player.gd" id="1_rkbax"]
 [ext_resource type="Script" uid="uid://c0c8otvncddg5" path="res://player/player_movement.gd" id="1_u3ln2"]
 [ext_resource type="Script" uid="uid://b17egmjgll7mj" path="res://system/player_interaction_manager.gd" id="2_g1dw6"]
+[ext_resource type="Script" uid="uid://d0dgakx56jxny" path="res://player/camera_shake.gd" id="3_boad6"]
+[ext_resource type="Script" uid="uid://ban7m0omnksiv" path="res://player/recoil_manager.gd" id="3_rgyib"]
 [ext_resource type="PackedScene" uid="uid://42sl1srtmsdc" path="res://player/fps_arms.tscn" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://2wwqylg0tbhs" path="res://system/weapons/player_weapon_manager.gd" id="5_qjkh3"]
 [ext_resource type="PackedScene" uid="uid://gs3fu7jvum7m" path="res://characters/weapons/revolver.tscn" id="6_g6k8r"]
@@ -15,6 +17,10 @@ height = 1.8
 radius = 0.3
 height = 1.8
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_boad6"]
+frequency = 0.0202
+fractal_octaves = 4
+
 [node name="Player" type="CharacterBody3D" unique_id=657413655 node_paths=PackedStringArray("movement_manager") groups=["player"]]
 collision_layer = 2
 collision_mask = 3
@@ -25,7 +31,7 @@ movement_manager = NodePath("MovementManager")
 
 [node name="PlayerInteractionManager" type="Node" parent="." unique_id=1712060894 node_paths=PackedStringArray("camera")]
 script = ExtResource("2_g1dw6")
-camera = NodePath("../CameraPivot/Camera")
+camera = NodePath("../CameraPivot/RecoilManager/Camera")
 metadata/_custom_type_script = "uid://b17egmjgll7mj"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=892348718]
@@ -38,28 +44,35 @@ shape = SubResource("CapsuleShape3D_ybx0f")
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1597075800]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732802, 0)
 
-[node name="Camera" type="Camera3D" parent="CameraPivot" unique_id=1289026910]
+[node name="RecoilManager" type="Node3D" parent="CameraPivot" unique_id=695621997 node_paths=PackedStringArray("weapon_manager")]
+script = ExtResource("3_rgyib")
+weapon_manager = NodePath("../../PlayerWeaponManager")
 
-[node name="fps_arms" parent="CameraPivot/Camera" unique_id=490106953 instance=ExtResource("3_yw30f")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+[node name="Camera" type="Camera3D" parent="CameraPivot/RecoilManager" unique_id=1289026910]
+script = ExtResource("3_boad6")
+noise = SubResource("FastNoiseLite_boad6")
+
+[node name="fps_arms" parent="CameraPivot/RecoilManager/Camera" unique_id=490106953 instance=ExtResource("3_yw30f")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.1511463, 0)
 
 [node name="MovementManager" type="Node3D" parent="." unique_id=805829882 node_paths=PackedStringArray("player", "camera_pivot", "camera")]
 script = ExtResource("1_u3ln2")
 player = NodePath("..")
 camera_pivot = NodePath("../CameraPivot")
-camera = NodePath("../CameraPivot/Camera")
+camera = NodePath("../CameraPivot/RecoilManager/Camera")
 
 [node name="Floorcast" type="RayCast3D" parent="MovementManager" unique_id=456867915]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.88753194, 0)
 target_position = Vector3(0, -0.3, 0)
 
-[node name="PlayerWeaponManager" type="Node3D" parent="." unique_id=189865358 node_paths=PackedStringArray("arms", "cur_weapon", "player")]
+[node name="PlayerWeaponManager" type="Node3D" parent="." unique_id=189865358 node_paths=PackedStringArray("arms", "recoil_manager", "cur_weapon", "player")]
 script = ExtResource("5_qjkh3")
-arms = NodePath("../CameraPivot/Camera/fps_arms")
+arms = NodePath("../CameraPivot/RecoilManager/Camera/fps_arms")
+recoil_manager = NodePath("../CameraPivot/RecoilManager")
 cur_weapon = NodePath("revolver")
 player = NodePath("..")
 metadata/_custom_type_script = "uid://2wwqylg0tbhs"
 
 [node name="revolver" parent="PlayerWeaponManager" unique_id=725224190 instance=ExtResource("6_g6k8r")]
 
-[editable path="CameraPivot/Camera/fps_arms"]
+[editable path="CameraPivot/RecoilManager/Camera/fps_arms"]

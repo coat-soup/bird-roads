@@ -72,8 +72,6 @@ func fire():
 		impact_particles.global_position = result.position
 		impact_particles.look_at(result.position + result.normal)
 		
-		print("hit ", result.collider.name)
-		
 		var character : Character = result.collider as Character
 		if character and character.health:
 			character.health.take_damage(damage)

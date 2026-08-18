@@ -2,6 +2,7 @@ class_name PlayerWeaponManager
 extends WeaponManager
 
 @export var arms : FPSArms
+@export var recoil_manager : RecoilManager
 
 
 func _ready() -> void:
@@ -25,8 +26,10 @@ func equip_weapon(weapon : Weapon):
 
 
 func on_weapon_fired():
+	recoil_manager.do_recoil(2.0)
+	#GameManager.camera_shake.shake(0.1)
+	
 	var anim_name : String = cur_weapon.weapon_name + "_arms/arms_" + cur_weapon.weapon_name + "_shoot"
-	print("animlength: ", arms.animation_player.get_animation(anim_name).length)
 	arms.animation_player.speed_scale = arms.animation_player.get_animation(anim_name).length / (1.0 / cur_weapon.fire_rate)
 	arms.animation_player.play(anim_name)
 	await arms.animation_player.animation_finished
@@ -35,7 +38,6 @@ func on_weapon_fired():
 
 func on_reload_started():
 	var anim_name : String = cur_weapon.weapon_name + "_arms/arms_reload"
-	print("animlength: ", arms.animation_player.get_animation(anim_name).length)
 	arms.animation_player.speed_scale = arms.animation_player.get_animation(anim_name).length / (cur_weapon.reload_time)
 	arms.animation_player.play(anim_name)
 	await arms.animation_player.animation_finished

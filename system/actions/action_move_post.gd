@@ -9,7 +9,6 @@ func get_weight(character : Character) -> float:
 
 
 func perform_action(character : Character):
-	print("MOVING POST!")
 	var costs = get_post_costs(character)
 	if not costs.is_empty():
 		var lowest_i = 0
