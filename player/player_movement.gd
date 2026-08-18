@@ -94,7 +94,7 @@ func _process(delta: float) -> void:
 		else:
 			player.velocity = on_ladder.global_basis.y * -input_dir.y * get_speed() * (-1 if camera_pivot.rotation.x < deg_to_rad(-45) else 1)
 	# jump
-	elif Input.is_action_just_pressed("jump") and player.is_on_floor() and player.active:
+	elif !landing and Input.is_action_just_pressed("jump") and player.is_on_floor() and player.active:
 		jump_start.emit()
 		player.velocity.y = jump_velocity
 	elif player.is_on_floor():
@@ -107,7 +107,7 @@ func _process(delta: float) -> void:
 		
 		if landing:
 			landing = false
-			if player.velocity.y < 1:
+			if player.velocity.y < 0.1:
 				jump_land.emit()
 	else:
 		player.velocity.x = lerp(player.velocity.x, direction.x * get_speed(), delta * 2)

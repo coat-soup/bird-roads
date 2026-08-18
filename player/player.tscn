@@ -52,8 +52,9 @@ weapon_manager = NodePath("../../PlayerWeaponManager")
 script = ExtResource("3_boad6")
 noise = SubResource("FastNoiseLite_boad6")
 
-[node name="fps_arms" parent="CameraPivot/RecoilManager/Camera" unique_id=490106953 instance=ExtResource("3_yw30f")]
+[node name="fps_arms" parent="CameraPivot/RecoilManager/Camera" unique_id=490106953 node_paths=PackedStringArray("player") instance=ExtResource("3_yw30f")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.1511463, 0)
+player = NodePath("../../../..")
 
 [node name="MovementManager" type="Node3D" parent="." unique_id=805829882 node_paths=PackedStringArray("player", "camera_pivot", "camera")]
 script = ExtResource("1_u3ln2")
