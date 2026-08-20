@@ -1,14 +1,29 @@
 [gd_scene format=3 uid="uid://bggnqty46tem4"]
 
 [ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="1_1vc1s"]
+[ext_resource type="Material" uid="uid://oeebqsge8vcj" path="res://world/props/materials/stone_brick_mat.tres" id="2_fwjg4"]
 [ext_resource type="PackedScene" uid="uid://cjg11usfhasse" path="res://player/player.tscn" id="2_l62fg"]
+[ext_resource type="Material" uid="uid://p2v3q63r5bmd" path="res://world/props/materials/stone_wall_mat.tres" id="2_lguji"]
 [ext_resource type="PackedScene" uid="uid://difyp7n3arn8r" path="res://ui/ui.tscn" id="3_8apya"]
+[ext_resource type="Material" uid="uid://b0w7qkubk45vs" path="res://world/props/materials/red_brick_mat.tres" id="4_2aee6"]
+[ext_resource type="Material" uid="uid://opd5nrlaw043" path="res://world/props/materials/stone_tile_mat.tres" id="4_6tjdh"]
 [ext_resource type="PackedScene" uid="uid://ydtdxfa65jl0" path="res://ships/airship.tscn" id="4_8apya"]
+[ext_resource type="Material" uid="uid://7clar008fteg" path="res://world/props/materials/copper_roof.tres" id="4_ynctg"]
+[ext_resource type="Material" uid="uid://dteju0n8opwyh" path="res://world/props/materials/rock_mat.tres" id="6_ppb4i"]
+[ext_resource type="PackedScene" uid="uid://dpvcj1riu8jwj" path="res://world/props/scenes/barrel.tscn" id="8_nsicm"]
+[ext_resource type="Material" uid="uid://b0m302hcchtog" path="res://world/props/materials/cobblestone_mat.tres" id="8_pij5o"]
+[ext_resource type="PackedScene" uid="uid://bf1djut33pqqg" path="res://world/props/scenes/barrel_broken.tscn" id="9_4cssn"]
+[ext_resource type="Material" uid="uid://blih56kxircg7" path="res://world/props/materials/cobblestone_rough_mat.tres" id="9_u5g7u"]
+[ext_resource type="PackedScene" uid="uid://pkfq73378xi6" path="res://world/props/scenes/streetlamp.tscn" id="10_4cssn"]
+[ext_resource type="PackedScene" uid="uid://ow12d40ja48p" path="res://world/props/scenes/roof_2x_2_corner_outer_2.tscn" id="12_0347l"]
+[ext_resource type="PackedScene" uid="uid://wr4x046dhm8x" path="res://world/props/scenes/roof_2x_22.tscn" id="13_rpiva"]
+[ext_resource type="PackedScene" uid="uid://cxy3gofh5pqmc" path="res://world/props/scenes/roof_2x_2_end_2.tscn" id="14_rpiva"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fwjg4"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_bottom_color = Color(0.38435477, 0.4138264, 0.43189326, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_top_color = Color(0.4862745, 0.54509807, 0.7176471, 1)
+sky_horizon_color = Color(0.92941177, 0.9490196, 1, 1)
+ground_bottom_color = Color(0.46666667, 0.5058824, 0.5647059, 1)
+ground_horizon_color = Color(0.92941177, 0.9490196, 1, 1)
 
 [sub_resource type="Sky" id="Sky_kdgit"]
 sky_material = SubResource("ProceduralSkyMaterial_fwjg4")
@@ -17,7 +32,9 @@ sky_material = SubResource("ProceduralSkyMaterial_fwjg4")
 background_mode = 2
 sky = SubResource("Sky_kdgit")
 tonemap_mode = 2
-glow_enabled = true
+volumetric_fog_density = 0.01
+
+[sub_resource type="Compositor" id="Compositor_pij5o"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_duv63"]
 render_priority = 0
@@ -167,14 +184,17 @@ shader_parameter/albedo_alpha = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=44397219]
 environment = SubResource("Environment_lguji")
+compositor = SubResource("Compositor_pij5o")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1963878959]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.99990255, 0.01209157, -0.00698107, 0, 0.49999997, 0.86602545, 0.013962141, 0.86594105, -0.49995124, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Blockout" type="Node3D" parent="." unique_id=2092795482]
+[node name="OGBlockout" type="Node3D" parent="." unique_id=2027964761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -385, 0)
+visible = false
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Blockout" unique_id=779516484]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="OGBlockout" unique_id=1049623333]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.125, 46)
 use_collision = true
 radius = 12.0
@@ -182,7 +202,7 @@ height = 17.25
 sides = 12
 material = SubResource("ShaderMaterial_duv63")
 
-[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="Blockout" unique_id=1457130846]
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="OGBlockout" unique_id=1936059207]
 transform = Transform3D(-0.9800637, -8.567988e-08, -0.19868377, 8.742278e-08, -1, 0, -0.19868377, -1.7369487e-08, 0.9800637, -12.562225, -105.05151, -40.69324)
 use_collision = true
 radius = 56.0
@@ -191,7 +211,7 @@ sides = 12
 cone = true
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="Blockout" unique_id=279557788]
+[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="OGBlockout" unique_id=1847431480]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -7.35269, -45.472656, -29)
 use_collision = true
 radius = 56.0
@@ -200,7 +220,7 @@ sides = 12
 cone = true
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="Blockout" unique_id=658340531]
+[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="OGBlockout" unique_id=1129330477]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 73.91152, -27.65625, -43.61914)
 use_collision = true
 radius = 16.146484
@@ -209,7 +229,7 @@ sides = 12
 cone = true
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="Blockout" unique_id=809807954]
+[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="OGBlockout" unique_id=1149636780]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0.15329361, -37.693, 46.323112)
 use_collision = true
 radius = 11.483398
@@ -218,7 +238,7 @@ sides = 12
 cone = true
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D19" type="CSGCylinder3D" parent="Blockout" unique_id=1758497850]
+[node name="CSGCylinder3D19" type="CSGCylinder3D" parent="OGBlockout" unique_id=821370450]
 transform = Transform3D(-0.97629976, 0.21642248, 0, -0.21642248, -0.97629976, 0, 0, 0, 1, 43.911522, -32.36605, -37.160385)
 use_collision = true
 radius = 16.146484
@@ -227,7 +247,7 @@ sides = 12
 cone = true
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D20" type="CSGCylinder3D" parent="Blockout" unique_id=1943561776]
+[node name="CSGCylinder3D20" type="CSGCylinder3D" parent="OGBlockout" unique_id=866699759]
 transform = Transform3D(-0.77208567, 0.17115305, 0.61203784, -0.21642248, -0.97629976, 0, 0.5975324, -0.13245875, 0.79082847, 26.9361, -35.330116, -59.160385)
 use_collision = true
 radius = 26.72461
@@ -236,7 +256,7 @@ sides = 12
 cone = true
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="Blockout" unique_id=1144886152]
+[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="OGBlockout" unique_id=1224601618]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 85.14926, -35.854736, -45.725555)
 use_collision = true
 radius = 16.146484
@@ -245,7 +265,7 @@ sides = 12
 cone = true
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="Blockout" unique_id=341936643]
+[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="OGBlockout" unique_id=1684265413]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -73.85074, -81.85474, -25.725555)
 use_collision = true
 radius = 16.146484
@@ -254,7 +274,7 @@ sides = 12
 cone = true
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D25" type="CSGCylinder3D" parent="Blockout" unique_id=1894017889]
+[node name="CSGCylinder3D25" type="CSGCylinder3D" parent="OGBlockout" unique_id=733338423]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -54.85074, -91.17737, -31.725555)
 use_collision = true
 radius = 22.922363
@@ -263,7 +283,7 @@ sides = 12
 cone = true
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D26" type="CSGCylinder3D" parent="Blockout" unique_id=1814265308]
+[node name="CSGCylinder3D26" type="CSGCylinder3D" parent="OGBlockout" unique_id=31649353]
 transform = Transform3D(0.8660253, 0.5000001, 0, -0.5000001, 0.8660253, 0, 0, 0, 1, -42.627815, -41.486427, -38.55317)
 use_collision = true
 radius = 17.677246
@@ -271,7 +291,7 @@ height = 41.67737
 sides = 12
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D27" type="CSGCylinder3D" parent="Blockout" unique_id=106055234]
+[node name="CSGCylinder3D27" type="CSGCylinder3D" parent="OGBlockout" unique_id=1684626766]
 transform = Transform3D(0.8660253, 0.5000001, 0, -0.48296303, 0.8365162, 0.25881904, 0.12940955, -0.22414385, 0.9659258, -46.071785, -41.486427, -21.24916)
 use_collision = true
 radius = 11.224609
@@ -279,7 +299,7 @@ height = 41.67737
 sides = 12
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="Blockout" unique_id=1003079851]
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="OGBlockout" unique_id=184566802]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -17.35269, -49.848816, -93)
 use_collision = true
 radius = 56.0
@@ -288,7 +308,7 @@ sides = 12
 cone = true
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="Blockout" unique_id=51369527]
+[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="OGBlockout" unique_id=238261253]
 transform = Transform3D(-1, -8.742278e-08, 0, 8.717715e-08, -0.99719036, 0.074909106, -6.548762e-09, 0.074909106, 0.99719036, -30.967741, -62.85941, -84.33743)
 use_collision = true
 radius = 25.408691
@@ -297,7 +317,7 @@ sides = 12
 cone = true
 material = SubResource("ShaderMaterial_fwjg4")
 
-[node name="CSGCylinder3D23" type="CSGCylinder3D" parent="Blockout" unique_id=38815221]
+[node name="CSGCylinder3D23" type="CSGCylinder3D" parent="OGBlockout" unique_id=2119354282]
 transform = Transform3D(-0.99274683, 0.11941818, 0.013891097, -0.12022338, -0.9860979, -0.114705905, 1.0101176e-08, -0.11554397, 0.99330246, -1.3670216, -71.01097, -88.01904)
 use_collision = true
 radius = 37.623047
@@ -305,6 +325,832 @@ height = 97.04663
 sides = 12
 cone = true
 material = SubResource("ShaderMaterial_fwjg4")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="OGBlockout" unique_id=1117207306]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -9.90625, -35)
+use_collision = true
+radius = 45.0
+height = 8.0625
+sides = 12
+material = SubResource("ShaderMaterial_8apya")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="OGBlockout" unique_id=85392355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.308392, 46)
+use_collision = true
+radius = 7.0
+height = 33.616783
+sides = 11
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="OGBlockout" unique_id=1250649831]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.83846, 46)
+use_collision = true
+radius = 9.0
+height = 0.8083916
+sides = 11
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="OGBlockout" unique_id=610650996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.264185, -10.959441, 12.08927)
+use_collision = true
+radius = 4.0
+height = 2.4041958
+sides = 11
+material = SubResource("ShaderMaterial_6tjdh")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="OGBlockout" unique_id=1285502459]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -46.98432, 3.3685303, -45.01568)
+use_collision = true
+radius = 7.0
+height = 19.895355
+sides = 11
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="OGBlockout" unique_id=182448652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.44063, 41.717133, -122.47704)
+use_collision = true
+radius = 11.0
+height = 68.434265
+sides = 11
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="OGBlockout" unique_id=457927660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.44063, 84.021416, -122.47704)
+use_collision = true
+radius = 15.0
+height = 16.608566
+sides = 11
+cone = true
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="OGBlockout" unique_id=841943798]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.559372, 74.86928, -99.47704)
+use_collision = true
+radius = 12.0
+height = 12.304283
+sides = 11
+cone = true
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="OGBlockout" unique_id=1917336695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.559372, 45.793205, -123.47704)
+use_collision = true
+radius = 15.0
+height = 14.152142
+sides = 11
+cone = true
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="OGBlockout" unique_id=1565726536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.559372, 38.358566, -98.47704)
+use_collision = true
+radius = 7.0
+height = 61.717133
+sides = 11
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="OGBlockout" unique_id=600709348]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.559372, 23.429283, -123.47704)
+use_collision = true
+radius = 12.0
+height = 31.858566
+sides = 11
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="OGBlockout" unique_id=1307807139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34, 46)
+radius = 7.0
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="OGBlockout" unique_id=1463447407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
+use_collision = true
+size = Vector3(20, 15, 20)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="OGBlockout" unique_id=2025328645]
+transform = Transform3D(0.9999817, 0, -0.006056249, 0, 1, 0, 0.006056249, 0, 0.9999817, -14.373951, 1.9887085, -71.583626)
+use_collision = true
+size = Vector3(20, 18.977417, 15)
+material = SubResource("ShaderMaterial_fwjg4")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="OGBlockout" unique_id=1214035870]
+transform = Transform3D(0.9999817, 0, -0.006056249, 0, 1, 0, 0.006056249, 0, 0.9999817, -14.1617775, 1.9887085, -106.65323)
+use_collision = true
+size = Vector3(84, 18.977417, 56)
+material = SubResource("ShaderMaterial_fwjg4")
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="OGBlockout" unique_id=740978584]
+transform = Transform3D(0.9999817, 0, -0.006056249, 0, 1, 0, 0.006056249, 0, 0.9999817, 16.62603, 1.9887085, -71.57757)
+use_collision = true
+size = Vector3(22, 18.977417, 15)
+material = SubResource("ShaderMaterial_fwjg4")
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="OGBlockout" unique_id=1001284026]
+transform = Transform3D(0.96747553, 0, 0.25296438, 0, 1, 0, -0.25296438, 0, 0.96747553, -28.891945, 1.9674377, -70.74209)
+use_collision = true
+size = Vector3(20, 18.934875, 20)
+material = SubResource("ShaderMaterial_fwjg4")
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="OGBlockout" unique_id=1490007848]
+transform = Transform3D(0.8629813, 0, -0.5052357, 0, 1, 0, 0.5052357, 0, 0.8629813, -36.70182, 1.9695129, -85.16731)
+use_collision = true
+size = Vector3(28.874512, 18.939026, 46.436035)
+material = SubResource("ShaderMaterial_fwjg4")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="OGBlockout" unique_id=1775943125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, -3.5, 7.5)
+use_collision = true
+size = Vector3(5, 8, 5)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="OGBlockout" unique_id=1354842203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5, -3.5, -37.5)
+use_collision = true
+size = Vector3(5, 8, 5)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="OGBlockout" unique_id=604552484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, -3.5, -37.5)
+use_collision = true
+size = Vector3(5, 8, 5)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="OGBlockout" unique_id=1702223453]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 1.5, -19)
+use_collision = true
+size = Vector3(13, 18, 18)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="OGBlockout" unique_id=244660743]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 3, -37)
+use_collision = true
+size = Vector3(13, 21, 18)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="OGBlockout" unique_id=2112654587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 7.2660522, -50.5)
+use_collision = true
+size = Vector3(13, 29.532104, 9)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D49" type="CSGBox3D" parent="OGBlockout" unique_id=1648799684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 13.5321045, -56.5)
+use_collision = true
+size = Vector3(13, 17, 7)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D48" type="CSGBox3D" parent="OGBlockout" unique_id=2091888588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 7.2660522, -62)
+use_collision = true
+size = Vector3(13, 29.532104, 4)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D44" type="CSGBox3D" parent="OGBlockout" unique_id=1482178985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 10, -57.5)
+use_collision = true
+size = Vector3(13, 17, 5)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D52" type="CSGBox3D" parent="OGBlockout" unique_id=2025089497]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 5.5, -50.5)
+use_collision = true
+size = Vector3(13, 26, 9)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D47" type="CSGBox3D" parent="OGBlockout" unique_id=1439101483]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.98432, -2.5, -44.98432)
+use_collision = true
+size = Vector3(20, 10, 14)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D78" type="CSGBox3D" parent="OGBlockout" unique_id=26102703]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -52.98432, 1.5, -63.98432)
+use_collision = true
+size = Vector3(18, 18, 26)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D45" type="CSGBox3D" parent="OGBlockout" unique_id=1485536295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 1, -32.5)
+use_collision = true
+size = Vector3(13, 17, 27)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D46" type="CSGBox3D" parent="OGBlockout" unique_id=1154980146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 3, -12)
+use_collision = true
+size = Vector3(13, 21, 14)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D57" type="CSGBox3D" parent="OGBlockout" unique_id=105367940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, -2, 5.5)
+use_collision = true
+size = Vector3(9, 21, 7)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D66" type="CSGBox3D" parent="OGBlockout" unique_id=1537378539]
+transform = Transform3D(-0.8660253, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, -0.8660253, -12.468911, -8, 30.25)
+use_collision = true
+size = Vector3(16, 9, 7)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D68" type="CSGBox3D" parent="OGBlockout" unique_id=1785313506]
+transform = Transform3D(-0.9659258, 0, -0.25881907, 0, 1, 0, 0.25881907, 0, -0.9659258, 9.46294, -8, 36.73236)
+use_collision = true
+size = Vector3(12, 9, 7)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D70" type="CSGBox3D" parent="OGBlockout" unique_id=2122756387]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 11.96294, -8, 28.73236)
+use_collision = true
+size = Vector3(12, 9, 6)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D69" type="CSGBox3D" parent="OGBlockout" unique_id=1481974769]
+transform = Transform3D(-1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, -1, 9.199757, -7.5, 13.43153)
+use_collision = true
+size = Vector3(11.473633, 10, 7)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D67" type="CSGBox3D" parent="OGBlockout" unique_id=93576449]
+transform = Transform3D(-0.9659257, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, -0.9659257, -13.795878, -7, 36.733562)
+use_collision = true
+size = Vector3(12, 11, 9)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D63" type="CSGBox3D" parent="OGBlockout" unique_id=1490987178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.264185, -6.5, 12.08927)
+use_collision = true
+size = Vector3(4, 8, 4)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="OGBlockout" unique_id=292447117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.97218, -2.9359016, -49.904205)
+use_collision = true
+radius = 4.0
+height = 2.4041958
+sides = 11
+material = SubResource("ShaderMaterial_6tjdh")
+
+[node name="CSGBox3D80" type="CSGBox3D" parent="OGBlockout" unique_id=1215246405]
+transform = Transform3D(0.90009075, 0, 0.43570244, 0, 1, 0, -0.43570244, 0, 0.90009075, -76.97218, 6.5235395, -49.904205)
+use_collision = true
+size = Vector3(3, 18, 3)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D82" type="CSGBox3D" parent="OGBlockout" unique_id=473790841]
+transform = Transform3D(0.88230765, 0, 0.4706731, 0, 1, 0, -0.4706731, 0, 0.88230765, -77.28191, 16.108547, -50.743046)
+use_collision = true
+size = Vector3(5, 5, 5)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D85" type="CSGBox3D" parent="OGBlockout" unique_id=512187476]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -71.98165, -3.9933884, -23.743046)
+use_collision = true
+size = Vector3(12, 1, 17)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D93" type="CSGBox3D" parent="OGBlockout" unique_id=2141186222]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -67.98165, -25.49339, -14.243046)
+use_collision = true
+size = Vector3(2, 48, 2)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D94" type="CSGBox3D" parent="OGBlockout" unique_id=609886561]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -75.98165, -25.49339, -14.243046)
+use_collision = true
+size = Vector3(2, 48, 2)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D95" type="CSGBox3D" parent="OGBlockout" unique_id=798318906]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -67.98165, -25.49339, -33.243046)
+use_collision = true
+size = Vector3(2, 48, 2)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D96" type="CSGBox3D" parent="OGBlockout" unique_id=1939074273]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -75.98165, -25.49339, -33.243046)
+use_collision = true
+size = Vector3(2, 48, 2)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D86" type="CSGBox3D" parent="OGBlockout" unique_id=1569031292]
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -71.98165, -49.99339, -23.743046)
+use_collision = true
+size = Vector3(12, 1, 17)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D81" type="CSGBox3D" parent="OGBlockout" unique_id=1932976675]
+transform = Transform3D(0.89463824, 0.44679126, -1.9529866e-08, 0, -4.371139e-08, -1, -0.44679126, 0.89463824, -3.910588e-08, -73.76694, 13.52354, -43.632034)
+use_collision = true
+size = Vector3(2, 31, 2)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D64" type="CSGBox3D" parent="OGBlockout" unique_id=1547614460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -9.5, 11)
+use_collision = true
+size = Vector3(4, 4, 2)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D74" type="CSGBox3D" parent="OGBlockout" unique_id=337561748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -9.5, 11)
+use_collision = true
+size = Vector3(4, 4, 2)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D71" type="CSGBox3D" parent="OGBlockout" unique_id=1676574514]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -7.7953415, -9.5, 19.467663)
+use_collision = true
+size = Vector3(4, 4, 2)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D72" type="CSGBox3D" parent="OGBlockout" unique_id=1140008887]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -8.337215, -9.5, 21.489965)
+use_collision = true
+size = Vector3(4, 4, 2)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D73" type="CSGBox3D" parent="OGBlockout" unique_id=252990590]
+transform = Transform3D(0.8393733, 0, -0.5435554, 0, 1, 0, 0.5435554, 0, 0.8393733, -3.3047128, -9.5, 20.822498)
+use_collision = true
+size = Vector3(4, 4, 2)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D75" type="CSGBox3D" parent="OGBlockout" unique_id=1946680903]
+transform = Transform3D(0.8933243, 0, -0.44941252, 0, 1, 0, 0.44941252, 0, 0.8933243, -4.16578, -9.5, 23.148544)
+use_collision = true
+size = Vector3(4, 4, 2)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D76" type="CSGBox3D" parent="OGBlockout" unique_id=1913200803]
+transform = Transform3D(0.9999553, 0, -0.009459555, 0, 1, 0, 0.009459555, 0, 0.9999553, 0.07106638, -9.5, 33.148422)
+use_collision = true
+size = Vector3(4, 4, 2)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D58" type="CSGBox3D" parent="OGBlockout" unique_id=1245103605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, -8.5, -4)
+use_collision = true
+size = Vector3(9, 8, 10)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D60" type="CSGBox3D" parent="OGBlockout" unique_id=2011256571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.33252, -8.5, -3.4084473)
+use_collision = true
+size = Vector3(12.665039, 8, 11.183105)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D61" type="CSGBox3D" parent="OGBlockout" unique_id=1588828432]
+transform = Transform3D(0.86602545, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, 0.86602545, -50.769863, -6.5, 7.2698536)
+use_collision = true
+size = Vector3(9, 12, 7)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D62" type="CSGBox3D" parent="OGBlockout" unique_id=242003104]
+transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, -58.854214, -6.5, 5.094059)
+use_collision = true
+size = Vector3(12.371582, 12, 6.1192017)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D59" type="CSGBox3D" parent="OGBlockout" unique_id=868678526]
+transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -28.36203, -8.5, -5.560703)
+use_collision = true
+size = Vector3(9, 8, 10)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="OGBlockout" unique_id=1951637194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, -19)
+use_collision = true
+size = Vector3(10, 18, 18)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="OGBlockout" unique_id=811103220]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, -34)
+use_collision = true
+size = Vector3(10, 21, 12)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="OGBlockout" unique_id=1586360847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 5.0438843, -57)
+use_collision = true
+size = Vector3(19, 25.087769, 14)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="OGBlockout" unique_id=2129335506]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, 2.5, -57)
+use_collision = true
+size = Vector3(19, 20, 14)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="OGBlockout" unique_id=251745828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.5, 6.5, -45)
+use_collision = true
+size = Vector3(25, 8, 20)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D97" type="CSGBox3D" parent="OGBlockout" unique_id=1035236282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 12, -37)
+use_collision = true
+size = Vector3(4, 19, 4)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D98" type="CSGBox3D" parent="OGBlockout" unique_id=1362397072]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 12, -53)
+use_collision = true
+size = Vector3(4, 19, 4)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="OGBlockout" unique_id=722988388]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 82.51489, 10.5, -45)
+use_collision = true
+size = Vector3(24.970215, 15, 15)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="OGBlockout" unique_id=1700687065]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.5, 17.5, -103)
+use_collision = true
+size = Vector3(25, 14, 20)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D40" type="CSGBox3D" parent="OGBlockout" unique_id=833284182]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.5, 17.5, -124.5)
+use_collision = true
+size = Vector3(18, 14, 48)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="OGBlockout" unique_id=1816514299]
+transform = Transform3D(0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999997, -33.19615, 15.5, -90)
+use_collision = true
+size = Vector3(3, 14, 19)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D42" type="CSGBox3D" parent="OGBlockout" unique_id=1699243321]
+transform = Transform3D(0.96592575, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.96592575, -44.58438, 15.5, -105.44889)
+use_collision = true
+size = Vector3(3, 14, 16)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="OGBlockout" unique_id=476911168]
+transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, -21.696152, 19.5, -86)
+use_collision = true
+size = Vector3(3, 6, 10)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="OGBlockout" unique_id=1307375269]
+transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, -17.696152, 13.5, -86)
+use_collision = true
+size = Vector3(3, 6, 2)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D39" type="CSGBox3D" parent="OGBlockout" unique_id=1917008255]
+transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, -24.696152, 13.5, -86)
+use_collision = true
+size = Vector3(3, 6, 2)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="OGBlockout" unique_id=469584568]
+transform = Transform3D(-0.5, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, -0.5, -12.815412, 15.5, -88.90587)
+use_collision = true
+size = Vector3(3, 14, 12)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="OGBlockout" unique_id=1355812280]
+transform = Transform3D(-0.39766052, 0, 0.9175327, 0, 1, 0, -0.9175327, 0, -0.39766052, -13.159258, 53.5, -108.91181)
+use_collision = true
+size = Vector3(10, 3, 52)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="OGBlockout" unique_id=433928523]
+transform = Transform3D(-4.371139e-08, 0.70710677, 0.70710677, 0, 0.70710677, -0.70710677, -1, -3.090862e-08, -3.090862e-08, 0.4999998, 24.5, -107.5083)
+use_collision = true
+size = Vector3(33.9834, 15, 15)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D41" type="CSGBox3D" parent="OGBlockout" unique_id=1437853534]
+transform = Transform3D(-1, -6.181723e-08, -6.181723e-08, 0, 0.70710677, -0.70710677, 8.742278e-08, -0.70710677, -0.70710677, -12, 24.5, -124)
+use_collision = true
+size = Vector3(50, 15, 15)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="OGBlockout" unique_id=1285482018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -2.5, -7.5)
+use_collision = true
+size = Vector3(8, 10, 5)
+material = SubResource("ShaderMaterial_l62fg")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="OGBlockout" unique_id=1050492926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 25)
+use_collision = true
+size = Vector3(7, 2, 30)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D65" type="CSGBox3D" parent="OGBlockout" unique_id=15910974]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -7, 24)
+use_collision = true
+size = Vector3(3, 2, 13)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D53" type="CSGBox3D" parent="OGBlockout" unique_id=1746156429]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.4999995, -12.5, 24)
+use_collision = true
+size = Vector3(29, 2, 35)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D77" type="CSGBox3D" parent="OGBlockout" unique_id=1332347839]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.5, -12.5, 21.5)
+use_collision = true
+size = Vector3(14, 2, 5)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="OGBlockout" unique_id=1662611322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36)
+use_collision = true
+size = Vector3(10, 1, 52)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D43" type="CSGBox3D" parent="OGBlockout" unique_id=673806701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.5, -8.5, -39)
+use_collision = true
+size = Vector3(35, 10, 68)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D79" type="CSGBox3D" parent="OGBlockout" unique_id=20132023]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77, -5.5, -50)
+use_collision = true
+size = Vector3(22, 4, 24)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D87" type="CSGBox3D" parent="OGBlockout" unique_id=66261675]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77, -51.5, -37.5)
+use_collision = true
+size = Vector3(22, 4, 11)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D89" type="CSGBox3D" parent="OGBlockout" unique_id=356111747]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77, -51.5, -10)
+use_collision = true
+size = Vector3(22, 4, 10)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D88" type="CSGBox3D" parent="OGBlockout" unique_id=2005963768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83, -51.5, -23.5)
+use_collision = true
+size = Vector3(10, 4, 17)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="OGBlockout" unique_id=1852396355]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32, -3, -45)
+use_collision = true
+size = Vector3(10, 7, 54)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="OGBlockout" unique_id=1262281781]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 62, -2, -45)
+use_collision = true
+size = Vector3(10, 9, 6)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="OGBlockout" unique_id=514862408]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 82.5, -2, -45)
+use_collision = true
+size = Vector3(30, 9, 35)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="OGBlockout" unique_id=1808918211]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25, -4, -1.5)
+use_collision = true
+size = Vector3(7, 1, 30)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D83" type="CSGBox3D" parent="OGBlockout" unique_id=2041126399]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -81, -4, -9)
+use_collision = true
+size = Vector3(5, 1, 30)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D90" type="CSGBox3D" parent="OGBlockout" unique_id=1420163008]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -102, -50, -23)
+use_collision = true
+size = Vector3(5, 1, 30)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D91" type="CSGBox3D" parent="OGBlockout" unique_id=824550927]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -78, -50, 10)
+use_collision = true
+size = Vector3(5, 1, 30)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D92" type="CSGBox3D" parent="OGBlockout" unique_id=102674847]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -78, -50, -58)
+use_collision = true
+size = Vector3(5, 1, 30)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D84" type="CSGBox3D" parent="OGBlockout" unique_id=1757895001]
+transform = Transform3D(0.7071067, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071067, -94, -4, -67)
+use_collision = true
+size = Vector3(5, 1, 30)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D55" type="CSGBox3D" parent="OGBlockout" unique_id=179993067]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -60, -4, -1.4999996)
+use_collision = true
+size = Vector3(7, 1, 12)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="OGBlockout" unique_id=72849901]
+transform = Transform3D(-3.7855173e-08, -0.5, 0.8660254, -2.1855694e-08, 0.8660254, 0.5, -1, 0, -4.371139e-08, -13.22846, -1.9598196, -1.5000005)
+use_collision = true
+size = Vector3(7, 1, 8)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D56" type="CSGBox3D" parent="OGBlockout" unique_id=594140579]
+transform = Transform3D(-0.49999988, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, -0.49999988, -31.554508, -12.5, 1.4568217)
+use_collision = true
+size = Vector3(37, 2, 66)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D54" type="CSGBox3D" parent="OGBlockout" unique_id=1930675278]
+transform = Transform3D(1.2527795e-07, 0.5, -0.8660254, -2.1855694e-08, 0.8660254, 0.5, 1, -4.371139e-08, 1.1942174e-07, -47.33408, -7.925205, -1.499999)
+use_collision = true
+size = Vector3(7, 1, 16)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D50" type="CSGBox3D" parent="OGBlockout" unique_id=895389220]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18, -4, -57.5)
+use_collision = true
+size = Vector3(5, 1, 26)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D51" type="CSGBox3D" parent="OGBlockout" unique_id=552598283]
+transform = Transform3D(-3.7855173e-08, -0.5, 0.8660254, -2.1855694e-08, 0.8660254, 0.5, -1, 0, -4.371139e-08, -8.22846, -1.9598196, -57.5)
+use_collision = true
+size = Vector3(5, 1, 8)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="OGBlockout" unique_id=2037848589]
+transform = Transform3D(1, 2.1855694e-08, 5.856215e-09, -2.1855694e-08, 0.8660254, 0.5, 5.856215e-09, -0.5, 0.8660254, 12.351664, -3.4321423, -0.79552007)
+use_collision = true
+size = Vector3(5, 1, 14)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="OGBlockout" unique_id=246906913]
+transform = Transform3D(-1, 2.1855694e-08, -8.156656e-08, -2.1855694e-08, 0.8660254, 0.5, 8.156656e-08, 0.5, -0.8660254, 0.35166326, 5.5678577, -69.25962)
+use_collision = true
+size = Vector3(10, 1, 22)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="OGBlockout" unique_id=1392249229]
+transform = Transform3D(-4.9567603e-08, 0.5, -0.8660254, -2.1855694e-08, 0.8660254, 0.5, 1, 4.371139e-08, -3.1998958e-08, 25.822905, -3.4321423, -37.487213)
+use_collision = true
+size = Vector3(5, 1, 14)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="OGBlockout" unique_id=1899986392]
+transform = Transform3D(1.4901161e-07, -0.50000006, 0.8660254, -2.9052401e-08, 0.8660254, 0.5, -1, -9.685755e-08, 1.0430813e-07, 44.21867, -3.4321423, -37.487213)
+use_collision = true
+size = Vector3(5, 1, 14)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="OGBlockout" unique_id=1627254897]
+transform = Transform3D(1.4901161e-07, -0.50000006, 0.8660254, -2.9052401e-08, 0.8660254, 0.5, -1, -9.685755e-08, 1.0430813e-07, 56.659737, 0.5706501, -45.00456)
+use_collision = true
+size = Vector3(8, 1, 6.0111694)
+material = SubResource("ShaderMaterial_duv63")
+
+[node name="Blockout" type="Node3D" parent="." unique_id=2092795482]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Blockout" unique_id=779516484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.130005, 46)
+use_collision = true
+radius = 12.0
+height = 17.23999
+sides = 12
+material = ExtResource("2_lguji")
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="Blockout" unique_id=1457130846]
+transform = Transform3D(-0.9800637, -8.567988e-08, -0.19868377, 8.742278e-08, -1, 0, -0.19868377, -1.7369487e-08, 0.9800637, -12.562225, -105.05151, -40.69324)
+use_collision = true
+radius = 56.0
+height = 183.10303
+sides = 12
+cone = true
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="Blockout" unique_id=279557788]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -7.35269, -45.472656, -29)
+use_collision = true
+radius = 56.0
+height = 63.945313
+sides = 12
+cone = true
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="Blockout" unique_id=658340531]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 73.91152, -27.65625, -43.61914)
+use_collision = true
+radius = 16.146484
+height = 42.3125
+sides = 12
+cone = true
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="Blockout" unique_id=809807954]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 0.15329361, -37.693, 46.323112)
+use_collision = true
+radius = 11.483398
+height = 42.3125
+sides = 12
+cone = true
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D19" type="CSGCylinder3D" parent="Blockout" unique_id=1758497850]
+transform = Transform3D(-0.97629976, 0.21642248, 0, -0.21642248, -0.97629976, 0, 0, 0, 1, 43.911522, -32.36605, -37.160385)
+use_collision = true
+radius = 16.146484
+height = 42.3125
+sides = 12
+cone = true
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D20" type="CSGCylinder3D" parent="Blockout" unique_id=1943561776]
+transform = Transform3D(-0.77208567, 0.17115305, 0.61203784, -0.21642248, -0.97629976, 0, 0.5975324, -0.13245875, 0.79082847, 26.9361, -35.330116, -59.160385)
+use_collision = true
+radius = 26.72461
+height = 42.3125
+sides = 12
+cone = true
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="Blockout" unique_id=1144886152]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, 85.14926, -35.854736, -45.725555)
+use_collision = true
+radius = 16.146484
+height = 58.709473
+sides = 12
+cone = true
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="Blockout" unique_id=341936643]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -73.85074, -81.85474, -25.725555)
+use_collision = true
+radius = 16.146484
+height = 58.709473
+sides = 12
+cone = true
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D25" type="CSGCylinder3D" parent="Blockout" unique_id=1894017889]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -54.85074, -91.17737, -31.725555)
+use_collision = true
+radius = 22.922363
+height = 77.35474
+sides = 12
+cone = true
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D26" type="CSGCylinder3D" parent="Blockout" unique_id=1814265308]
+transform = Transform3D(0.8660253, 0.5000001, 0, -0.5000001, 0.8660253, 0, 0, 0, 1, -42.627815, -41.486427, -38.55317)
+use_collision = true
+radius = 17.677246
+height = 41.67737
+sides = 12
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D27" type="CSGCylinder3D" parent="Blockout" unique_id=106055234]
+transform = Transform3D(0.8660253, 0.5000001, 0, -0.48296303, 0.8365162, 0.25881904, 0.12940955, -0.22414385, 0.9659258, -46.071785, -41.486427, -21.24916)
+use_collision = true
+radius = 11.224609
+height = 41.67737
+sides = 12
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="Blockout" unique_id=1003079851]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0, 1, -17.35269, -49.848816, -93)
+use_collision = true
+radius = 56.0
+height = 88.69763
+sides = 12
+cone = true
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="Blockout" unique_id=51369527]
+transform = Transform3D(-1, -8.742278e-08, 0, 8.717715e-08, -0.99719036, 0.074909106, -6.548762e-09, 0.074909106, 0.99719036, -30.967741, -62.85941, -84.33743)
+use_collision = true
+radius = 25.408691
+height = 97.04663
+sides = 12
+cone = true
+material = ExtResource("6_ppb4i")
+
+[node name="CSGCylinder3D23" type="CSGCylinder3D" parent="Blockout" unique_id=38815221]
+transform = Transform3D(-0.99274683, 0.11941818, 0.013891097, -0.12022338, -0.9860979, -0.114705905, 1.0101176e-08, -0.11554397, 0.99330246, -1.3670216, -71.01097, -88.01904)
+use_collision = true
+radius = 37.623047
+height = 97.04663
+sides = 12
+cone = true
+material = ExtResource("6_ppb4i")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Blockout" unique_id=630408465]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -9.90625, -35)
@@ -338,13 +1184,29 @@ height = 2.4041958
 sides = 11
 material = SubResource("ShaderMaterial_6tjdh")
 
+[node name="CSGCylinder3D28" type="CSGCylinder3D" parent="Blockout" unique_id=1676447700]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.060352, 1.0524216, -30.540728)
+use_collision = true
+radius = 0.40722656
+height = 1.2020979
+sides = 11
+material = SubResource("ShaderMaterial_6tjdh")
+
+[node name="CSGCylinder3D29" type="CSGCylinder3D" parent="Blockout" unique_id=944084211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3357854, 1.0524216, -37.708866)
+use_collision = true
+radius = 0.40722656
+height = 1.2020979
+sides = 11
+material = SubResource("ShaderMaterial_6tjdh")
+
 [node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Blockout" unique_id=1934963928]
 transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, -46.98432, 3.3685303, -45.01568)
 use_collision = true
 radius = 7.0
 height = 19.895355
 sides = 11
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("4_ynctg")
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Blockout" unique_id=1144936776]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.44063, 41.717133, -122.47704)
@@ -352,7 +1214,7 @@ use_collision = true
 radius = 11.0
 height = 68.434265
 sides = 11
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Blockout" unique_id=1558900498]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.44063, 84.021416, -122.47704)
@@ -361,7 +1223,7 @@ radius = 15.0
 height = 16.608566
 sides = 11
 cone = true
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Blockout" unique_id=1336639873]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.559372, 74.86928, -99.47704)
@@ -370,7 +1232,7 @@ radius = 12.0
 height = 12.304283
 sides = 11
 cone = true
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Blockout" unique_id=1462635607]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.559372, 45.793205, -123.47704)
@@ -379,7 +1241,7 @@ radius = 15.0
 height = 14.152142
 sides = 11
 cone = true
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Blockout" unique_id=1964910017]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.559372, 38.358566, -98.47704)
@@ -387,7 +1249,7 @@ use_collision = true
 radius = 7.0
 height = 61.717133
 sides = 11
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Blockout" unique_id=748961417]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.559372, 23.429283, -123.47704)
@@ -395,7 +1257,7 @@ use_collision = true
 radius = 12.0
 height = 31.858566
 sides = 11
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Blockout" unique_id=360786105]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34, 46)
@@ -406,157 +1268,433 @@ material = SubResource("ShaderMaterial_l62fg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
 use_collision = true
 size = Vector3(20, 15, 20)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("8_pij5o")
+
+[node name="CSGBox3D99" type="CSGBox3D" parent="Blockout" unique_id=643490773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.729603, 1, -2.5)
+use_collision = true
+size = Vector3(0.5, 1, 15)
+material = ExtResource("2_fwjg4")
+
+[node name="CSGBox3D104" type="CSGBox3D" parent="Blockout" unique_id=1093144623]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.729603, 1, 7.300049)
+use_collision = true
+size = Vector3(0.5, 1, 4.6000977)
+material = ExtResource("2_fwjg4")
+
+[node name="CSGBox3D105" type="CSGBox3D" parent="Blockout" unique_id=2140766544]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 14.729603, -1.7781107, 0.13397452)
+use_collision = true
+size = Vector3(0.5, 1, 12)
+material = ExtResource("2_fwjg4")
+
+[node name="CSGBox3D102" type="CSGBox3D" parent="Blockout" unique_id=1382330667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.225347, 1, 22.466797)
+use_collision = true
+size = Vector3(0.5, 1, 25.066406)
+material = ExtResource("2_fwjg4")
+
+[node name="CSGBox3D103" type="CSGBox3D" parent="Blockout" unique_id=337228098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2522364, 1, 22.46997)
+use_collision = true
+size = Vector3(0.5, 1, 25.060059)
+material = ExtResource("2_fwjg4")
+
+[node name="CSGBox3D100" type="CSGBox3D" parent="Blockout" unique_id=755550399]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 9, 1, 9.72186)
+use_collision = true
+size = Vector3(0.5, 1, 12)
+material = ExtResource("2_fwjg4")
+
+[node name="CSGBox3D101" type="CSGBox3D" parent="Blockout" unique_id=1463014834]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.5, 1, 9.72186)
+use_collision = true
+size = Vector3(0.5, 1, 7)
+material = ExtResource("2_fwjg4")
+
+[node name="CSGBox3D106" type="CSGBox3D" parent="Blockout" unique_id=1215633726]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -29.5, -3, 1.7629703)
+use_collision = true
+size = Vector3(0.5, 1, 21)
+material = ExtResource("2_fwjg4")
+
+[node name="CSGBox3D108" type="CSGBox3D" parent="Blockout" unique_id=972588324]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -47, -3, -5.274584)
+use_collision = true
+size = Vector3(0.5, 1, 14)
+material = ExtResource("2_fwjg4")
+
+[node name="CSGBox3D107" type="CSGBox3D" parent="Blockout" unique_id=1031571899]
+transform = Transform3D(-1.0000001, 0, 0, 0, 1, 0, 0, 0, -1.0000001, -39.7448, -3, -1.4999995)
+use_collision = true
+size = Vector3(0.5, 1, 7)
+material = ExtResource("2_fwjg4")
+
+[node name="CSGBox3D109" type="CSGBox3D" parent="Blockout" unique_id=2006426235]
+transform = Transform3D(-1.0000001, 0, 0, 0, 1, 0, 0, 0, -1.0000001, -65.71687, -3, -1.4999995)
+use_collision = true
+size = Vector3(0.5, 1, 7)
+material = ExtResource("2_fwjg4")
 
 [node name="CSGBox3D24" type="CSGBox3D" parent="Blockout" unique_id=2074984478]
 transform = Transform3D(0.9999817, 0, -0.006056249, 0, 1, 0, 0.006056249, 0, 0.9999817, -14.373951, 1.9887085, -71.583626)
 use_collision = true
 size = Vector3(20, 18.977417, 15)
-material = SubResource("ShaderMaterial_fwjg4")
+material = ExtResource("6_ppb4i")
 
 [node name="CSGBox3D28" type="CSGBox3D" parent="Blockout" unique_id=1492418026]
 transform = Transform3D(0.9999817, 0, -0.006056249, 0, 1, 0, 0.006056249, 0, 0.9999817, -14.1617775, 1.9887085, -106.65323)
 use_collision = true
 size = Vector3(84, 18.977417, 56)
-material = SubResource("ShaderMaterial_fwjg4")
+material = ExtResource("6_ppb4i")
 
 [node name="CSGBox3D27" type="CSGBox3D" parent="Blockout" unique_id=814217467]
 transform = Transform3D(0.9999817, 0, -0.006056249, 0, 1, 0, 0.006056249, 0, 0.9999817, 16.62603, 1.9887085, -71.57757)
 use_collision = true
 size = Vector3(22, 18.977417, 15)
-material = SubResource("ShaderMaterial_fwjg4")
+material = ExtResource("6_ppb4i")
 
 [node name="CSGBox3D25" type="CSGBox3D" parent="Blockout" unique_id=350799563]
 transform = Transform3D(0.96747553, 0, 0.25296438, 0, 1, 0, -0.25296438, 0, 0.96747553, -28.891945, 1.9674377, -70.74209)
 use_collision = true
 size = Vector3(20, 18.934875, 20)
-material = SubResource("ShaderMaterial_fwjg4")
+material = ExtResource("6_ppb4i")
 
 [node name="CSGBox3D26" type="CSGBox3D" parent="Blockout" unique_id=489546572]
 transform = Transform3D(0.8629813, 0, -0.5052357, 0, 1, 0, 0.5052357, 0, 0.8629813, -36.70182, 1.9695129, -85.16731)
 use_collision = true
 size = Vector3(28.874512, 18.939026, 46.436035)
-material = SubResource("ShaderMaterial_fwjg4")
+material = ExtResource("6_ppb4i")
 
 [node name="CSGBox3D13" type="CSGBox3D" parent="Blockout" unique_id=2057621254]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, -3.5, 7.5)
 use_collision = true
 size = Vector3(5, 8, 5)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("9_u5g7u")
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="Blockout" unique_id=1205926225]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5, -3.5, -37.5)
 use_collision = true
 size = Vector3(5, 8, 5)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("9_u5g7u")
 
 [node name="CSGBox3D14" type="CSGBox3D" parent="Blockout" unique_id=298951090]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5, -3.5, -37.5)
 use_collision = true
 size = Vector3(5, 8, 5)
+material = ExtResource("9_u5g7u")
+
+[node name="CSGBox3D154" type="CSGBox3D" parent="Blockout" unique_id=1727651822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 8, -1.5)
+use_collision = true
+size = Vector3(2, 1, 7)
 material = SubResource("ShaderMaterial_duv63")
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="Blockout" unique_id=2074653437]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 1.5, -19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, -1.5, -19)
 use_collision = true
 size = Vector3(13, 18, 18)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D18" type="CSGBox3D" parent="Blockout" unique_id=318887570]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 3, -37)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 0, -37)
 use_collision = true
 size = Vector3(13, 21, 18)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D19" type="CSGBox3D" parent="Blockout" unique_id=437115296]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 7.2660522, -50.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 4.2660522, -50.5)
 use_collision = true
 size = Vector3(13, 29.532104, 9)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D49" type="CSGBox3D" parent="Blockout" unique_id=1021621975]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 13.5321045, -56.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 11.5321045, -56.5)
 use_collision = true
-size = Vector3(13, 17, 7)
-material = SubResource("ShaderMaterial_l62fg")
+size = Vector3(13, 13, 7)
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D48" type="CSGBox3D" parent="Blockout" unique_id=646682208]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 7.2660522, -62)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5, 5.5, -62)
 use_collision = true
-size = Vector3(13, 29.532104, 4)
-material = SubResource("ShaderMaterial_l62fg")
+size = Vector3(13, 26, 4)
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D44" type="CSGBox3D" parent="Blockout" unique_id=1289267638]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 10, -57.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 8.5, -57.5)
 use_collision = true
-size = Vector3(13, 17, 5)
-material = SubResource("ShaderMaterial_l62fg")
+size = Vector3(13, 14, 5)
+material = ExtResource("2_fwjg4")
 
 [node name="CSGBox3D52" type="CSGBox3D" parent="Blockout" unique_id=426511072]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 5.5, -50.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 2.5, -50.5)
 use_collision = true
 size = Vector3(13, 26, 9)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_fwjg4")
 
 [node name="CSGBox3D47" type="CSGBox3D" parent="Blockout" unique_id=1625526873]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -46.98432, -2.5, -44.98432)
 use_collision = true
 size = Vector3(20, 10, 14)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("4_2aee6")
 
 [node name="CSGBox3D78" type="CSGBox3D" parent="Blockout" unique_id=318448021]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -52.98432, 1.5, -63.98432)
 use_collision = true
 size = Vector3(18, 18, 26)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("4_2aee6")
 
 [node name="CSGBox3D45" type="CSGBox3D" parent="Blockout" unique_id=396721971]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 1, -32.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, -2, -32.5)
 use_collision = true
 size = Vector3(13, 17, 27)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_fwjg4")
 
 [node name="CSGBox3D46" type="CSGBox3D" parent="Blockout" unique_id=144407477]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 3, -12)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5, 0, -12)
 use_collision = true
 size = Vector3(13, 21, 14)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
+
+[node name="CSGBox3D155" type="CSGBox3D" parent="Blockout" unique_id=649762387]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 8, -4)
+use_collision = true
+size = Vector3(6, 5, 4)
+material = ExtResource("2_fwjg4")
+
+[node name="CSGBox3D112" type="CSGBox3D" parent="Blockout" unique_id=1382287812]
+transform = Transform3D(1, 0, 0, 0, 0.86602527, 0.5, 0, -0.5, 0.86602527, -14.5, 11.707766, -5.527771)
+use_collision = true
+size = Vector3(9, 3, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D113" type="CSGBox3D" parent="Blockout" unique_id=1324409895]
+transform = Transform3D(-1, -4.371139e-08, 7.571033e-08, 0, 0.86602527, 0.5, -8.742278e-08, 0.5, -0.86602527, -14, 11.707766, -9.52777)
+use_collision = true
+size = Vector3(8, 3, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D114" type="CSGBox3D" parent="Blockout" unique_id=1706758520]
+transform = Transform3D(-1, -4.3711385e-08, 7.571033e-08, 7.5710346e-08, -1.1920929e-07, 0.99999994, -4.371138e-08, 0.99999994, 1.1920929e-07, -14.5, 12.941485, -7.522033)
+use_collision = true
+size = Vector3(9, 2.8098145, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D115" type="CSGBox3D" parent="Blockout" unique_id=2110689945]
+transform = Transform3D(-4.371139e-08, -0.5, 0.86602527, 0, 0.86602527, 0.5, -1, 2.1855694e-08, -3.7855166e-08, -19.501913, 13.4398155, -12.025858)
+use_collision = true
+size = Vector3(14, 7, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D116" type="CSGBox3D" parent="Blockout" unique_id=197061471]
+transform = Transform3D(-4.371139e-08, 0.5, -0.86602527, 0, 0.86602527, 0.5, 1, 2.1855694e-08, -3.7855166e-08, -29.501913, 13.4398155, -12.025858)
+use_collision = true
+size = Vector3(14, 7, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D117" type="CSGBox3D" parent="Blockout" unique_id=1569212401]
+transform = Transform3D(7.1054274e-15, 0.99999994, 1.1920928e-07, 7.5710346e-08, -1.1920928e-07, 0.9999999, 0.99999994, 3.5527137e-15, -7.571034e-08, -24.47164, 16.311724, -12.025858)
+use_collision = true
+size = Vector3(14, 6.588867, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D142" type="CSGBox3D" parent="Blockout" unique_id=786031238]
+transform = Transform3D(-4.371139e-08, -0.5, 0.86602527, 0, 0.86602527, 0.5, -1, 2.1855694e-08, -3.7855166e-08, -19.501913, 18.439816, -53.025856)
+use_collision = true
+size = Vector3(14, 7, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D143" type="CSGBox3D" parent="Blockout" unique_id=638032400]
+transform = Transform3D(-4.371139e-08, 0.5, -0.86602527, 0, 0.86602527, 0.5, 1, 2.1855694e-08, -3.7855166e-08, -29.501913, 18.439816, -53.025856)
+use_collision = true
+size = Vector3(14, 7, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D144" type="CSGBox3D" parent="Blockout" unique_id=1101076788]
+transform = Transform3D(7.1054274e-15, 0.99999994, 1.1920928e-07, 7.5710346e-08, -1.1920928e-07, 0.9999999, 0.99999994, 3.5527137e-15, -7.571034e-08, -24.47164, 21.311724, -53.025856)
+use_collision = true
+size = Vector3(14, 6.588867, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D118" type="CSGBox3D" parent="Blockout" unique_id=1208858974]
+transform = Transform3D(-4.371139e-08, -0.5, 0.86602527, 0, 0.86602527, 0.5, -1, 2.1855694e-08, -3.7855166e-08, -19.501913, 9.4398155, -32.525856)
+use_collision = true
+size = Vector3(27, 7, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D119" type="CSGBox3D" parent="Blockout" unique_id=661726220]
+transform = Transform3D(-4.371139e-08, 0.5, -0.86602527, 0, 0.86602527, 0.5, 1, 2.1855694e-08, -3.7855166e-08, -29.501913, 9.4398155, -32.525856)
+use_collision = true
+size = Vector3(27, 7, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D120" type="CSGBox3D" parent="Blockout" unique_id=49551754]
+transform = Transform3D(7.1054274e-15, 0.99999994, 1.1920928e-07, 7.5710346e-08, -1.1920928e-07, 0.9999999, 0.99999994, 3.5527137e-15, -7.571034e-08, -24.47164, 12.311723, -32.525856)
+use_collision = true
+size = Vector3(27, 6.588867, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D121" type="CSGBox3D" parent="Blockout" unique_id=444415909]
+transform = Transform3D(-4.371139e-08, -0.5, 0.86602527, 0, 0.86602527, 0.5, -1, 2.1855694e-08, -3.7855166e-08, -6.501913, 13.4398155, -37.025856)
+use_collision = true
+size = Vector3(18, 7, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D122" type="CSGBox3D" parent="Blockout" unique_id=1295911596]
+transform = Transform3D(-4.371139e-08, 0.5, -0.86602527, 0, 0.86602527, 0.5, 1, 2.1855694e-08, -3.7855166e-08, -16.501913, 13.4398155, -37.025856)
+use_collision = true
+size = Vector3(18, 7, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D123" type="CSGBox3D" parent="Blockout" unique_id=1574391009]
+transform = Transform3D(7.1054274e-15, 0.99999994, 1.1920928e-07, 7.5710346e-08, -1.1920928e-07, 0.9999999, 0.99999994, 3.5527137e-15, -7.571034e-08, -11.47164, 16.311722, -37.025856)
+use_collision = true
+size = Vector3(18, 6.588867, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D139" type="CSGBox3D" parent="Blockout" unique_id=537621609]
+transform = Transform3D(-4.371139e-08, -0.5, 0.86602527, 0, 0.86602527, 0.5, -1, 2.1855694e-08, -3.7855166e-08, -6.501913, 21.439816, -55.025856)
+use_collision = true
+size = Vector3(18, 7, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D140" type="CSGBox3D" parent="Blockout" unique_id=124425998]
+transform = Transform3D(-4.371139e-08, 0.5, -0.86602527, 0, 0.86602527, 0.5, 1, 2.1855694e-08, -3.7855166e-08, -16.501913, 21.439816, -55.025856)
+use_collision = true
+size = Vector3(18, 7, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D141" type="CSGBox3D" parent="Blockout" unique_id=1913832215]
+transform = Transform3D(7.1054274e-15, 0.99999994, 1.1920928e-07, 7.5710346e-08, -1.1920928e-07, 0.9999999, 0.99999994, 3.5527137e-15, -7.571034e-08, -11.47164, 24.311722, -55.025856)
+use_collision = true
+size = Vector3(18, 6.588867, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D124" type="CSGBox3D" parent="Blockout" unique_id=2074714212]
+transform = Transform3D(-4.371139e-08, -0.5, 0.86602527, 0, 0.86602527, 0.5, -1, 2.1855694e-08, -3.7855166e-08, -6.501913, 10.4398155, -19.025856)
+use_collision = true
+size = Vector3(18, 7, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D125" type="CSGBox3D" parent="Blockout" unique_id=1289726801]
+transform = Transform3D(-4.371139e-08, 0.5, -0.86602527, 0, 0.86602527, 0.5, 1, 2.1855694e-08, -3.7855166e-08, -16.501913, 10.4398155, -19.025856)
+use_collision = true
+size = Vector3(18, 7, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D126" type="CSGBox3D" parent="Blockout" unique_id=1448265449]
+transform = Transform3D(7.1054274e-15, 0.99999994, 1.1920928e-07, 7.5710346e-08, -1.1920928e-07, 0.9999999, 0.99999994, 3.5527137e-15, -7.571034e-08, -11.47164, 13.311722, -19.025856)
+use_collision = true
+size = Vector3(18, 6.588867, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D127" type="CSGBox3D" parent="Blockout" unique_id=1967681312]
+transform = Transform3D(-4.371139e-08, -0.5, 0.86602527, 0, 0.86602527, 0.5, -1, 2.1855694e-08, -3.7855166e-08, 13.748087, 10.006803, -19.025856)
+use_collision = true
+size = Vector3(18, 6, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D128" type="CSGBox3D" parent="Blockout" unique_id=1642570335]
+transform = Transform3D(-4.371139e-08, 0.5, -0.86602527, 0, 0.86602527, 0.5, 1, 2.1855694e-08, -3.7855166e-08, 6.248087, 10.006803, -19.025856)
+use_collision = true
+size = Vector3(18, 6, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D129" type="CSGBox3D" parent="Blockout" unique_id=234687241]
+transform = Transform3D(7.1054274e-15, 0.99999994, 1.1920928e-07, 7.5710346e-08, -1.1920928e-07, 0.9999999, 0.99999994, 3.5527137e-15, -7.571034e-08, 10.004129, 12.498045, -19.025856)
+use_collision = true
+size = Vector3(18, 4.5823975, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D130" type="CSGBox3D" parent="Blockout" unique_id=1338322014]
+transform = Transform3D(-4.371139e-08, -0.5, 0.86602527, 0, 0.86602527, 0.5, -1, 2.1855694e-08, -3.7855166e-08, 13.748087, 13.006802, -34.025856)
+use_collision = true
+size = Vector3(12, 6, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D131" type="CSGBox3D" parent="Blockout" unique_id=257959017]
+transform = Transform3D(-4.371139e-08, 0.5, -0.86602527, 0, 0.86602527, 0.5, 1, 2.1855694e-08, -3.7855166e-08, 6.248087, 13.006802, -34.025856)
+use_collision = true
+size = Vector3(12, 6, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D132" type="CSGBox3D" parent="Blockout" unique_id=782268875]
+transform = Transform3D(7.1054274e-15, 0.99999994, 1.1920928e-07, 7.5710346e-08, -1.1920928e-07, 0.9999999, 0.99999994, 3.5527137e-15, -7.571034e-08, 10.004129, 15.498045, -34.025856)
+use_collision = true
+size = Vector3(12, 4.5823975, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D133" type="CSGBox3D" parent="Blockout" unique_id=1768674688]
+transform = Transform3D(-1, 4.371139e-08, -7.571033e-08, 0, 0.86602527, 0.5, 8.742278e-08, 0.5, -0.86602527, 14.500101, 17.872828, -62.27384)
+use_collision = true
+size = Vector3(19, 8, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D134" type="CSGBox3D" parent="Blockout" unique_id=1062148560]
+transform = Transform3D(1, 0, 0, 0, 0.86602527, 0.5, 0, -0.5, 0.86602527, 14.500101, 17.872828, -51.77384)
+use_collision = true
+size = Vector3(19, 8, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D135" type="CSGBox3D" parent="Blockout" unique_id=62265621]
+transform = Transform3D(0.9999999, -4.3711378e-08, -7.5710325e-08, 7.571034e-08, -1.19209275e-07, 0.9999999, -4.371139e-08, -0.9999999, -1.19209275e-07, 14.500101, 21.246864, -56.991493)
+use_collision = true
+size = Vector3(19, 6.6748047, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D136" type="CSGBox3D" parent="Blockout" unique_id=752083995]
+transform = Transform3D(-1, 4.371139e-08, -7.571033e-08, 0, 0.86602527, 0.5, 8.742278e-08, 0.5, -0.86602527, 33.5001, 12.872828, -62.27384)
+use_collision = true
+size = Vector3(19, 8, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D137" type="CSGBox3D" parent="Blockout" unique_id=1674796427]
+transform = Transform3D(1, 0, 0, 0, 0.86602527, 0.5, 0, -0.5, 0.86602527, 33.5001, 12.872828, -51.77384)
+use_collision = true
+size = Vector3(19, 8, 0.38134766)
+material = ExtResource("4_ynctg")
+
+[node name="CSGBox3D138" type="CSGBox3D" parent="Blockout" unique_id=223758632]
+transform = Transform3D(0.9999999, -4.3711378e-08, -7.5710325e-08, 7.571034e-08, -1.19209275e-07, 0.9999999, -4.371139e-08, -0.9999999, -1.19209275e-07, 33.5001, 16.246864, -56.991493)
+use_collision = true
+size = Vector3(19, 6.6748047, 0.38134766)
+material = ExtResource("4_ynctg")
 
 [node name="CSGBox3D57" type="CSGBox3D" parent="Blockout" unique_id=1452619867]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, -2, 5.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 1, 5.5)
 use_collision = true
-size = Vector3(9, 21, 7)
-material = SubResource("ShaderMaterial_l62fg")
+size = Vector3(9, 27, 7)
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D66" type="CSGBox3D" parent="Blockout" unique_id=1473208346]
 transform = Transform3D(-0.8660253, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, -0.8660253, -12.468911, -8, 30.25)
 use_collision = true
 size = Vector3(16, 9, 7)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D68" type="CSGBox3D" parent="Blockout" unique_id=784600853]
 transform = Transform3D(-0.9659258, 0, -0.25881907, 0, 1, 0, 0.25881907, 0, -0.9659258, 9.46294, -8, 36.73236)
 use_collision = true
 size = Vector3(12, 9, 7)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_fwjg4")
 
 [node name="CSGBox3D70" type="CSGBox3D" parent="Blockout" unique_id=1783943654]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 11.96294, -8, 28.73236)
 use_collision = true
 size = Vector3(12, 9, 6)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D69" type="CSGBox3D" parent="Blockout" unique_id=200628413]
 transform = Transform3D(-1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, -1, 9.199757, -7.5, 13.43153)
 use_collision = true
 size = Vector3(11.473633, 10, 7)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D67" type="CSGBox3D" parent="Blockout" unique_id=396902407]
 transform = Transform3D(-0.9659257, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, -0.9659257, -13.795878, -7, 36.733562)
 use_collision = true
 size = Vector3(12, 11, 9)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D63" type="CSGBox3D" parent="Blockout" unique_id=470563741]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.264185, -6.5, 12.08927)
@@ -638,6 +1776,60 @@ use_collision = true
 size = Vector3(4, 4, 2)
 material = SubResource("ShaderMaterial_lguji")
 
+[node name="CSGBox3D145" type="CSGBox3D" parent="Blockout" unique_id=1046315812]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9470487, 1.7884827, -13.834045)
+use_collision = true
+size = Vector3(1.6680908, 2.774231, 0.21533203)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D147" type="CSGBox3D" parent="Blockout" unique_id=2136661890]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9470487, 1.7884827, -23.834045)
+use_collision = true
+size = Vector3(1.6680908, 2.774231, 0.21533203)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D151" type="CSGBox3D" parent="Blockout" unique_id=902976627]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.920441, 1.7884827, -12.834045)
+use_collision = true
+size = Vector3(1.6680908, 2.774231, 0.21533203)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D152" type="CSGBox3D" parent="Blockout" unique_id=841921457]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.920441, 1.7884827, -21.834045)
+use_collision = true
+size = Vector3(1.6680908, 2.774231, 0.21533203)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D153" type="CSGBox3D" parent="Blockout" unique_id=480555125]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4.920441, 1.7884827, -33.834045)
+use_collision = true
+size = Vector3(1.6680908, 2.774231, 0.21533203)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D148" type="CSGBox3D" parent="Blockout" unique_id=220402219]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9470487, 1.7884827, -32.834045)
+use_collision = true
+size = Vector3(1.6680908, 2.774231, 0.21533203)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D149" type="CSGBox3D" parent="Blockout" unique_id=334619296]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9470487, 1.7884827, -41.834045)
+use_collision = true
+size = Vector3(1.6680908, 2.774231, 0.21533203)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D150" type="CSGBox3D" parent="Blockout" unique_id=1490094887]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4.9470487, 1.7884827, -50.834045)
+use_collision = true
+size = Vector3(1.6680908, 2.774231, 0.21533203)
+material = SubResource("ShaderMaterial_lguji")
+
+[node name="CSGBox3D146" type="CSGBox3D" parent="Blockout" unique_id=1693770949]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -17.894123, 3.8552322, -7.673816)
+use_collision = true
+size = Vector3(1.6680908, 2.774231, 0.21533203)
+material = SubResource("ShaderMaterial_lguji")
+
 [node name="CSGBox3D71" type="CSGBox3D" parent="Blockout" unique_id=1433737180]
 transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, -7.7953415, -9.5, 19.467663)
 use_collision = true
@@ -672,7 +1864,7 @@ material = SubResource("ShaderMaterial_lguji")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5, -8.5, -4)
 use_collision = true
 size = Vector3(9, 8, 10)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D60" type="CSGBox3D" parent="Blockout" unique_id=885006038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.33252, -8.5, -3.4084473)
@@ -684,181 +1876,199 @@ material = SubResource("ShaderMaterial_l62fg")
 transform = Transform3D(0.86602545, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, 0.86602545, -50.769863, -6.5, 7.2698536)
 use_collision = true
 size = Vector3(9, 12, 7)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D62" type="CSGBox3D" parent="Blockout" unique_id=1659908063]
 transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, -58.854214, -6.5, 5.094059)
 use_collision = true
 size = Vector3(12.371582, 12, 6.1192017)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D59" type="CSGBox3D" parent="Blockout" unique_id=802208639]
 transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, -28.36203, -8.5, -5.560703)
 use_collision = true
 size = Vector3(9, 8, 10)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_fwjg4")
 
 [node name="CSGBox3D8" type="CSGBox3D" parent="Blockout" unique_id=1753449028]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, -19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -1.5, -19)
 use_collision = true
 size = Vector3(10, 18, 18)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D9" type="CSGBox3D" parent="Blockout" unique_id=462832981]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, -34)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -34)
 use_collision = true
 size = Vector3(10, 21, 12)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D11" type="CSGBox3D" parent="Blockout" unique_id=1355322271]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 5.0438843, -57)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 2.0438843, -57)
 use_collision = true
 size = Vector3(19, 25.087769, 14)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D29" type="CSGBox3D" parent="Blockout" unique_id=1429861802]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, 2.5, -57)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.5, -0.5, -57)
 use_collision = true
 size = Vector3(19, 20, 14)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D20" type="CSGBox3D" parent="Blockout" unique_id=702371501]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.5, 6.5, -45)
 use_collision = true
 size = Vector3(25, 8, 20)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D97" type="CSGBox3D" parent="Blockout" unique_id=1000149111]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 12, -37)
 use_collision = true
 size = Vector3(4, 19, 4)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D98" type="CSGBox3D" parent="Blockout" unique_id=911766732]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 12, -53)
 use_collision = true
 size = Vector3(4, 19, 4)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D30" type="CSGBox3D" parent="Blockout" unique_id=630892845]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 82.51489, 10.5, -45)
 use_collision = true
 size = Vector3(24.970215, 15, 15)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D32" type="CSGBox3D" parent="Blockout" unique_id=209032750]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.5, 17.5, -103)
 use_collision = true
 size = Vector3(25, 14, 20)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D40" type="CSGBox3D" parent="Blockout" unique_id=1175130033]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.5, 17.5, -124.5)
 use_collision = true
 size = Vector3(18, 14, 48)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D34" type="CSGBox3D" parent="Blockout" unique_id=2113167442]
 transform = Transform3D(0.49999997, 0, 0.8660254, 0, 1, 0, -0.8660254, 0, 0.49999997, -33.19615, 15.5, -90)
 use_collision = true
 size = Vector3(3, 14, 19)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D42" type="CSGBox3D" parent="Blockout" unique_id=908596693]
 transform = Transform3D(0.96592575, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.96592575, -44.58438, 15.5, -105.44889)
 use_collision = true
 size = Vector3(3, 14, 16)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D37" type="CSGBox3D" parent="Blockout" unique_id=1460897456]
 transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, -21.696152, 19.5, -86)
 use_collision = true
 size = Vector3(3, 6, 10)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D38" type="CSGBox3D" parent="Blockout" unique_id=1206168107]
 transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, -17.696152, 13.5, -86)
 use_collision = true
 size = Vector3(3, 6, 2)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D39" type="CSGBox3D" parent="Blockout" unique_id=2038211322]
 transform = Transform3D(-2.9802322e-08, 0, 1, 0, 1, 0, -1, 0, -2.9802322e-08, -24.696152, 13.5, -86)
 use_collision = true
 size = Vector3(3, 6, 2)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D36" type="CSGBox3D" parent="Blockout" unique_id=108608549]
 transform = Transform3D(-0.5, 0, 0.86602545, 0, 1, 0, -0.86602545, 0, -0.5, -12.815412, 15.5, -88.90587)
 use_collision = true
 size = Vector3(3, 14, 12)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D35" type="CSGBox3D" parent="Blockout" unique_id=2146377443]
 transform = Transform3D(-0.39766052, 0, 0.9175327, 0, 1, 0, -0.9175327, 0, -0.39766052, -13.159258, 53.5, -108.91181)
 use_collision = true
 size = Vector3(10, 3, 52)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D33" type="CSGBox3D" parent="Blockout" unique_id=1970571231]
 transform = Transform3D(-4.371139e-08, 0.70710677, 0.70710677, 0, 0.70710677, -0.70710677, -1, -3.090862e-08, -3.090862e-08, 0.4999998, 24.5, -107.5083)
 use_collision = true
 size = Vector3(33.9834, 15, 15)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D41" type="CSGBox3D" parent="Blockout" unique_id=1190535352]
 transform = Transform3D(-1, -6.181723e-08, -6.181723e-08, 0, 0.70710677, -0.70710677, 8.742278e-08, -0.70710677, -0.70710677, -12, 24.5, -124)
 use_collision = true
 size = Vector3(50, 15, 15)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D7" type="CSGBox3D" parent="Blockout" unique_id=1810994500]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -2.5, -7.5)
 use_collision = true
 size = Vector3(8, 10, 5)
-material = SubResource("ShaderMaterial_l62fg")
+material = ExtResource("2_fwjg4")
+
+[node name="CSGBox3D110" type="CSGBox3D" parent="Blockout" unique_id=1369291827]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 8.5, -7.5)
+use_collision = true
+size = Vector3(8, 4, 5)
+material = ExtResource("2_lguji")
+
+[node name="CSGBox3D111" type="CSGBox3D" parent="Blockout" unique_id=1416650609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5, 4.5, -5.5)
+use_collision = true
+size = Vector3(1, 4, 1)
+material = ExtResource("2_fwjg4")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Blockout" unique_id=2029890060]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 25)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 22.5)
 use_collision = true
-size = Vector3(7, 2, 30)
-material = SubResource("ShaderMaterial_duv63")
+size = Vector3(7, 2, 25)
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D65" type="CSGBox3D" parent="Blockout" unique_id=1790137469]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -7, 24)
 use_collision = true
 size = Vector3(3, 2, 13)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D53" type="CSGBox3D" parent="Blockout" unique_id=1885456393]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.4999995, -12.5, 24)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.49999952, -12.510986, 24)
 use_collision = true
-size = Vector3(29, 2, 35)
-material = SubResource("ShaderMaterial_duv63")
+size = Vector3(29, 1.9780273, 31)
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D77" type="CSGBox3D" parent="Blockout" unique_id=2007590193]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 17.5, -12.5, 21.5)
 use_collision = true
 size = Vector3(14, 2, 5)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Blockout" unique_id=1115545663]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36)
 use_collision = true
 size = Vector3(10, 1, 52)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("2_lguji")
+
+[node name="CSGBox3D157" type="CSGBox3D" parent="Blockout" unique_id=1849061598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.016662598, -36)
+use_collision = true
+size = Vector3(5, 1.0333252, 52)
+material = ExtResource("8_pij5o")
 
 [node name="CSGBox3D43" type="CSGBox3D" parent="Blockout" unique_id=999887448]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.5, -8.5, -39)
 use_collision = true
 size = Vector3(35, 10, 68)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("9_u5g7u")
 
 [node name="CSGBox3D79" type="CSGBox3D" parent="Blockout" unique_id=1550129539]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77, -5.5, -50)
 use_collision = true
 size = Vector3(22, 4, 24)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D87" type="CSGBox3D" parent="Blockout" unique_id=2092499011]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77, -51.5, -37.5)
@@ -882,25 +2092,25 @@ material = SubResource("ShaderMaterial_duv63")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32, -3, -45)
 use_collision = true
 size = Vector3(10, 7, 54)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("9_u5g7u")
 
 [node name="CSGBox3D21" type="CSGBox3D" parent="Blockout" unique_id=961477175]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 62, -2, -45)
 use_collision = true
 size = Vector3(10, 9, 6)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("4_6tjdh")
 
 [node name="CSGBox3D31" type="CSGBox3D" parent="Blockout" unique_id=704598]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 82.5, -2, -45)
 use_collision = true
 size = Vector3(30, 9, 35)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("4_6tjdh")
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="Blockout" unique_id=167554504]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25, -4, -1.5)
 use_collision = true
 size = Vector3(7, 1, 30)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("9_u5g7u")
 
 [node name="CSGBox3D83" type="CSGBox3D" parent="Blockout" unique_id=1169430012]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -81, -4, -9)
@@ -936,70 +2146,76 @@ material = SubResource("ShaderMaterial_duv63")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -60, -4, -1.4999996)
 use_collision = true
 size = Vector3(7, 1, 12)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("9_u5g7u")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Blockout" unique_id=1678817149]
 transform = Transform3D(-3.7855173e-08, -0.5, 0.8660254, -2.1855694e-08, 0.8660254, 0.5, -1, 0, -4.371139e-08, -13.22846, -1.9598196, -1.5000005)
 use_collision = true
 size = Vector3(7, 1, 8)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("9_u5g7u")
 
 [node name="CSGBox3D56" type="CSGBox3D" parent="Blockout" unique_id=112665788]
 transform = Transform3D(-0.49999988, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, -0.49999988, -31.554508, -12.5, 1.4568217)
 use_collision = true
 size = Vector3(37, 2, 66)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("9_u5g7u")
 
 [node name="CSGBox3D54" type="CSGBox3D" parent="Blockout" unique_id=1773334069]
 transform = Transform3D(1.2527795e-07, 0.5, -0.8660254, -2.1855694e-08, 0.8660254, 0.5, 1, -4.371139e-08, 1.1942174e-07, -47.33408, -7.925205, -1.499999)
 use_collision = true
 size = Vector3(7, 1, 16)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("9_u5g7u")
 
 [node name="CSGBox3D50" type="CSGBox3D" parent="Blockout" unique_id=868601493]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18, -4, -57.5)
 use_collision = true
 size = Vector3(5, 1, 26)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D51" type="CSGBox3D" parent="Blockout" unique_id=162191278]
 transform = Transform3D(-3.7855173e-08, -0.5, 0.8660254, -2.1855694e-08, 0.8660254, 0.5, -1, 0, -4.371139e-08, -8.22846, -1.9598196, -57.5)
 use_collision = true
 size = Vector3(5, 1, 8)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D12" type="CSGBox3D" parent="Blockout" unique_id=26669529]
-transform = Transform3D(1, 2.1855694e-08, 5.856215e-09, -2.1855694e-08, 0.8660254, 0.5, 5.856215e-09, -0.5, 0.8660254, 12.351664, -3.4321423, -0.79552007)
+transform = Transform3D(1, 2.1855694e-08, 5.856215e-09, -2.1855694e-08, 0.8660254, 0.5, 5.856215e-09, -0.5, 0.8660254, 12.351664, -6.030218, 0.70447993)
 use_collision = true
-size = Vector3(5, 1, 14)
-material = SubResource("ShaderMaterial_duv63")
+size = Vector3(5, 7, 14)
+material = ExtResource("9_u5g7u")
+
+[node name="CSGBox3D156" type="CSGBox3D" parent="Blockout" unique_id=853719870]
+transform = Transform3D(-1, -6.556708e-08, 6.985413e-08, -2.1855694e-08, 0.8660254, 0.5, -9.327899e-08, 0.5, -0.8660254, 0.8516638, 2.7101054, -70.34998)
+use_collision = true
+size = Vector3(10, 7, 23)
+material = ExtResource("9_u5g7u")
 
 [node name="CSGBox3D23" type="CSGBox3D" parent="Blockout" unique_id=834735576]
-transform = Transform3D(-1, 2.1855694e-08, -8.156656e-08, -2.1855694e-08, 0.8660254, 0.5, 8.156656e-08, 0.5, -0.8660254, 0.35166326, 5.5678577, -69.25962)
+transform = Transform3D(-1, 2.1855694e-08, -8.156656e-08, -2.1855694e-08, 0.8660254, 0.5, 8.156656e-08, 0.5, -0.8660254, 14.603294, 5.5678577, -69.12276)
 use_collision = true
 size = Vector3(10, 1, 22)
 material = SubResource("ShaderMaterial_duv63")
 
 [node name="CSGBox3D16" type="CSGBox3D" parent="Blockout" unique_id=2139116637]
-transform = Transform3D(-4.9567603e-08, 0.5, -0.8660254, -2.1855694e-08, 0.8660254, 0.5, 1, 4.371139e-08, -3.1998958e-08, 25.822905, -3.4321423, -37.487213)
+transform = Transform3D(-4.9567603e-08, 0.5, -0.8660254, -2.1855694e-08, 0.8660254, 0.5, 1, 4.371139e-08, -3.1998958e-08, 24.572905, -5.5972056, -37.487213)
 use_collision = true
-size = Vector3(5, 1, 14)
-material = SubResource("ShaderMaterial_duv63")
+size = Vector3(5, 6, 14)
+material = ExtResource("9_u5g7u")
 
 [node name="CSGBox3D17" type="CSGBox3D" parent="Blockout" unique_id=14699767]
-transform = Transform3D(1.4901161e-07, -0.50000006, 0.8660254, -2.9052401e-08, 0.8660254, 0.5, -1, -9.685755e-08, 1.0430813e-07, 44.21867, -3.4321423, -37.487213)
+transform = Transform3D(1.4901161e-07, -0.50000006, 0.8660254, -2.9052401e-08, 0.8660254, 0.5, -1, -9.685755e-08, 1.0430813e-07, 45.46867, -5.5972056, -37.487213)
 use_collision = true
-size = Vector3(5, 1, 14)
-material = SubResource("ShaderMaterial_duv63")
+size = Vector3(5, 6, 14)
+material = ExtResource("9_u5g7u")
 
 [node name="CSGBox3D22" type="CSGBox3D" parent="Blockout" unique_id=672154690]
 transform = Transform3D(1.4901161e-07, -0.50000006, 0.8660254, -2.9052401e-08, 0.8660254, 0.5, -1, -9.685755e-08, 1.0430813e-07, 56.659737, 0.5706501, -45.00456)
 use_collision = true
 size = Vector3(8, 1, 6.0111694)
-material = SubResource("ShaderMaterial_duv63")
+material = ExtResource("9_u5g7u")
 
 [node name="Player" parent="." unique_id=657413655 instance=ExtResource("2_l62fg")]
-transform = Transform3D(-0.7071068, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.7071068, 2.8711967, 1.4901223, 7.0895405)
+transform = Transform3D(-0.7071068, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.7071068, 2.8711967, 1.9115257, 4.734003)
 
 [node name="UI" parent="." unique_id=1305395705 instance=ExtResource("3_8apya")]
 
@@ -1029,3 +2245,138 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -64.
 
 [node name="Airship11" parent="." unique_id=1010646979 instance=ExtResource("4_8apya")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -91.73804, -50.9507, 21.479553)
+
+[node name="barrel" parent="." unique_id=2079035724 instance=ExtResource("8_nsicm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.689275, 0.49999952, 8.553834)
+
+[node name="barrel_broken" parent="." unique_id=647577141 instance=ExtResource("9_4cssn")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -9.214453, 0.99659324, 7.1915445)
+
+[node name="streetlamps" parent="." unique_id=1562742989 instance=ExtResource("10_4cssn")]
+transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, -8.744661, 0.5, 8.327639)
+
+[node name="streetlamps3" parent="." unique_id=1773015440 instance=ExtResource("10_4cssn")]
+transform = Transform3D(-0.99999994, 0, 5.9604645e-08, 0, 1, 0, -5.9604645e-08, 0, -0.99999994, -4.2525406, 0.5, -18.010069)
+
+[node name="streetlamps4" parent="." unique_id=1712518887 instance=ExtResource("10_4cssn")]
+transform = Transform3D(0.9999999, 0, -1.4702741e-07, 0, 1, 0, 1.4702741e-07, 0, 0.9999999, 3.7474594, 0.5, -28.010069)
+
+[node name="streetlamps5" parent="." unique_id=570146670 instance=ExtResource("10_4cssn")]
+transform = Transform3D(-0.9999999, 0, 5.9604638e-08, 0, 1, 0, -5.9604638e-08, 0, -0.9999999, -3.2525406, 0.5, -46.01007)
+
+[node name="streetlamps2" parent="." unique_id=1657072073 instance=ExtResource("10_4cssn")]
+transform = Transform3D(0.7071067, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071067, 13.648872, 0.5, 8.722864)
+
+[node name="roof_2x2_corner_outer2" parent="." unique_id=506485130 instance=ExtResource("12_0347l")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.547116, 14.838028, 2.6165466)
+
+[node name="roof_2x2_corner_outer3" parent="." unique_id=1380502238 instance=ExtResource("12_0347l")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.547116, 16.838028, 4.6165466)
+
+[node name="roof_2x2_corner_outer4" parent="." unique_id=1330588914 instance=ExtResource("12_0347l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.547116, 14.838028, 8.616547)
+
+[node name="roof_2x2_corner_outer5" parent="." unique_id=96434102 instance=ExtResource("12_0347l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.547116, 16.838028, 6.6165466)
+
+[node name="roof_2x2_corner_outer6" parent="." unique_id=1755876226 instance=ExtResource("12_0347l")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -18.547115, 14.838028, 8.616547)
+
+[node name="roof_2x2_corner_outer7" parent="." unique_id=1940932693 instance=ExtResource("12_0347l")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -16.547115, 16.838028, 6.6165466)
+
+[node name="roof_2x2_corner_outer8" parent="." unique_id=572124738 instance=ExtResource("12_0347l")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -18.547115, 14.838028, 2.6165466)
+
+[node name="roof_2x2_corner_outer9" parent="." unique_id=1511478113 instance=ExtResource("12_0347l")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -16.547115, 16.838028, 4.6165466)
+
+[node name="roof_2x22" parent="." unique_id=2108454824 instance=ExtResource("13_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.547115, 14.838028, 2.6165466)
+
+[node name="roof_2x23" parent="." unique_id=612674381 instance=ExtResource("13_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.547116, 14.838028, 2.6165466)
+
+[node name="roof_2x24" parent="." unique_id=2066776790 instance=ExtResource("13_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14.547116, 14.838028, 2.6165466)
+
+[node name="roof_2x30" parent="." unique_id=288153298 instance=ExtResource("13_rpiva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.547116, 14.838028, 4.6165466)
+
+[node name="roof_2x31" parent="." unique_id=1886727136 instance=ExtResource("13_rpiva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.547116, 14.838028, 6.6165466)
+
+[node name="roof_2x32" parent="." unique_id=1095273563 instance=ExtResource("13_rpiva")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -18.547115, 14.838028, 6.6165466)
+
+[node name="roof_2x33" parent="." unique_id=1742743143 instance=ExtResource("13_rpiva")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -18.547115, 14.838028, 4.6165466)
+
+[node name="roof_2x25" parent="." unique_id=1174330991 instance=ExtResource("13_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14.547116, 16.838028, 4.6165466)
+
+[node name="roof_2x26" parent="." unique_id=637304887 instance=ExtResource("13_rpiva")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -12.547116, 14.838028, 8.616547)
+
+[node name="roof_2x27" parent="." unique_id=1091320753 instance=ExtResource("13_rpiva")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -16.547115, 14.838028, 8.616547)
+
+[node name="roof_2x28" parent="." unique_id=1717812909 instance=ExtResource("13_rpiva")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -14.547116, 14.838028, 8.616547)
+
+[node name="roof_2x2_end2" parent="." unique_id=1354835251 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18.547115, 14.838028, 1.6165466)
+
+[node name="roof_2x2_end3" parent="." unique_id=1119286171 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.547115, 14.838028, 1.6165466)
+
+[node name="roof_2x2_end4" parent="." unique_id=1949015211 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14.547115, 14.838028, 1.6165466)
+
+[node name="roof_2x2_end5" parent="." unique_id=123219030 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -12.547115, 14.838028, 1.6165466)
+
+[node name="roof_2x2_end6" parent="." unique_id=9847842 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10.547115, 14.838028, 1.6165466)
+
+[node name="roof_2x2_end7" parent="." unique_id=794921993 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -10.547117, 14.838028, 9.616547)
+
+[node name="roof_2x2_end8" parent="." unique_id=176593887 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -12.547117, 14.838028, 9.616547)
+
+[node name="roof_2x2_end9" parent="." unique_id=293619728 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.547117, 14.838028, 9.616547)
+
+[node name="roof_2x2_end10" parent="." unique_id=746497415 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -16.547117, 14.838028, 9.616547)
+
+[node name="roof_2x2_end11" parent="." unique_id=698213575 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -18.547117, 14.838028, 9.616547)
+
+[node name="roof_2x2_end12" parent="." unique_id=1151907952 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -19.547117, 14.838028, 8.616547)
+
+[node name="roof_2x2_end13" parent="." unique_id=303533521 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -19.547117, 14.838028, 6.6165466)
+
+[node name="roof_2x2_end14" parent="." unique_id=2061967791 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -19.547117, 14.838028, 4.6165466)
+
+[node name="roof_2x2_end15" parent="." unique_id=907169019 instance=ExtResource("14_rpiva")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -19.547117, 14.838028, 2.6165466)
+
+[node name="roof_2x2_end16" parent="." unique_id=1500803403 instance=ExtResource("14_rpiva")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -9.547117, 14.838028, 2.6165466)
+
+[node name="roof_2x2_end17" parent="." unique_id=667434827 instance=ExtResource("14_rpiva")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -9.547117, 14.838028, 4.6165466)
+
+[node name="roof_2x2_end18" parent="." unique_id=744483539 instance=ExtResource("14_rpiva")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -9.547117, 14.838028, 6.6165466)
+
+[node name="roof_2x2_end19" parent="." unique_id=1777929030 instance=ExtResource("14_rpiva")]
+transform = Transform3D(1, 0, -1.7484555e-07, 0, 1, 0, 1.7484555e-07, 0, 1, -9.547117, 14.838028, 8.616547)
+
+[node name="roof_2x29" parent="." unique_id=1282453470 instance=ExtResource("13_rpiva")]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, -14.547116, 16.838028, 6.6165466)

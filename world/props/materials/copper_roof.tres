@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://7clar008fteg"]
+
+[ext_resource type="Shader" uid="uid://dsviheodsxam3" path="res://world/props/shaders/prop_master_shader.gdshader" id="1_5wkxd"]
+[ext_resource type="Texture2D" uid="uid://d4m3agiegynar" path="res://world/props/textures/copper_roof.png" id="2_htslh"]
+[ext_resource type="Texture2D" uid="uid://chh2apk4d7vte" path="res://world/props/textures/copper_roof_n.png" id="3_hijjw"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_5wkxd")
+shader_parameter/albedo_tex = ExtResource("2_htslh")
+shader_parameter/normal_tex = ExtResource("3_hijjw")
+shader_parameter/modulate = Color(0.9297146, 0.9297147, 0.9297146, 1)
+shader_parameter/invert_normals = true
+shader_parameter/triplanar_scale = 0.6

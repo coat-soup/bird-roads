@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b0w8ay2rglfvf"]
+
+[ext_resource type="PackedScene" uid="uid://c62tdyhjuaypr" path="res://world/props/models/roof_2x2_corner_inner.glb" id="1_ogfjb"]
+[ext_resource type="Material" uid="uid://7clar008fteg" path="res://world/props/materials/copper_roof.tres" id="2_uytkw"]
+
+[node name="roof_2x2_corner_inner2" unique_id=2031154321 instance=ExtResource("1_ogfjb")]
+
+[node name="roof_2x2_corner_inner" parent="." index="0" unique_id=264430698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+instance_shader_parameters/override_triplanar = true
+surface_material_override/0 = ExtResource("2_uytkw")

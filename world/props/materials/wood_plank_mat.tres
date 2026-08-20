@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dwlq7befkrqab"]
+
+[ext_resource type="Shader" uid="uid://dsviheodsxam3" path="res://world/props/shaders/prop_master_shader.gdshader" id="1_ur1ph"]
+[ext_resource type="Texture2D" uid="uid://oeegppk8tih3" path="res://ships/textures/wood_planks.png" id="2_ur1ph"]
+[ext_resource type="Texture2D" uid="uid://bbyj14ao30nud" path="res://ships/textures/wood_planks_n.png" id="3_gtd37"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ur1ph")
+shader_parameter/albedo_tex = ExtResource("2_ur1ph")
+shader_parameter/normal_tex = ExtResource("3_gtd37")
+shader_parameter/modulate = Color(0.59717613, 0.59717613, 0.5971761, 1)
+shader_parameter/triplanar_scale = 0.3

@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://f7g5ei0g1jt0"]
+
+[ext_resource type="Shader" uid="uid://dsviheodsxam3" path="res://world/props/shaders/prop_master_shader.gdshader" id="1_rvud1"]
+[ext_resource type="Texture2D" uid="uid://cy5q0bfi5amxh" path="res://world/props/textures/dark_metal.png" id="2_sfgg0"]
+[ext_resource type="Texture2D" uid="uid://3x3boxg3cxrc" path="res://world/props/textures/dark_metal_n.png" id="3_rvud1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rvud1")
+shader_parameter/albedo_tex = ExtResource("2_sfgg0")
+shader_parameter/normal_tex = ExtResource("3_rvud1")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/triplanar_scale = 0.6

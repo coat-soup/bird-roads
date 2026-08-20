@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://opd5nrlaw043"]
+
+[ext_resource type="Shader" uid="uid://dsviheodsxam3" path="res://world/props/shaders/prop_master_shader.gdshader" id="1_sddo8"]
+[ext_resource type="Texture2D" uid="uid://bslryx5nlycbs" path="res://world/props/textures/stone_floor_tiles.png" id="2_ox7d6"]
+[ext_resource type="Texture2D" uid="uid://cwa3i5cta2amw" path="res://world/props/textures/stone_floor_tiles_n.png" id="3_42i84"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_sddo8")
+shader_parameter/albedo_tex = ExtResource("2_ox7d6")
+shader_parameter/normal_tex = ExtResource("3_42i84")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/triplanar_scale = 0.3

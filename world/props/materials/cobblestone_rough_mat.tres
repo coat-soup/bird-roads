@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://blih56kxircg7"]
+
+[ext_resource type="Shader" uid="uid://dsviheodsxam3" path="res://world/props/shaders/prop_master_shader.gdshader" id="1_o5ffw"]
+[ext_resource type="Texture2D" uid="uid://d1fbtatygki3f" path="res://world/props/textures/cobble_stone_rough.png" id="2_o5ffw"]
+[ext_resource type="Texture2D" uid="uid://c6eeh1ibchaiy" path="res://world/props/textures/cobble_stone_rough_n.png" id="3_1o677"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_o5ffw")
+shader_parameter/albedo_tex = ExtResource("2_o5ffw")
+shader_parameter/normal_tex = ExtResource("3_1o677")
+shader_parameter/modulate = Color(0.728822, 0.728822, 0.728822, 1)
+shader_parameter/invert_normals = false
+shader_parameter/triplanar_scale = 0.6

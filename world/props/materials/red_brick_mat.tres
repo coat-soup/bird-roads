@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b0w7qkubk45vs"]
+
+[ext_resource type="Shader" uid="uid://dsviheodsxam3" path="res://world/props/shaders/prop_master_shader.gdshader" id="1_hou1i"]
+[ext_resource type="Texture2D" uid="uid://63hc7ygimold" path="res://world/props/textures/red_brick.png" id="2_y26in"]
+[ext_resource type="Texture2D" uid="uid://daa8rua1vgx7u" path="res://world/props/textures/red_brick_n.png" id="3_hou1i"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_hou1i")
+shader_parameter/albedo_tex = ExtResource("2_y26in")
+shader_parameter/normal_tex = ExtResource("3_hou1i")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/invert_normals = false
+shader_parameter/triplanar_scale = 0.3

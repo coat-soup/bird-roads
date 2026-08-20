@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://pkfq73378xi6"]
+
+[ext_resource type="PackedScene" uid="uid://b7i1rpce38kyj" path="res://world/props/models/streetlamps.glb" id="1_3mqyh"]
+[ext_resource type="Material" uid="uid://f7g5ei0g1jt0" path="res://world/props/materials/dark_metal.tres" id="2_5mhap"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mhap"]
+emission_enabled = true
+emission = Color(0.9376054, 0.66295713, 3.85046e-07, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5mhap"]
+size = Vector3(0.645, 1.197, 0.645)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3e8kx"]
+size = Vector3(0.3, 2.966, 0.3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r2158"]
+size = Vector3(0.15, 1.657, 0.15)
+
+[node name="streetlamps" unique_id=1562742989 instance=ExtResource("1_3mqyh")]
+
+[node name="Cube" parent="." index="0" unique_id=1803967630]
+surface_material_override/0 = ExtResource("2_5mhap")
+
+[node name="Cube_001" parent="." index="1" unique_id=1246541248]
+surface_material_override/0 = ExtResource("2_5mhap")
+
+[node name="Cube_002" parent="." index="2" unique_id=747167051]
+surface_material_override/0 = ExtResource("2_5mhap")
+
+[node name="Cube_003" parent="." index="3" unique_id=1687577583]
+surface_material_override/0 = ExtResource("2_5mhap")
+
+[node name="Cube_004" parent="." index="4" unique_id=409190538]
+surface_material_override/0 = ExtResource("2_5mhap")
+
+[node name="Cube_005" parent="." index="5" unique_id=1903331776]
+surface_material_override/0 = ExtResource("2_5mhap")
+
+[node name="Cube_006" parent="." index="6" unique_id=1109041823]
+surface_material_override/0 = SubResource("StandardMaterial3D_5mhap")
+
+[node name="Cube_007" parent="." index="7" unique_id=138285006]
+surface_material_override/0 = ExtResource("2_5mhap")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="8" unique_id=794906230]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=73823605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6016846, 0)
+shape = SubResource("BoxShape3D_5mhap")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1" unique_id=1222333953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4860282, 0)
+shape = SubResource("BoxShape3D_3e8kx")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2" unique_id=250724221]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.779873, 3.6452687, 0)
+shape = SubResource("BoxShape3D_r2158")

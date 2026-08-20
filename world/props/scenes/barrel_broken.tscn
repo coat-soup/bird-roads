@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bf1djut33pqqg"]
+
+[ext_resource type="PackedScene" uid="uid://c2igms73aiu2s" path="res://world/props/models/barrel_broken.glb" id="1_ov0rf"]
+[ext_resource type="Shader" uid="uid://dsviheodsxam3" path="res://world/props/shaders/prop_master_shader.gdshader" id="2_m2oik"]
+[ext_resource type="Texture2D" uid="uid://dlq6ksyi84v6a" path="res://world/props/textures/barrel.png" id="3_i6erk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6xn40"]
+render_priority = 0
+shader = ExtResource("2_m2oik")
+shader_parameter/albedo_tex = ExtResource("3_i6erk")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/triplanar_scale = 0.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ov0rf"]
+height = 1.1816406
+
+[node name="barrel_broken" unique_id=647577141 instance=ExtResource("1_ov0rf")]
+
+[node name="Cylinder_001" parent="." index="0" unique_id=721177245]
+surface_material_override/0 = SubResource("ShaderMaterial_6xn40")
+
+[node name="Cylinder_003" parent="." index="1" unique_id=843076831]
+surface_material_override/0 = SubResource("ShaderMaterial_6xn40")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=44254188]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=255342020]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5908203, 0)
+shape = SubResource("CylinderShape3D_ov0rf")

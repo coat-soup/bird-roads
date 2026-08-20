@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://p2v3q63r5bmd"]
+
+[ext_resource type="Shader" uid="uid://dsviheodsxam3" path="res://world/props/shaders/prop_master_shader.gdshader" id="1_3fnyh"]
+[ext_resource type="Texture2D" uid="uid://3lvxb21qra84" path="res://world/props/textures/stone_wall.png" id="2_3fnyh"]
+[ext_resource type="Texture2D" uid="uid://dqwac6t6euddg" path="res://world/props/textures/stone_wall_n.png" id="3_xtoal"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3fnyh")
+shader_parameter/albedo_tex = ExtResource("2_3fnyh")
+shader_parameter/normal_tex = ExtResource("3_xtoal")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/invert_normals = false
+shader_parameter/triplanar_scale = 0.3
