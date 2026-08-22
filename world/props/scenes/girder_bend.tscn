@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://qklgp4k8c5av"]
+
+[ext_resource type="PackedScene" uid="uid://7erpllldyi7y" path="res://world/props/models/girder_bend.glb" id="1_h7qmq"]
+[ext_resource type="Material" uid="uid://f7g5ei0g1jt0" path="res://world/props/materials/dark_metal.tres" id="2_83xcy"]
+
+[node name="girder_bend" unique_id=334921973 instance=ExtResource("1_h7qmq")]
+
+[node name="grider_bend" parent="." index="0" unique_id=1049417675]
+surface_material_override/0 = ExtResource("2_83xcy")

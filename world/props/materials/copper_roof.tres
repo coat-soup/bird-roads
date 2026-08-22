@@ -9,6 +9,6 @@ render_priority = 0
 shader = ExtResource("1_5wkxd")
 shader_parameter/albedo_tex = ExtResource("2_htslh")
 shader_parameter/normal_tex = ExtResource("3_hijjw")
-shader_parameter/modulate = Color(0.9297146, 0.9297147, 0.9297146, 1)
+shader_parameter/modulate = Color(0.96800894, 0.44783962, 0.26279494, 1)
 shader_parameter/invert_normals = true
 shader_parameter/triplanar_scale = 0.6

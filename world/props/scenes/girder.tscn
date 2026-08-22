@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c4qdtyypgo466"]
+
+[ext_resource type="PackedScene" uid="uid://cwmrd36xsfdop" path="res://world/props/models/girder.glb" id="1_kinx4"]
+[ext_resource type="Material" uid="uid://f7g5ei0g1jt0" path="res://world/props/materials/dark_metal.tres" id="2_rw4ff"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sl4kr"]
+points = PackedVector3Array(-0.5, -1, -0.5, -0.5, -1, 0.5, -0.5, 1, -0.5, 0.5, -1, -0.5, 0.5, -1, 0.5, -0.5, 1, 0.5, 0.5, 1, -0.5, 0.5, 1, 0.5)
+
+[node name="girder" unique_id=755049260 instance=ExtResource("1_kinx4")]
+
+[node name="girder" parent="." index="0" unique_id=212244874]
+surface_material_override/0 = ExtResource("2_rw4ff")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=504849243]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=2010166430]
+shape = SubResource("ConvexPolygonShape3D_sl4kr")

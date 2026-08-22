@@ -7,7 +7,9 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_ur1ph")
+shader_parameter/two_faced = false
 shader_parameter/albedo_tex = ExtResource("2_ur1ph")
 shader_parameter/normal_tex = ExtResource("3_gtd37")
-shader_parameter/modulate = Color(0.59717613, 0.59717613, 0.5971761, 1)
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/invert_normals = false
 shader_parameter/triplanar_scale = 0.3

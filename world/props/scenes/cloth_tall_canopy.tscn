@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://b2ksuiuqdl6uk"]
+
+[ext_resource type="PackedScene" uid="uid://13xvgpjkq1mb" path="res://world/props/models/cloth_tall_canopy.glb" id="1_22opo"]
+[ext_resource type="Material" uid="uid://dwlq7befkrqab" path="res://world/props/materials/wood_plank_mat.tres" id="2_rnf6b"]
+[ext_resource type="Shader" uid="uid://dsviheodsxam3" path="res://world/props/shaders/prop_master_shader.gdshader" id="3_csnd0"]
+[ext_resource type="Texture2D" uid="uid://c5aqbj60kuhvr" path="res://world/props/textures/canopy_stripes.png" id="4_lq0k2"]
+[ext_resource type="Texture2D" uid="uid://cp8shytwooj34" path="res://world/props/textures/canopy_stripes_n.png" id="5_xp5cp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nl604"]
+render_priority = 0
+shader = ExtResource("3_csnd0")
+shader_parameter/two_faced = false
+shader_parameter/albedo_tex = ExtResource("4_lq0k2")
+shader_parameter/normal_tex = ExtResource("5_xp5cp")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/invert_normals = false
+shader_parameter/triplanar_scale = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_csnd0"]
+size = Vector3(3.26, 0.17478955, 2.1601367)
+
+[node name="cloth_stall_canopy" unique_id=613292112 instance=ExtResource("1_22opo")]
+
+[node name="Cube" parent="." index="0" unique_id=1731104122]
+surface_material_override/0 = ExtResource("2_rnf6b")
+
+[node name="Plane" parent="." index="1" unique_id=1410098578]
+surface_material_override/0 = SubResource("ShaderMaterial_nl604")
+
+[node name="Cube_001" parent="." index="2" unique_id=1364324541]
+surface_material_override/0 = ExtResource("2_rnf6b")
+
+[node name="Cube_002" parent="." index="3" unique_id=1867461676]
+surface_material_override/0 = ExtResource("2_rnf6b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="4" unique_id=387693296]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7449298, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=766077526]
+transform = Transform3D(1, 0, 0, 0, 0.99659145, -0.08249512, 0, 0.08249512, 0.99659145, 0, 0.046560057, 0.07256273)
+shape = SubResource("BoxShape3D_csnd0")
+
+[node name="Cube_003" parent="." index="5" unique_id=1098094447]
+surface_material_override/0 = ExtResource("2_rnf6b")
+
+[node name="Cube_004" parent="." index="6" unique_id=1898199513]
+surface_material_override/0 = ExtResource("2_rnf6b")

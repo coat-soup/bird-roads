@@ -2,8 +2,10 @@ shader_type spatial;
 
 #include "res://vfx/shaders/triplanar.gdshaderinc"
 
+uniform bool two_faced;
 //render_mode diffuse_toon;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_toon, specular_toon;
+
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_toon;
 
 uniform sampler2D albedo_tex : source_color, filter_nearest;
 uniform sampler2D normal_tex : hint_normal, filter_nearest;

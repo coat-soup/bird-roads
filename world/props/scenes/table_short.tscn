@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c6cghhbumdjgi"]
+
+[ext_resource type="PackedScene" uid="uid://cmsevvs3e2sfy" path="res://world/props/models/table_short.glb" id="1_cwodc"]
+[ext_resource type="Shader" uid="uid://dsviheodsxam3" path="res://world/props/shaders/prop_master_shader.gdshader" id="2_obhsw"]
+[ext_resource type="Texture2D" uid="uid://cx67su33ck4y7" path="res://world/props/textures/table_short.png" id="2_p7iwr"]
+[ext_resource type="Texture2D" uid="uid://dxj8p4iqep57k" path="res://world/props/textures/table_short_n.png" id="3_obhsw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rw4ag"]
+render_priority = 0
+shader = ExtResource("2_obhsw")
+shader_parameter/two_faced = false
+shader_parameter/albedo_tex = ExtResource("2_p7iwr")
+shader_parameter/normal_tex = ExtResource("3_obhsw")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/invert_normals = false
+shader_parameter/triplanar_scale = 0.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p7iwr"]
+size = Vector3(2, 0.97998, 1.325)
+
+[node name="table_short" unique_id=1127084647 instance=ExtResource("1_cwodc")]
+
+[node name="Cube" parent="." index="0" unique_id=1204627488]
+surface_material_override/0 = SubResource("ShaderMaterial_rw4ag")
+
+[node name="Cube_001" parent="." index="1" unique_id=913449295]
+surface_material_override/0 = SubResource("ShaderMaterial_rw4ag")
+
+[node name="Cube_002" parent="." index="2" unique_id=1894104002]
+surface_material_override/0 = SubResource("ShaderMaterial_rw4ag")
+
+[node name="Cube_003" parent="." index="3" unique_id=482064030]
+surface_material_override/0 = SubResource("ShaderMaterial_rw4ag")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="4" unique_id=1909354398]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=59279850]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.510411, 0)
+shape = SubResource("BoxShape3D_p7iwr")

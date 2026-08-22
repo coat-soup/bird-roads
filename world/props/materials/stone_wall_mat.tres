@@ -10,5 +10,5 @@ shader = ExtResource("1_3fnyh")
 shader_parameter/albedo_tex = ExtResource("2_3fnyh")
 shader_parameter/normal_tex = ExtResource("3_xtoal")
 shader_parameter/modulate = Color(1, 1, 1, 1)
-shader_parameter/invert_normals = false
+shader_parameter/invert_normals = true
 shader_parameter/triplanar_scale = 0.3
