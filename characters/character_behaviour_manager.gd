@@ -16,4 +16,4 @@ func _process(delta: float) -> void:
 	var t = ""
 	for a in actions: t += a.action_name + ","
 	action_debug_label.text = "[" + t.left(t.length() - 1) + "]"
-	action_debug_label.text += "\n boredome: " + str(boredom)
+	action_debug_label.text += "\n bdm: %.0f" % boredom

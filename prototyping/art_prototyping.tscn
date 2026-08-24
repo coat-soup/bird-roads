@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://c4qdtyypgo466" path="res://world/props/scenes/girder.tscn" id="23_uysjx"]
 [ext_resource type="PackedScene" uid="uid://qklgp4k8c5av" path="res://world/props/scenes/girder_bend.tscn" id="24_kfvax"]
 [ext_resource type="PackedScene" uid="uid://p0gy3sijwi5a" path="res://world/props/scenes/window_roundtop.tscn" id="26_axw5q"]
+[ext_resource type="PackedScene" uid="uid://ce5f8uh1vxyq3" path="res://characters/character.tscn" id="27_3sxca"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fwjg4"]
 sky_top_color = Color(0.4862745, 0.54509807, 0.7176471, 1)
@@ -2072,7 +2073,7 @@ material = ExtResource("8_pij5o")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.5, -8.5, -39)
 use_collision = true
 size = Vector3(35, 10, 68)
-material = ExtResource("9_u5g7u")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D79" type="CSGBox3D" parent="Blockout" unique_id=1550129539]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77, -5.5, -50)
@@ -2120,7 +2121,7 @@ material = ExtResource("4_6tjdh")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -25, -4, -1.5)
 use_collision = true
 size = Vector3(7, 1, 30)
-material = ExtResource("9_u5g7u")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D83" type="CSGBox3D" parent="Blockout" unique_id=1169430012]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -81, -4, -9)
@@ -2156,13 +2157,13 @@ material = SubResource("ShaderMaterial_duv63")
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -60, -4, -1.4999996)
 use_collision = true
 size = Vector3(7, 1, 12)
-material = ExtResource("9_u5g7u")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="Blockout" unique_id=1678817149]
 transform = Transform3D(-3.7855173e-08, -0.5, 0.8660254, -2.1855694e-08, 0.8660254, 0.5, -1, 0, -4.371139e-08, -13.22846, -1.9598196, -1.5000005)
 use_collision = true
 size = Vector3(7, 1, 8)
-material = ExtResource("9_u5g7u")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D56" type="CSGBox3D" parent="Blockout" unique_id=112665788]
 transform = Transform3D(-0.49999988, 0, -0.86602545, 0, 1, 0, 0.86602545, 0, -0.49999988, -31.554508, -12.5, 1.4568217)
@@ -2174,7 +2175,7 @@ material = ExtResource("10_8kif1")
 transform = Transform3D(1.2527795e-07, 0.5, -0.8660254, -2.1855694e-08, 0.8660254, 0.5, 1, -4.371139e-08, 1.1942174e-07, -47.33408, -7.925205, -1.499999)
 use_collision = true
 size = Vector3(7, 1, 16)
-material = ExtResource("9_u5g7u")
+material = ExtResource("2_lguji")
 
 [node name="CSGBox3D50" type="CSGBox3D" parent="Blockout" unique_id=868601493]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -18, -4, -57.5)
@@ -2424,49 +2425,49 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.360167, -11.5, 10.654515)
 [node name="cloth_tall_canopy" parent="." unique_id=960144171 instance=ExtResource("22_hhie6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.3549056, -11.438297, 11.023459)
 
-[node name="humanoid_basemesh4" parent="." unique_id=110738155 instance=ExtResource("21_vxuif")]
+[node name="humanoid_basemesh4" parent="." unique_id=2038268160 instance=ExtResource("21_vxuif")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -6.8031635, -11.5, 19.509338)
 
 [node name="cloth_tall_canopy4" parent="." unique_id=363043132 instance=ExtResource("22_hhie6")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -6.808425, -11.438297, 19.140392)
 
-[node name="humanoid_basemesh5" parent="." unique_id=241475950 instance=ExtResource("21_vxuif")]
+[node name="humanoid_basemesh5" parent="." unique_id=1077890483 instance=ExtResource("21_vxuif")]
 transform = Transform3D(0.8660253, 0, -0.5000001, 0, 1, 0, 0.5000001, 0, 0.8660253, -7.4168825, -11.5, 21.632454)
 
 [node name="cloth_tall_canopy5" parent="." unique_id=820852879 instance=ExtResource("22_hhie6")]
 transform = Transform3D(0.8660253, 0, -0.5000001, 0, 1, 0, 0.5000001, 0, 0.8660253, -7.596799, -11.438297, 21.954601)
 
-[node name="humanoid_basemesh6" parent="." unique_id=1358491057 instance=ExtResource("21_vxuif")]
+[node name="humanoid_basemesh6" parent="." unique_id=1061735832 instance=ExtResource("21_vxuif")]
 transform = Transform3D(0.96592575, 0, -0.25881916, 0, 1, 0, 0.25881916, 0, 0.96592575, -4.1213136, -11.499999, 23.394173)
 
 [node name="cloth_tall_canopy6" parent="." unique_id=408387954 instance=ExtResource("22_hhie6")]
 transform = Transform3D(0.96592575, 0, -0.25881916, 0, 1, 0, 0.25881916, 0, 0.96592575, -4.2117214, -11.438296, 23.75191)
 
-[node name="humanoid_basemesh8" parent="." unique_id=122916557 instance=ExtResource("21_vxuif")]
+[node name="humanoid_basemesh8" parent="." unique_id=1582304501 instance=ExtResource("21_vxuif")]
 transform = Transform3D(-0.9517713, 0, 0.30680874, 0, 1, 0, -0.30680874, 0, -0.9517713, -2.3287442, -11.499999, 32.118187)
 
 [node name="cloth_tall_canopy8" parent="." unique_id=613292112 instance=ExtResource("22_hhie6")]
 transform = Transform3D(-0.9517713, 0, 0.30680874, 0, 1, 0, -0.30680874, 0, -0.9517713, -2.2205577, -11.438296, 31.765427)
 
-[node name="humanoid_basemesh9" parent="." unique_id=1688784098 instance=ExtResource("21_vxuif")]
+[node name="humanoid_basemesh9" parent="." unique_id=879928670 instance=ExtResource("21_vxuif")]
 transform = Transform3D(-0.9938611, 0, -0.110636175, 0, 1, 0, 0.110636175, 0, -0.9938611, 1.645159, -11.499999, 32.467255)
 
 [node name="cloth_tall_canopy9" parent="." unique_id=1614462689 instance=ExtResource("22_hhie6")]
 transform = Transform3D(-0.9938611, 0, -0.110636175, 0, 1, 0, 0.110636175, 0, -0.9938611, 1.599112, -11.438296, 32.101162)
 
-[node name="humanoid_basemesh7" parent="." unique_id=620040554 instance=ExtResource("21_vxuif")]
+[node name="humanoid_basemesh7" parent="." unique_id=568588582 instance=ExtResource("21_vxuif")]
 transform = Transform3D(-0.86602527, 0, 0.5000002, 0, 1, 0, -0.5000002, 0, -0.86602527, -3.1962042, -11.499999, 20.758966)
 
 [node name="cloth_tall_canopy7" parent="." unique_id=1318820794 instance=ExtResource("22_hhie6")]
 transform = Transform3D(-0.86602527, 0, 0.5000002, 0, 1, 0, -0.5000002, 0, -0.86602527, -3.0162878, -11.438296, 20.43682)
 
-[node name="humanoid_basemesh2" parent="." unique_id=1899119235 instance=ExtResource("21_vxuif")]
+[node name="humanoid_basemesh2" parent="." unique_id=698607023 instance=ExtResource("21_vxuif")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2421641, -11.5, 10.823414)
 
 [node name="cloth_tall_canopy2" parent="." unique_id=1954943038 instance=ExtResource("22_hhie6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2369027, -11.438297, 11.192358)
 
-[node name="humanoid_basemesh3" parent="." unique_id=690080340 instance=ExtResource("21_vxuif")]
+[node name="humanoid_basemesh3" parent="." unique_id=1831260208 instance=ExtResource("21_vxuif")]
 transform = Transform3D(0.8660254, 0, -0.5, 0, 1, 0, 0.5, 0, 0.8660254, 1.4362962, -11.5, 12.511808)
 
 [node name="cloth_tall_canopy3" parent="." unique_id=1637213053 instance=ExtResource("22_hhie6")]
@@ -2567,3 +2568,6 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.36
 
 [node name="window_roundtop3" parent="." unique_id=1072969865 instance=ExtResource("26_axw5q")]
 transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, -6.952729, -5.799125, 29.305885)
+
+[node name="Character" parent="." unique_id=1004033952 instance=ExtResource("27_3sxca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.606423, -10.5, 16.482407)

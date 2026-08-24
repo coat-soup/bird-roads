@@ -23,6 +23,8 @@ func _input(event: InputEvent) -> void:
 
 
 func random_path():
+	if not graph: return
+	
 	var end = null
 	while not end: end = graph.nodes.pick_random()
 	

@@ -4264,12 +4264,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6222777, 0.06482975, 34.75
 transform = Transform3D(0.5589614, 0, 0.8291937, 0, 1, 0, -0.8291937, 0, 0.5589614, -47.95346, 0.065, 42)
 
 [node name="Camera3D" parent="cannon_basic_handheld2" index="4" unique_id=160089326]
-transform = Transform3D(-1.0000001, -3.725133e-09, -8.940697e-08, -3.7251349e-09, 1, 2.9802422e-08, 8.940697e-08, 2.9802422e-08, -1.0000001, 0, 1.7742426, -1.7037029)
+transform = Transform3D(-1.0000001, -3.7251295e-09, -8.940697e-08, -3.7251295e-09, 1, 2.9802422e-08, 8.940697e-08, 2.9802422e-08, -1.0000001, 0, 1.7742426, -1.7037029)
 
 [node name="AIController" parent="cannon_basic_handheld2" index="6" unique_id=1230178264 node_paths=PackedStringArray("target")]
 target = NodePath("../../Airship2/Movement")
 
-[node name="humanoid_basemesh" parent="." unique_id=793899527 instance=ExtResource("12_k7yah")]
+[node name="humanoid_basemesh" parent="." unique_id=1819910534 instance=ExtResource("12_k7yah")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.891804, -0.01128459, 31.401098)
 
 [node name="Label3D" type="Label3D" parent="humanoid_basemesh" unique_id=2116117008]
@@ -6795,14 +6795,14 @@ debug_immortal = true
 [node name="NavigationMeshAgent" parent="Character" index="2" unique_id=1415843504 node_paths=PackedStringArray("graph")]
 graph = NodePath("../../NavGraph")
 
-[node name="Character3" parent="." unique_id=886529010 instance=ExtResource("15_ou1bv")]
+[node name="Character3" parent="." unique_id=1707334102 instance=ExtResource("15_ou1bv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.415337, 0.7392473, 14.622213)
 debug_immortal = true
 
 [node name="NavigationMeshAgent" parent="Character3" index="2" unique_id=1415843504 node_paths=PackedStringArray("graph")]
 graph = NodePath("../../NavGraph")
 
-[node name="Character2" parent="." unique_id=871182767 instance=ExtResource("15_ou1bv")]
+[node name="Character2" parent="." unique_id=1502234384 instance=ExtResource("15_ou1bv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.344957, 18.089922, 42.475197)
 
 [editable path="Airship"]

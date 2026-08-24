@@ -3,6 +3,8 @@ extends AIAction
 
 
 func get_weight(character : Character) -> float:
+	if not character.nav_agent.graph: return 0.0
+	
 	var target = character.perception_manager.get_main_target()
 	if not target: return 0.0
 	return -10 + get_post_cost(character, character.nav_agent.cur_node, target, character.get_world_3d().direct_space_state)

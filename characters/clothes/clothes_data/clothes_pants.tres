@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ClothesData" format=3 uid="uid://d4ek6c48otkh5"]
+
+[ext_resource type="PackedScene" uid="uid://6i4q20riayl1" path="res://characters/clothes/models/pants.glb" id="1_vak8f"]
+[ext_resource type="Script" uid="uid://bid70fdxp5qbk" path="res://characters/clothes_data.gd" id="2_28o7g"]
+
+[resource]
+script = ExtResource("2_28o7g")
+clothes_name = &"shirt"
+mesh = ExtResource("1_vak8f")
+colour_options = Array[Color]([Color(0.65620047, 0.18101227, 0.20286337, 1), Color(0.29940674, 0.4255696, 0.6761445, 1), Color(0.55502987, 0.49245948, 0.24985677, 1)])
+metadata/_custom_type_script = "uid://bid70fdxp5qbk"

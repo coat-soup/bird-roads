@@ -3,6 +3,7 @@ extends AIAction
 
 
 func get_weight(character : Character) -> float:
+	if not character.nav_agent.graph: return 0.0
 	if character.perception_manager.stimuli.size() > 0: return 0.0
 	return 0.5 - min(0.0, character.behaviour_manager.boredom/5.0)
 

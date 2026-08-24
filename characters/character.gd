@@ -8,8 +8,10 @@ extends CharacterBody3D
 @export var perception_manager : AIPerceptionManager
 @export var health : Health
 @export var weapon_manager : WeaponManager
+@export var skeleton_controller : HumanoidSkeletonController
 
 @export var debug_immortal : bool = false
+
 
 func _ready() -> void:
 	health.died.connect(die)

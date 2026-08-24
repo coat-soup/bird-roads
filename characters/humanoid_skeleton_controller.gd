@@ -11,9 +11,16 @@ extends Node3D
 @onready var rh_copy_transform_modifier_3d: CopyTransformModifier3D = $Armature/Skeleton3D/RHCopyTransformModifier3D
 @onready var weapon_rt: RemoteTransform3D = $Pivot/WeaponRT
 
+@export var clothes : Array[ClothesData]
+
 
 func _ready() -> void:
-	if character: character.perception_manager.perception_updated.connect(on_perception_updated)
+	if character:
+		character.perception_manager.perception_updated.connect(on_perception_updated)
+		for data in clothes:
+			data.add_clothes_to_character(character)
+	else: for data in clothes:
+			data.add_clothes_to_basemesh(self)
 
 
 func on_perception_updated():
