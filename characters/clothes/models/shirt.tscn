@@ -2,15 +2,22 @@
 
 [ext_resource type="PackedScene" uid="uid://b44n4kf6rwmrr" path="res://characters/clothes/models/shirt.glb" id="1_77joy"]
 [ext_resource type="Shader" uid="uid://ccyo4jx6bag33" path="res://characters/clothes/character_shader.gdshader" id="2_quiqa"]
+[ext_resource type="Texture2D" uid="uid://dmucpcqdospde" path="res://characters/clothes/textures/rough_shirt.png" id="3_cmulm"]
+[ext_resource type="Texture2D" uid="uid://r1yaqd8hjdpm" path="res://characters/clothes/textures/rough_shirt_n.png" id="4_pffxk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cmulm"]
 render_priority = 0
 shader = ExtResource("2_quiqa")
 shader_parameter/two_faced = false
+shader_parameter/albedo_tex = ExtResource("3_cmulm")
+shader_parameter/normal_tex = ExtResource("4_pffxk")
 shader_parameter/modulate = Color(1, 1, 1, 1)
 shader_parameter/invert_normals = false
 
-[node name="shirt" unique_id=820184568 instance=ExtResource("1_77joy")]
+[node name="shirt" unique_id=1940994404 instance=ExtResource("1_77joy")]
 
-[node name="Shirt" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1918479566) index="0" unique_id=179750443]
+[node name="Shirt" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(966101082) index="0" unique_id=277995254]
+surface_material_override/0 = SubResource("ShaderMaterial_cmulm")
+
+[node name="Undershirt" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(966101082) index="1" unique_id=774117463]
 surface_material_override/0 = SubResource("ShaderMaterial_cmulm")

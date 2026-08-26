@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ClothesData" format=3 uid="uid://x8niv0onbdxm"]
+
+[ext_resource type="Texture2D" uid="uid://dmucpcqdospde" path="res://characters/clothes/textures/rough_shirt.png" id="1_k2va5"]
+[ext_resource type="PackedScene" uid="uid://cbkomaj1o8vtp" path="res://characters/clothes/models/shirt.tscn" id="2_k24tr"]
+[ext_resource type="Texture2D" uid="uid://r1yaqd8hjdpm" path="res://characters/clothes/textures/rough_shirt_n.png" id="3_ooyba"]
+[ext_resource type="Script" uid="uid://bid70fdxp5qbk" path="res://characters/clothes_data.gd" id="4_wnbuh"]
+
+[resource]
+script = ExtResource("4_wnbuh")
+clothes_name = &"rough_shirt"
+mesh = ExtResource("2_k24tr")
+colour_options = Array[Color]([Color(0.86, 0.49880004, 0.5048199, 1), Color(0.6478, 0.7052, 0.82, 1), Color(0.73944247, 0.6664663, 0.37983942, 1), Color(0.77162874, 0.5233694, 0.3762481, 1), Color(1, 1, 1, 1)])
+type = 3
+albedo = ExtResource("1_k2va5")
+normal = ExtResource("3_ooyba")
+metadata/_custom_type_script = "uid://bid70fdxp5qbk"

@@ -7,5 +7,6 @@
 script = ExtResource("2_28o7g")
 clothes_name = &"shirt"
 mesh = ExtResource("1_vak8f")
-colour_options = Array[Color]([Color(0.65620047, 0.18101227, 0.20286337, 1), Color(0.29940674, 0.4255696, 0.6761445, 1), Color(0.55502987, 0.49245948, 0.24985677, 1)])
+colour_options = Array[Color]([Color(0.5014898, 0.19883364, 0.12686402, 1), Color(0.29940674, 0.4255696, 0.6761445, 1), Color(0.55502987, 0.49245948, 0.24985677, 1)])
+type = 5
 metadata/_custom_type_script = "uid://bid70fdxp5qbk"

@@ -3,9 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://bnwtd4f60kyom" path="res://characters/humanoid_basemesh.glb" id="1_elxk8"]
 [ext_resource type="Script" uid="uid://bcxj6tvc27lj5" path="res://characters/humanoid_skeleton_controller.gd" id="2_6tyi7"]
 [ext_resource type="Script" uid="uid://bid70fdxp5qbk" path="res://characters/clothes_data.gd" id="3_cthww"]
-[ext_resource type="Resource" uid="uid://x8niv0onbdxm" path="res://characters/clothes/clothes_data/clothes_shirt.tres" id="4_btvxw"]
+[ext_resource type="Resource" uid="uid://x8niv0onbdxm" path="res://characters/clothes/clothes_data/clothes_rough_shirt.tres" id="4_btvxw"]
 [ext_resource type="Resource" uid="uid://bhpxcl20fnoo6" path="res://characters/clothes/clothes_data/clothes_boots.tres" id="5_57ddc"]
 [ext_resource type="Resource" uid="uid://d4ek6c48otkh5" path="res://characters/clothes/clothes_data/clothes_pants.tres" id="6_pqg2l"]
+[ext_resource type="Resource" uid="uid://bmn2ky5mu1uqi" path="res://characters/clothes/clothes_data/clothes_hair.tres" id="7_pqg2l"]
 
 [sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_elxk8"]
 angle = 5.3787556
@@ -18,7 +19,7 @@ angle = 2.475226
 
 [node name="humanoid_basemesh" unique_id=2021052717 instance=ExtResource("1_elxk8")]
 script = ExtResource("2_6tyi7")
-clothes = Array[ExtResource("3_cthww")]([ExtResource("4_btvxw"), ExtResource("5_57ddc"), ExtResource("6_pqg2l")])
+clothes = Array[ExtResource("3_cthww")]([ExtResource("4_btvxw"), ExtResource("5_57ddc"), ExtResource("6_pqg2l"), ExtResource("7_pqg2l")])
 
 [node name="SpineCCDIK3D" type="CCDIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(742574518) index="1" unique_id=24609732]
 transform = Transform3D(1, 0, 0, 0, 0.91790026, -0.39681152, 0, 0.39681152, 0.91790026, 0, 0, 0)

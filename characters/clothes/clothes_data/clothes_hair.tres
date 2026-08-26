@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ClothesData" format=3 uid="uid://bmn2ky5mu1uqi"]
+
+[ext_resource type="PackedScene" uid="uid://bmr4ih1goxd5m" path="res://characters/clothes/models/hair.glb" id="1_guvw2"]
+[ext_resource type="Script" uid="uid://bid70fdxp5qbk" path="res://characters/clothes_data.gd" id="2_xoi7j"]
+
+[resource]
+script = ExtResource("2_xoi7j")
+clothes_name = &"hair"
+mesh = ExtResource("1_guvw2")
+colour_options = Array[Color]([Color(0.65362734, 0.45562553, 0, 1), Color(0.57700837, 0.5770084, 0.57700837, 1), Color(0.2788839, 0.14970115, 0.07014615, 1), Color(0.080783345, 0.080783345, 0.080783345, 1), Color(0.6059258, 0.34326196, 0.16479543, 1)])
+metadata/_custom_type_script = "uid://bid70fdxp5qbk"

@@ -3,9 +3,7 @@
 [ext_resource type="Script" uid="uid://dlwr3a0ws6tc4" path="res://characters/character.gd" id="1_mdkfl"]
 [ext_resource type="Script" uid="uid://bmeiruye264wk" path="res://characters/character_movement.gd" id="1_qqr4u"]
 [ext_resource type="Script" uid="uid://crmry8vklmu4x" path="res://characters/navigation_mesh_agent.gd" id="2_3fwhk"]
-[ext_resource type="Script" uid="uid://bid70fdxp5qbk" path="res://characters/clothes_data.gd" id="2_e3kty"]
 [ext_resource type="PackedScene" uid="uid://cqlhivc5tvwoj" path="res://characters/humanoid_basemesh.tscn" id="3_3fwhk"]
-[ext_resource type="Resource" uid="uid://x8niv0onbdxm" path="res://characters/clothes/clothes_data/clothes_shirt.tres" id="3_4unn8"]
 [ext_resource type="Script" uid="uid://djtmxti14ykt" path="res://characters/character_behaviour_manager.gd" id="5_b1u1o"]
 [ext_resource type="Script" uid="uid://cepsuqd062a4x" path="res://system/actions/action_manager.gd" id="6_f0775"]
 [ext_resource type="Script" uid="uid://cex6wsasao1mk" path="res://system/actions/ai_action.gd" id="7_vliyq"]
@@ -61,7 +59,6 @@ perception_manager = NodePath("AIPerceptionManager")
 health = NodePath("Health")
 weapon_manager = NodePath("WeaponManager")
 skeleton_controller = NodePath("humanoid_basemesh")
-clothes = Array[ExtResource("2_e3kty")]([ExtResource("3_4unn8")])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=233325845]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08129883, 0)

@@ -6,6 +6,11 @@ extends Resource
 
 @export var colour_options : Array[Color]
 
+enum ClothesType {HAIR, BEARD, MUSTACHE, CHEST, CHEST_OUTER, LEGS, FEET, HANDS}
+@export var type : ClothesType
+
+@export var albedo : Texture
+@export var normal : Texture
 const CHARACTER_SHADER = preload("res://characters/clothes/character_shader.gdshader")
 
 
@@ -18,6 +23,9 @@ func add_clothes_to_character(character : Character):
 	
 	var mat = ShaderMaterial.new()
 	mat.shader = CHARACTER_SHADER
+	mat.set_shader_parameter("albedo_tex", albedo)
+	mat.set_shader_parameter("normal_tex", normal)
+	
 	
 	for mesh in meshes:
 		mesh.skeleton = mesh.get_path_to(character.skeleton_controller.skeleton_3d)
@@ -34,6 +42,8 @@ func add_clothes_to_basemesh(skeleton_controller : HumanoidSkeletonController):
 	
 	var mat = ShaderMaterial.new()
 	mat.shader = CHARACTER_SHADER
+	mat.set_shader_parameter("albedo_tex", albedo)
+	mat.set_shader_parameter("normal_tex", normal)
 	
 	for mesh in meshes:
 		mesh.skeleton = mesh.get_path_to(skeleton_controller.skeleton_3d)

@@ -23,7 +23,9 @@ void fragment() {
 	ALBEDO = texture(albedo_tex, UV).rgb;
 	NORMAL_MAP = texture(normal_tex, UV).rgb;
 	
-	if (invert_normals) NORMAL_MAP_DEPTH = -1.0;
+	NORMAL_MAP_DEPTH = 2.0;
+	
+	if (invert_normals) NORMAL_MAP_DEPTH *= -1.0;
 	ALBEDO *= modulate * modulate_override;
 	SPECULAR = 0.0;
 	ROUGHNESS = 1.0;
