@@ -9,6 +9,8 @@ extends Node3D
 @export var character : Character
 @onready var rh_two_bone_ik_3d: TwoBoneIK3D = $Armature/Skeleton3D/RHTwoBoneIK3D
 @onready var rh_copy_transform_modifier_3d: CopyTransformModifier3D = $Armature/Skeleton3D/RHCopyTransformModifier3D
+@onready var lh_two_bone_ik_3d: TwoBoneIK3D = $Armature/Skeleton3D/LHTwoBoneIK3D
+@onready var lh_copy_transform_modifier_3d: CopyTransformModifier3D = $Armature/Skeleton3D/LHCopyTransformModifier3D
 @onready var weapon_rt: RemoteTransform3D = $Pivot/WeaponRT
 
 @export var clothes : Array[ClothesData]
@@ -29,10 +31,14 @@ func on_perception_updated():
 	else: look_target = null
 
 
-func set_hand_ik_target(target : Node3D):
+func set_hand_ik_target(target : Node3D, left : bool = false):
 	print("Setting ik to ", target)
-	rh_two_bone_ik_3d.set_target_node(0, rh_two_bone_ik_3d.get_path_to(target))
-	rh_copy_transform_modifier_3d.set_reference_node(0, rh_copy_transform_modifier_3d.get_path_to(target))
+	if !left:
+		rh_two_bone_ik_3d.set_target_node(0, rh_two_bone_ik_3d.get_path_to(target))
+		rh_copy_transform_modifier_3d.set_reference_node(0, rh_copy_transform_modifier_3d.get_path_to(target))
+	else:
+		lh_two_bone_ik_3d.set_target_node(0, lh_two_bone_ik_3d.get_path_to(target))
+		lh_copy_transform_modifier_3d.set_reference_node(0, lh_copy_transform_modifier_3d.get_path_to(target))
 
 
 func _process(delta: float) -> void:

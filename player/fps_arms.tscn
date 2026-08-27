@@ -2,7 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://de3aw0wlfn7wf" path="res://player/fps_arms.glb" id="1_a0qqv"]
 [ext_resource type="Script" uid="uid://cf80dtrtlm7ki" path="res://player/fps_arms.gd" id="2_asdaf"]
+[ext_resource type="AnimationLibrary" uid="uid://foeaqg4s7gne" path="res://characters/weapons/break_action_arms_reload.glb" id="3_btcy4"]
 [ext_resource type="AnimationLibrary" uid="uid://e5a81ptnhq3l" path="res://characters/weapons/revolver_arms.glb" id="3_lihnq"]
+[ext_resource type="AnimationLibrary" uid="uid://cgd4qfi2o1sq1" path="res://characters/weapons/break_action_arms_shoot.glb" id="4_pjb54"]
 
 [node name="fps_arms" unique_id=490106953 instance=ExtResource("1_a0qqv")]
 script = ExtResource("2_asdaf")
@@ -16,15 +18,21 @@ bones/4/rotation = Quaternion(-0.051337, -0.05817104, 0.06720378, 0.99471825)
 bones/5/position = Vector3(-0.0074186875, 0.091631934, 0.03447327)
 bones/5/rotation = Quaternion(-0.027393738, -0.038148355, -0.2080738, 0.9769849)
 bones/6/rotation = Quaternion(-0.022775853, 0.00010893539, -0.35277033, 0.93543273)
+bones/7/rotation = Quaternion(0.025127834, 0.0016819872, -0.48589772, 0.8736528)
 bones/8/position = Vector3(0.000935673, 0.10378871, 0.006904088)
 bones/8/rotation = Quaternion(0.060102582, -0.019201502, -0.22707862, 0.9718305)
 bones/9/rotation = Quaternion(-0.02130201, 0.0015680373, -0.33326304, 0.9425919)
+bones/10/rotation = Quaternion(-0.0018818188, -0.00015086112, -0.45938915, 0.8882332)
 bones/11/position = Vector3(-0.0015301895, 0.101058945, -0.015675878)
 bones/11/rotation = Quaternion(-0.023024866, 0.004857311, -0.2745015, 0.9612987)
 bones/12/rotation = Quaternion(0.009940102, -5.642535e-05, -0.3485236, 0.93724734)
+bones/13/rotation = Quaternion(0.05552883, 0.013066629, -0.46734327, 0.8822336)
 bones/14/position = Vector3(0.011312414, 0.080959976, -0.031792097)
 bones/14/rotation = Quaternion(-0.07910063, -0.09549655, -0.16222185, 0.9789319)
 bones/15/rotation = Quaternion(-0.004008237, -0.00091865344, -0.38853896, 0.92142314)
+bones/16/rotation = Quaternion(0.010868101, 0.0017027481, -0.2903932, 0.9568443)
+bones/17/position = Vector3(0.012722083, 0.09836719, -0.00445287)
+bones/17/rotation = Quaternion(0.055900693, -0.029259803, -0.056419097, 0.9964115)
 bones/18/rotation = Quaternion(-0.027267419, 0.13041039, 0.9256505, 0.35414818)
 bones/19/rotation = Quaternion(0.73869056, 0.05317645, 0.16490579, 0.65139437)
 bones/20/rotation = Quaternion(-0.20900695, 0.100668475, -0.07775563, 0.9696061)
@@ -32,6 +40,7 @@ bones/21/rotation = Quaternion(0.13699362, -0.23784828, 0.37999678, 0.8833252)
 bones/22/rotation = Quaternion(-0.19728716, 0.042553898, 0.03635919, 0.9787467)
 bones/23/position = Vector3(0.0027496342, 0.090374395, 0.03462537)
 bones/23/rotation = Quaternion(-0.008099778, -0.0324546, 0.16931352, 0.9849945)
+bones/24/rotation = Quaternion(-0.0223885, -0.0040079793, 0.18690924, 0.98211396)
 bones/25/rotation = Quaternion(0.02453483, -0.007776772, 0.6744163, 0.7379026)
 bones/26/position = Vector3(-0.0063328845, 0.10100912, 0.0068976185)
 bones/26/rotation = Quaternion(0.06326301, 0.0022451542, 0.4544366, 0.88852704)
@@ -61,4 +70,6 @@ bone_idx = 35
 transform = Transform3D(-1, -8.7422784e-08, 0, -3.821371e-15, 4.3711392e-08, 0.9999999, -8.742278e-08, 1.0000001, -4.3711385e-08, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=826823881]
+libraries/break_action_arms_reload = ExtResource("3_btcy4")
+libraries/break_action_arms_shoot = ExtResource("4_pjb54")
 libraries/revolver_arms = ExtResource("3_lihnq")

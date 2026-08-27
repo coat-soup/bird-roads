@@ -10,6 +10,7 @@ extends Node3D
 func _ready() -> void:
 	if skeleton and cur_weapon:
 		skeleton.set_hand_ik_target(cur_weapon.hand_ik_target)
+		if(cur_weapon.left_hand_ik_target): skeleton.set_hand_ik_target(cur_weapon.left_hand_ik_target, true)
 		skeleton.weapon_rt.remote_path = skeleton.weapon_rt.get_path_to(cur_weapon)
 
 

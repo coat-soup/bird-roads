@@ -130,7 +130,33 @@ settings/0/axes = 7
 settings/0/invert = 0
 settings/0/additive = false
 
-[node name="Headmesh" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="8" unique_id=1448104495]
+[node name="LHTwoBoneIK3D" type="TwoBoneIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="8" unique_id=2076690949]
+setting_count = 1
+settings/0/target_node = NodePath("")
+settings/0/pole_node = NodePath("../../../ChestBoneAttachment3D/LHPole")
+settings/0/root_bone_name = "Arm_Upper.L"
+settings/0/root_bone = 6
+settings/0/middle_bone_name = "Arm_Lower.L"
+settings/0/middle_bone = 7
+settings/0/pole_direction = 0
+settings/0/end_bone_name = "Hand.L"
+settings/0/end_bone = 8
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = false
+
+[node name="LHCopyTransformModifier3D" type="CopyTransformModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="9" unique_id=2030611154]
+setting_count = 1
+settings/0/amount = 1.0
+settings/0/apply_bone_name = "Hand.L"
+settings/0/apply_bone = 8
+settings/0/reference_type = 1
+settings/0/reference_node = NodePath("")
+settings/0/copy = 2
+settings/0/axes = 7
+settings/0/invert = 0
+settings/0/additive = false
+
+[node name="Headmesh" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="10" unique_id=1448104495]
 surface_material_override/0 = SubResource("ShaderMaterial_xglvs")
 
 [node name="Pivot" type="Marker3D" parent="." index="1" unique_id=1170510801]
@@ -154,3 +180,6 @@ external_skeleton = NodePath("../Armature/Skeleton3D")
 
 [node name="RHPole" type="Marker3D" parent="ChestBoneAttachment3D" index="0" unique_id=786529867]
 transform = Transform3D(1, -5.455513e-08, 1.4901161e-08, 4.976755e-09, 1.0000001, -3.0500814e-08, 0, -2.7939677e-09, 1.0000002, -0.43429208, 1.0669978, 0.035259046)
+
+[node name="LHPole" type="Marker3D" parent="ChestBoneAttachment3D" index="1" unique_id=369823537]
+transform = Transform3D(1.0000004, -1.4202669e-08, 1.4901161e-08, -2.9802322e-08, 1.0000005, -2.9802322e-08, -2.2351742e-08, 0, 1.0000002, -0.88933104, -1.0672629, 0.08454621)

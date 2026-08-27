@@ -29,7 +29,7 @@ func on_weapon_fired():
 	recoil_manager.do_recoil(2.0)
 	#GameManager.camera_shake.shake(0.1)
 	
-	var anim_name : String = cur_weapon.weapon_name + "_arms/arms_" + cur_weapon.weapon_name + "_shoot"
+	var anim_name : String = cur_weapon.weapon_name + "_arms_shoot/arms_shoot"
 	arms.animation_player.speed_scale = arms.animation_player.get_animation(anim_name).length / (1.0 / cur_weapon.fire_rate)
 	arms.animation_player.play(anim_name)
 	await arms.animation_player.animation_finished
@@ -37,7 +37,7 @@ func on_weapon_fired():
 
 
 func on_reload_started():
-	var anim_name : String = cur_weapon.weapon_name + "_arms/arms_reload"
+	var anim_name : String = cur_weapon.weapon_name + "_arms_reload/arms_reload"
 	arms.animation_player.speed_scale = arms.animation_player.get_animation(anim_name).length / (cur_weapon.reload_time)
 	arms.animation_player.play(anim_name)
 	await arms.animation_player.animation_finished

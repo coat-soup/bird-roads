@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://dagvkdjs33wwf" path="res://system/health.gd" id="12_bnq0n"]
 [ext_resource type="Script" uid="uid://bepefth7s5b42" path="res://system/weapons/weapon_manager.gd" id="13_hgjqb"]
 [ext_resource type="PackedScene" uid="uid://gs3fu7jvum7m" path="res://characters/weapons/revolver.tscn" id="15_i1355"]
-[ext_resource type="PackedScene" uid="uid://cm4vcg2sie1cd" path="res://characters/weapons/break_action.fbx" id="16_qci4v"]
+[ext_resource type="PackedScene" uid="uid://cbetj2x13xqd1" path="res://characters/weapons/break_action.tscn" id="16_qci4v"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3fwhk"]
 radius = 0.3623047
@@ -78,7 +78,7 @@ script = ExtResource("2_3fwhk")
 character = NodePath("..")
 metadata/_custom_type_script = "uid://crmry8vklmu4x"
 
-[node name="humanoid_basemesh" parent="." unique_id=1819910534 node_paths=PackedStringArray("character") instance=ExtResource("3_3fwhk")]
+[node name="humanoid_basemesh" parent="." unique_id=427336341 node_paths=PackedStringArray("character") instance=ExtResource("3_3fwhk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 character = NodePath("..")
 
@@ -123,6 +123,10 @@ metadata/_custom_type_script = "uid://bepefth7s5b42"
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999999, -0.08734543, 0.31458735, 0.5055313)
 weapon_manager = NodePath("..")
 
+[node name="break_action" parent="WeaponManager" unique_id=667759501 node_paths=PackedStringArray("weapon_manager") instance=ExtResource("16_qci4v")]
+visible = false
+weapon_manager = NodePath("..")
+
 [node name="ShinCast" type="RayCast3D" parent="." unique_id=885693660]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4746396, 0)
 target_position = Vector3(0, 0, 0.5)
@@ -130,7 +134,3 @@ target_position = Vector3(0, 0, 0.5)
 [node name="HeadCast" type="RayCast3D" parent="." unique_id=1880657670]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5406869, 0)
 target_position = Vector3(0, 0, 0.5)
-
-[node name="break_action" parent="." unique_id=465808691 instance=ExtResource("16_qci4v")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.30876505, 0.31343484, 0.47746313)
-visible = false

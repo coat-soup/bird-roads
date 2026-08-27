@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://42sl1srtmsdc" path="res://player/fps_arms.tscn" id="3_yw30f"]
 [ext_resource type="Script" uid="uid://2wwqylg0tbhs" path="res://system/weapons/player_weapon_manager.gd" id="5_qjkh3"]
 [ext_resource type="PackedScene" uid="uid://gs3fu7jvum7m" path="res://characters/weapons/revolver.tscn" id="6_g6k8r"]
-[ext_resource type="PackedScene" uid="uid://cm4vcg2sie1cd" path="res://characters/weapons/break_action.fbx" id="8_hg6s5"]
+[ext_resource type="PackedScene" uid="uid://cbetj2x13xqd1" path="res://characters/weapons/break_action.tscn" id="8_hg6s5"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_765p8"]
 radius = 0.3
@@ -54,12 +54,8 @@ script = ExtResource("3_boad6")
 noise = SubResource("FastNoiseLite_boad6")
 
 [node name="fps_arms" parent="CameraPivot/RecoilManager/Camera" unique_id=490106953 node_paths=PackedStringArray("player") instance=ExtResource("3_yw30f")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.1511463, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.151, 0)
 player = NodePath("../../../..")
-
-[node name="break_action" parent="CameraPivot/RecoilManager/Camera/fps_arms" unique_id=1246912879 instance=ExtResource("8_hg6s5")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -0.31364697, 0.0035591125, 0.7160189)
-visible = false
 
 [node name="MovementManager" type="Node3D" parent="." unique_id=805829882 node_paths=PackedStringArray("player", "camera_pivot", "camera")]
 script = ExtResource("1_u3ln2")
@@ -75,9 +71,11 @@ target_position = Vector3(0, -0.3, 0)
 script = ExtResource("5_qjkh3")
 arms = NodePath("../CameraPivot/RecoilManager/Camera/fps_arms")
 recoil_manager = NodePath("../CameraPivot/RecoilManager")
-cur_weapon = NodePath("revolver")
+cur_weapon = NodePath("break_action")
 player = NodePath("..")
 metadata/_custom_type_script = "uid://2wwqylg0tbhs"
+
+[node name="break_action" parent="PlayerWeaponManager" unique_id=565887173 instance=ExtResource("8_hg6s5")]
 
 [node name="revolver" parent="PlayerWeaponManager" unique_id=725224190 instance=ExtResource("6_g6k8r")]
 

@@ -3,71 +3,71 @@
 [ext_resource type="PackedScene" uid="uid://bsf8y5h1co845" path="res://characters/weapons/revolver.fbx" id="1_ep1um"]
 [ext_resource type="Script" uid="uid://qxmnckg3bboc" path="res://system/weapons/weapon.gd" id="2_6k3st"]
 
-[node name="revolver" unique_id=1673547259 node_paths=PackedStringArray("hand_ik_target", "muzzle_point") instance=ExtResource("1_ep1um")]
+[node name="revolver" unique_id=667458400 node_paths=PackedStringArray("hand_ik_target", "muzzle_point") instance=ExtResource("1_ep1um")]
 script = ExtResource("2_6k3st")
+magazine_size = 6
 reload_time = 2.5
 hand_ik_target = NodePath("RHTarget")
 muzzle_point = NodePath("Marker3D")
 weapon_name = "revolver"
 
-[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(406728150) index="0" unique_id=574699644]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1808620402) index="0" unique_id=1774121599]
 bones/1/rotation = Quaternion(-9.4156974e-08, 0.7071068, 0.7071067, -9.415697e-08)
 bones/5/rotation = Quaternion(0, 1, 0, 1.3315805e-07)
-bones/6/rotation = Quaternion(0, 2.4492127e-16, 0, 1)
 
-[node name="FrontStop" parent="Armature/Skeleton3D" index="0" unique_id=443965008]
+[node name="FrontStop" parent="Armature/Skeleton3D" index="0" unique_id=1605579819]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 bone_idx = 0
 
-[node name="Underbarrel" parent="Armature/Skeleton3D" index="1" unique_id=1520293972]
+[node name="Underbarrel" parent="Armature/Skeleton3D" index="1" unique_id=1626977935]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 bone_idx = 0
 
-[node name="UnderBody" parent="Armature/Skeleton3D" index="2" unique_id=2045376159]
+[node name="UnderBody" parent="Armature/Skeleton3D" index="2" unique_id=1557849439]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 bone_idx = 0
 
-[node name="UnderbodyCylinder" parent="Armature/Skeleton3D" index="3" unique_id=1106718270]
+[node name="UnderbodyCylinder" parent="Armature/Skeleton3D" index="3" unique_id=1001636080]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 bone_idx = 0
 
-[node name="Body" parent="Armature/Skeleton3D" index="4" unique_id=1224318663]
+[node name="Body" parent="Armature/Skeleton3D" index="4" unique_id=1524513417]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 bone_idx = 0
 
-[node name="TriggerGuard" parent="Armature/Skeleton3D" index="5" unique_id=640687993]
+[node name="TriggerGuard" parent="Armature/Skeleton3D" index="5" unique_id=993843986]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 bone_idx = 0
 
-[node name="Grip" parent="Armature/Skeleton3D" index="6" unique_id=1459589704]
+[node name="Grip" parent="Armature/Skeleton3D" index="6" unique_id=1061154912]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 bone_idx = 0
 
-[node name="Backstop" parent="Armature/Skeleton3D" index="7" unique_id=67488711]
+[node name="Backstop" parent="Armature/Skeleton3D" index="7" unique_id=977977221]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 bone_idx = 0
 
-[node name="BarrelConnector" parent="Armature/Skeleton3D" index="8" unique_id=196605632]
+[node name="BarrelConnector" parent="Armature/Skeleton3D" index="8" unique_id=2052978728]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 bone_idx = 0
 
-[node name="FrontSight" parent="Armature/Skeleton3D" index="9" unique_id=1515859965]
+[node name="FrontSight" parent="Armature/Skeleton3D" index="9" unique_id=1886316500]
 transform = Transform3D(-1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 bone_idx = 0
 
-[node name="Hammer2" parent="Armature/Skeleton3D" index="10" unique_id=2003959962]
+[node name="Hammer2" parent="Armature/Skeleton3D" index="10" unique_id=113893467]
 transform = Transform3D(1, 5.826497e-14, 3.5373887e-07, 3.5373893e-07, -1.7881392e-07, -0.9999999, 1.4210855e-14, 0.9999999, -1.1920928e-07, -9.03897e-11, 0.0010339377, -3.6278492e-05)
 bone_idx = 1
 
-[node name="Trigger2" parent="Armature/Skeleton3D" index="11" unique_id=866561867]
+[node name="Trigger2" parent="Armature/Skeleton3D" index="11" unique_id=2046987878]
 transform = Transform3D(6.2783295e-07, 1.1920929e-07, -1, 1, -1.19209275e-07, 6.2783295e-07, -1.1920929e-07, -0.99999994, -1.1920929e-07, -7.186022e-11, 0.0008219851, -0.00048004714)
 bone_idx = 3
 
-[node name="Crane2" parent="Armature/Skeleton3D" index="12" unique_id=1087642214]
+[node name="Crane2" parent="Armature/Skeleton3D" index="12" unique_id=866636582]
 transform = Transform3D(1, 8.742278e-08, -2.663161e-07, 8.742278e-08, -1, -2.3282093e-14, -2.663161e-07, 0, -1, -1.4817548e-11, 0.00020944208, -0.00030492005)
 bone_idx = 5
 
-[node name="Cylinder2" parent="Armature/Skeleton3D" index="13" unique_id=988692280]
+[node name="Cylinder2" parent="Armature/Skeleton3D" index="13" unique_id=770947020]
 transform = Transform3D(1, 8.742278e-08, -2.663161e-07, 8.742278e-08, -1, -2.3282093e-14, -2.663161e-07, 0, -1, -9.531323e-11, 0.00060300634, 4.1118474e-05)
 bone_idx = 6
 

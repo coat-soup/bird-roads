@@ -18,6 +18,7 @@ var reloading : bool = false
 @export var weapon_manager : WeaponManager
 
 @export var hand_ik_target : Node3D
+@export var left_hand_ik_target : Node3D
 
 @export var muzzle_point : Node3D
 const MUZZLE_FLASH_PARTICLES = preload("uid://ejgkb3vtxnxe")
@@ -53,7 +54,7 @@ func fire():
 	
 	if cur_ammo > 0: waiting_to_fire = true
 	
-	animation_player.play("Armature|" + weapon_name + "_fps_shoot")
+	animation_player.play("Armature|shoot")
 	
 	var muzzle_particles = MUZZLE_FLASH_PARTICLES.instantiate()
 	muzzle_point.add_child(muzzle_particles)
