@@ -9,6 +9,7 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_burley, specular_to
 
 uniform sampler2D albedo_tex : source_color, filter_nearest;
 uniform sampler2D normal_tex : hint_normal, filter_nearest;
+uniform sampler2D mask_tex : filter_nearest;
 uniform vec3 modulate : source_color = vec3(1.0);
 
 uniform bool invert_normals = false;
@@ -37,4 +38,10 @@ void fragment() {
 	ALBEDO *= modulate;
 	SPECULAR = 0.0;
 	ROUGHNESS = 1.0;
+	
+	if(textureSize(mask_tex, 0).x > 4){
+		vec4 mask = texture(mask_tex, UV);
+		//METALLIC = mask.r;
+		ROUGHNESS = mask.b;
+	}
 }

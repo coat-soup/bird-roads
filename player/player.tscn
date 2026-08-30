@@ -57,6 +57,61 @@ noise = SubResource("FastNoiseLite_boad6")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.151, 0)
 player = NodePath("../../../..")
 
+[node name="Skeleton3D" parent="CameraPivot/RecoilManager/Camera/fps_arms/ArmRig" parent_id_path=PackedInt32Array(490106953, 412829226) index="0" unique_id=902384329]
+bones/0/rotation = Quaternion(0.0007691865, -0.039043333, 0.9652296, -0.2584703)
+bones/1/rotation = Quaternion(0.12975657, -0.050164588, -0.026361085, 0.9899252)
+bones/2/rotation = Quaternion(0.011690469, -0.012241764, 0.008994968, 0.9998163)
+bones/3/rotation = Quaternion(0.24151306, -0.15801771, -0.0983748, 0.9523782)
+bones/4/rotation = Quaternion(0.13438787, -0.0524578, -0.07136131, 0.98696285)
+bones/5/position = Vector3(-0.005805262, 0.09186844, 0.034634847)
+bones/5/rotation = Quaternion(0.10778306, -0.052113276, -0.048299544, 0.9916321)
+bones/6/rotation = Quaternion(-0.0212821, 0.008113071, -0.0011968823, 0.9997399)
+bones/7/rotation = Quaternion(0.023098683, -0.010034417, -0.03089462, 0.99920535)
+bones/8/position = Vector3(-0.0015823178, 0.105307266, 0.006905612)
+bones/8/rotation = Quaternion(0.05590065, -0.029259799, -0.056419093, 0.9964115)
+bones/9/rotation = Quaternion(-0.0193892, 0.008960532, 0.019582257, 0.9995801)
+bones/10/rotation = Quaternion(-0.0017407051, 0.0007309064, 0.00023140153, 0.99999815)
+bones/11/position = Vector3(-0.0039371173, 0.10214042, -0.015682839)
+bones/11/rotation = Quaternion(-0.04773857, 0.014662708, -0.0976553, 0.9939665)
+bones/12/rotation = Quaternion(0.009285028, -0.0035493132, 0.003416822, 0.99994475)
+bones/13/rotation = Quaternion(0.054220963, -0.017728072, 0.059833646, 0.996577)
+bones/14/position = Vector3(0.00401651, 0.08701876, -0.04226015)
+bones/14/rotation = Quaternion(-0.12119649, 0.036754955, -0.1438489, 0.9814622)
+bones/15/rotation = Quaternion(-0.0040661683, 0.00061368773, -0.02393686, 0.999705)
+bones/16/rotation = Quaternion(0.010805275, -0.0020641657, 0.049489897, 0.998714)
+bones/17/position = Vector3(0.012722069, 0.098367214, -0.0044528483)
+bones/17/rotation = Quaternion(0.05590067, -0.029259818, -0.05641912, 0.9964115)
+bones/18/rotation = Quaternion(0.017737413, -0.046088796, 0.96389765, 0.26165354)
+bones/19/rotation = Quaternion(0.13307005, 0.08060425, 0.029706642, 0.98737675)
+bones/20/rotation = Quaternion(0.011706666, -0.0063704485, -0.008972539, 0.9998709)
+bones/21/rotation = Quaternion(0.25564355, -0.006665204, 0.051479317, 0.96537656)
+bones/22/rotation = Quaternion(0.15090033, 0.05245376, 0.019530442, 0.98696315)
+bones/23/position = Vector3(0.0063847643, 0.09186849, 0.034532756)
+bones/23/rotation = Quaternion(0.108627446, 0.05106328, 0.04637067, 0.99168664)
+bones/24/rotation = Quaternion(-0.02125736, -0.008089024, 0.0015981537, 0.99974)
+bones/25/rotation = Quaternion(0.023675459, 0.010095225, 0.030455202, 0.9992047)
+bones/26/position = Vector3(0.0016978455, 0.10530727, 0.006878117)
+bones/26/rotation = Quaternion(0.05692584, 0.027689332, 0.055382717, 0.9964565)
+bones/27/rotation = Quaternion(-0.0197642, -0.00840808, -0.019199952, 0.999585)
+bones/28/rotation = Quaternion(-0.0017450921, -0.0007294622, -0.0002012457, 0.9999982)
+bones/29/position = Vector3(0.0036737588, 0.10214047, -0.015746612)
+bones/29/rotation = Quaternion(-0.04618346, -0.013762943, 0.098397836, 0.99397963)
+bones/30/rotation = Quaternion(0.009225408, 0.0018414883, -0.0035692684, 0.9999494)
+bones/31/rotation = Quaternion(0.053101346, 0.017519763, -0.06083131, 0.9965806)
+bones/32/position = Vector3(-0.0047239857, 0.087018766, -0.042186894)
+bones/32/rotation = Quaternion(-0.11868149, -0.037344098, 0.14592995, 0.98144007)
+bones/33/rotation = Quaternion(-0.0036364992, -0.0005496595, 0.024003671, 0.9997051)
+bones/34/rotation = Quaternion(0.009904878, 0.0017569606, -0.049672164, 0.9987149)
+bones/35/position = Vector3(-0.028815143, 0.09029787, 0.0072555486)
+bones/35/rotation = Quaternion(0.051305283, 0.015400826, 0.25051072, 0.9666307)
+bones/36/position = Vector3(-0.55592597, -0.52854824, 0.008422777)
+bones/36/rotation = Quaternion(0.009731939, 0.7080139, 0.7060679, 0.00947485)
+bones/37/position = Vector3(0.5553404, -0.5321989, 0.008430753)
+bones/38/position = Vector3(0.39386564, -0.22141004, -0.44673103)
+
+[node name="BoneAttachment3D" parent="CameraPivot/RecoilManager/Camera/fps_arms/ArmRig/Skeleton3D" index="1" unique_id=901779880]
+transform = Transform3D(-0.9997004, 0.021411434, 0.011848215, -0.016314477, -0.9440298, 0.32945615, 0.01823915, 0.32916415, 0.9440963, -0.57261646, -0.6176832, 0.036936283)
+
 [node name="MovementManager" type="Node3D" parent="." unique_id=805829882 node_paths=PackedStringArray("player", "camera_pivot", "camera")]
 script = ExtResource("1_u3ln2")
 player = NodePath("..")
@@ -68,16 +123,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.88753194, 0)
 target_position = Vector3(0, -0.3, 0)
 
 [node name="PlayerWeaponManager" type="Node3D" parent="." unique_id=189865358 node_paths=PackedStringArray("arms", "recoil_manager", "cur_weapon", "player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5143018, -0.09685105, -0.9721578)
 script = ExtResource("5_qjkh3")
 arms = NodePath("../CameraPivot/RecoilManager/Camera/fps_arms")
 recoil_manager = NodePath("../CameraPivot/RecoilManager")
-cur_weapon = NodePath("break_action")
+cur_weapon = NodePath("revolver")
 player = NodePath("..")
 metadata/_custom_type_script = "uid://2wwqylg0tbhs"
 
-[node name="break_action" parent="PlayerWeaponManager" unique_id=565887173 instance=ExtResource("8_hg6s5")]
-
-[node name="revolver" parent="PlayerWeaponManager" unique_id=725224190 instance=ExtResource("6_g6k8r")]
+[node name="break_action" parent="PlayerWeaponManager" unique_id=33445237 instance=ExtResource("8_hg6s5")]
 visible = false
+
+[node name="revolver" parent="PlayerWeaponManager" unique_id=667458400 instance=ExtResource("6_g6k8r")]
 
 [editable path="CameraPivot/RecoilManager/Camera/fps_arms"]
