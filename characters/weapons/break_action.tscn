@@ -2,8 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://cm4vcg2sie1cd" path="res://characters/weapons/break_action.fbx" id="1_gu65q"]
 [ext_resource type="Script" uid="uid://qxmnckg3bboc" path="res://system/weapons/weapon.gd" id="2_3w8b2"]
+[ext_resource type="Shader" uid="uid://dsviheodsxam3" path="res://world/props/shaders/prop_master_shader.gdshader" id="3_kps43"]
+[ext_resource type="Texture2D" uid="uid://icns63f6846a" path="res://characters/weapons/textures/break_action.png" id="4_66813"]
+[ext_resource type="Texture2D" uid="uid://m8j437jem54k" path="res://characters/weapons/textures/break_action_n.png" id="5_kiicv"]
 
-[node name="break_action" unique_id=667759501 node_paths=PackedStringArray("hand_ik_target", "left_hand_ik_target", "muzzle_point") instance=ExtResource("1_gu65q")]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pw2el"]
+render_priority = 0
+shader = ExtResource("3_kps43")
+shader_parameter/two_faced = false
+shader_parameter/albedo_tex = ExtResource("4_66813")
+shader_parameter/normal_tex = ExtResource("5_kiicv")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/invert_normals = false
+shader_parameter/triplanar_scale = 0.0
+
+[node name="break_action" unique_id=44550253 node_paths=PackedStringArray("hand_ik_target", "left_hand_ik_target", "muzzle_point") instance=ExtResource("1_gu65q")]
 script = ExtResource("2_3w8b2")
 damage = 30
 fire_rate = 3.0
@@ -14,56 +27,81 @@ left_hand_ik_target = NodePath("Armature/Skeleton3D/Barrels/LHTarget")
 muzzle_point = NodePath("Marker3D")
 weapon_name = "break_action"
 
-[node name="Armature" parent="." index="0" unique_id=1411410875]
+[node name="Armature" parent="." index="0" unique_id=1614574805]
 transform = Transform3D(-4.371139e-06, -100, -4.371139e-06, 0, -4.371139e-06, 100, -100, 4.371139e-06, 1.9106854e-13, 0, 0, 0)
 
-[node name="Skeleton3D" parent="Armature" index="0" unique_id=1416323303]
-bones/2/rotation = Quaternion(-0.21645056, -0.49566963, -0.3165348, 0.77927303)
-bones/4/rotation = Quaternion(0.70710695, 9.415694e-08, 0.7071066, -9.415698e-08)
-bones/6/rotation = Quaternion(-0.4999999, 0.5000001, -0.5, 0.5)
-
-[node name="MainBody" parent="Armature/Skeleton3D" index="0" unique_id=514050345]
+[node name="MainBody" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1315091177) index="0" unique_id=239042882]
 transform = Transform3D(-1.1920928e-07, -0.9999999, 0, 0.9999999, -1.1920928e-07, 0, 0, 0, 1, -1.07296984e-07, 1.490163e-10, -1.07933555e-08)
 bone_idx = 0
 
-[node name="Handle" parent="Armature/Skeleton3D" index="1" unique_id=1134715176]
+[node name="MainBody" parent="Armature/Skeleton3D/MainBody" index="0" unique_id=1584946775]
+surface_material_override/0 = SubResource("ShaderMaterial_pw2el")
+
+[node name="Handle" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1315091177) index="1" unique_id=941415337]
 transform = Transform3D(-1.1920928e-07, -0.9999999, 0, 0.9999999, -1.1920928e-07, 0, 0, 0, 1, -1.07296984e-07, 1.490163e-10, -1.07933555e-08)
 bone_idx = 0
 
-[node name="Stock" parent="Armature/Skeleton3D" index="2" unique_id=548315469]
+[node name="Handle" parent="Armature/Skeleton3D/Handle" index="0" unique_id=184667670]
+surface_material_override/0 = SubResource("ShaderMaterial_pw2el")
+
+[node name="Stock" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1315091177) index="2" unique_id=676541331]
 transform = Transform3D(-1.1920928e-07, -0.9999999, 0, 0.9999999, -1.1920928e-07, 0, 0, 0, 1, -1.07296984e-07, 1.490163e-10, -1.07933555e-08)
 bone_idx = 0
 
-[node name="BarrelEnds" parent="Armature/Skeleton3D" index="3" unique_id=1398023358]
+[node name="Stock" parent="Armature/Skeleton3D/Stock" index="0" unique_id=2031212287]
+surface_material_override/0 = SubResource("ShaderMaterial_pw2el")
+
+[node name="BarrelEnds" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1315091177) index="3" unique_id=1551434599]
 transform = Transform3D(-1.1920928e-07, -0.9999999, 0, 0.9999999, -1.1920928e-07, 0, 0, 0, 1, -1.07296984e-07, 1.490163e-10, -1.07933555e-08)
 bone_idx = 0
 
-[node name="TriggerGuard" parent="Armature/Skeleton3D" index="4" unique_id=1705242702]
+[node name="BarrelEnds" parent="Armature/Skeleton3D/BarrelEnds" index="0" unique_id=1573797451]
+surface_material_override/0 = SubResource("ShaderMaterial_pw2el")
+
+[node name="TriggerGuard" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1315091177) index="4" unique_id=2058522472]
 transform = Transform3D(-1.1920928e-07, -0.9999999, 0, 0.9999999, -1.1920928e-07, 0, 0, 0, 1, -1.07296984e-07, 1.490163e-10, -1.07933555e-08)
 bone_idx = 0
 
-[node name="Barrels" parent="Armature/Skeleton3D" index="5" unique_id=1201182720]
-transform = Transform3D(-1.1920928e-07, -0.9999999, 0, 0.9999999, -1.1920928e-07, 0, 0, 0, 1, -0.0011506177, 2.6959934e-11, -0.000112360394)
+[node name="TriggerGuard" parent="Armature/Skeleton3D/TriggerGuard" index="0" unique_id=1387222333]
+surface_material_override/0 = SubResource("ShaderMaterial_pw2el")
+
+[node name="Barrels" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1315091177) index="5" unique_id=957540566]
+transform = Transform3D(-1.1920928e-07, -0.99999976, 0, 0.9999999, -1.1920927e-07, 0, 0, 0, 0.9999999, -0.0011506177, 2.6959934e-11, -0.000112360394)
 bone_idx = 1
+
+[node name="Barrels" parent="Armature/Skeleton3D/Barrels" index="0" unique_id=1992750782]
+surface_material_override/0 = SubResource("ShaderMaterial_pw2el")
 
 [node name="LHTarget" type="Marker3D" parent="Armature/Skeleton3D/Barrels" index="1" unique_id=2077664734]
 transform = Transform3D(0.0019148004, 0.0010037998, -0.0097635025, -0.0005158356, 0.009944112, 0.00092120445, 0.009801405, 0.0003272441, 0.0019558785, -7.8331694e-05, 0.0007174625, -0.00035836291)
 
-[node name="UnderbarrelBody" parent="Armature/Skeleton3D" index="6" unique_id=263673077]
-transform = Transform3D(-1.1920928e-07, -0.9999999, 0, 0.9999999, -1.1920928e-07, 0, 0, 0, 1, -0.0011506177, 2.6959934e-11, -0.000112360394)
+[node name="UnderbarrelBody" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1315091177) index="6" unique_id=455375552]
+transform = Transform3D(-1.1920928e-07, -0.99999976, 0, 0.9999999, -1.1920927e-07, 0, 0, 0, 0.9999999, -0.0011506177, 2.6959934e-11, -0.000112360394)
 bone_idx = 1
 
-[node name="OpeningLEver" parent="Armature/Skeleton3D" index="7" unique_id=1191687405]
-transform = Transform3D(-7.815969e-14, 0.99999976, -3.8552528e-07, 5.364417e-07, 3.8552528e-07, 0.9999997, 0.9999998, -1.2789768e-13, -4.768371e-07, 0.0004257775, 1.8234991e-10, 0.00012975976)
+[node name="UnderbarrelBody" parent="Armature/Skeleton3D/UnderbarrelBody" index="0" unique_id=1282513906]
+surface_material_override/0 = SubResource("ShaderMaterial_pw2el")
+
+[node name="OpeningLEver" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1315091177) index="7" unique_id=2125004255]
+transform = Transform3D(-4.973798e-14, 0.99999976, -2.7020502e-07, 5.364417e-07, 2.7020502e-07, 0.9999997, 0.9999998, -9.237054e-14, -4.768371e-07, 0.0004257775, 1.8234991e-10, 0.00012975976)
 bone_idx = 4
 
-[node name="TriggerForward" parent="Armature/Skeleton3D" index="8" unique_id=1311219006]
-transform = Transform3D(0.9999999, -1.788139e-07, 8.9406946e-08, -1.1920927e-07, -2.131628e-14, 0.9999999, -2.0861626e-07, -1, 0, 0.00035791803, 2.4512087e-10, -0.00039763722)
+[node name="OpeningLEver" parent="Armature/Skeleton3D/OpeningLEver" index="0" unique_id=506783584]
+surface_material_override/0 = SubResource("ShaderMaterial_pw2el")
+
+[node name="TriggerForward" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1315091177) index="8" unique_id=2082352237]
+transform = Transform3D(0.9999999, -2.3841858e-07, -1.1920928e-07, 1.1920928e-07, 2.3841852e-07, 0.9999999, -2.3841858e-07, -1, 2.3841858e-07, 0.00035791803, 2.4512087e-10, -0.00039763722)
 bone_idx = 6
 
-[node name="TriggerBackward2" parent="Armature/Skeleton3D" index="9" unique_id=1598941811]
+[node name="TriggerForward" parent="Armature/Skeleton3D/TriggerForward" index="0" unique_id=248382669]
+surface_material_override/0 = SubResource("ShaderMaterial_pw2el")
+
+[node name="TriggerBackward2" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1315091177) index="9" unique_id=1634311266]
 transform = Transform3D(0.9999999, -2.3841856e-07, 1.1920927e-07, -1.1920927e-07, 2.3841851e-07, 0.9999999, -2.3841858e-07, -0.99999994, 2.3841858e-07, 0.00045590484, 2.5633715e-10, -0.00039417885)
 bone_idx = 8
+
+[node name="TriggerBackward2" parent="Armature/Skeleton3D/TriggerBackward2" index="0" unique_id=1234784811]
+surface_material_override/0 = SubResource("ShaderMaterial_pw2el")
 
 [node name="RHTarget" type="Marker3D" parent="." index="2" unique_id=1827959909]
 transform = Transform3D(-0.9801401, -0.032724388, -0.19558787, -0.19148012, -0.1003798, 0.97635007, -0.051583514, 0.99441093, 0.09212026, -0.027870566, -0.0374792, -0.10377525)

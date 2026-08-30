@@ -78,5 +78,6 @@ metadata/_custom_type_script = "uid://2wwqylg0tbhs"
 [node name="break_action" parent="PlayerWeaponManager" unique_id=565887173 instance=ExtResource("8_hg6s5")]
 
 [node name="revolver" parent="PlayerWeaponManager" unique_id=725224190 instance=ExtResource("6_g6k8r")]
+visible = false
 
 [editable path="CameraPivot/RecoilManager/Camera/fps_arms"]
