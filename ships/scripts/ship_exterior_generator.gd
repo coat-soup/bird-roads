@@ -4,6 +4,7 @@ extends Node
 var rigging_points : Array[RiggingPoint]
 
 const SHIP_HULL_MAT = preload("uid://d4fyqk6747sea")
+var mat : ShaderMaterial
 
 var airship : Airship
 
@@ -30,7 +31,9 @@ func _ready() -> void:
 	rand = RandomNumberGenerator.new()
 	rand.seed = seed
 	
-	var mat : ShaderMaterial = SHIP_HULL_MAT.duplicate()
+	mat = SHIP_HULL_MAT.duplicate()
+	mat.set_shader_parameter("rustiness", randf_range(0,1))
+	mat.set_shader_parameter("pattern", Resources.ship_patterns.pick_random())
 	color_palette.resolve_palette(rand)
 	
 	var parent : Node = self

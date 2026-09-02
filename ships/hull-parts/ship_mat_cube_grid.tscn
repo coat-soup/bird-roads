@@ -67,6 +67,7 @@ surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_015" parent="." index="16" unique_id=2143413867]
 instance_shader_parameters/flip_normals = 0
+instance_shader_parameters/primary_color = Color(0, 0, 0, 1)
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_016" parent="." index="17" unique_id=1099759792]
@@ -82,18 +83,40 @@ surface_material_override/0 = ExtResource("2_60npd")
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_020" parent="." index="21" unique_id=1013485731]
+instance_shader_parameters/primary_color = Color(0.7750631, 0.7750635, 0.77506316, 1)
+instance_shader_parameters/quintary_color = Color(0.7987092, 0.6490775, 0.7804221, 1)
+instance_shader_parameters/secondary_color = Color(0.52233225, 0.6403633, 0.78978014, 1)
+instance_shader_parameters/tertiary_color = Color(0.62904423, 0.5822399, 0.87882966, 1)
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_021" parent="." index="22" unique_id=231199167]
+instance_shader_parameters/primary_color = Color(0.7764706, 0.7764706, 0.7764706, 1)
+instance_shader_parameters/quaternary_color = Color(0.7764706, 0.7764706, 0.7764706, 1)
+instance_shader_parameters/quintary_color = Color(0.7987092, 0.6490775, 0.7804221, 1)
+instance_shader_parameters/secondary_color = Color(0.52233225, 0.6403633, 0.78978014, 1)
+instance_shader_parameters/tertiary_color = Color(0.62904423, 0.5822399, 0.87882966, 1)
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_022" parent="." index="23" unique_id=1220801461]
+instance_shader_parameters/primary_color = Color(0.851769, 0.8517689, 0.85176885, 1)
+instance_shader_parameters/quintary_color = Color(0.7987092, 0.6490775, 0.7804221, 1)
+instance_shader_parameters/secondary_color = Color(0.52233225, 0.6403633, 0.78978014, 1)
+instance_shader_parameters/tertiary_color = Color(0.62904423, 0.5822399, 0.87882966, 1)
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_023" parent="." index="24" unique_id=86483842]
+instance_shader_parameters/primary_color = Color(0.851769, 0.8517689, 0.85176885, 1)
+instance_shader_parameters/quaternary_color = Color(0.4053369, 0.7082149, 0.60663164, 1)
+instance_shader_parameters/quintary_color = Color(0.7987092, 0.6490775, 0.7804221, 1)
+instance_shader_parameters/secondary_color = Color(0.52233225, 0.6403633, 0.78978014, 1)
+instance_shader_parameters/tertiary_color = Color(0.62904423, 0.5822399, 0.87882966, 1)
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Cube_024" parent="." index="25" unique_id=1232582134]
+instance_shader_parameters/primary_color = Color(0.851769, 0.8517689, 0.85176885, 1)
+instance_shader_parameters/quintary_color = Color(0.7987092, 0.6490775, 0.7804221, 1)
+instance_shader_parameters/secondary_color = Color(0.52233225, 0.6403633, 0.78978014, 1)
+instance_shader_parameters/tertiary_color = Color(0.62904423, 0.5822399, 0.87882966, 1)
 surface_material_override/0 = ExtResource("2_60npd")
 
 [node name="Label3D" type="Label3D" parent="." index="26" unique_id=13073305]

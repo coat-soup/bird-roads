@@ -36,22 +36,22 @@ size = Vector3(1, 4, 1)
 
 [node name="hull_lancer" unique_id=242663195 instance=ExtResource("1_tb2ik")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Hull/Deck" parent_id_path=PackedInt32Array(455426760) index="0" unique_id=241413939]
+[node name="StaticBody3D" type="StaticBody3D" parent="Hull/Deck" parent_id_path=PackedInt32Array(412678255) index="0" unique_id=241413939]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hull/Deck/StaticBody3D" index="0" unique_id=1416298997]
 shape = SubResource("ConcavePolygonShape3D_k67kr")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Hull/Mainhull" parent_id_path=PackedInt32Array(69075743) index="0" unique_id=591413447]
+[node name="StaticBody3D" type="StaticBody3D" parent="Hull/Mainhull" parent_id_path=PackedInt32Array(1514599947) index="0" unique_id=591413447]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hull/Mainhull/StaticBody3D" index="0" unique_id=1787309054]
 shape = SubResource("ConcavePolygonShape3D_ewuet")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Hull/Mainhull_002" parent_id_path=PackedInt32Array(732354164) index="0" unique_id=1810487372]
+[node name="StaticBody3D" type="StaticBody3D" parent="Hull/Mainhull_002" parent_id_path=PackedInt32Array(674011497) index="0" unique_id=1810487372]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hull/Mainhull_002/StaticBody3D" index="0" unique_id=1673188094]
 shape = SubResource("ConcavePolygonShape3D_jji0u")
 
-[node name="LadderNavBlocker" type="StaticBody3D" parent="Hull" parent_id_path=PackedInt32Array(808330166) index="7" unique_id=315543626]
+[node name="LadderNavBlocker" type="StaticBody3D" parent="Hull" parent_id_path=PackedInt32Array(1311877029) index="7" unique_id=315543626]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0236807, 1.7587647, 3.995407)
 collision_layer = 32768
 collision_mask = 32768
@@ -121,13 +121,13 @@ shape = SubResource("BoxShape3D_etoac")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_4b0gw")
 
-[node name="@Node3D@36780" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="1" unique_id=2127096621]
+[node name="@Node3D@52487" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="1" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="@Node3D@36781" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="2" unique_id=2127096621]
+[node name="@Node3D@52488" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="2" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="@Node3D@36782" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="3" unique_id=2127096621]
+[node name="@Node3D@52489" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="3" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Exterior" type="Node3D" parent="." index="2" unique_id=768816846 node_paths=PackedStringArray("hull_mesh", "name_label")]
