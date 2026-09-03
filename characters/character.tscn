@@ -43,6 +43,9 @@ script = ExtResource("11_qci4v")
 action_name = &"reload"
 metadata/_custom_type_script = "uid://0pj0db48qaoq"
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_qci4v"]
+viewport_path = NodePath("DebugUI/Sprite3D/SubViewport")
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_vliyq"]
 radius = 20.0
 
@@ -90,15 +93,41 @@ script = ExtResource("6_f0775")
 action_set = Array[ExtResource("7_vliyq")]([SubResource("Resource_4kffy"), SubResource("Resource_bnq0n"), SubResource("Resource_qci4v"), SubResource("Resource_qnu6j")])
 metadata/_custom_type_script = "uid://cepsuqd062a4x"
 
-[node name="ActionDebugLabel" type="Label3D" parent="." unique_id=312549926]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90824676, 0)
+[node name="DebugUI" type="Node3D" parent="." unique_id=2129405429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01599, 0)
+
+[node name="ActionDebugLabel" type="Label3D" parent="DebugUI" unique_id=312549926]
 text = "[action1, action2, action3]"
 font_size = 16
 
-[node name="StimuliDebugLabel" type="Label3D" parent="ActionDebugLabel" unique_id=399014076]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.116060734, 0)
+[node name="StimuliDebugLabel" type="Label3D" parent="DebugUI" unique_id=399014076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15532756, 0)
 text = "[char1: 0s, char2: 0.5s]"
 font_size = 16
+
+[node name="Sprite3D" type="Sprite3D" parent="DebugUI" unique_id=166135106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006506324, -0.248092, 0)
+texture = SubResource("ViewportTexture_qci4v")
+
+[node name="SubViewport" type="SubViewport" parent="DebugUI/Sprite3D" unique_id=1632421392]
+transparent_bg = true
+
+[node name="Control" type="Control" parent="DebugUI/Sprite3D/SubViewport" unique_id=1259711728]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 346.27
+offset_bottom = 108.935
+
+[node name="ProgressBar" type="ProgressBar" parent="DebugUI/Sprite3D/SubViewport/Control" unique_id=997449289]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 200.0
+offset_top = 246.87
+offset_right = 310.0
+offset_bottom = 251.87003
+max_value = 1.0
+value = 1.0
+show_percentage = false
 
 [node name="AIPerceptionManager" type="Area3D" parent="." unique_id=51887596]
 collision_layer = 0

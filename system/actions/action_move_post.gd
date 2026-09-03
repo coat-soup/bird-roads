@@ -47,7 +47,7 @@ func get_post_costs(character : Character) -> Array[float]:
 
 func get_post_cost(character : Character, post_node : NavigationNode, target : Node3D, space_state : PhysicsDirectSpaceState3D) -> float:
 	if not post_node: return 10000000000000
-	var c_distance_to_target = post_node.global_position.distance_to(target.global_position) / 30.0
+	var c_distance_to_target = post_node.global_position.distance_to(target.global_position) / 50.0
 	var c_distance_from_self = post_node.global_position.distance_to(character.global_position) / 30.0
 	
 	var c_cover = 20.0 if not space_state.intersect_ray(PhysicsRayQueryParameters3D.create(

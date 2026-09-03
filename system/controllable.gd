@@ -11,7 +11,7 @@ func _ready() -> void:
 func on_interacted():
 	print("interacted. active: ", active, " curcontrolled: ", controlled)
 	controlled = !controlled
-	GameManager.player.active = !controlled
+	GameManager.player.set_active(!controlled)
 	
 	if active:
 		active = false

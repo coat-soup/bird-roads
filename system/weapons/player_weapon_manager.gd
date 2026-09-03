@@ -11,6 +11,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if !player.active: return
 	if Input.is_action_just_pressed("fire_1"): try_fire_weapon()
 	if Input.is_action_just_pressed("reload"): try_reload_weapon()
 

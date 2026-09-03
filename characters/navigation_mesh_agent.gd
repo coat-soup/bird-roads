@@ -46,9 +46,9 @@ func clear_path():
 
 func _process(delta: float) -> void:
 	if len(path) < 1: return
-	DebugDraw3D.scoped_config().set_thickness(0.2)
-	DebugDraw3D.draw_sphere(path[0].global_position)
-	DebugDraw3D.draw_sphere(path[-1].global_position)
+	DebugDraw3D.scoped_config().set_thickness(0.01)
+	DebugDraw3D.draw_box(path[0].global_position, Quaternion.IDENTITY, Vector3.ONE * 0.15, Color.FOREST_GREEN, true)
+	DebugDraw3D.draw_box(path[-1].global_position, Quaternion.IDENTITY, Vector3.ONE * 0.15, Color.FOREST_GREEN, true)
 	
 	for i in range(len(path) - 1):
 		DebugDraw3D.draw_line(path[i].global_position, path[i+1].global_position, Color.BLUE)

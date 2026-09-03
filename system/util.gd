@@ -36,9 +36,8 @@ static func random_point_in_circle(radius : float, min_radius : float = 0.0, r :
 	return (Vector2.UP * r.randf_range(min_radius, radius)).rotated(r.randf_range(0, 2*PI))
 
 
-static func random_point_in_circle_3d(radius : float, min_radius : float = 0.0, r : RandomNumberGenerator = RandomNumberGenerator.new()) -> Vector3:
-	var p_c : Vector2 = random_point_in_circle(radius, min_radius, r)
-	return Vector3(p_c.x, 0, p_c.y)
+static func random_point_in_circle_3d(radius : float, min_radius : float = 0.0, up : Vector3 = Vector3.UP, right : Vector3 = Vector3.RIGHT, r : RandomNumberGenerator = RandomNumberGenerator.new()) -> Vector3:
+	return (right * r.randf_range(min_radius, radius)).rotated(up, r.randf_range(0, 2*PI))
 
 
 static func get_rotation_towards(self_pos: Vector3, target_pos: Vector3) -> Vector3:

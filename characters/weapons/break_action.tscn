@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://icns63f6846a" path="res://characters/weapons/textures/break_action.png" id="4_66813"]
 [ext_resource type="Texture2D" uid="uid://m8j437jem54k" path="res://characters/weapons/textures/break_action_n.png" id="5_kiicv"]
 
+[sub_resource type="Curve" id="Curve_kps43"]
+_data = [Vector2(0.5013774, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pw2el"]
 render_priority = 0
 shader = ExtResource("3_kps43")
@@ -21,7 +25,10 @@ script = ExtResource("2_3w8b2")
 damage = 30
 fire_rate = 3.0
 magazine_size = 2
-reload_time = 3.0
+reload_time = 2.0
+range = 30.0
+n_pellets = 5
+falloff = SubResource("Curve_kps43")
 hand_ik_target = NodePath("RHTarget")
 left_hand_ik_target = NodePath("Armature/Skeleton3D/Barrels/LHTarget")
 muzzle_point = NodePath("Marker3D")

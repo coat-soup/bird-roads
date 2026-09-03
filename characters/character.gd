@@ -12,6 +12,8 @@ extends CharacterBody3D
 
 @export var debug_immortal : bool = false
 
+@export var squad_id : int = 2
+
 
 func _ready() -> void:
 	health.died.connect(die)

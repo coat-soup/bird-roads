@@ -31,6 +31,8 @@ func _ready():
 	hud.visible = true
 	options_panel.visible = false
 	
+	GameManager.player.health.damaged.connect(on_player_damaged)
+	
 	interact_text.text = ""
 
 
@@ -71,7 +73,7 @@ func flash_hitmarker(dead : bool = false):
 func toggle_options_menu(value : bool):
 	options_panel.visible = value
 	hud.visible = !value
-	if GameManager.player: GameManager.player.active = !value
+	if GameManager.player: GameManager.player.set_active(!value)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if value else Input.MOUSE_MODE_CAPTURED
 
 
@@ -81,3 +83,6 @@ func update_virtual_joystick(value : Vector2):
 
 func toggle_airship_hud(value : bool):
 	airship_hud.visible = value
+
+func on_player_damaged():
+	update_health_bar(GameManager.player.health.cur_health / GameManager.player.health.max_health)

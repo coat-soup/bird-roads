@@ -14,6 +14,10 @@ var cur_ammo : int = 1
 @export var reload_time : float = 4.0
 @export var range : float = 50.0
 var reloading : bool = false
+@export var spread : float = 0.05
+@export var n_pellets : int = 1
+
+@export var falloff : Curve
 
 @export var weapon_manager : WeaponManager
 
@@ -59,23 +63,34 @@ func fire():
 	var muzzle_particles = MUZZLE_FLASH_PARTICLES.instantiate()
 	muzzle_point.add_child(muzzle_particles)
 	
-	var result = get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(
-		muzzle_point.global_position if not weapon_manager.player else weapon_manager.player.movement_manager.camera.global_position,
-		((muzzle_point.global_position + muzzle_point.global_basis.z * range) if not weapon_manager.player else
-		(weapon_manager.player.movement_manager.camera.global_position - weapon_manager.player.movement_manager.camera.global_basis.z * range)),
-		Util.layer_mask([1,2]),
-		[weapon_manager.character if weapon_manager.character else weapon_manager.player]
-	))
+	var result
 	
-	if result:
-		var impact_particles : Node3D = BULLET_IMPACT_PARTICLES.instantiate()
-		get_tree().root.add_child(impact_particles)
-		impact_particles.global_position = result.position
-		impact_particles.look_at(result.position + result.normal)
+	for i in range(n_pellets):
+		if weapon_manager.player:
+			result = get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(
+				weapon_manager.player.movement_manager.camera.global_position,
+				weapon_manager.player.movement_manager.camera.global_position - weapon_manager.player.movement_manager.camera.global_basis.z * range + Util.random_point_in_circle_3d(spread * range, 0, muzzle_point.global_basis.z, muzzle_point.global_basis.y),
+				Util.layer_mask([1,2]),
+				[weapon_manager.player]
+			))
+		else:
+			result = get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(
+				muzzle_point.global_position,
+				muzzle_point.global_position + muzzle_point.global_basis.z * range + Util.random_point_in_circle_3d(spread * range, 0, muzzle_point.global_basis.z, muzzle_point.global_basis.y),
+				Util.layer_mask([1,2]),
+				[weapon_manager.character]
+			))
 		
-		var character : Character = result.collider as Character
-		if character and character.health:
-			character.health.take_damage(damage)
+		if result:
+			var impact_particles : Node3D = BULLET_IMPACT_PARTICLES.instantiate()
+			get_tree().root.add_child(impact_particles)
+			impact_particles.global_position = result.position
+			impact_particles.look_at(result.position + result.normal)
+			
+			var target = result.collider as Character
+			if !target: target = result.collider as Player
+			if target and target.health:
+				target.health.take_damage(falloff.sample(result.position.distance_to(muzzle_point.global_position)/range) * damage/float(n_pellets))
 	
 	fired.emit()
 	

@@ -17,7 +17,6 @@ func _init() -> void:
 	load_resources(hardpoints, "res://ships/hardpoints/data/")
 	load_resources(ship_weapons, "res://ships/hardpoints/weapon_data/")
 	load_resources(ship_patterns,"res://ships/textures/patterns/", ".png")
-	print("patterns: ", ship_patterns)
 
 
 static func load_resources(array : Array, path : String, file_ending : String = ".tres"):

@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://de1dogyytwwrx" path="res://characters/weapons/textures/revolver_m.png" id="5_joh2l"]
 [ext_resource type="Texture2D" uid="uid://cew0gxbywqqbd" path="res://characters/weapons/textures/revolver_n.png" id="5_voe3u"]
 
+[sub_resource type="Curve" id="Curve_joh2l"]
+_data = [Vector2(0.7575758, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wxrof"]
 render_priority = 0
 shader = ExtResource("3_4v6pb")
@@ -22,6 +26,8 @@ shader_parameter/triplanar_scale = 0.0
 script = ExtResource("2_6k3st")
 magazine_size = 6
 reload_time = 2.5
+range = 40.0
+falloff = SubResource("Curve_joh2l")
 hand_ik_target = NodePath("RHTarget")
 muzzle_point = NodePath("Marker3D")
 weapon_name = "revolver"

@@ -27,12 +27,11 @@ func _ready() -> void:
 
 func on_perception_updated():
 	if character.perception_manager.stimuli.size() > 0:
-		look_target = character.perception_manager.stimuli[0].source_node
+		look_target = character.perception_manager.get_main_target()
 	else: look_target = null
 
 
 func set_hand_ik_target(target : Node3D, left : bool = false):
-	print("Setting ik to ", target)
 	if !left:
 		rh_two_bone_ik_3d.set_target_node(0, rh_two_bone_ik_3d.get_path_to(target))
 		rh_copy_transform_modifier_3d.set_reference_node(0, rh_copy_transform_modifier_3d.get_path_to(target))
@@ -43,9 +42,22 @@ func set_hand_ik_target(target : Node3D, left : bool = false):
 
 func _process(delta: float) -> void:
 	#head_target.global_position = GameManager.player.global_position
+	
 	if look_target:
-		pivot.look_at(look_target.global_position + Vector3.UP * 0.35, Vector3.UP, true)
+		pivot.look_at(look_target.global_position, Vector3.UP, true)
 	else:
 		pivot.rotation = Vector3.ZERO
-	if character and character.velocity != Vector3.ZERO:
-		rotation.y = character.global_basis.z.signed_angle_to(character.velocity, Vector3.UP)
+	
+	if !character: return
+	
+	var target_rot : float = 0.0
+	
+	if character.velocity.length() > 0.1 and look_target:
+		target_rot = lerp(character.global_basis.z.signed_angle_to(character.velocity, Vector3.UP), character.global_basis.z.signed_angle_to((look_target.global_position - character.global_position) * Vector3(1,0,1), Vector3.UP), 0.8)
+	elif character.velocity.length() < 0.1 and look_target:
+		target_rot = character.global_basis.z.signed_angle_to((look_target.global_position - character.global_position) * Vector3(1,0,1), Vector3.UP)
+	else:
+		target_rot = character.global_basis.z.signed_angle_to(character.velocity, Vector3.UP)
+	
+	
+	rotation.y = rotate_toward(rotation.y, target_rot, delta * 5)

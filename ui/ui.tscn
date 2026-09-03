@@ -123,11 +123,12 @@ offset_top = -135.0
 offset_right = 439.0
 offset_bottom = -85.0
 grow_vertical = 0
-step = 1.0
-value = 100.0
+max_value = 1.0
+value = 1.0
 show_percentage = false
 
 [node name="StaminaBar" type="ProgressBar" parent="HUD" unique_id=274577045]
+visible = false
 modulate = Color(1, 1, 0, 1)
 layout_mode = 1
 anchors_preset = 2

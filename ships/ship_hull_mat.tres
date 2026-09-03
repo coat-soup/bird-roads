@@ -36,6 +36,7 @@ shader_parameter/ex_secondary_color = Color(0, 0, 0, 1)
 shader_parameter/ex_tertiary_color = Color(0, 0, 0, 1)
 shader_parameter/ex_quaternary_color = Color(0, 0, 0, 1)
 shader_parameter/ex_quintary_color = Color(0, 0, 0, 1)
+shader_parameter/rustiness = 0.2
 shader_parameter/voronoi_noise = SubResource("NoiseTexture2D_jxxtm")
 shader_parameter/damage_noise = SubResource("NoiseTexture2D_uogop")
 shader_parameter/pattern = ExtResource("6_uogop")

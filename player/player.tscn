@@ -9,10 +9,7 @@
 [ext_resource type="Script" uid="uid://2wwqylg0tbhs" path="res://system/weapons/player_weapon_manager.gd" id="5_qjkh3"]
 [ext_resource type="PackedScene" uid="uid://gs3fu7jvum7m" path="res://characters/weapons/revolver.tscn" id="6_g6k8r"]
 [ext_resource type="PackedScene" uid="uid://cbetj2x13xqd1" path="res://characters/weapons/break_action.tscn" id="8_hg6s5"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_765p8"]
-radius = 0.3
-height = 1.8
+[ext_resource type="Script" uid="uid://dagvkdjs33wwf" path="res://system/health.gd" id="10_8t03j"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ybx0f"]
 radius = 0.3
@@ -22,22 +19,19 @@ height = 1.8
 frequency = 0.0202
 fractal_octaves = 4
 
-[node name="Player" type="CharacterBody3D" unique_id=657413655 node_paths=PackedStringArray("movement_manager") groups=["player"]]
+[node name="Player" type="CharacterBody3D" unique_id=657413655 node_paths=PackedStringArray("movement_manager", "health") groups=["player"]]
 collision_layer = 2
 collision_mask = 3
 floor_max_angle = 1.0471976
 platform_on_leave = 1
 script = ExtResource("1_rkbax")
 movement_manager = NodePath("MovementManager")
+health = NodePath("Health")
 
 [node name="PlayerInteractionManager" type="Node" parent="." unique_id=1712060894 node_paths=PackedStringArray("camera")]
 script = ExtResource("2_g1dw6")
 camera = NodePath("../CameraPivot/RecoilManager/Camera")
 metadata/_custom_type_script = "uid://b17egmjgll7mj"
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=892348718]
-cast_shadow = 0
-mesh = SubResource("CapsuleMesh_765p8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1852533796]
 shape = SubResource("CapsuleShape3D_ybx0f")
@@ -86,7 +80,6 @@ bones/19/rotation = Quaternion(0.13307005, 0.08060425, 0.029706642, 0.98737675)
 bones/20/rotation = Quaternion(0.011706666, -0.0063704485, -0.008972539, 0.9998709)
 bones/21/rotation = Quaternion(0.25564355, -0.006665204, 0.051479317, 0.96537656)
 bones/22/rotation = Quaternion(0.15090033, 0.05245376, 0.019530442, 0.98696315)
-bones/23/position = Vector3(0.0063847643, 0.09186849, 0.034532756)
 bones/23/rotation = Quaternion(0.108627446, 0.05106328, 0.04637067, 0.99168664)
 bones/24/rotation = Quaternion(-0.02125736, -0.008089024, 0.0015981537, 0.99974)
 bones/25/rotation = Quaternion(0.023675459, 0.010095225, 0.030455202, 0.9992047)
@@ -109,6 +102,9 @@ bones/36/rotation = Quaternion(0.009731939, 0.7080139, 0.7060679, 0.00947485)
 bones/37/position = Vector3(0.5553404, -0.5321989, 0.008430753)
 bones/38/position = Vector3(0.39386564, -0.22141004, -0.44673103)
 
+[node name="HumanBasemesh" parent="CameraPivot/RecoilManager/Camera/fps_arms/ArmRig/Skeleton3D" index="0" unique_id=625984467]
+cast_shadow = 0
+
 [node name="BoneAttachment3D" parent="CameraPivot/RecoilManager/Camera/fps_arms/ArmRig/Skeleton3D" index="1" unique_id=901779880]
 transform = Transform3D(-0.9997004, 0.021411434, 0.011848215, -0.016314477, -0.9440298, 0.32945615, 0.01823915, 0.32916415, 0.9440963, -0.57261646, -0.6176832, 0.036936283)
 
@@ -127,13 +123,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5143018, -0.09685105, -0.97
 script = ExtResource("5_qjkh3")
 arms = NodePath("../CameraPivot/RecoilManager/Camera/fps_arms")
 recoil_manager = NodePath("../CameraPivot/RecoilManager")
-cur_weapon = NodePath("revolver")
+cur_weapon = NodePath("break_action")
 player = NodePath("..")
 metadata/_custom_type_script = "uid://2wwqylg0tbhs"
 
 [node name="break_action" parent="PlayerWeaponManager" unique_id=33445237 instance=ExtResource("8_hg6s5")]
-visible = false
 
 [node name="revolver" parent="PlayerWeaponManager" unique_id=667458400 instance=ExtResource("6_g6k8r")]
+visible = false
+
+[node name="Health" type="Node" parent="." unique_id=1588668639]
+script = ExtResource("10_8t03j")
+metadata/_custom_type_script = "uid://dagvkdjs33wwf"
 
 [editable path="CameraPivot/RecoilManager/Camera/fps_arms"]
