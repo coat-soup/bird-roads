@@ -65,12 +65,12 @@ func get_next_node_in_path() -> NavigationNode:
 			break
 	var pull_ahead : int = 0
 	var space_state = character.get_world_3d().direct_space_state
-	for i in range(min(string_pull_dist, len(path)-1), -1, -1):
+	for i in range(min(string_pull_dist if character.movement_manager.time_stuck < 0.5 else 0, len(path)-1), -1, -1):
 		var query = PhysicsShapeQueryParameters3D.new()
 		query.collision_mask = Util.layer_mask([1, 16])
 		query.shape = SphereShape3D.new()
 		query.shape.radius = 0.4
-		query.transform.origin = character.global_position + Vector3.UP * 0.5
+		query.transform.origin = character.global_position + Vector3.UP * 0.5 -(path[i].global_position - character.global_position).normalized()
 		query.motion = path[i].global_position - character.global_position
 		var result = space_state.cast_motion(query)
 		if result[0] == 1.0:

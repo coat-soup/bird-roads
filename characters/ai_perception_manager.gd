@@ -54,6 +54,7 @@ func on_stimulus_character_died(char : Character):
 			stimuli.remove_at(i)
 			break
 	char.health.died.disconnect(on_stimulus_character_died)
+	perception_updated.emit()
 
 
 func can_see_target(target : Node3D) -> bool:

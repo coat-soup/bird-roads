@@ -123,17 +123,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5143018, -0.09685105, -0.97
 script = ExtResource("5_qjkh3")
 arms = NodePath("../CameraPivot/RecoilManager/Camera/fps_arms")
 recoil_manager = NodePath("../CameraPivot/RecoilManager")
-cur_weapon = NodePath("break_action")
+cur_weapon = NodePath("revolver")
 player = NodePath("..")
 metadata/_custom_type_script = "uid://2wwqylg0tbhs"
 
 [node name="break_action" parent="PlayerWeaponManager" unique_id=33445237 instance=ExtResource("8_hg6s5")]
+visible = false
 
 [node name="revolver" parent="PlayerWeaponManager" unique_id=667458400 instance=ExtResource("6_g6k8r")]
-visible = false
 
 [node name="Health" type="Node" parent="." unique_id=1588668639]
 script = ExtResource("10_8t03j")
+max_health = 300.0
 metadata/_custom_type_script = "uid://dagvkdjs33wwf"
 
 [editable path="CameraPivot/RecoilManager/Camera/fps_arms"]

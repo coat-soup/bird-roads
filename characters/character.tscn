@@ -105,20 +105,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15532756, 0)
 text = "[char1: 0s, char2: 0.5s]"
 font_size = 16
 
-[node name="Sprite3D" type="Sprite3D" parent="DebugUI" unique_id=166135106]
+[node name="Sprite3D" type="Sprite3D" parent="DebugUI" unique_id=2100649143]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.006506324, -0.248092, 0)
 texture = SubResource("ViewportTexture_qci4v")
 
-[node name="SubViewport" type="SubViewport" parent="DebugUI/Sprite3D" unique_id=1632421392]
+[node name="SubViewport" type="SubViewport" parent="DebugUI/Sprite3D" unique_id=1353643989]
 transparent_bg = true
 
-[node name="Control" type="Control" parent="DebugUI/Sprite3D/SubViewport" unique_id=1259711728]
+[node name="Control" type="Control" parent="DebugUI/Sprite3D/SubViewport" unique_id=890535104]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 346.27
 offset_bottom = 108.935
 
-[node name="ProgressBar" type="ProgressBar" parent="DebugUI/Sprite3D/SubViewport/Control" unique_id=997449289]
+[node name="ProgressBar" type="ProgressBar" parent="DebugUI/Sprite3D/SubViewport/Control" unique_id=1093642562]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 0
 offset_left = 200.0
@@ -139,6 +139,7 @@ shape = SubResource("SphereShape3D_vliyq")
 
 [node name="Health" type="Node" parent="." unique_id=711726928]
 script = ExtResource("12_bnq0n")
+max_health = 60.0
 metadata/_custom_type_script = "uid://dagvkdjs33wwf"
 
 [node name="WeaponManager" type="Node3D" parent="." unique_id=1281329497 node_paths=PackedStringArray("character", "cur_weapon", "skeleton")]

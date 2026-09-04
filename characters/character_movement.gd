@@ -7,10 +7,10 @@ extends Node3D
 @onready var floorcast: RayCast3D = $Floorcast
 
 var time_in_air : float = 0
+var time_stuck : float = 0
 
 @onready var shin_cast: RayCast3D = $"../ShinCast"
 @onready var head_cast: RayCast3D = $"../HeadCast"
-
 
 
 func _physics_process(delta: float) -> void:
@@ -33,6 +33,11 @@ func _physics_process(delta: float) -> void:
 	if not character.is_on_floor():
 		character.velocity += character.get_gravity() * delta
 	else:
+		if next_node and character.velocity.length() < 0.1:
+			time_stuck += delta
+		else: time_stuck = 0
+		if time_stuck > 1.0: agent.set_path_to_node(agent.path[-1])
+		
 		if direction:
 			character.velocity.x = direction.x * character.speed
 			character.velocity.z = direction.z * character.speed

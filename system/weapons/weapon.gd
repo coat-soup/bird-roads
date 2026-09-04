@@ -66,20 +66,22 @@ func fire():
 	var result
 	
 	for i in range(n_pellets):
+		var spread_offset : Vector3 = Util.random_point_in_circle_3d(spread * range, 0, muzzle_point.global_basis.z, muzzle_point.global_basis.y)
+		var start : Vector3
+		var end : Vector3
+		
 		if weapon_manager.player:
-			result = get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(
-				weapon_manager.player.movement_manager.camera.global_position,
-				weapon_manager.player.movement_manager.camera.global_position - weapon_manager.player.movement_manager.camera.global_basis.z * range + Util.random_point_in_circle_3d(spread * range, 0, muzzle_point.global_basis.z, muzzle_point.global_basis.y),
-				Util.layer_mask([1,2]),
-				[weapon_manager.player]
-			))
+			start = weapon_manager.player.movement_manager.camera.global_position
+			end = weapon_manager.player.movement_manager.camera.global_position - weapon_manager.player.movement_manager.camera.global_basis.z * range + spread_offset
 		else:
-			result = get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(
-				muzzle_point.global_position,
-				muzzle_point.global_position + muzzle_point.global_basis.z * range + Util.random_point_in_circle_3d(spread * range, 0, muzzle_point.global_basis.z, muzzle_point.global_basis.y),
-				Util.layer_mask([1,2]),
-				[weapon_manager.character]
-			))
+			start = muzzle_point.global_position
+			end = muzzle_point.global_position + muzzle_point.global_basis.z * range + spread_offset
+		
+		result = get_world_3d().direct_space_state.intersect_ray(PhysicsRayQueryParameters3D.create(
+				start, end, Util.layer_mask([1,2]), [weapon_manager.player if weapon_manager.player else weapon_manager.character]))
+		
+		var tracer = BulletTracer.create(muzzle_point.global_position, result.position if result else end)
+		get_tree().root.add_child(tracer)
 		
 		if result:
 			var impact_particles : Node3D = BULLET_IMPACT_PARTICLES.instantiate()

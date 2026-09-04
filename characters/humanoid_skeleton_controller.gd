@@ -26,9 +26,7 @@ func _ready() -> void:
 
 
 func on_perception_updated():
-	if character.perception_manager.stimuli.size() > 0:
-		look_target = character.perception_manager.get_main_target()
-	else: look_target = null
+	look_target = character.perception_manager.get_main_target()
 
 
 func set_hand_ik_target(target : Node3D, left : bool = false):

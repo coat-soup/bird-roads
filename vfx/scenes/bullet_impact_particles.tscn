@@ -10,8 +10,8 @@ curve = SubResource("Curve_huwei")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vn885"]
 initial_velocity_min = 2.0
 initial_velocity_max = 4.0
-scale_min = 0.099999994
-scale_max = 0.19999999
+scale_min = 0.049999997
+scale_max = 0.099999994
 scale_curve = SubResource("CurveTexture_54scl")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubdyb"]

@@ -27,6 +27,7 @@ script = ExtResource("2_6k3st")
 magazine_size = 6
 reload_time = 2.5
 range = 40.0
+spread = 0.02
 falloff = SubResource("Curve_joh2l")
 hand_ik_target = NodePath("RHTarget")
 muzzle_point = NodePath("Marker3D")
