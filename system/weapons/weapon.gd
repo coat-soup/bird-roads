@@ -15,6 +15,7 @@ var cur_ammo : int = 1
 @export var range : float = 50.0
 var reloading : bool = false
 @export var spread : float = 0.05
+static var npc_spread_mul : float = 1.5
 @export var n_pellets : int = 1
 
 @export var falloff : Curve
@@ -65,8 +66,10 @@ func fire():
 	
 	var result
 	
+	var spread_mul = spread if weapon_manager.player else ((spread * npc_spread_mul) + (spread * npc_spread_mul) * weapon_manager.character.character_data.stats["marksmanship"] * StatModifiers.marksmanship_spread)
+	
 	for i in range(n_pellets):
-		var spread_offset : Vector3 = Util.random_point_in_circle_3d(spread * range, 0, muzzle_point.global_basis.z, muzzle_point.global_basis.y)
+		var spread_offset : Vector3 = Util.random_point_in_circle_3d(spread_mul * range, 0, muzzle_point.global_basis.z, muzzle_point.global_basis.y)
 		var start : Vector3
 		var end : Vector3
 		

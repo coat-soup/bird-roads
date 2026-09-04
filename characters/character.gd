@@ -14,8 +14,13 @@ extends CharacterBody3D
 
 @export var squad_id : int = 2
 
+@export var character_data : CharacterData
+
+
 
 func _ready() -> void:
+	if character_data == null: character_data = CharacterData.create()
+	
 	health.died.connect(die)
 	
 	if debug_immortal:

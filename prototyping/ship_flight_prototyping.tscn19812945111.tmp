@@ -142,28 +142,6 @@ script = ExtResource("16_hac2j")
 character_name = &"test"
 metadata/_custom_type_script = "uid://bwec7p2bf3wse"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ou1bv"]
-viewport_path = NodePath("DebugUI/Sprite3D/SubViewport")
-
-[sub_resource type="Resource" id="Resource_uhcmw"]
-script = ExtResource("16_hac2j")
-character_name = &"test"
-stats = Dictionary[String, int]({
-"agility": 2,
-"engineering": 0,
-"fortitude": 0,
-"marksmanship": 0,
-"medecine": 0,
-"piloting": 0
-})
-metadata/_custom_type_script = "uid://bwec7p2bf3wse"
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_hac2j"]
-viewport_path = NodePath("DebugUI/Sprite3D/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_uhcmw"]
-viewport_path = NodePath("DebugUI/Sprite3D/SubViewport")
-
 [node name="Node3D" type="Node3D" unique_id=434323374]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1501100120]
@@ -4222,7 +4200,7 @@ collision_layer = 9
 shape = SubResource("BoxShape3D_tn3sn")
 
 [node name="CSGBox3D26" type="CSGBox3D" parent="Level/NavPlayground" unique_id=692441341]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.085655, -0.6246283, 20.774506)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.085655, -0.33142948, 20.774506)
 use_collision = true
 collision_layer = 9
 size = Vector3(9.656334, 3.052765, 4)
@@ -4235,7 +4213,7 @@ collision_layer = 9
 shape = SubResource("BoxShape3D_vmpqd")
 
 [node name="CSGBox3D27" type="CSGBox3D" parent="Level/NavPlayground" unique_id=364914245]
-transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -18.294405, -0.61742616, 18.697695)
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -18.294405, -0.32422733, 18.697695)
 use_collision = true
 collision_layer = 9
 size = Vector3(5.118164, 3.0671692, 6.265381)
@@ -4303,7 +4281,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6222777, 0.06482975, 34.75
 transform = Transform3D(0.5589614, 0, 0.8291937, 0, 1, 0, -0.8291937, 0, 0.5589614, -47.95346, 0.065, 42)
 
 [node name="Camera3D" parent="cannon_basic_handheld2" index="4" unique_id=160089326]
-transform = Transform3D(-1.0000001, -3.7250487e-09, -8.940697e-08, -3.725051e-09, 1, 2.9802486e-08, 8.940697e-08, 2.9802486e-08, -1.0000001, 0, 1.7742426, -1.7037029)
+transform = Transform3D(-1.0000001, -3.725046e-09, -8.940697e-08, -3.7250514e-09, 1, 2.9802482e-08, 8.940697e-08, 2.9802482e-08, -1.0000001, 0, 1.7742426, -1.7037029)
 
 [node name="AIController" parent="cannon_basic_handheld2" index="6" unique_id=1230178264 node_paths=PackedStringArray("target")]
 target = NodePath("../../Airship2/Movement")
@@ -6831,35 +6809,7 @@ connections = [NodePath("../@Node3D@82190"), NodePath("../@Node3D@82212"), NodeP
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.76021, 1.2591629, 3.044836)
 character_data = SubResource("Resource_hac2j")
 
-[node name="NavigationMeshAgent" parent="Character" index="2" unique_id=1415843504 node_paths=PackedStringArray("graph")]
-graph = NodePath("../../NavGraph")
-
-[node name="Sprite3D" parent="Character/DebugUI" parent_id_path=PackedInt32Array(1004033952, 2129405429) index="3" unique_id=2100649143]
-texture = SubResource("ViewportTexture_ou1bv")
-
-[node name="Character2" parent="." unique_id=124149842 instance=ExtResource("15_ou1bv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.750904, 1.2591629, 7.118414)
-character_data = SubResource("Resource_uhcmw")
-
-[node name="NavigationMeshAgent" parent="Character2" index="2" unique_id=1415843504 node_paths=PackedStringArray("graph")]
-graph = NodePath("../../NavGraph")
-
-[node name="Sprite3D" parent="Character2/DebugUI" parent_id_path=PackedInt32Array(124149842, 2129405429) index="3" unique_id=2100649143]
-texture = SubResource("ViewportTexture_hac2j")
-
-[node name="Character3" parent="." unique_id=599938761 instance=ExtResource("15_ou1bv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.258842, 1.2591629, 10.16868)
-
-[node name="NavigationMeshAgent" parent="Character3" index="2" unique_id=1415843504 node_paths=PackedStringArray("graph")]
-graph = NodePath("../../NavGraph")
-
-[node name="Sprite3D" parent="Character3/DebugUI" parent_id_path=PackedInt32Array(599938761, 2129405429) index="3" unique_id=2100649143]
-texture = SubResource("ViewportTexture_uhcmw")
-
 [editable path="Airship"]
 [editable path="Airship2"]
 [editable path="Airship3"]
 [editable path="cannon_basic_handheld2"]
-[editable path="Character"]
-[editable path="Character2"]
-[editable path="Character3"]

@@ -19,7 +19,9 @@ func tick():
 	var bodies = get_overlapping_bodies()
 	for body in bodies:
 		var target : CharacterBody3D = body as Character
-		if !target: target = body as Player
+		if !target:
+			target = body as Player
+			if target and target.debug_mode: continue
 		if not target or target == character or not can_see_target(target): continue
 		var stim : AIPerceptionStimulus = null
 		for s in stimuli: if s.source_node == target:
@@ -70,7 +72,8 @@ func get_main_target() -> Node3D:
 	stims.sort_custom(func(a : AIPerceptionStimulus, b : AIPerceptionStimulus):
 		if a.stimulus_type == AIPerceptionStimulus.StimulusType.TRACKED_ENEMY and b.stimulus_type != AIPerceptionStimulus.StimulusType.TRACKED_ENEMY: return true
 		elif a.stimulus_type != AIPerceptionStimulus.StimulusType.TRACKED_ENEMY and b.stimulus_type == AIPerceptionStimulus.StimulusType.TRACKED_ENEMY: return false
-		else: return a.time_since_live < b.time_since_live
+		elif a.time_since_live != b.time_since_live: return a.time_since_live < b.time_since_live
+		else: return character.global_position.distance_to(a.source_node.global_position) < character.global_position.distance_to(b.source_node.global_position)
 		)
 		
 	return stims[0].source_node if stims[0].stimulus_type == AIPerceptionStimulus.StimulusType.TRACKED_ENEMY else null

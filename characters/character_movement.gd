@@ -39,16 +39,19 @@ func _physics_process(delta: float) -> void:
 		if time_stuck > 1.0: agent.set_path_to_node(agent.path[-1])
 		
 		if direction:
-			character.velocity.x = direction.x * character.speed
-			character.velocity.z = direction.z * character.speed
+			character.velocity.x = direction.x * get_speed()
+			character.velocity.z = direction.z * get_speed()
 			
 			if abs(next_node.global_position.y - character.global_position.y) > 0.2 and shin_cast.is_colliding() and not head_cast.is_colliding():
 				character.velocity.y += 5
 		else:
-			character.velocity.x = lerp(character.velocity.x, direction.x * character.speed, delta * 10)
-			character.velocity.z = lerp(character.velocity.z, direction.z * character.speed, delta * 10)
+			character.velocity.x = lerp(character.velocity.x, direction.x * get_speed(), delta * 10)
+			character.velocity.z = lerp(character.velocity.z, direction.z * get_speed(), delta * 10)
 	
 	shin_cast.target_position = direction.normalized() * 0.6
 	head_cast.target_position = shin_cast.target_position
 	
 	character.move_and_slide()
+
+func get_speed() -> float:
+	return character.speed + character.speed * StatModifiers.agility_speed * character.character_data.stats["agility"]

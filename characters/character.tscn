@@ -96,13 +96,18 @@ metadata/_custom_type_script = "uid://cepsuqd062a4x"
 [node name="DebugUI" type="Node3D" parent="." unique_id=2129405429]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01599, 0)
 
-[node name="ActionDebugLabel" type="Label3D" parent="DebugUI" unique_id=312549926]
-text = "[action1, action2, action3]"
+[node name="NameLabel" type="Label3D" parent="DebugUI" unique_id=428442606]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27405894, 0)
+text = "Character Name"
 font_size = 16
 
 [node name="StimuliDebugLabel" type="Label3D" parent="DebugUI" unique_id=399014076]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15532756, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13435817, 0)
 text = "[char1: 0s, char2: 0.5s]"
+font_size = 16
+
+[node name="ActionDebugLabel" type="Label3D" parent="DebugUI" unique_id=312549926]
+text = "[action1, action2, action3]"
 font_size = 16
 
 [node name="Sprite3D" type="Sprite3D" parent="DebugUI" unique_id=2100649143]
