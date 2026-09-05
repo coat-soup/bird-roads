@@ -30,14 +30,99 @@ angle = 3.7603118
 [sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_di882"]
 angle = 2.475226
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u560y"]
+animation = &"walk_forward"
+use_custom_timeline = true
+timeline_length = 2.0829999999999997
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xglvs"]
+animation = &"walk_right"
+use_custom_timeline = true
+timeline_length = 2.0829999999999997
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vuqqb"]
+animation = &"walk_forward"
+play_mode = 1
+use_custom_timeline = true
+timeline_length = 2.0829999999999997
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ubfs5"]
+animation = &"walk_right"
+play_mode = 1
+use_custom_timeline = true
+timeline_length = 2.0829999999999997
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ymshp"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_egm0l"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_u560y")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_xglvs")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_vuqqb")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ubfs5")
+blend_point_3/pos = Vector2(-1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_ymshp")
+blend_point_4/pos = Vector2(0, 0)
+sync = true
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_u560y"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dsa2x"]
+graph_offset = Vector2(-912, 85)
+nodes/walk_blend/node = SubResource("AnimationNodeBlendSpace2D_egm0l")
+nodes/walk_blend/position = Vector2(-240, 180)
+nodes/walk_time_scale/node = SubResource("AnimationNodeTimeScale_u560y")
+nodes/walk_time_scale/position = Vector2(20, 200)
+node_connections = [&"output", 0, &"walk_time_scale", &"walk_time_scale", 0, &"walk_blend"]
+
 [node name="humanoid_basemesh" unique_id=373725082 instance=ExtResource("1_elxk8")]
 script = ExtResource("2_6tyi7")
 clothes = Array[ExtResource("3_cthww")]([ExtResource("4_btvxw"), ExtResource("5_57ddc"), ExtResource("6_pqg2l"), ExtResource("7_pqg2l")])
 
-[node name="Basemesh" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="0" unique_id=440466484]
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1884765803) index="0" unique_id=1576614284]
+bones/0/position = Vector3(-1.500435e-20, -7.625451e-05, 3.9749175e-06)
+bones/2/rotation = Quaternion(0.062750585, -1.18974356e-07, 7.480452e-09, 0.99802923)
+bones/4/rotation = Quaternion(-0.12703916, 1.260255e-21, 1.6140954e-22, 0.9918977)
+bones/5/rotation = Quaternion(5.5378266e-08, 1.1945986e-07, -0.7773416, 0.6290787)
+bones/6/rotation = Quaternion(0.02892159, 0.019809382, -0.51990587, 0.85350394)
+bones/7/rotation = Quaternion(0.08198685, -0.009862571, -0.09231646, 0.9922997)
+bones/23/rotation = Quaternion(1.7349566e-07, -2.1504864e-07, 0.7773416, 0.6290787)
+bones/24/rotation = Quaternion(0.029646005, -0.019333454, 0.5195947, 0.8536795)
+bones/25/rotation = Quaternion(0.08002819, 0.01716366, 0.09386486, 0.99221486)
+bones/41/rotation = Quaternion(0.9997121, 0.022624848, -0.0064244736, 0.004747339)
+bones/42/rotation = Quaternion(0.025446014, -0.013285955, 0.015001334, 0.9994754)
+bones/43/rotation = Quaternion(-0.7039884, -0.03175699, -0.056569833, 0.7072423)
+bones/44/rotation = Quaternion(0.0058231964, 0.0005751061, -0.0018784006, 0.99998116)
+bones/45/rotation = Quaternion(0.99972856, -0.022340458, 0.0065446454, 0.0009355445)
+bones/46/rotation = Quaternion(0.019717524, 0.0134334, -0.014196692, 0.9996146)
+bones/47/rotation = Quaternion(-0.70529085, 0.06763184, 0.019991858, 0.7054014)
+bones/48/rotation = Quaternion(0.0058581904, -0.0005999686, 0.0026104795, 0.9999793)
+bones/51/position = Vector3(0.14194089, -0.8242843, -0.058854394)
+bones/52/position = Vector3(-0.14190699, -0.8265545, -0.05976435)
+bones/55/position = Vector3(0.31338716, -0.025440946, 0.011734725)
+bones/55/rotation = Quaternion(0.026809392, -0.7065984, 0.70659834, -0.026809392)
+bones/56/position = Vector3(-0.31324688, -0.025451116, 0.012030003)
+bones/56/rotation = Quaternion(0.036546156, 0.70616174, -0.70616174, -0.036546156)
+
+[node name="Basemesh" parent="Armature/Skeleton3D" index="0" unique_id=229720412]
 surface_material_override/0 = SubResource("ShaderMaterial_xglvs")
 
-[node name="SpineCCDIK3D" type="CCDIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="1" unique_id=24609732]
+[node name="SpineCCDIK3D" type="CCDIK3D" parent="Armature/Skeleton3D" index="1" unique_id=24609732]
 transform = Transform3D(1, 0, 0, 0, 0.91790026, -0.39681152, 0, 0.39681152, 0.91790026, 0, 0, 0)
 setting_count = 1
 settings/0/target_node = NodePath("../../../Pivot/SpineTarget")
@@ -60,7 +145,7 @@ settings/0/joints/2/limitation = SubResource("JointLimitationCone3D_di882")
 settings/0/joints/2/limitation/right_axis = 0
 settings/0/joints/2/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
 
-[node name="HeadLookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="2" unique_id=248053691]
+[node name="HeadLookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" index="2" unique_id=248053691]
 target_node = NodePath("../../../Pivot/HeadTarget")
 bone_name = "Head"
 bone = 4
@@ -71,7 +156,7 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 6.2831855
 secondary_damp_threshold = 1.0
 
-[node name="SpineBoneTwistDisperser3D" type="BoneTwistDisperser3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="3" unique_id=1770572332]
+[node name="SpineBoneTwistDisperser3D" type="BoneTwistDisperser3D" parent="Armature/Skeleton3D" index="3" unique_id=1770572332]
 transform = Transform3D(1, 0, 0, 0, 1.0000001, 0, 0, 0, 1.0000001, 0, 0, 0)
 setting_count = 1
 settings/0/root_bone_name = "Spine"
@@ -84,7 +169,7 @@ settings/0/twist_from_rest = true
 settings/0/disperse_mode = 0
 settings/0/joint_count = 4
 
-[node name="LimitAngularVelocityModifier3D" type="LimitAngularVelocityModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="4" unique_id=1081945482]
+[node name="LimitAngularVelocityModifier3D" type="LimitAngularVelocityModifier3D" parent="Armature/Skeleton3D" index="4" unique_id=1081945482]
 chain_count = 1
 joint_count = 4
 chains/0/root_bone_name = "Spine"
@@ -92,7 +177,7 @@ chains/0/root_bone = 1
 chains/0/end_bone_name = "Head"
 chains/0/end_bone = 4
 
-[node name="HeadRollLimitCopyTransformModifier3D" type="CopyTransformModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="5" unique_id=162404142]
+[node name="HeadRollLimitCopyTransformModifier3D" type="CopyTransformModifier3D" parent="Armature/Skeleton3D" index="5" unique_id=162404142]
 setting_count = 1
 settings/0/amount = 1.0
 settings/0/apply_bone_name = "Head"
@@ -104,7 +189,7 @@ settings/0/axes = 0
 settings/0/invert = 0
 settings/0/additive = false
 
-[node name="RHTwoBoneIK3D" type="TwoBoneIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="6" unique_id=1832653635]
+[node name="RHTwoBoneIK3D" type="TwoBoneIK3D" parent="Armature/Skeleton3D" index="6" unique_id=1832653635]
 setting_count = 1
 settings/0/target_node = NodePath("")
 settings/0/pole_node = NodePath("../../../ChestBoneAttachment3D/RHPole")
@@ -118,7 +203,7 @@ settings/0/end_bone = 26
 settings/0/use_virtual_end = false
 settings/0/extend_end_bone = false
 
-[node name="RHCopyTransformModifier3D" type="CopyTransformModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="7" unique_id=1287749125]
+[node name="RHCopyTransformModifier3D" type="CopyTransformModifier3D" parent="Armature/Skeleton3D" index="7" unique_id=1287749125]
 setting_count = 1
 settings/0/amount = 1.0
 settings/0/apply_bone_name = "Hand.R"
@@ -130,7 +215,7 @@ settings/0/axes = 7
 settings/0/invert = 0
 settings/0/additive = false
 
-[node name="LHTwoBoneIK3D" type="TwoBoneIK3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="8" unique_id=2076690949]
+[node name="LHTwoBoneIK3D" type="TwoBoneIK3D" parent="Armature/Skeleton3D" index="8" unique_id=2076690949]
 setting_count = 1
 settings/0/target_node = NodePath("")
 settings/0/pole_node = NodePath("../../../ChestBoneAttachment3D/LHPole")
@@ -144,7 +229,7 @@ settings/0/end_bone = 8
 settings/0/use_virtual_end = false
 settings/0/extend_end_bone = false
 
-[node name="LHCopyTransformModifier3D" type="CopyTransformModifier3D" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="9" unique_id=2030611154]
+[node name="LHCopyTransformModifier3D" type="CopyTransformModifier3D" parent="Armature/Skeleton3D" index="9" unique_id=2030611154]
 setting_count = 1
 settings/0/amount = 1.0
 settings/0/apply_bone_name = "Hand.L"
@@ -156,7 +241,7 @@ settings/0/axes = 7
 settings/0/invert = 0
 settings/0/additive = false
 
-[node name="Headmesh" parent="Armature/Skeleton3D" parent_id_path=PackedInt32Array(1975259413) index="10" unique_id=1448104495]
+[node name="Headmesh" parent="Armature/Skeleton3D" index="10" unique_id=458379278]
 surface_material_override/0 = SubResource("ShaderMaterial_xglvs")
 
 [node name="Pivot" type="Marker3D" parent="." index="1" unique_id=1170510801]
@@ -172,7 +257,7 @@ transform = Transform3D(1.0000001, 0, 0, 0, 0.99999976, 0, 0, 0, 1, 0.043745663,
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999999, -0.08734543, 0.31458735, 0.5055313)
 
 [node name="ChestBoneAttachment3D" type="BoneAttachment3D" parent="." index="2" unique_id=979231396]
-transform = Transform3D(-0.20846702, -0.97776866, 0.022579916, 0.975828, -0.20639417, 0.07184145, -0.06558398, 0.037010692, 0.9971604, -0.08062125, 1.4805058, -0.059391066)
+transform = Transform3D(-0.20846675, -0.97776854, 0.022586513, 0.9758097, -0.20638306, 0.07212132, -0.06585649, 0.03707503, 0.9971401, -0.08062143, 1.4804354, -0.05920741)
 bone_name = "Shoulder.R"
 bone_idx = 23
 use_external_skeleton = true
@@ -183,3 +268,9 @@ transform = Transform3D(1, -5.455513e-08, 1.4901161e-08, 4.976755e-09, 1.0000001
 
 [node name="LHPole" type="Marker3D" parent="ChestBoneAttachment3D" index="1" unique_id=369823537]
 transform = Transform3D(1.0000004, -1.4202669e-08, 1.4901161e-08, -2.9802322e-08, 1.0000005, -2.9802322e-08, -2.2351742e-08, 0, 1.0000002, -0.88933104, -1.0672629, 0.08454621)
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="4" unique_id=165544787]
+tree_root = SubResource("AnimationNodeBlendTree_dsa2x")
+anim_player = NodePath("../AnimationPlayer")
+parameters/walk_blend/blend_position = Vector2(-0.001869142, -0.007832885)
+parameters/walk_time_scale/scale = 1.0

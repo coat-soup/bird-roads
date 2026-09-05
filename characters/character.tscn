@@ -81,7 +81,7 @@ script = ExtResource("2_3fwhk")
 character = NodePath("..")
 metadata/_custom_type_script = "uid://crmry8vklmu4x"
 
-[node name="humanoid_basemesh" parent="." unique_id=427336341 node_paths=PackedStringArray("character") instance=ExtResource("3_3fwhk")]
+[node name="humanoid_basemesh" parent="." unique_id=373725082 node_paths=PackedStringArray("character") instance=ExtResource("3_3fwhk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 character = NodePath("..")
 

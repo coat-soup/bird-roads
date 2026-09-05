@@ -14,6 +14,7 @@ extends Node3D
 @onready var weapon_rt: RemoteTransform3D = $Pivot/WeaponRT
 
 @export var clothes : Array[ClothesData]
+@onready var animation_tree: AnimationTree = $AnimationTree
 
 
 func _ready() -> void:
@@ -59,3 +60,8 @@ func _process(delta: float) -> void:
 	
 	
 	rotation.y = rotate_toward(rotation.y, target_rot, delta * 5)
+	
+	var local_movement_dir = character.velocity * transform.basis
+	
+	animation_tree.set("parameters/walk_blend/blend_position", Vector2(-local_movement_dir.x, local_movement_dir.z))
+	animation_tree.set("parameters/walk_time_scale/scale", max(1.0, character.velocity.length() * 0.99))
