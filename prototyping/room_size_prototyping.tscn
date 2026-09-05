@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cd1jmul7hg3e5" path="res://ships/rooms/models/munitions_small.tscn" id="11_427k7"]
 [ext_resource type="PackedScene" uid="uid://ydtdxfa65jl0" path="res://ships/airship.tscn" id="13_68unt"]
 [ext_resource type="PackedScene" uid="uid://difyp7n3arn8r" path="res://ui/ui.tscn" id="13_gga6o"]
+[ext_resource type="PackedScene" uid="uid://cqlhivc5tvwoj" path="res://characters/humanoid_basemesh.tscn" id="14_68unt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3tw78"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -186,3 +187,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.25139, 0, -206.22208)
 
 [node name="Airship5" parent="." unique_id=488147325 instance=ExtResource("13_68unt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.25139, 0, 207.90837)
+
+[node name="humanoid_basemesh" parent="." unique_id=294321951 instance=ExtResource("14_68unt")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.6234655, 0, 0.04098797)

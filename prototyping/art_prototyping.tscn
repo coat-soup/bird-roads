@@ -26,7 +26,6 @@
 [ext_resource type="PackedScene" uid="uid://c4qdtyypgo466" path="res://world/props/scenes/girder.tscn" id="23_uysjx"]
 [ext_resource type="PackedScene" uid="uid://qklgp4k8c5av" path="res://world/props/scenes/girder_bend.tscn" id="24_kfvax"]
 [ext_resource type="PackedScene" uid="uid://p0gy3sijwi5a" path="res://world/props/scenes/window_roundtop.tscn" id="26_axw5q"]
-[ext_resource type="PackedScene" uid="uid://ce5f8uh1vxyq3" path="res://characters/character.tscn" id="27_3sxca"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fwjg4"]
 sky_top_color = Color(0.4862745, 0.54509807, 0.7176471, 1)
@@ -2881,6 +2880,3 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.36
 
 [node name="window_roundtop3" parent="." unique_id=1072969865 instance=ExtResource("26_axw5q")]
 transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, -6.952729, -5.799125, 29.305885)
-
-[node name="Character" parent="." unique_id=1004033952 instance=ExtResource("27_3sxca")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.606423, -10.5, 16.482407)

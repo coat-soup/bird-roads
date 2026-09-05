@@ -16,6 +16,11 @@ extends Node3D
 @export var clothes : Array[ClothesData]
 @onready var animation_tree: AnimationTree = $AnimationTree
 
+@export var gestures : Array[StringName]
+@export var idle_poses : Array[StringName]
+
+var cur_idle_pose_slot = 1
+
 
 func _ready() -> void:
 	if character:
@@ -24,6 +29,9 @@ func _ready() -> void:
 			data.add_clothes_to_character(character)
 	else: for data in clothes:
 			data.add_clothes_to_basemesh(self)
+	
+	pose_loop()
+	gesture_loop()
 
 
 func on_perception_updated():
@@ -65,3 +73,26 @@ func _process(delta: float) -> void:
 	
 	animation_tree.set("parameters/walk_blend/blend_position", Vector2(-local_movement_dir.x, local_movement_dir.z))
 	animation_tree.set("parameters/walk_time_scale/scale", max(1.0, character.velocity.length() * 0.99))
+
+
+func pose_loop():
+	set_idle_pose(idle_poses.pick_random())
+	await get_tree().create_timer(randf_range(5,15)).timeout
+	pose_loop()
+
+
+func gesture_loop():
+	perform_gesture(gestures.pick_random())
+	await get_tree().create_timer(randf_range(5,20)).timeout
+	gesture_loop()
+
+
+func perform_gesture(anim_name : StringName):
+	animation_tree.tree_root.get_node("gesture_anim").animation = "gesture_" + anim_name
+	animation_tree.set("parameters/gesture_oneshot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+
+func set_idle_pose(anim_name : StringName):
+	cur_idle_pose_slot = 2 if cur_idle_pose_slot == 1 else 1
+	animation_tree.tree_root.get_node("idle_pose_%d" % cur_idle_pose_slot).animation = "pose_" + anim_name
+	animation_tree.set("parameters/idle_pose_transition/transition_request", "pose_%d" % cur_idle_pose_slot)
