@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbyj14ao30nud"
-path.s3tc="res://.godot/imported/wood_planks_n.png-de3f906d681db695a517e8331de907de.s3tc.ctex"
+uid="uid://cer0wkp8c3ka3"
+path.s3tc="res://.godot/imported/metal_wire.png-e18b44fae7336cfd013a43f7e026629e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://ships/textures/wood_planks_n.png"
-dest_files=["res://.godot/imported/wood_planks_n.png-de3f906d681db695a517e8331de907de.s3tc.ctex"]
+source_file="res://world/props/textures/metal_wire.png"
+dest_files=["res://.godot/imported/metal_wire.png-e18b44fae7336cfd013a43f7e026629e.s3tc.ctex"]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

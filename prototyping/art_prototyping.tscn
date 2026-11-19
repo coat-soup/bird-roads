@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://c4qdtyypgo466" path="res://world/props/scenes/girder.tscn" id="23_uysjx"]
 [ext_resource type="PackedScene" uid="uid://qklgp4k8c5av" path="res://world/props/scenes/girder_bend.tscn" id="24_kfvax"]
 [ext_resource type="PackedScene" uid="uid://p0gy3sijwi5a" path="res://world/props/scenes/window_roundtop.tscn" id="26_axw5q"]
+[ext_resource type="PackedScene" uid="uid://cfrh4phmvulwi" path="res://world/props/scenes/cable_drum.tscn" id="27_3sxca"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fwjg4"]
 sky_top_color = Color(0.4862745, 0.54509807, 0.7176471, 1)
@@ -2880,3 +2881,23 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 3.36
 
 [node name="window_roundtop3" parent="." unique_id=1072969865 instance=ExtResource("26_axw5q")]
 transform = Transform3D(-0.8660254, 0, 0.50000006, 0, 1, 0, -0.50000006, 0, -0.8660254, -6.952729, -5.799125, 29.305885)
+
+[node name="cable_drum" parent="." unique_id=1397801311 instance=ExtResource("27_3sxca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.276851, -11, 11.322712)
+
+[node name="cable_drum2" parent="." unique_id=194498166 instance=ExtResource("27_3sxca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.766254, -2.9999995, -36.289825)
+
+[node name="cable_drum3" parent="." unique_id=1974025409 instance=ExtResource("27_3sxca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.64655, -3, -38.29721)
+
+[node name="cable_drum4" parent="." unique_id=1108948084 instance=ExtResource("27_3sxca")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.400265, -1.9722524, -37.10922)
+
+[node name="cable_drum5" parent="." unique_id=1593113961 instance=ExtResource("27_3sxca")]
+transform = Transform3D(0.82337415, -0.56749886, -2.4806162e-08, 0, -4.371139e-08, 1, -0.56749886, -0.82337415, -3.5990826e-08, -56.400265, -2.5248015, -40.242313)
+
+[node name="Cable" parent="cable_drum5" index="1" unique_id=1778315972]
+visible = false
+
+[editable path="cable_drum5"]

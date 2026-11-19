@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cfrh4phmvulwi"]
+
+[ext_resource type="PackedScene" uid="uid://b6k17qcsel34x" path="res://world/props/models/cable_drum.glb" id="1_tduru"]
+[ext_resource type="Shader" uid="uid://dsviheodsxam3" path="res://world/props/shaders/prop_master_shader.gdshader" id="3_0ngbb"]
+[ext_resource type="Texture2D" uid="uid://djjjk1m1h2sww" path="res://world/props/textures/wood_planks_light.png" id="3_fwo6q"]
+[ext_resource type="Texture2D" uid="uid://cer0wkp8c3ka3" path="res://world/props/textures/metal_wire.png" id="4_fwo6q"]
+[ext_resource type="Texture2D" uid="uid://bbyj14ao30nud" path="res://world/props/textures/wood_planks_n.png" id="4_ynlvw"]
+[ext_resource type="Texture2D" uid="uid://qmitk243rttv" path="res://world/props/textures/metal_wire_n.png" id="5_db31e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3kl4o"]
+render_priority = 0
+shader = ExtResource("3_0ngbb")
+shader_parameter/two_faced = false
+shader_parameter/albedo_tex = ExtResource("3_fwo6q")
+shader_parameter/normal_tex = ExtResource("4_ynlvw")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/invert_normals = false
+shader_parameter/triplanar_scale = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ynlvw"]
+render_priority = 0
+shader = ExtResource("3_0ngbb")
+shader_parameter/two_faced = false
+shader_parameter/albedo_tex = ExtResource("4_fwo6q")
+shader_parameter/normal_tex = ExtResource("5_db31e")
+shader_parameter/modulate = Color(1, 1, 1, 1)
+shader_parameter/invert_normals = false
+shader_parameter/triplanar_scale = 0.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_db31e"]
+height = 1.0
+radius = 0.98095703
+
+[node name="cable_drum" unique_id=1397801311 instance=ExtResource("1_tduru")]
+
+[node name="Drum" parent="." index="0" unique_id=634511900]
+instance_shader_parameters/override_triplanar = true
+surface_material_override/0 = SubResource("ShaderMaterial_3kl4o")
+
+[node name="Cable" parent="." index="1" unique_id=1778315972]
+surface_material_override/0 = SubResource("ShaderMaterial_ynlvw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2" unique_id=1150387306]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=1035693852]
+shape = SubResource("CylinderShape3D_db31e")
