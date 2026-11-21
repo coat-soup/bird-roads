@@ -9,6 +9,7 @@ var mat : ShaderMaterial
 var airship : Airship
 
 @export var hull_mesh : Node3D
+@export var hull_component : ShipComponent
 @export var color_palette : ShipColorPalette
 
 @export var name_label : Label3D
@@ -41,6 +42,8 @@ func _ready() -> void:
 		parent = parent.get_parent()
 		airship = parent as Airship
 	
+	#hull_component.setup(HullPartData.new(HullPartData.HullPartType.STRUCTURE), airship)
+	hull_component.recursive_get_meshes(hull_mesh)
 	
 	print("generating exterior of ship with speed: ", airship.actor_data.speed, ",  cargo: ", airship.actor_data.cargo_capacity, ", power: ", airship.actor_data.combat_power)
 	

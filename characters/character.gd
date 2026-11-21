@@ -12,6 +12,7 @@ extends CharacterBody3D
 
 @export var debug_immortal : bool = false
 
+## PLAYER CREW = 1
 @export var squad_id : int = 2
 
 @export var character_data : CharacterData

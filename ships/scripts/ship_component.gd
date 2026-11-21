@@ -45,12 +45,15 @@ func setup(d : HullPartData, ship : Airship):
 
 func recursive_get_meshes(node : Node):
 	var mesh = node as MeshInstance3D
-	if mesh: meshes.append(mesh)
+	if mesh:
+		meshes.append(mesh)
+		mesh.mesh = mesh.mesh.duplicate()
 	for child in node.get_children(): recursive_get_meshes(child)
 
 
 func update_mesh_damage():
-	for mesh in meshes: mesh.set_instance_shader_parameter("damage_ratio", 1.0 - health.cur_health/health.max_health)
+	for mesh in meshes:
+		mesh.set_instance_shader_parameter("damage_ratio", 1.0 - health.cur_health/health.max_health)
 
 
 func on_health_died():
@@ -61,3 +64,21 @@ func on_health_died():
 	spawned_particles = DAMAGED_COMPONENT_PARTICLES.instantiate()
 	add_child(spawned_particles)
 	if get_node(String(health.name)) as StaticBody3D: spawned_particles.position = health.position
+
+
+func paint_mesh_damage(pos : Vector3, damage : float, radius : float):
+	for mesh in meshes:
+		var meshdata = MeshDataTool.new()
+		meshdata.create_from_surface(mesh.mesh, 0)
+		
+		for i in range(meshdata.get_vertex_count()):
+			var vertex := mesh.to_global(meshdata.get_vertex(i))
+			var vertex_distance:float = vertex.distance_to(pos)
+		
+			if vertex_distance < radius:
+				var linear_distance = 1 - (vertex_distance / radius)
+				var calculated_hardness = linear_distance * damage/50.0
+				meshdata.set_vertex_color(i, meshdata.get_vertex_color(i) + Color(0,0,1) * calculated_hardness)
+		
+		mesh.mesh.surface_remove(0)
+		meshdata.commit_to_surface(mesh.mesh)

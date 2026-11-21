@@ -16,4 +16,4 @@ func _input(event: InputEvent) -> void:
 		cannon.target_rotation = Vector2(-camera.rotation.x + PI/2 * 0, camera.rotation.y + PI)
 	
 	if Input.is_action_just_pressed("fire_1"): cannon.fire()
-	if Input.is_key_pressed(KEY_P): $"../AIController".active = true
+	if Input.is_key_pressed(KEY_P): $"../AIController".active = !$"../AIController".active

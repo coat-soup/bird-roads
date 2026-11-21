@@ -62,16 +62,20 @@ func handle_impact(hit_result = null):
 		var collision_shape = PhysicsShapeQueryParameters3D.new()
 		collision_shape.shape = SphereShape3D.new()
 		collision_shape.shape.radius = radius
-		collision_shape.transform.origin = position
+		collision_shape.transform.origin = global_position
 		#collision_shape.collision_mask = layer_mask([1,2,4,5,6])
 	
 		var results = space_state.intersect_shape(collision_shape)
 		var healths : Array[Health]
+		var components : Array[ShipComponent]
 		
 		for result in results:
 			var health = result.collider as Health
 			if health and !healths.has(health): healths.append(health)
+			var component : ShipComponent = result.collider.get_parent_node_3d() as ShipComponent
+			if component and !components.has(component): components.append(component)
 		for health in healths: health.take_damage(damage, self)
+		for component in components: component.paint_mesh_damage(global_position, damage, radius)
 	
 	if hit_result:
 		var p : Node = hit_result.collider

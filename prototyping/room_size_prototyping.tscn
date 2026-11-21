@@ -176,16 +176,16 @@ material = SubResource("ShaderMaterial_2voc4")
 [node name="Airship" parent="." unique_id=254215350 instance=ExtResource("13_68unt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 74.95076, 0, 0)
 
-[node name="Airship2" parent="." unique_id=355697116 instance=ExtResource("13_68unt")]
+[node name="Airship2" parent="." unique_id=980768611 instance=ExtResource("13_68unt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.24907, 0, -112.53409)
 
-[node name="Airship3" parent="." unique_id=934489647 instance=ExtResource("13_68unt")]
+[node name="Airship3" parent="." unique_id=218725909 instance=ExtResource("13_68unt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 103.24907, 0, 97.859726)
 
-[node name="Airship4" parent="." unique_id=1877152171 instance=ExtResource("13_68unt")]
+[node name="Airship4" parent="." unique_id=1769930414 instance=ExtResource("13_68unt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.25139, 0, -206.22208)
 
-[node name="Airship5" parent="." unique_id=488147325 instance=ExtResource("13_68unt")]
+[node name="Airship5" parent="." unique_id=611891747 instance=ExtResource("13_68unt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.25139, 0, 207.90837)
 
 [node name="humanoid_basemesh" parent="." unique_id=294321951 instance=ExtResource("14_68unt")]

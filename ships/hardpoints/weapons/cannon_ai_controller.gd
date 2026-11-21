@@ -24,6 +24,7 @@ func _ready() -> void:
 			closest = airship
 	target = closest.movement
 
+
 func tick():
 	if active and target:
 		var pos = cannon.muzzle_point.global_position

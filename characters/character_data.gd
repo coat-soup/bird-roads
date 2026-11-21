@@ -35,5 +35,5 @@ static func create() -> CharacterData:
 	return char
 
 
-static var first_names : Array[String] = ["James", "Games", "Ivan", "Jessie", "Widow", "Ash", "Sash", "Loomy", "Winnona", "Sigfreid", "Wilson", "Sonwil", "Willa", "Lune", "Jimothy", "Juan", "Maria"]
-static var last_names : Array[String] = ["Mames", "Wilbert", "Don Juan", "O'Reily", "Reed", "The Third", "Jr", "Owenson", "Jams", "Paffa", "Carter", "Smith", "Baker", "Dartman", "Hearts", "Pillendon"]
+static var first_names : Array[String] = ["James", "Games", "Ivan", "Jessie", "Widow", "Ash", "Sash", "Loomy", "Winnona", "Sigfreid", "Wilson", "Sonwil", "Willa", "Lune", "Jimothy", "Juan", "Maria", "Charlotte", "Simone", "Wally", "Ernest", "Federico", "Garcia", "Wells", "Fargo", "Martha", "Serafine", "Igor", "Paloma", "Ines", "Jurgen"]
+static var last_names : Array[String] = ["Mames", "Wilbert", "Don Juan", "O'Reily", "Reed", "The Third", "Jr", "Owenson", "Jams", "Paffa", "Carter", "Smith", "Baker", "Dartman", "Hearts", "Pillendon", "Alfredson", "Willhelmer", "Wright", "Simmos", "Slider", "Slater", "Buttel", "Mugsworth", "Alelo", "McBride", "Silver", "Briggs"]

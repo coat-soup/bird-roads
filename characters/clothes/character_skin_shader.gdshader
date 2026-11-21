@@ -13,12 +13,14 @@ uniform vec3 skin_color : source_color = vec3(1.0);
 uniform vec3 highlight_color : source_color = vec3(1.0);
 uniform vec3 eye_color : source_color = vec3(0.2, 0.1, 0.05);
 
+uniform float buff = 0;
 
 instance uniform vec3 modulate_override : source_color = vec3(1.0);
 
 
 void vertex() {
 	// Called for every vertex the material is visible on.
+	VERTEX = VERTEX + NORMAL * 0.01 * buff;
 }
 
 void fragment() {

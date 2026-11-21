@@ -49,8 +49,15 @@ instance uniform float damage_ratio = 0.0;
 // 0.25: shiny / unpainted metal
 // 0.5: wood
 // 0.75: canvas/gasbag/sail
+// 1.0: structural/interior
+
+// VERTEX COLOR B: hull damage
 
 varying flat vec3 vPos;
+
+const float damage_alpha_cutoff = 0.5;
+const float damage_silver_cutoff = 0.3;
+const float damage_dark_cuttoff = 0.2;
 
 void vertex() {
 	if(flip_normals > 0) NORMAL = -NORMAL;
@@ -69,13 +76,18 @@ void fragment() {
 	vec3 pos = (inverse(MODEL_MATRIX) * INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).rgb / 20.0;
 	//pos = VERTEX / 20.0;
 	
-	if (pattern_id >= 0){
+	if (pattern_id >= 0 && COLOR.g < 1.0){
 		if(texture(pattern, UV.rg).r > 0.0) ALBEDO = vec3(secondary_color);
 	}
 	
 	float rust = triplanar(rust_mask, 0.04, inverse(MODEL_MATRIX) * INV_VIEW_MATRIX, VERTEX, NORMAL).r * rustiness;
 	
-	if (COLOR.g < 0.05){ // standard metal
+	float damage_mask = mix(0.5, 1.0, texture(damage_noise, pos.rg + pos.gb - pos.br + pos.br).r) * COLOR.b;
+	if(COLOR.g > 0.6) damage_mask *= 0.75; // less damage on internals
+	
+	bool shiny_damage_override = damage_mask > damage_silver_cutoff;
+	
+	if ((COLOR.g < 0.05 || COLOR.g >0.6) && !shiny_damage_override){ // standard metal
 		METALLIC = 1.0;
 		ROUGHNESS = mix(0.8, 0.9, texture(voronoi_noise, pos.rg + pos.gb - pos.br + pos.br).r);
 		
@@ -84,8 +96,12 @@ void fragment() {
 		NORMAL_MAP_DEPTH = 0.3;
 		
 		ALBEDO = mix(ALBEDO, rust_colour, rust);
+		
+		if(damage_mask > damage_dark_cuttoff) ALBEDO = ALBEDO * 0.3;
+		
+		ALPHA = 1.0 - damage_mask;
 	}
-	else if (COLOR.g < 0.2 ){ // shiny metal
+	else if ((COLOR.g < 0.2)){ // shiny metal
 		ALBEDO *= triplanar(metal_tex, 0.04, inverse(MODEL_MATRIX) * INV_VIEW_MATRIX, VERTEX, NORMAL);
 		NORMAL_MAP = triplanar(metal_norm, 0.04, inverse(MODEL_MATRIX) * INV_VIEW_MATRIX, VERTEX, NORMAL);
 		NORMAL_MAP_DEPTH = 0.1;
@@ -96,12 +112,16 @@ void fragment() {
 		
 		ALBEDO = mix(ALBEDO, rust_colour, rust*0.5);
 		ROUGHNESS = mix(ROUGHNESS, 1.0, rust*0.5);
+		
+		ALPHA = 1.0 - damage_mask;
 	}
 	else if (COLOR.g < 0.3){ // wood
 		ALBEDO = mix(ALBEDO, vec3(79, 44, 7)/600.0, 0.9);
 		ALBEDO = texture(wood_tex, pos.zx * 5.0).rgb * vec3(81, 55, 38)/255.0;
 		NORMAL_MAP = texture(wood_norm, pos.zx * 5.0).rgb;
 		ALBEDO = mix(ALBEDO, ALBEDO * 0.5, rust);
+		
+		if(damage_mask > damage_dark_cuttoff) ALBEDO = ALBEDO * 0.3;
 	}
 	else if (COLOR.g < 0.6){ // canvas
 		//ALBEDO = mix(ALBEDO, vec3(0.8), 0.4);
@@ -111,13 +131,17 @@ void fragment() {
 		NORMAL_MAP = triplanar(canvas_norm, 0.08, inverse(MODEL_MATRIX) * INV_VIEW_MATRIX, VERTEX, NORMAL);
 		if (texture(damage_noise, (pos.rg + pos.gb - pos.br + pos.br) / 3.0).r < damage_ratio/2.0) ALPHA = 0.0;
 		ALBEDO = mix(ALBEDO, ALBEDO * 0.5, rust);
+		
+		if(damage_mask > damage_dark_cuttoff) ALBEDO = ALBEDO * 0.3;
 	}
 	else{
-		
+		ALPHA = 1.0 - damage_mask;
 	};
 	//NORMAL_MAP_DEPTH = 1.0;
 	//ALBEDO = mix(ALBEDO, ALBEDO * 0.9, texture(voronoi_noise, pos.rg + pos.gb - pos.br + pos.br).r);
 	
+	//ALBEDO = COLOR.rgb;
+	
 	if (texture(damage_noise, pos.rg + pos.gb - pos.br + pos.br).r < damage_ratio/2.0) ALBEDO = ALBEDO * 0.3;
-	NORMAL_MAP = mix(NORMAL_MAP, texture(damage_noise, pos.rg + pos.gb - pos.br + pos.br).rgb, damage_ratio);
+	NORMAL_MAP = mix(NORMAL_MAP, texture(damage_noise, pos.rg + pos.gb - pos.br + pos.br).rgb, max(damage_mask, damage_ratio*2.0));
 }

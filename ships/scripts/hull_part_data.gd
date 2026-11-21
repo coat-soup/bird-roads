@@ -19,3 +19,10 @@ enum HullPartType {STRUCTURE, SAIL, FIN, ENGINE, TAIL, LONGSAIL, GASBAG, OTHER}
 
 func _to_string() -> String:
 	return name
+
+
+func _init(t : HullPartType = HullPartType.STRUCTURE, s : int = 0, p : int = 4, d : int = -1) -> void:
+	type = t
+	size = s
+	power = p
+	durability = d
