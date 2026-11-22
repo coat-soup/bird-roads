@@ -68,12 +68,17 @@ func on_health_died():
 
 func paint_mesh_damage(pos : Vector3, damage : float, radius : float):
 	for mesh in meshes:
+		var local_pos : Vector3 = mesh.to_local(pos)
+		var aabb : AABB = mesh.get_aabb().grow(radius * 1)
+		if !aabb.has_point(local_pos): continue
+		
 		var meshdata = MeshDataTool.new()
 		meshdata.create_from_surface(mesh.mesh, 0)
 		
+		
 		for i in range(meshdata.get_vertex_count()):
-			var vertex := mesh.to_global(meshdata.get_vertex(i))
-			var vertex_distance:float = vertex.distance_to(pos)
+			var vertex := meshdata.get_vertex(i)
+			var vertex_distance:float = vertex.distance_to(local_pos)
 		
 			if vertex_distance < radius:
 				var linear_distance = 1 - (vertex_distance / radius)
@@ -82,3 +87,24 @@ func paint_mesh_damage(pos : Vector3, damage : float, radius : float):
 		
 		mesh.mesh.surface_remove(0)
 		meshdata.commit_to_surface(mesh.mesh)
+
+
+
+func paint_mesh_damage_threaded(pos : Vector3, damage : float, radius : float):
+	for mesh in meshes:
+		var meshdata : MeshDataTool = MeshDataTool.new()
+		meshdata.create_from_surface(mesh.mesh, 0)
+		
+		var task = WorkerThreadPool.add_group_task(process_paint_mesh_damage_threaded.bind(mesh.to_local(pos), damage, radius, mesh, meshdata), meshdata.get_vertex_count())
+		WorkerThreadPool.wait_for_group_task_completion(task)
+		mesh.mesh.surface_remove(0)
+		meshdata.commit_to_surface(mesh.mesh)
+
+
+func process_paint_mesh_damage_threaded(i: int, pos : Vector3, damage : float, radius : float, mesh : MeshInstance3D, meshdata : MeshDataTool):
+		var vertex := meshdata.get_vertex(i)
+		var vertex_distance:float = vertex.distance_to(pos)
+		if vertex_distance < radius:
+			var linear_distance = 1 - (vertex_distance / radius)
+			var calculated_hardness = linear_distance * damage/50.0
+			meshdata.set_vertex_color(i, meshdata.get_vertex_color(i) + Color(0,0,1) * calculated_hardness)
