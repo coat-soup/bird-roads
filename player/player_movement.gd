@@ -43,7 +43,7 @@ func _ready():
 func _input(_event: InputEvent) -> void:
 	if !player.active: return
 	
-	if Input.is_key_pressed(KEY_SEMICOLON):
+	if Input.is_action_just_pressed("debug_admin_toggle"):
 		player.debug_mode = !player.debug_mode
 		if player.debug_mode:
 			collision_shape_3d.disabled = true

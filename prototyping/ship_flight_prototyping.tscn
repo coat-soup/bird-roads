@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://dck4k0vi4hevc" path="res://system/navigation_node.gd" id="13_7xl7w"]
 [ext_resource type="PackedScene" uid="uid://ce5f8uh1vxyq3" path="res://characters/character.tscn" id="15_ou1bv"]
 [ext_resource type="Script" uid="uid://bwec7p2bf3wse" path="res://characters/character_data.gd" id="16_hac2j"]
+[ext_resource type="PackedScene" uid="uid://bs7yuuavj0auu" path="res://ships/airship_tuga.tscn" id="17_uhcmw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hhrd0"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -142,7 +143,7 @@ script = ExtResource("16_hac2j")
 character_name = &"test"
 metadata/_custom_type_script = "uid://bwec7p2bf3wse"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_hac2j"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_uhcmw"]
 viewport_path = NodePath("DebugUI/Sprite3D/SubViewport")
 
 [sub_resource type="Resource" id="Resource_uhcmw"]
@@ -158,10 +159,10 @@ stats = Dictionary[String, int]({
 })
 metadata/_custom_type_script = "uid://bwec7p2bf3wse"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_uhcmw"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nygha"]
 viewport_path = NodePath("DebugUI/Sprite3D/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_nygha"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_q0tv2"]
 viewport_path = NodePath("DebugUI/Sprite3D/SubViewport")
 
 [node name="Node3D" type="Node3D" unique_id=434323374]
@@ -3599,33 +3600,33 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.08374, 1.7173538, 24.221848
 script = ExtResource("13_7xl7w")
 connections = [NodePath("../@Node3D@132565"), NodePath("../@Node3D@132568"), NodePath("../@Node3D@132566"), NodePath("../@Node3D@132567")]
 
-[node name="Airship2" parent="." unique_id=1797444171 instance=ExtResource("3_bxs55")]
+[node name="Airship2" parent="." unique_id=1836055787 instance=ExtResource("3_bxs55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.10455, 15.23126, 42.475197)
 
-[node name="Controllable" parent="Airship2/Movement/Helm" parent_id_path=PackedInt32Array(1797444171, 1139777492) index="0" unique_id=1154739986]
+[node name="Controllable" parent="Airship2/Movement/Helm" parent_id_path=PackedInt32Array(1836055787, 1139777492) index="0" unique_id=1154739986]
 mouse_sensetivity = 0.005
 controlled = false
 prompt_text = ""
 
-[node name="AIController" parent="Airship2/Movement" parent_id_path=PackedInt32Array(1797444171, 947988495) index="3" unique_id=1181289627]
+[node name="AIController" parent="Airship2/Movement" parent_id_path=PackedInt32Array(1836055787, 947988495) index="3" unique_id=1181289627]
 active = true
 
 [node name="AIAirshipWaypoints" parent="Airship2/Movement/AIController" index="0" unique_id=1240303359 node_paths=PackedStringArray("waypoints")]
 waypoints = [NodePath("../../../../AIWaypoints/Marker3D"), NodePath("../../../../AIWaypoints/Marker3D2"), NodePath("../../../../AIWaypoints/Marker3D3"), NodePath("../../../../AIWaypoints/Marker3D4"), NodePath("../../../../AIWaypoints/Marker3D5"), NodePath("../../../../AIWaypoints/Marker3D6"), NodePath("../../../../AIWaypoints/Marker3D7"), NodePath("../../../../AIWaypoints/Marker3D8"), NodePath("../../../../AIWaypoints/Marker3D9"), NodePath("../../../../AIWaypoints/Marker3D10")]
 
-[node name="Airship3" parent="." unique_id=7740871 instance=ExtResource("3_bxs55")]
+[node name="Airship3" parent="." unique_id=81821424 instance=ExtResource("3_bxs55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -189.60217, 15.23126, -18.890022)
 
-[node name="Controllable" parent="Airship3/Movement/Helm" parent_id_path=PackedInt32Array(7740871, 1139777492) index="0" unique_id=1154739986]
+[node name="Controllable" parent="Airship3/Movement/Helm" parent_id_path=PackedInt32Array(81821424, 1139777492) index="0" unique_id=1154739986]
 mouse_sensetivity = 0.005
 controlled = false
 prompt_text = ""
 
-[node name="AIController" parent="Airship3/Movement" parent_id_path=PackedInt32Array(7740871, 947988495) index="3" unique_id=1181289627]
+[node name="AIController" parent="Airship3/Movement" parent_id_path=PackedInt32Array(81821424, 947988495) index="3" unique_id=1181289627]
 active = true
 
 [node name="AIAirshipWaypoints" parent="Airship3/Movement/AIController" index="0" unique_id=1240303359 node_paths=PackedStringArray("waypoints")]
-waypoints = [NodePath("../../../../Airship2/Movement")]
+waypoints = [NodePath("../../../../Airship2/Movement/hull_lancer/Interior/corridor_prot2/HalfbendR")]
 
 [node name="Player" parent="." unique_id=657413655 instance=ExtResource("3_hhrd0")]
 transform = Transform3D(-0.91914225, 0, 0.3939258, 0, 1, 0, -0.3939258, 0, -0.91914225, 52.270985, 0.9778776, 31.64254)
@@ -4306,7 +4307,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.377724, 0.06482975, 34.751
 transform = Transform3D(0.5589614, 0, 0.8291937, 0, 1, 0, -0.8291937, 0, 0.5589614, -47.95346, 0.065, 42)
 
 [node name="Camera3D" parent="cannon_basic_handheld2" index="4" unique_id=160089326]
-transform = Transform3D(-1.0000001, -3.7250283e-09, -8.940697e-08, -3.7250296e-09, 1, 2.9802486e-08, 8.940697e-08, 2.9802486e-08, -1.0000001, 0, 1.7742426, -1.7037029)
+transform = Transform3D(-1.0000001, -3.725014e-09, -8.940697e-08, -3.7250163e-09, 1, 2.980251e-08, 8.940697e-08, 2.980251e-08, -1.0000001, 0, 1.7742426, -1.7037029)
 
 [node name="AIController" parent="cannon_basic_handheld2" index="6" unique_id=1230178264 node_paths=PackedStringArray("target")]
 target = NodePath("../../Airship2/Movement")
@@ -6838,7 +6839,7 @@ character_data = SubResource("Resource_hac2j")
 graph = NodePath("../../NavGraph")
 
 [node name="Sprite3D" parent="Character/DebugUI" parent_id_path=PackedInt32Array(1004033952, 2129405429) index="3" unique_id=2100649143]
-texture = SubResource("ViewportTexture_hac2j")
+texture = SubResource("ViewportTexture_uhcmw")
 
 [node name="Character2" parent="." unique_id=1023407930 instance=ExtResource("15_ou1bv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.750904, 1.2591629, 7.118414)
@@ -6848,7 +6849,7 @@ character_data = SubResource("Resource_uhcmw")
 graph = NodePath("../../NavGraph")
 
 [node name="Sprite3D" parent="Character2/DebugUI" parent_id_path=PackedInt32Array(1023407930, 2129405429) index="3" unique_id=2100649143]
-texture = SubResource("ViewportTexture_uhcmw")
+texture = SubResource("ViewportTexture_nygha")
 
 [node name="Character3" parent="." unique_id=1501951659 instance=ExtResource("15_ou1bv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.258842, 1.2591629, 10.16868)
@@ -6857,7 +6858,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.258842, 1.2591629, 10.168
 graph = NodePath("../../NavGraph")
 
 [node name="Sprite3D" parent="Character3/DebugUI" parent_id_path=PackedInt32Array(1501951659, 2129405429) index="3" unique_id=2100649143]
-texture = SubResource("ViewportTexture_nygha")
+texture = SubResource("ViewportTexture_q0tv2")
 
 [node name="WeaponManager" parent="Character3" index="9" unique_id=1281329497 node_paths=PackedStringArray("cur_weapon")]
 cur_weapon = NodePath("break_action")
@@ -6872,6 +6873,15 @@ visible = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.575183, 17.804743, 44.567944)
 squad_id = 1
 
+[node name="Airship4" parent="." unique_id=1400767139 instance=ExtResource("17_uhcmw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.136433, 11.03806, 35.5115)
+
+[node name="AIController" parent="Airship4/Movement" parent_id_path=PackedInt32Array(1400767139, 947988495) index="3" unique_id=1181289627]
+active = true
+
+[node name="AIAirshipWaypoints" parent="Airship4/Movement/AIController" index="0" unique_id=1240303359 node_paths=PackedStringArray("waypoints")]
+waypoints = [NodePath("../../../../AIWaypoints/Marker3D"), NodePath("../../../../AIWaypoints/Marker3D2"), NodePath("../../../../AIWaypoints/Marker3D3"), NodePath("../../../../AIWaypoints/Marker3D4"), NodePath("../../../../AIWaypoints/Marker3D5"), NodePath("../../../../AIWaypoints/Marker3D6"), NodePath("../../../../AIWaypoints/Marker3D7"), NodePath("../../../../AIWaypoints/Marker3D8"), NodePath("../../../../AIWaypoints/Marker3D9"), NodePath("../../../../AIWaypoints/Marker3D10")]
+
 [editable path="Airship"]
 [editable path="Airship2"]
 [editable path="Airship3"]
@@ -6879,3 +6889,4 @@ squad_id = 1
 [editable path="Character"]
 [editable path="Character2"]
 [editable path="Character3"]
+[editable path="Airship4"]

@@ -83,7 +83,9 @@ func paint_mesh_damage(pos : Vector3, damage : float, radius : float):
 			if vertex_distance < radius:
 				var linear_distance = 1 - (vertex_distance / radius)
 				var calculated_hardness = linear_distance * damage/50.0
-				meshdata.set_vertex_color(i, meshdata.get_vertex_color(i) + Color(0,0,1) * calculated_hardness)
+				var cur_color : Color = meshdata.get_vertex_color(i)
+				var new_color : Color = cur_color + Color(0,0,1) * calculated_hardness * (0.5 if cur_color.g > 0.6 else 1.0)
+				meshdata.set_vertex_color(i, new_color)
 		
 		mesh.mesh.surface_remove(0)
 		meshdata.commit_to_surface(mesh.mesh)
@@ -107,4 +109,6 @@ func process_paint_mesh_damage_threaded(i: int, pos : Vector3, damage : float, r
 		if vertex_distance < radius:
 			var linear_distance = 1 - (vertex_distance / radius)
 			var calculated_hardness = linear_distance * damage/50.0
-			meshdata.set_vertex_color(i, meshdata.get_vertex_color(i) + Color(0,0,1) * calculated_hardness)
+			var cur_color : Color = meshdata.get_vertex_color(i)
+			var new_color : Color = cur_color + Color(0,0,1) * calculated_hardness * (0.0 if cur_color.g > 0.6 else 1.0)
+			meshdata.set_vertex_color(i, new_color)

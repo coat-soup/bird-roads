@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://crfi032uqdiy4"]
+
+[ext_resource type="PackedScene" uid="uid://dgiiqocbjlelc" path="res://prototyping/corridors/corridor_prot.glb" id="1_1meq8"]
+[ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="2_tcrse"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7misy"]
+render_priority = 0
+shader = ExtResource("2_tcrse")
+shader_parameter/world_uv = false
+shader_parameter/object_uv = false
+shader_parameter/object_uv_scale = Vector2(1, 1)
+shader_parameter/preset_color = 1
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/metalic = 0.25
+shader_parameter/roughness = 0.75
+shader_parameter/grid_scale = 1.0
+shader_parameter/grid_width = 0.01
+shader_parameter/grid_color = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/inside_scale = 1.0
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_color = Color(0.8, 0.8, 0.8, 0.8)
+shader_parameter/checkered = true
+shader_parameter/sub_checkered_grid = false
+shader_parameter/checkered_color = Color(0.25, 0.25, 0.25, 1)
+shader_parameter/checkered_blend_color = 0.1
+shader_parameter/use_inside_uv = false
+shader_parameter/use_albedo_color = false
+shader_parameter/albedo_alpha = 0.5
+
+[node name="corridor_prot" unique_id=1935301666 instance=ExtResource("1_1meq8")]
+
+[node name="Straight" parent="." index="0" unique_id=1462917136]
+visible = false
+surface_material_override/0 = SubResource("ShaderMaterial_7misy")
+
+[node name="Tee" parent="." index="1" unique_id=786139472]
+visible = false
+surface_material_override/0 = SubResource("ShaderMaterial_7misy")
+
+[node name="Junction" parent="." index="2" unique_id=225966128]
+visible = false
+surface_material_override/0 = SubResource("ShaderMaterial_7misy")
+
+[node name="Elbow" parent="." index="3" unique_id=723070655]
+visible = false
+surface_material_override/0 = SubResource("ShaderMaterial_7misy")
+
+[node name="LadderBottom" parent="." index="4" unique_id=1747897324]
+visible = false
+
+[node name="HalfbendL" parent="." index="5" unique_id=1956741497]
+visible = false
+surface_material_override/0 = SubResource("ShaderMaterial_7misy")
+
+[node name="HalfbendR" parent="." index="6" unique_id=512758088]
+surface_material_override/0 = SubResource("ShaderMaterial_7misy")
+
+[node name="LadderMiddle" parent="." index="7" unique_id=258246920]
+visible = false

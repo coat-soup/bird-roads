@@ -29,17 +29,30 @@ shader_parameter/albedo_alpha = 0.5
 
 [node name="corridor_prot" unique_id=1935301666 instance=ExtResource("1_3lpw5")]
 
-[node name="Straight" parent="." index="0" unique_id=949850225]
+[node name="Straight" parent="." index="0" unique_id=1462917136]
 visible = false
 surface_material_override/0 = SubResource("ShaderMaterial_7misy")
 
-[node name="Tee" parent="." index="1" unique_id=2122457401]
+[node name="Tee" parent="." index="1" unique_id=786139472]
 surface_material_override/0 = SubResource("ShaderMaterial_7misy")
 
-[node name="Junction" parent="." index="2" unique_id=2009182557]
+[node name="Junction" parent="." index="2" unique_id=225966128]
 visible = false
 surface_material_override/0 = SubResource("ShaderMaterial_7misy")
 
-[node name="Elbow" parent="." index="3" unique_id=1449059592]
+[node name="Elbow" parent="." index="3" unique_id=723070655]
 visible = false
 surface_material_override/0 = SubResource("ShaderMaterial_7misy")
+
+[node name="LadderBottom" parent="." index="4" unique_id=1747897324]
+visible = false
+
+[node name="HalfbendL" parent="." index="5" unique_id=1956741497]
+visible = false
+surface_material_override/0 = SubResource("ShaderMaterial_7misy")
+
+[node name="HalfbendR" parent="." index="6" unique_id=512758088]
+visible = false
+
+[node name="LadderMiddle" parent="." index="7" unique_id=258246920]
+visible = false

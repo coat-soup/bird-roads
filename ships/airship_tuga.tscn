@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bs7yuuavj0auu"]
+
+[ext_resource type="Script" uid="uid://cl3whss8bqpj2" path="res://ships/scripts/airship.gd" id="1_v7c4h"]
+[ext_resource type="Script" uid="uid://cjgwu3c30dijs" path="res://ships/scripts/airship_movement_manager.gd" id="2_noqqu"]
+[ext_resource type="Script" uid="uid://djhjtgojkfdes" path="res://ships/scripts/airship_player_controller.gd" id="4_eei3s"]
+[ext_resource type="PackedScene" uid="uid://bfg0xdkuvy3i2" path="res://ships/hulls/hull_tuga.tscn" id="4_noqqu"]
+[ext_resource type="Script" uid="uid://61wl05o4gntr" path="res://ships/scripts/airship_ai_controller.gd" id="5_4od2l"]
+[ext_resource type="Script" uid="uid://85bwq26quwdk" path="res://ships/scripts/ai_airship_waypoints.gd" id="6_ah8up"]
+
+[sub_resource type="Curve" id="Curve_0s8cv"]
+_data = [Vector2(0, 0.10344815), 0.0, 0.6913994, 0, 0, Vector2(1, 1), 0.6236484, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_mq1uw"]
+_limits = [0.0, 1.0, 0.0, 2.0]
+_data = [Vector2(0.9972452, 0), 0.0, 0.0, 0, 0, Vector2(2, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_5nyth"]
+_data = [Vector2(0.5123967, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.49742264), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_swygn"]
+radius = 5.288574
+height = 37.85829
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0s8cv"]
+
+[node name="Airship" type="Node3D" unique_id=254215350 groups=["Airship"]]
+script = ExtResource("1_v7c4h")
+
+[node name="Movement" type="RigidBody3D" parent="." unique_id=947988495 node_paths=PackedStringArray("airship")]
+collision_layer = 8
+collision_mask = 8
+gravity_scale = 0.0
+angular_damp = 1.0
+script = ExtResource("2_noqqu")
+airship = NodePath("..")
+rotation_speed_curve = SubResource("Curve_0s8cv")
+rotation_correction_curve = SubResource("Curve_mq1uw")
+rotation_force_curve = SubResource("Curve_5nyth")
+
+[node name="hull_tuga" parent="Movement" unique_id=1436210284 instance=ExtResource("4_noqqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4029648, -3.3501291)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Movement" unique_id=604350542]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.222145, -3.3796768)
+shape = SubResource("CapsuleShape3D_swygn")
+
+[node name="Helm" type="CSGBox3D" parent="Movement" unique_id=1139777492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.9799957, 2.043142)
+
+[node name="Camera3D" type="Camera3D" parent="Movement/Helm" unique_id=969510234]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.46767, -0.9292779)
+
+[node name="Controllable" type="StaticBody3D" parent="Movement/Helm" unique_id=1154739986 node_paths=PackedStringArray("movement", "camera")]
+script = ExtResource("4_eei3s")
+movement = NodePath("../..")
+mouse_sensetivity = null
+controlled = null
+camera = NodePath("../Camera3D")
+prompt_text = "Control Helm"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Movement/Helm/Controllable" unique_id=944801888]
+shape = SubResource("BoxShape3D_0s8cv")
+
+[node name="AIController" type="Node" parent="Movement" unique_id=1181289627 node_paths=PackedStringArray("movement")]
+script = ExtResource("5_4od2l")
+movement = NodePath("..")
+
+[node name="AIAirshipWaypoints" type="Node" parent="Movement/AIController" unique_id=1240303359]
+script = ExtResource("6_ah8up")
