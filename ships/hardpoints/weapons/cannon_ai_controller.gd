@@ -9,6 +9,7 @@ signal ticked
 const tick_rate : float = 12
 
 @export var target : Node3D
+@export var subtarget : Node3D
 
 
 func _ready() -> void:
@@ -26,14 +27,15 @@ func _ready() -> void:
 
 
 func tick():
+	if active and target: subtarget = get_airship_subtarget(target)
+	
 	if active and target:
 		var pos = cannon.muzzle_point.global_position
 		var shell_speed := 100.0 # TODO: take from actual data object
 		var drop_speed := 10.0
 		var parent_vel : Vector3 = cannon.airship.movement.linear_velocity if cannon.airship else Vector3.ZERO
-		var target_pos := target.global_position
+		var target_pos : Vector3 = subtarget.global_position if subtarget else target.global_position
 		var target_vel : Vector3 = (target as RigidBody3D).linear_velocity if (target as RigidBody3D) else Vector3.ZERO
-		
 		
 		var rel_vel = target_vel - parent_vel
 		var future = target_pos
@@ -86,3 +88,15 @@ func solve_ballistic_angle(horizontal_dist: float, vertical_dist: float, speed: 
 	
 	# Lower trajectory
 	return atan((v2 - sqrt(discriminant)) / (gravity * horizontal_dist))
+
+
+func get_airship_subtarget(target : Node3D) -> Node3D:
+	var airship = target.get_parent_node_3d() as Airship
+	var space_state = cannon.get_world_3d().direct_space_state
+	if airship:
+		for engine in airship.engines:
+			if engine.health and engine.health.cur_health > 0:
+				var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(cannon.muzzle_point.global_position, engine.center_point.global_position if engine.center_point else engine.global_position, Util.layer_mask([1,2,4,5,6])))
+				if result and result.collider.get_parent_node_3d() == engine:
+					return engine.center_point if engine.center_point else engine
+	return null

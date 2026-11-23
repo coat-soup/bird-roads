@@ -36,7 +36,7 @@ func fire():
 	shell.global_rotation = muzzle_point.global_rotation
 	if airship:
 		shell.parent_velocity = airship.movement.linear_velocity
-		airship.movement.apply_force(-muzzle_point.global_basis.z * 20, global_position - airship.movement.global_position)
+		airship.movement.apply_force(-muzzle_point.global_basis.z * shell.damage/2, global_position - airship.movement.global_position)
 	shell._ready()
 
 

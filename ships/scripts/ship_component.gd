@@ -7,6 +7,7 @@ const DAMAGED_COMPONENT_PARTICLES = preload("uid://bje6xmkj4q347")
 
 var data : HullPartData
 @export var health : Health
+@export var center_point : Node3D
 
 var airship : Airship
 
@@ -14,7 +15,6 @@ var broken : bool = false
 var spawned_particles : Node3D = null
 
 var meshes : Array[MeshInstance3D]
-
 
 func setup(d : HullPartData, ship : Airship):
 	data = d

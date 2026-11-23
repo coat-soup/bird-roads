@@ -44,27 +44,28 @@ _data = {
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_yyfql"]
-height = 5.1866455
-radius = 1.4506836
+height = 6.623948
+radius = 1.9775391
 
-[node name="engine_pod" unique_id=1275211068 node_paths=PackedStringArray("health") instance=ExtResource("1_703md")]
+[node name="engine_pod" unique_id=885639818 node_paths=PackedStringArray("health", "center_point") instance=ExtResource("1_703md")]
 script = ExtResource("2_ovp8h")
 health = NodePath("StaticBody3D")
+center_point = NodePath("StaticBody3D")
 
-[node name="Circle" parent="." index="0" unique_id=1696580083]
+[node name="Circle" parent="." index="0" unique_id=2131902475]
 surface_material_override/0 = ExtResource("2_yyfql")
 
-[node name="Cube" parent="." index="1" unique_id=105361061]
+[node name="Cube" parent="." index="1" unique_id=1506560831]
 surface_material_override/0 = ExtResource("2_yyfql")
 
-[node name="Cube_002" parent="." index="2" unique_id=121625852]
-transform = Transform3D(2.925218e-07, 1.5023679, 0, -1.5023679, 2.925218e-07, 0, 0, 0, 1.5023679, 0, -2.461263, -3.737999)
+[node name="Cube_002" parent="." index="2" unique_id=656884123]
+transform = Transform3D(2.925218e-07, 1.5023679, 0, -1.5023679, 2.925218e-07, 0, 0, 0, 1.5023679, -2.842171e-14, -3.1853666, -5.052991)
 surface_material_override/0 = ExtResource("2_yyfql")
 
-[node name="Cube_003" parent="." index="3" unique_id=2129243729]
+[node name="Cube_003" parent="." index="3" unique_id=786047668]
 surface_material_override/0 = ExtResource("2_yyfql")
 
-[node name="Circle_001" parent="." index="4" unique_id=1432825653]
+[node name="Circle_001" parent="." index="4" unique_id=1782779489]
 surface_material_override/0 = ExtResource("2_yyfql")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5" unique_id=309833773 node_paths=PackedStringArray("ship_component")]
@@ -75,9 +76,9 @@ script = ExtResource("4_5oqn8")
 ship_component = NodePath("..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="6" unique_id=1838846854]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.2726867, -1.1121664)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0316842, -1.1121664)
 script = ExtResource("5_bvjc3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=578493462]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.07311034, -0.045686245)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.14256752, -0.15554526)
 shape = SubResource("CylinderShape3D_yyfql")

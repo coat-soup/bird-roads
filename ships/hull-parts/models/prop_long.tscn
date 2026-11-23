@@ -101,9 +101,10 @@ radius = 1.5610352
 height = 1.7642822
 radius = 3.3544922
 
-[node name="prop_long" unique_id=1935447706 node_paths=PackedStringArray("health") instance=ExtResource("1_hnwhx")]
+[node name="prop_long" unique_id=1935447706 node_paths=PackedStringArray("health", "center_point") instance=ExtResource("1_hnwhx")]
 script = ExtResource("2_ytwon")
 health = NodePath("StaticBody3D")
+center_point = NodePath("StaticBody3D")
 
 [node name="Cube_001" parent="." index="1" unique_id=1142011936]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -8.001042)

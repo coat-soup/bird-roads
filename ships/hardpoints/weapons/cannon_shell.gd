@@ -82,7 +82,7 @@ func handle_impact(hit_result = null):
 		while p != get_tree().root:
 			var airship_movement : AirshipMovementManager = p as AirshipMovementManager
 			if airship_movement:
-				airship_movement.apply_force(global_basis.z * 1000/damage, global_position - airship_movement.global_position)
+				airship_movement.apply_force(global_basis.z * 500/damage, global_position - airship_movement.global_position)
 				break
 			p = p.get_parent()
 		
