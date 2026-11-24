@@ -143,7 +143,7 @@ func attach_to_floor():
 	if collider != player.get_parent():		
 		var airship : Airship
 		var parent : Node = collider
-		while not airship and airship != get_tree().root:
+		while parent and not airship and airship != get_tree().root:
 			parent = parent.get_parent()
 			airship = parent as Airship
 		

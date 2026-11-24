@@ -1,19 +1,12 @@
 class_name ShipInteriorGenerator
 extends Node3D
 
+signal finished_generating
+
 var rooms : Array[ShipRoom]
 var room_datas : Array[ShipRoomData]
 
 var airship : Airship
-
-
-func _ready() -> void:
-	var parent : Node = self
-	while not airship and airship != get_tree().root:
-		parent = parent.get_parent()
-		airship = parent as Airship
-	
-	generate()
 
 
 func generate() -> void:
@@ -30,6 +23,8 @@ func generate() -> void:
 		
 		var corridor = c as CorridorSegment
 		if corridor: corridor.airship = airship
+	
+	finished_generating.emit()
 
 
 func pick_random_room(slot : ShipRoomSlot) -> ShipRoomData:

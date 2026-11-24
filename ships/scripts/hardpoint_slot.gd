@@ -55,6 +55,10 @@ func resolve(rand : RandomNumberGenerator, generator : ShipExteriorGenerator):
 		generator.power_req -= weapon_size_to_power[hardpoint_data.size]
 		
 		hardpoint.position.z = 2.8 * move_weapon_forward;
+		
+		var weapon_platform = hardpoint as WeaponPlatform
+		generator.airship.weapon_platforms.append(weapon_platform)
+		
 		var weapon_possibilities : Array[ShipWeaponData]
 		if !(symmetry_connection and symmetry_connection.resolved):
 			for p in Resources.ship_weapons:
@@ -68,6 +72,7 @@ func resolve(rand : RandomNumberGenerator, generator : ShipExteriorGenerator):
 		
 		var weapon = weapon_data.prefab.instantiate()
 		hardpoint.get_child(0).add_child(weapon)
+		weapon_platform.cannon = weapon
 		
 	elif hardpoint_data.type == HardpointData.HardpointType.CARGO:
 		generator.cargo_req -= hardpoint_data.size

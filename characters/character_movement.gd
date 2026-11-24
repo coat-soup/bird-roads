@@ -22,12 +22,13 @@ func _physics_process(delta: float) -> void:
 	else: direction = Vector3.ZERO
 	
 	if floorcast.get_collider():
+		if time_in_air > 0: attach_to_floor()
 		time_in_air = 0
-		if floorcast.get_collider() != character.get_parent():
-			character.reparent(floorcast.get_collider())
 	else:
 		time_in_air += delta
-		if time_in_air > 1.5 and character.get_parent() != get_tree().root: character.reparent(get_tree().root)
+		if time_in_air > 1.5 and character.get_parent() != get_tree().root:
+			character.reparent(get_tree().root)
+			character.cur_airship = null
 	
 	# gravity
 	if not character.is_on_floor():
@@ -52,6 +53,27 @@ func _physics_process(delta: float) -> void:
 	head_cast.target_position = shin_cast.target_position
 	
 	character.move_and_slide()
+
+
+func attach_to_floor():
+	print("sending floor atach")
+	var collider = floorcast.get_collider()
+	if collider != character.get_parent():
+		var airship : Airship
+		var parent : Node = collider
+		while parent and not airship and parent != get_tree().root:
+			parent = parent.get_parent()
+			airship = parent as Airship
+		
+		if airship:
+			character.cur_airship = airship
+			parent = airship.movement
+		else:
+			character.cur_airship = null
+		
+		if parent != character.get_parent():
+			character.reparent(parent)
+
 
 func get_speed() -> float:
 	return character.speed + character.speed * StatModifiers.agility_speed * character.character_data.stats["agility"]

@@ -8,20 +8,21 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_hfnd5"]
 size = Vector3(2, 2, 2)
 
-[node name="cannon_basic_handheld" unique_id=942342330 node_paths=PackedStringArray("yaw_obj", "pitch_obj", "muzzle_point") instance=ExtResource("1_hfnd5")]
+[node name="cannon_basic_handheld" unique_id=942342330 node_paths=PackedStringArray("yaw_obj", "pitch_obj", "muzzle_point", "ai_controller") instance=ExtResource("1_hfnd5")]
 script = ExtResource("2_ldnv6")
 yaw_obj = NodePath("Yaw")
 pitch_obj = NodePath("Yaw/Pitch")
 muzzle_point = NodePath("Yaw/Pitch/MuzzlePoint")
 pitch_min = -40.0
+ai_controller = NodePath("AIController")
 
-[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Yaw/Pitch" parent_id_path=PackedInt32Array(431174754) index="0" unique_id=1982730829]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Yaw/Pitch" parent_id_path=PackedInt32Array(90843999) index="0" unique_id=1982730829]
 transform = Transform3D(8.526513e-14, 1.0000001, 4.3772857e-08, 6.140962e-11, 4.3772836e-08, -1.0000007, -0.99999976, 6.3948846e-14, -6.151687e-11, 0, 0.8493778, -1.6308335)
 remote_path = NodePath("../../../Camera3D")
 update_rotation = false
 update_scale = false
 
-[node name="MuzzlePoint" type="Marker3D" parent="Yaw/Pitch" parent_id_path=PackedInt32Array(431174754) index="6" unique_id=1017886772]
+[node name="MuzzlePoint" type="Marker3D" parent="Yaw/Pitch" parent_id_path=PackedInt32Array(90843999) index="6" unique_id=1017886772]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2588386, 2.0774457)
 
 [node name="Camera3D" type="Camera3D" parent="." index="4" unique_id=160089326]

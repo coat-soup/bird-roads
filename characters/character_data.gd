@@ -11,6 +11,7 @@ extends Resource
 	"piloting" : 0,
 	"fortitude" : 0,
 	"agility" : 0,
+	"artillery" : 0,
 }
 
 

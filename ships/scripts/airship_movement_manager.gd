@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	roll_input = clamp(roll_input, -1.0, 1.0)
 	
 	apply_central_force(global_basis.x * acceleration * strafe_input * 0.4 * airship.thrust_ratio)
-	apply_central_force(global_basis.y * acceleration * lift_input * 0.4 * airship.thrust_ratio)
+	apply_central_force(global_basis.y * acceleration * lift_input * 0.6 * airship.thrust_ratio)
 	if get_directional_speed_ratio() <= 1.0 * airship.thrust_ratio: apply_central_force(global_basis.z * acceleration * thrust_input * airship.thrust_ratio)
 	
 	

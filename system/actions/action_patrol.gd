@@ -23,4 +23,8 @@ func on_finished_path(character : Character):
 	await character.get_tree().create_timer(1.0).timeout
 	if !is_instance_valid(character): return # maybe they died while waiting
 	while len(character.nav_agent.path) == 0:
-		character.nav_agent.random_path()
+		var node : NavigationNode = character.nav_agent.cur_node
+		for i in range(20):
+			node = node.connections.pick_random()
+		character.nav_agent.set_path_to_node(node)
+		#character.nav_agent.random_path()

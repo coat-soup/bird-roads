@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://b567710rit15p" path="res://system/actions/action_fire_weapon.gd" id="11_i1355"]
 [ext_resource type="Script" uid="uid://0pj0db48qaoq" path="res://system/actions/action_reload_weapon.gd" id="11_qci4v"]
 [ext_resource type="Script" uid="uid://dagvkdjs33wwf" path="res://system/health.gd" id="12_bnq0n"]
+[ext_resource type="Script" uid="uid://bhbn1587cx6hr" path="res://system/actions/action_man_cannon.gd" id="12_qnu6j"]
 [ext_resource type="Script" uid="uid://bepefth7s5b42" path="res://system/weapons/weapon_manager.gd" id="13_hgjqb"]
 [ext_resource type="PackedScene" uid="uid://gs3fu7jvum7m" path="res://characters/weapons/revolver.tscn" id="15_i1355"]
 [ext_resource type="PackedScene" uid="uid://cbetj2x13xqd1" path="res://characters/weapons/break_action.tscn" id="16_qci4v"]
@@ -42,6 +43,12 @@ metadata/_custom_type_script = "uid://b567710rit15p"
 script = ExtResource("11_qci4v")
 action_name = &"reload"
 metadata/_custom_type_script = "uid://0pj0db48qaoq"
+
+[sub_resource type="Resource" id="Resource_e3kty"]
+script = ExtResource("12_qnu6j")
+action_name = &"man_cannon"
+blocking = true
+metadata/_custom_type_script = "uid://bhbn1587cx6hr"
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qci4v"]
 viewport_path = NodePath("DebugUI/Sprite3D/SubViewport")
@@ -90,7 +97,7 @@ script = ExtResource("5_b1u1o")
 
 [node name="ActionManager" type="Node" parent="." unique_id=559648473]
 script = ExtResource("6_f0775")
-action_set = Array[ExtResource("7_vliyq")]([SubResource("Resource_4kffy"), SubResource("Resource_bnq0n"), SubResource("Resource_qci4v"), SubResource("Resource_qnu6j")])
+action_set = Array[ExtResource("7_vliyq")]([SubResource("Resource_4kffy"), SubResource("Resource_bnq0n"), SubResource("Resource_qci4v"), SubResource("Resource_qnu6j"), SubResource("Resource_e3kty")])
 metadata/_custom_type_script = "uid://cepsuqd062a4x"
 
 [node name="DebugUI" type="Node3D" parent="." unique_id=2129405429]

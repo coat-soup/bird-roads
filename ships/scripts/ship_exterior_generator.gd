@@ -1,6 +1,8 @@
 class_name ShipExteriorGenerator
 extends Node
 
+signal finished_generating
+
 var rigging_points : Array[RiggingPoint]
 
 const SHIP_HULL_MAT = preload("uid://d4fyqk6747sea")
@@ -27,20 +29,15 @@ var power_req = 2
 var cargo_req = 5
 
 
-func _ready() -> void:
+func generate() -> void:
 	seed = randi()
 	rand = RandomNumberGenerator.new()
 	rand.seed = seed
 	
 	mat = SHIP_HULL_MAT.duplicate()
-	mat.set_shader_parameter("rustiness", randf_range(0,1))
+	mat.set_shader_parameter("rustiness", randf_range(0,0.4))
 	mat.set_shader_parameter("pattern", Resources.ship_patterns.pick_random())
 	color_palette.resolve_palette(rand)
-	
-	var parent : Node = self
-	while not airship and airship != get_tree().root:
-		parent = parent.get_parent()
-		airship = parent as Airship
 	
 	#hull_component.setup(HullPartData.new(HullPartData.HullPartType.STRUCTURE), airship)
 	hull_component.recursive_get_meshes(hull_mesh)
@@ -63,6 +60,8 @@ func _ready() -> void:
 	for i in range(n_points-1,-1,-1):
 		if !is_instance_valid(rigging_points[i]): rigging_points.remove_at(i)
 	for p in rigging_points: p.rig(rigging_points)
+	
+	finished_generating.emit()
 
 
 func recursive_resolve_slots(node : Node, material : ShaderMaterial, part_type : HullPartData.HullPartType, do_non_structure : bool):

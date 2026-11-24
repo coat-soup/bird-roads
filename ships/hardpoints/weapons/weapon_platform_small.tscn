@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dnwwcoa12xwkn"]
 
 [ext_resource type="PackedScene" uid="uid://b8um8w7mn48ny" path="res://ships/hardpoints/weapons/weapon_platform_small.glb" id="1_gib8b"]
+[ext_resource type="Script" uid="uid://nairemu075cu" path="res://ships/scripts/hardpoint_weapon_platform.gd" id="2_eswkj"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gib8b"]
 height = 1.4986572
@@ -12,7 +13,15 @@ size = Vector3(2.265, 0.9772949, 0.5527344)
 [sub_resource type="BoxShape3D" id="BoxShape3D_gib8b"]
 size = Vector3(1.475, 1.8636484, 0.094)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tnm82"]
+height = 3.8061523
+radius = 2.1567383
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tnm82"]
+size = Vector3(2, 2.397461, 1.4008789)
+
 [node name="weapon_platform_small" unique_id=234909682 instance=ExtResource("1_gib8b")]
+script = ExtResource("2_eswkj")
 
 [node name="WeaponHolder" type="Marker3D" parent="." index="0" unique_id=2121113494]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2216108, 0)
@@ -30,3 +39,15 @@ shape = SubResource("BoxShape3D_6jgbp")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2" unique_id=572150086]
 transform = Transform3D(1, 0, 0, 0, 0.6140373, -0.7892769, 0, 0.7892769, 0.6140373, 0, 0.60241544, -2.7816353)
 shape = SubResource("BoxShape3D_gib8b")
+
+[node name="NavBlocker" type="StaticBody3D" parent="." index="10" unique_id=1106237156]
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavBlocker" index="0" unique_id=1309783473]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6248169, 0)
+shape = SubResource("CylinderShape3D_tnm82")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavBlocker" index="1" unique_id=108606615]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0730072, -2.7004395)
+shape = SubResource("BoxShape3D_tnm82")

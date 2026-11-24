@@ -16,6 +16,9 @@ var target_rotation : Vector2
 
 var airship : Airship
 
+@export var ai_controller : CannonAIController
+
+
 func _ready() -> void:
 	target_rotation = Vector2(pitch_obj.rotation.x, yaw_obj.rotation.x)
 	

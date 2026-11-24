@@ -17,6 +17,7 @@ extends CharacterBody3D
 
 @export var character_data : CharacterData
 
+var cur_airship : Airship
 
 
 func _ready() -> void:

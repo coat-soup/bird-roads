@@ -47,7 +47,7 @@ func generate():
 				for z in range(dims.z):
 					for x in range(dims.x):
 						var origin_pos = (shape.global_position - shape.shape.size/2.0) + Vector3(x * spacing, y * vertical_spacing, z * spacing) + Vector3(0,vertical_spacing/2,0)
-						var query = PhysicsRayQueryParameters3D.create(origin_pos, origin_pos - Vector3(0, vertical_spacing, 0), Util.layer_mask([1]))
+						var query = PhysicsRayQueryParameters3D.create(origin_pos, origin_pos - Vector3(0, vertical_spacing, 0), Util.layer_mask([1, 16]))
 						var result = space_state.intersect_ray(query)
 						if not result:
 							nodes.append(null)
@@ -66,7 +66,7 @@ func generate():
 							results.append(space_state.intersect_ray(PhysicsRayQueryParameters3D.create(
 								node.global_position,
 								node.global_position + Vector3.FORWARD.rotated(Vector3.UP, 2 * PI * float(i)/float(n_rays)) * max(wall_dist, cover_dist),
-								Util.layer_mask([1])
+								Util.layer_mask([1, 16])
 							)))
 						
 						var closest_i = -1
@@ -78,7 +78,7 @@ func generate():
 								var cover_r = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(
 									Vector3.UP * 1.5 + node.global_position,
 									Vector3.UP * 1.5 + node.global_position + (results[i].position - node.global_position) * 1.1,
-									Util.layer_mask([1])
+									Util.layer_mask([1, 16])
 								))
 								if not cover_r:
 									node.cover_directions.append((results[i].position - node.global_position).normalized())
@@ -106,7 +106,7 @@ func generate():
 		collision_shape.shape = SphereShape3D.new()
 		collision_shape.shape.radius = 0.1
 		collision_shape.transform.origin = node.global_position
-		collision_shape.collision_mask = Util.layer_mask([1])
+		collision_shape.collision_mask = Util.layer_mask([1, 16])
 		
 		var results = space_state.intersect_shape(collision_shape)
 		
@@ -114,7 +114,7 @@ func generate():
 			collision_shape.transform.origin.y += 1
 			node.clear_connections()
 			node.queue_free()
-			var cover_id = cover_nodes.find(nodes[i])
+			var cover_id : int = cover_nodes.find(i)
 			if cover_id != -1: cover_nodes.remove_at(cover_id)
 			nodes[i] = null
 
