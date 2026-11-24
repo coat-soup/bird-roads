@@ -68,9 +68,8 @@ func _process(delta: float) -> void:
 	#player.rotation.z = lerp_angle(player.rotation.z, 0, delta * 3)
 	
 	if floorcast.get_collider() or on_ladder:
+		if not on_ladder and time_in_air > 0: attach_to_floor()
 		time_in_air = 0
-		if floorcast.get_collider() != player.get_parent() and not on_ladder:
-			player.reparent(floorcast.get_collider())
 	else:
 		time_in_air += delta
 		if time_in_air > 1.5 and player.get_parent() != get_tree().root: player.reparent(get_tree().root)
@@ -136,6 +135,22 @@ static func bob_calc(time : float) -> float:
 
 func add_velocity_impulse(vel):
 	player.velocity += vel
+
+
+func attach_to_floor():
+	print("sending floor atach")
+	var collider = floorcast.get_collider()
+	if collider != player.get_parent():		
+		var airship : Airship
+		var parent : Node = collider
+		while not airship and airship != get_tree().root:
+			parent = parent.get_parent()
+			airship = parent as Airship
+		
+		if airship: parent = airship.movement
+		
+		if parent != player.get_parent():
+			player.reparent(parent)
 
 
 func get_speed() -> float:

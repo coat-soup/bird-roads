@@ -77,16 +77,16 @@ entrance = Vector2i(0, 1)
 [node name="corridor_prot" parent="Interior" index="4" unique_id=1935301666 instance=ExtResource("3_pwok1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.4682415, 0)
 
-[node name="corridor_prot5" parent="Interior" index="5" unique_id=2116102957 instance=ExtResource("3_pwok1")]
+[node name="corridor_prot5" parent="Interior" index="5" unique_id=1379925975 instance=ExtResource("3_pwok1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.4682415, -8)
 
-[node name="corridor_prot3" parent="Interior" index="6" unique_id=1633045037 instance=ExtResource("3_pwok1")]
+[node name="corridor_prot3" parent="Interior" index="6" unique_id=344057031 instance=ExtResource("3_pwok1")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, -1.4682415, 4)
 
 [node name="corridor_prot6" parent="Interior" index="7" unique_id=1584896422 instance=ExtResource("6_spxh4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2, -1.4682415, 4)
 
-[node name="corridor_prot2" parent="Interior" index="8" unique_id=303688100 instance=ExtResource("6_jji0u")]
+[node name="corridor_prot2" parent="Interior" index="8" unique_id=439779119 instance=ExtResource("6_jji0u")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, -1.4682415, -4)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Interior" index="9" unique_id=1378432509]
@@ -109,13 +109,13 @@ shape = SubResource("BoxShape3D_4b0gw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_th3g1")
 
-[node name="@Node3D@52537" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="1" unique_id=1847256221]
+[node name="@Node3D@18960" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="1" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="@Node3D@52538" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="2" unique_id=1847256221]
+[node name="@Node3D@18961" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="2" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="@Node3D@52539" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="3" unique_id=1847256221]
+[node name="@Node3D@18962" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="3" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Exterior" type="Node3D" parent="." index="2" unique_id=768816846 node_paths=PackedStringArray("hull_mesh", "hull_component", "name_label")]

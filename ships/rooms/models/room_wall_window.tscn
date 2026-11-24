@@ -1,11 +1,39 @@
 [gd_scene format=3 uid="uid://bgrm5vafw1jhf"]
 
 [ext_resource type="PackedScene" uid="uid://bbso56me2mthy" path="res://ships/rooms/models/room_wall_window.glb" id="1_axvuh"]
+[ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="2_ffogk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e77lx"]
+render_priority = 0
+shader = ExtResource("2_ffogk")
+shader_parameter/world_uv = false
+shader_parameter/object_uv = false
+shader_parameter/object_uv_scale = Vector2(1, 1)
+shader_parameter/preset_color = 1
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/metalic = 0.25
+shader_parameter/roughness = 0.75
+shader_parameter/grid_scale = 1.0
+shader_parameter/grid_width = 0.01
+shader_parameter/grid_color = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/inside_scale = 1.0
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_color = Color(0.8, 0.8, 0.8, 0.8)
+shader_parameter/checkered = true
+shader_parameter/sub_checkered_grid = false
+shader_parameter/checkered_color = Color(0.25, 0.25, 0.25, 1)
+shader_parameter/checkered_blend_color = 0.1
+shader_parameter/use_inside_uv = false
+shader_parameter/use_albedo_color = false
+shader_parameter/albedo_alpha = 0.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ffogk"]
 size = Vector3(4, 3, 0.05)
 
 [node name="room_wall_window" unique_id=846084066 instance=ExtResource("1_axvuh")]
+
+[node name="WallWindow" parent="." index="0" unique_id=1513375721]
+surface_material_override/0 = SubResource("ShaderMaterial_e77lx")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=192356889]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)

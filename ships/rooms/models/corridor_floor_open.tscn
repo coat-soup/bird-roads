@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dy3q4rhy4412j"]
+
+[ext_resource type="PackedScene" uid="uid://bkgsy5vhvd78s" path="res://ships/rooms/models/corridor_floor_open.glb" id="1_7j4iy"]
+[ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="2_ofd84"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tg0ra"]
+render_priority = 0
+shader = ExtResource("2_ofd84")
+shader_parameter/world_uv = false
+shader_parameter/object_uv = false
+shader_parameter/object_uv_scale = Vector2(1, 1)
+shader_parameter/preset_color = 1
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/metalic = 0.25
+shader_parameter/roughness = 0.75
+shader_parameter/grid_scale = 1.0
+shader_parameter/grid_width = 0.01
+shader_parameter/grid_color = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/inside_scale = 1.0
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_color = Color(0.8, 0.8, 0.8, 0.8)
+shader_parameter/checkered = true
+shader_parameter/sub_checkered_grid = false
+shader_parameter/checkered_color = Color(0.25, 0.25, 0.25, 1)
+shader_parameter/checkered_blend_color = 0.1
+shader_parameter/use_inside_uv = false
+shader_parameter/use_albedo_color = false
+shader_parameter/albedo_alpha = 0.5
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7j4iy"]
+data = PackedVector3Array(1, 0, 1, 1.5, 0, -1.5, 1.5, 0, 1.5, 1, 0, 1, 1, 0, -1, 1.5, 0, -1.5, 1, 0, -1, -1.5, 0, -1.5, 1.5, 0, -1.5, 1, 0, -1, -1, 0, -1, -1.5, 0, -1.5, -1, 0, -1, -1.5, 0, 1.5, -1.5, 0, -1.5, -1, 0, -1, -1, 0, 1, -1.5, 0, 1.5, -1, 0, 1, 1.5, 0, 1.5, -1.5, 0, 1.5, -1, 0, 1, 1, 0, 1, 1.5, 0, 1.5)
+
+[node name="corridor_floor_open" unique_id=492232334 instance=ExtResource("1_7j4iy")]
+
+[node name="FloorOpen" parent="." index="0" unique_id=1634977078]
+surface_material_override/0 = SubResource("ShaderMaterial_tg0ra")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1113641568]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=324319191]
+shape = SubResource("ConcavePolygonShape3D_7j4iy")

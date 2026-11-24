@@ -2,8 +2,13 @@ class_name CannonAIController
 extends Node
 
 signal ticked
+signal active_changed
 
-@export var active : bool = false
+@export var active : bool = false:
+	set(value):
+		active = value
+		active_changed.emit()
+
 @onready var cannon: Cannon = $".."
 
 const tick_rate : float = 12
@@ -17,13 +22,9 @@ func _ready() -> void:
 	
 	await get_tree().create_timer(0.5).timeout
 	
-	var airships = get_tree().get_nodes_in_group("Airship")
-	var closest : Airship = airships[0]
-	for airship in airships:
-		airship = airship as Airship
-		if closest == cannon.airship or (airship != cannon.airship and airship.movement.global_position.distance_to(cannon.global_position) < closest.movement.global_position.distance_to(cannon.global_position)):
-			closest = airship
-	target = closest.movement
+	if active: target_closest_airship()
+	
+	active_changed.connect(target_closest_airship)
 
 
 func tick():
@@ -88,6 +89,16 @@ func solve_ballistic_angle(horizontal_dist: float, vertical_dist: float, speed: 
 	
 	# Lower trajectory
 	return atan((v2 - sqrt(discriminant)) / (gravity * horizontal_dist))
+
+
+func target_closest_airship():
+	var airships = get_tree().get_nodes_in_group("Airship")
+	var closest : Airship = airships[0]
+	for airship in airships:
+		airship = airship as Airship
+		if closest == cannon.airship or (airship != cannon.airship and airship.movement.global_position.distance_to(cannon.global_position) < closest.movement.global_position.distance_to(cannon.global_position)):
+			closest = airship
+	target = closest.movement
 
 
 func get_airship_subtarget(target : Node3D) -> Node3D:

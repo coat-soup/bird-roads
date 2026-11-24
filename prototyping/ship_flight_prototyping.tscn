@@ -3600,36 +3600,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.08374, 1.7173538, 24.221848
 script = ExtResource("13_7xl7w")
 connections = [NodePath("../@Node3D@132565"), NodePath("../@Node3D@132568"), NodePath("../@Node3D@132566"), NodePath("../@Node3D@132567")]
 
-[node name="Airship2" parent="." unique_id=1836055787 instance=ExtResource("3_bxs55")]
+[node name="Airship2" parent="." unique_id=351038198 instance=ExtResource("3_bxs55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.10455, 15.23126, 42.475197)
 
-[node name="Controllable" parent="Airship2/Movement/Helm" parent_id_path=PackedInt32Array(1836055787, 1139777492) index="0" unique_id=1154739986]
+[node name="Controllable" parent="Airship2/Movement/Helm" parent_id_path=PackedInt32Array(351038198, 1139777492) index="0" unique_id=1154739986]
 mouse_sensetivity = 0.005
 controlled = false
 prompt_text = ""
 
-[node name="AIController" parent="Airship2/Movement" parent_id_path=PackedInt32Array(1836055787, 947988495) index="3" unique_id=1181289627]
+[node name="AIController" parent="Airship2/Movement" parent_id_path=PackedInt32Array(351038198, 947988495) index="3" unique_id=1181289627]
 active = true
 
 [node name="AIAirshipWaypoints" parent="Airship2/Movement/AIController" index="0" unique_id=1240303359 node_paths=PackedStringArray("waypoints")]
 waypoints = [NodePath("../../../../AIWaypoints/Marker3D"), NodePath("../../../../AIWaypoints/Marker3D2"), NodePath("../../../../AIWaypoints/Marker3D3"), NodePath("../../../../AIWaypoints/Marker3D4"), NodePath("../../../../AIWaypoints/Marker3D5"), NodePath("../../../../AIWaypoints/Marker3D6"), NodePath("../../../../AIWaypoints/Marker3D7"), NodePath("../../../../AIWaypoints/Marker3D8"), NodePath("../../../../AIWaypoints/Marker3D9"), NodePath("../../../../AIWaypoints/Marker3D10")]
 
-[node name="Airship3" parent="." unique_id=81821424 instance=ExtResource("3_bxs55")]
+[node name="Airship3" parent="." unique_id=1078697771 instance=ExtResource("3_bxs55")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -189.60217, 15.23126, -18.890022)
 
-[node name="Controllable" parent="Airship3/Movement/Helm" parent_id_path=PackedInt32Array(81821424, 1139777492) index="0" unique_id=1154739986]
+[node name="Controllable" parent="Airship3/Movement/Helm" parent_id_path=PackedInt32Array(1078697771, 1139777492) index="0" unique_id=1154739986]
 mouse_sensetivity = 0.005
 controlled = false
 prompt_text = ""
 
-[node name="AIController" parent="Airship3/Movement" parent_id_path=PackedInt32Array(81821424, 947988495) index="3" unique_id=1181289627]
+[node name="AIController" parent="Airship3/Movement" parent_id_path=PackedInt32Array(1078697771, 947988495) index="3" unique_id=1181289627]
 active = true
 
 [node name="AIAirshipWaypoints" parent="Airship3/Movement/AIController" index="0" unique_id=1240303359 node_paths=PackedStringArray("waypoints")]
-waypoints = [NodePath("../../../../Airship2/Movement/hull_lancer/Interior/corridor_prot2/HalfbendR")]
+waypoints = [NodePath("../../../../Airship2/Movement")]
 
 [node name="Player" parent="." unique_id=657413655 instance=ExtResource("3_hhrd0")]
-transform = Transform3D(-0.91914225, 0, 0.3939258, 0, 1, 0, -0.3939258, 0, -0.91914225, 52.270985, 0.9778776, 31.64254)
+transform = Transform3D(-0.91914225, 0, 0.3939258, 0, 1, 0, -0.3939258, 0, -0.91914225, 63.162437, 18.021051, 30.605467)
 
 [node name="UI" parent="." unique_id=1305395705 instance=ExtResource("4_hhrd0")]
 
@@ -4307,7 +4307,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.377724, 0.06482975, 34.751
 transform = Transform3D(0.5589614, 0, 0.8291937, 0, 1, 0, -0.8291937, 0, 0.5589614, -47.95346, 0.065, 42)
 
 [node name="Camera3D" parent="cannon_basic_handheld2" index="4" unique_id=160089326]
-transform = Transform3D(-1.0000001, -3.725014e-09, -8.940697e-08, -3.7250163e-09, 1, 2.980251e-08, 8.940697e-08, 2.980251e-08, -1.0000001, 0, 1.7742426, -1.7037029)
+transform = Transform3D(-1.0000001, -3.72499e-09, -8.940697e-08, -3.7249932e-09, 1, 2.980254e-08, 8.940697e-08, 2.9802543e-08, -1.0000001, 0, 1.7742426, -1.7037029)
 
 [node name="AIController" parent="cannon_basic_handheld2" index="6" unique_id=1230178264 node_paths=PackedStringArray("target")]
 target = NodePath("../../Airship2/Movement")
@@ -6873,14 +6873,17 @@ visible = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.575183, 17.804743, 44.567944)
 squad_id = 1
 
-[node name="Airship4" parent="." unique_id=1400767139 instance=ExtResource("17_uhcmw")]
+[node name="Airship4" parent="." unique_id=242653058 instance=ExtResource("17_uhcmw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.136433, 11.03806, 35.5115)
 
-[node name="AIController" parent="Airship4/Movement" parent_id_path=PackedInt32Array(1400767139, 947988495) index="3" unique_id=1181289627]
+[node name="AIController" parent="Airship4/Movement" parent_id_path=PackedInt32Array(242653058, 947988495) index="3" unique_id=1181289627]
 active = true
 
 [node name="AIAirshipWaypoints" parent="Airship4/Movement/AIController" index="0" unique_id=1240303359 node_paths=PackedStringArray("waypoints")]
 waypoints = [NodePath("../../../../AIWaypoints/Marker3D"), NodePath("../../../../AIWaypoints/Marker3D2"), NodePath("../../../../AIWaypoints/Marker3D3"), NodePath("../../../../AIWaypoints/Marker3D4"), NodePath("../../../../AIWaypoints/Marker3D5"), NodePath("../../../../AIWaypoints/Marker3D6"), NodePath("../../../../AIWaypoints/Marker3D7"), NodePath("../../../../AIWaypoints/Marker3D8"), NodePath("../../../../AIWaypoints/Marker3D9"), NodePath("../../../../AIWaypoints/Marker3D10")]
+
+[node name="Airship5" parent="." unique_id=1367058728 instance=ExtResource("17_uhcmw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.20376, -2.027237, 9.389859)
 
 [editable path="Airship"]
 [editable path="Airship2"]

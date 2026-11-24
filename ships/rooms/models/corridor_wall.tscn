@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cljk54oehp7uw"]
+
+[ext_resource type="PackedScene" uid="uid://dhoxdawwgm12r" path="res://ships/rooms/models/corridor_wall.glb" id="1_i85s3"]
+[ext_resource type="Shader" uid="uid://0ai37uri6xfr" path="res://prototyping/prototype_grid.gdshader" id="2_2f03n"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0cu3l"]
+render_priority = 0
+shader = ExtResource("2_2f03n")
+shader_parameter/world_uv = false
+shader_parameter/object_uv = false
+shader_parameter/object_uv_scale = Vector2(1, 1)
+shader_parameter/preset_color = 1
+shader_parameter/base_color = Color(0, 0, 0, 1)
+shader_parameter/metalic = 0.25
+shader_parameter/roughness = 0.75
+shader_parameter/grid_scale = 1.0
+shader_parameter/grid_width = 0.01
+shader_parameter/grid_color = Color(0.8, 0.8, 0.8, 1)
+shader_parameter/inside_scale = 1.0
+shader_parameter/inside_width = 0.01
+shader_parameter/inside_color = Color(0.8, 0.8, 0.8, 0.8)
+shader_parameter/checkered = true
+shader_parameter/sub_checkered_grid = false
+shader_parameter/checkered_color = Color(0.25, 0.25, 0.25, 1)
+shader_parameter/checkered_blend_color = 0.1
+shader_parameter/use_inside_uv = false
+shader_parameter/use_albedo_color = false
+shader_parameter/albedo_alpha = 0.5
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ka2pn"]
+data = PackedVector3Array(1.5, 2.5, 1.5, -1.5, 0, 1.5, 1.5, 0, 1.5, 1.5, 2.5, 1.5, -1.5, 2.5, 1.5, -1.5, 0, 1.5)
+
+[node name="corridor_wall" unique_id=797045487 instance=ExtResource("1_i85s3")]
+
+[node name="Wall" parent="." index="0" unique_id=131749221]
+surface_material_override/0 = SubResource("ShaderMaterial_0cu3l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1" unique_id=1808855864]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=695811301]
+shape = SubResource("ConcavePolygonShape3D_ka2pn")
