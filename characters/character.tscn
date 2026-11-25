@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://b567710rit15p" path="res://system/actions/action_fire_weapon.gd" id="11_i1355"]
 [ext_resource type="Script" uid="uid://0pj0db48qaoq" path="res://system/actions/action_reload_weapon.gd" id="11_qci4v"]
 [ext_resource type="Script" uid="uid://dagvkdjs33wwf" path="res://system/health.gd" id="12_bnq0n"]
-[ext_resource type="Script" uid="uid://bhbn1587cx6hr" path="res://system/actions/action_man_cannon.gd" id="12_qnu6j"]
+[ext_resource type="Script" uid="uid://bhbn1587cx6hr" path="res://system/actions/action_man_crew_station.gd" id="12_qnu6j"]
 [ext_resource type="Script" uid="uid://bepefth7s5b42" path="res://system/weapons/weapon_manager.gd" id="13_hgjqb"]
 [ext_resource type="PackedScene" uid="uid://gs3fu7jvum7m" path="res://characters/weapons/revolver.tscn" id="15_i1355"]
 [ext_resource type="PackedScene" uid="uid://cbetj2x13xqd1" path="res://characters/weapons/break_action.tscn" id="16_qci4v"]

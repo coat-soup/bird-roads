@@ -12,6 +12,7 @@ var exterior_generator : ShipExteriorGenerator
 var engines : Array[ShipComponent]
 var control_surfaces : Array[ShipComponent]
 var weapon_platforms : Array[WeaponPlatform]
+var crew_stations : Array[CrewStation]
 
 ## 0-1 percentage of how many active engines/propellers are working and not broken
 var thrust_ratio : float = 1.0

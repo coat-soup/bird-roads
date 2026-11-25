@@ -76,6 +76,9 @@ func recursive_resolve_slots(node : Node, material : ShaderMaterial, part_type :
 		if hardpoint_slot.resolved: return
 		hardpoint_slot.resolve(rand, self)
 	
+	var crew_station : CrewStation = node as CrewStation
+	if crew_station : airship.crew_stations.append(crew_station)
+	
 	var hull_slot : HullPartSlot = node as HullPartSlot
 	if hull_slot:
 		if hull_slot.resolved: return

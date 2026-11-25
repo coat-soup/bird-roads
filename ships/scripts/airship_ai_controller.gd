@@ -1,18 +1,10 @@
 class_name AirshipAIController
-extends Node
+extends AIController
 
-signal ticked
 
-@export var active : bool = false
 @export var movement : AirshipMovementManager
 
-const tick_rate : float = 1.0
-
 var target : Vector3
-
-
-func _ready() -> void:
-	tick()
 
 
 func tick():

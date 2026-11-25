@@ -138,7 +138,6 @@ func add_velocity_impulse(vel):
 
 
 func attach_to_floor():
-	print("sending floor atach")
 	var collider = floorcast.get_collider()
 	if collider != player.get_parent():		
 		var airship : Airship

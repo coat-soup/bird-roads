@@ -1,3 +1,4 @@
+@tool
 class_name NavigationNode
 extends Node3D
 
@@ -5,6 +6,12 @@ extends Node3D
 var grid_pos : Vector3i
 
 @export var cover_directions : Array[Vector3]
+
+@export var force_connect_on_load : bool = false:
+	set(value):
+		force_connect_on_load = value
+		handle_force_body()
+@export var add_connections_on_force_load : bool = true
 
 
 func try_add_connection(nodes : Array[NavigationNode], dims : Vector3i, pos : Vector3i, step_height : float) -> bool:
@@ -21,6 +28,7 @@ func try_add_connection(nodes : Array[NavigationNode], dims : Vector3i, pos : Ve
 	if len(results) > 0: return false
 	
 	connections.append(node)
+	node.connections.append(self)
 	return true
 
 
@@ -28,3 +36,19 @@ func clear_connections():
 	for connection in connections:
 		var index : int = connection.connections.find(self)
 		if index != -1: connection.connections.remove_at(index)
+
+
+func handle_force_body():
+	if force_connect_on_load:
+		var body = StaticBody3D.new()
+		body.collision_layer = Util.layer_mask([16])
+		add_child(body)
+		body.owner = owner
+		var shape = CollisionShape3D.new()
+		shape.shape = SphereShape3D.new()
+		shape.shape.radius = 0.1
+		body.add_child(shape)
+		shape.owner = body.owner
+		print("made body")
+	else:
+		get_child(0).queue_free()

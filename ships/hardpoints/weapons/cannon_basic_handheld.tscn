@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://1u6bkn1c1smx" path="res://ships/hardpoints/weapons/cannon_controller.gd" id="2_es551"]
 [ext_resource type="Script" uid="uid://caatudlr0bdf6" path="res://ships/scripts/cannon.gd" id="2_ldnv6"]
 [ext_resource type="Script" uid="uid://btcfa5xfartvr" path="res://ships/hardpoints/weapons/cannon_ai_controller.gd" id="4_hqq00"]
+[ext_resource type="Script" uid="uid://cclpevaoshj61" path="res://characters/crew_station.gd" id="5_h1g12"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hfnd5"]
 size = Vector3(2, 2, 2)
@@ -40,3 +41,10 @@ shape = SubResource("BoxShape3D_hfnd5")
 
 [node name="AIController" type="Node" parent="." index="6" unique_id=1230178264]
 script = ExtResource("4_hqq00")
+
+[node name="CrewStation" type="Node3D" parent="." index="7" unique_id=1175678529 node_paths=PackedStringArray("controllable", "ai_controller")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45213336, -2.1686196)
+script = ExtResource("5_h1g12")
+controllable = NodePath("../Controllable")
+ai_controller = NodePath("../AIController")
+metadata/_custom_type_script = "uid://cclpevaoshj61"

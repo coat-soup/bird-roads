@@ -1,25 +1,16 @@
 class_name CannonAIController
-extends Node
+extends AIController
 
-signal ticked
-signal active_changed
 
-@export var active : bool = false:
-	set(value):
-		active = value
-		active_changed.emit()
 
 @onready var cannon: Cannon = $".."
-
-const tick_rate : float = 12
 
 @export var target : Node3D
 @export var subtarget : Node3D
 
 
 func _ready() -> void:
-	tick()
-	
+	super._ready()
 	await get_tree().create_timer(0.5).timeout
 	
 	if active: target_closest_airship()

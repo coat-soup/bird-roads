@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b8um8w7mn48ny" path="res://ships/hardpoints/weapons/weapon_platform_small.glb" id="1_gib8b"]
 [ext_resource type="Script" uid="uid://nairemu075cu" path="res://ships/scripts/hardpoint_weapon_platform.gd" id="2_eswkj"]
+[ext_resource type="Script" uid="uid://dck4k0vi4hevc" path="res://system/navigation_node.gd" id="3_guhb2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gib8b"]
 height = 1.4986572
@@ -11,7 +12,7 @@ radius = 1.9370117
 size = Vector3(2.265, 0.9772949, 0.5527344)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gib8b"]
-size = Vector3(1.475, 1.8636484, 0.094)
+size = Vector3(1.475, 2.132996, 0.094)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_tnm82"]
 height = 3.8061523
@@ -19,6 +20,9 @@ radius = 2.1567383
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tnm82"]
 size = Vector3(2, 2.397461, 1.4008789)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_guhb2"]
+radius = 0.1
 
 [node name="weapon_platform_small" unique_id=234909682 instance=ExtResource("1_gib8b")]
 script = ExtResource("2_eswkj")
@@ -37,7 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7179704, -1.7538724)
 shape = SubResource("BoxShape3D_6jgbp")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" index="2" unique_id=572150086]
-transform = Transform3D(1, 0, 0, 0, 0.6140373, -0.7892769, 0, 0.7892769, 0.6140373, 0, 0.60241544, -2.7816353)
+transform = Transform3D(1, 0, 0, 0, 0.6140373, -0.7892769, 0, 0.7892769, 0.6140373, 0, 0.5197207, -2.8879302)
 shape = SubResource("BoxShape3D_gib8b")
 
 [node name="NavBlocker" type="StaticBody3D" parent="." index="10" unique_id=1106237156]
@@ -51,3 +55,32 @@ shape = SubResource("CylinderShape3D_tnm82")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="NavBlocker" index="1" unique_id=108606615]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0730072, -2.7004395)
 shape = SubResource("BoxShape3D_tnm82")
+
+[node name="NavigationNode" type="Node3D" parent="." index="11" unique_id=1313953137 node_paths=PackedStringArray("connections")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6348449, -1.7960486)
+script = ExtResource("3_guhb2")
+connections = [NodePath("../NavigationNode2")]
+force_connect_on_load = true
+add_connections_on_force_load = null
+metadata/_custom_type_script = "uid://dck4k0vi4hevc"
+
+[node name="@StaticBody3D@25939" type="StaticBody3D" parent="NavigationNode" index="0" unique_id=1555027874]
+collision_layer = 32768
+
+[node name="@CollisionShape3D@25940" type="CollisionShape3D" parent="NavigationNode/@StaticBody3D@25939" index="0" unique_id=198276233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35128427, 0)
+shape = SubResource("SphereShape3D_guhb2")
+
+[node name="NavigationNode2" type="Node3D" parent="." index="12" unique_id=1764744216 node_paths=PackedStringArray("connections")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43333566, -3.4355915)
+script = ExtResource("3_guhb2")
+connections = [NodePath("../NavigationNode")]
+force_connect_on_load = true
+metadata/_custom_type_script = "uid://dck4k0vi4hevc"
+
+[node name="_StaticBody3D_25939" type="StaticBody3D" parent="NavigationNode2" index="0" unique_id=1374567227]
+collision_layer = 32768
+
+[node name="_CollisionShape3D_25940" type="CollisionShape3D" parent="NavigationNode2/_StaticBody3D_25939" index="0" unique_id=133630959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51316917, -0.30026102)
+shape = SubResource("SphereShape3D_guhb2")

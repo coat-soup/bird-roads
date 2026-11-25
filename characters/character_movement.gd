@@ -56,7 +56,6 @@ func _physics_process(delta: float) -> void:
 
 
 func attach_to_floor():
-	print("sending floor atach")
 	var collider = floorcast.get_collider()
 	if collider != character.get_parent():
 		var airship : Airship

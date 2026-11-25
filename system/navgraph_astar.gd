@@ -47,6 +47,6 @@ static func get_path_between_points(start : NavigationNode, end : NavigationNode
 
 
 static func get_heuristic(node : AStarNode, goal : NavigationNode) -> float:
-	var h = abs(goal.position.x - node.nav_node.position.x) + abs(goal.position.y - node.nav_node.position.y) + abs(goal.position.z - node.nav_node.position.z)
+	var h = abs(goal.global_position.x - node.nav_node.global_position.x) + abs(goal.global_position.y - node.nav_node.global_position.y) + abs(goal.global_position.z - node.nav_node.global_position.z)
 	h += abs(node.nav_node.global_position.y - node.parent.nav_node.global_position.y)
 	return h

@@ -112,13 +112,13 @@ shape = SubResource("BoxShape3D_4b0gw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_th3g1")
 
-[node name="@Node3D@19087" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="1" unique_id=1847256221]
+[node name="@Node3D@19037" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="1" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="@Node3D@19088" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="2" unique_id=1847256221]
+[node name="@Node3D@19038" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="2" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="@Node3D@19089" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="3" unique_id=1847256221]
+[node name="@Node3D@19039" parent="Interior/Ladder/Segments" parent_id_path=PackedInt32Array(288771121, 1093771356) index="3" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Exterior" type="Node3D" parent="." index="2" unique_id=768816846 node_paths=PackedStringArray("hull_mesh", "hull_component", "name_label")]

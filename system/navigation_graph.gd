@@ -16,7 +16,7 @@ extends Area3D
 
 
 func _ready() -> void:
-	collision_mask = Util.layer_mask([2])
+	collision_mask = Util.layer_mask([2, 16])
 	if !Engine.is_editor_hint(): body_entered.connect(on_body_entered)
 	#print("MY NODES: ", nodes)
 
@@ -88,7 +88,7 @@ func generate():
 						if closest_i != -1:
 							node.global_position += (node.global_position - results[closest_i].position).normalized() * (wall_dist - closest_d)
 						if not node.cover_directions.is_empty(): cover_nodes.append(nodes.size()-1)
-						
+			
 			# connect them
 			for node in nodes:
 				if not node: continue
@@ -97,11 +97,30 @@ func generate():
 						for z in range(-1,2):
 							if x == 0 and y == 0 and z == 0: continue
 							node.try_add_connection(nodes, dims, node.grid_pos + Vector3i(x,y,z), step_height)
+		
+			# connect bespoke nodes
+			var results = get_overlapping_bodies()
+			for result in results:
+				var new_node = result.get_parent_node_3d() as NavigationNode
+				if new_node:
+					nodes.append(new_node)
+					if new_node.add_connections_on_force_load:
+						var closest : NavigationNode = null
+						var c_dist : float = 0
+						for node in nodes:
+							if not node: continue
+							var dist = new_node.global_position.distance_to(node.global_position)
+							if dist < spacing + wall_dist/2: new_node.try_add_connection(nodes, dims, node.grid_pos, step_height)
+							if closest == null or dist < c_dist:
+								closest = node
+								c_dist = dist
+						if closest and c_dist < spacing * 2: new_node.try_add_connection(nodes, dims, closest.grid_pos, step_height)
+	
 	
 	# handle invalid nodes
 	for i in range(len(nodes)):
 		var node : NavigationNode = nodes[i]
-		if not node: continue
+		if not node or node.force_connect_on_load: continue
 		var collision_shape = PhysicsShapeQueryParameters3D.new()
 		collision_shape.shape = SphereShape3D.new()
 		collision_shape.shape.radius = 0.1
