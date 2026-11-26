@@ -41,7 +41,7 @@ func _ready() -> void:
 	exterior_generator.generate()
 	
 	if nav_graph:
-		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.5).timeout
 		nav_graph.generate()
 
 

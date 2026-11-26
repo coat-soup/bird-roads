@@ -20,14 +20,22 @@ point_count = 2
 _data = [Vector2(0.5123967, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.49742264), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_mq1uw"]
+size = Vector3(1, 4, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5nyth"]
+size = Vector3(1, 4, 1)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_swygn"]
 radius = 5.288574
 height = 46.572388
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0s8cv"]
 
-[node name="Airship" type="Node3D" unique_id=254215350 groups=["Airship"]]
+[node name="Airship" type="Node3D" unique_id=254215350 node_paths=PackedStringArray("nav_graph") groups=["Airship"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3494363, 1.3726537, 0.7818737)
 script = ExtResource("1_2omcc")
+nav_graph = NodePath("Movement/hull_lancer/NavGraph")
 
 [node name="Movement" type="RigidBody3D" parent="." unique_id=947988495 node_paths=PackedStringArray("airship")]
 collision_layer = 8
@@ -41,6 +49,25 @@ rotation_correction_curve = SubResource("Curve_mq1uw")
 rotation_force_curve = SubResource("Curve_5nyth")
 
 [node name="hull_lancer" parent="Movement" unique_id=242663195 instance=ExtResource("1_swygn")]
+
+[node name="CollisionShape3D" parent="Movement/hull_lancer/Interior/Ladder/Collision" parent_id_path=PackedInt32Array(242663195, 288771121, 1806544709) index="0" unique_id=27728845]
+shape = SubResource("BoxShape3D_mq1uw")
+
+[node name="CollisionShape3D2" parent="Movement/hull_lancer/Interior/Ladder/Area" parent_id_path=PackedInt32Array(242663195, 288771121, 1313439371) index="0" unique_id=2059811295]
+shape = SubResource("BoxShape3D_5nyth")
+
+[node name="@Node3D@102884" parent="Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(242663195, 288771121, 1093771356) index="1" unique_id=1847256221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="@Node3D@102885" parent="Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(242663195, 288771121, 1093771356) index="2" unique_id=1847256221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="@Node3D@102886" parent="Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(242663195, 288771121, 1093771356) index="3" unique_id=1847256221]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="NavGraph" parent="Movement/hull_lancer" index="4" unique_id=275436886 node_paths=PackedStringArray("nodes")]
+nodes = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+cover_nodes = Array[int]([9, 12, 27, 29, 34, 47, 54, 65, 73, 74, 80, 81, 114, 122, 155, 162, 167, 169, 174, 191, 194, 199, 200])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Movement" unique_id=604350542]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.2221451, -0.22369385)
@@ -69,3 +96,6 @@ movement = NodePath("..")
 
 [node name="AIAirshipWaypoints" type="Node" parent="Movement/AIController" unique_id=1240303359]
 script = ExtResource("7_5nyth")
+
+[editable path="Movement/hull_lancer"]
+[editable path="Movement/hull_lancer/Interior/Ladder"]

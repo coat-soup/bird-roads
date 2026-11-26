@@ -41,12 +41,17 @@ static func get_path_between_points(start : NavigationNode, end : NavigationNode
 			for c in closed_list: if c.nav_node == child.nav_node: continue # skip add if already in open list
 			open_list.append(child)
 	
+	DebugDraw3D.draw_sphere(start.global_position, 1.0, Color.ORANGE_RED, 15)
+	DebugDraw3D.draw_sphere(end.global_position, 1.0, Color.ORANGE_RED, 15)
+	DebugDraw3D.scoped_config().set_thickness(0.5)
+	DebugDraw3D.draw_line(start.global_position, end.global_position, Color.ORANGE_RED, 15)
 	print("failed astar. closed_list size: ", len(closed_list))
 	return []
 
 
 
 static func get_heuristic(node : AStarNode, goal : NavigationNode) -> float:
-	var h = abs(goal.global_position.x - node.nav_node.global_position.x) + abs(goal.global_position.y - node.nav_node.global_position.y) + abs(goal.global_position.z - node.nav_node.global_position.z)
-	h += abs(node.nav_node.global_position.y - node.parent.nav_node.global_position.y)
+	#var h = abs(goal.global_position.x - node.nav_node.global_position.x) + abs(goal.global_position.y - node.nav_node.global_position.y) + abs(goal.global_position.z - node.nav_node.global_position.z)
+	var h : float = goal.global_position.distance_to(node.nav_node.global_position)
+	#h += abs(node.nav_node.global_position.y - node.parent.nav_node.global_position.y)
 	return h

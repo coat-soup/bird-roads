@@ -3,8 +3,21 @@
 [ext_resource type="Script" uid="uid://doyckji4q6huc" path="res://ships/hardpoints/weapons/cannon_shell.gd" id="1_h5ith"]
 [ext_resource type="PackedScene" uid="uid://cwulpm0i82q41" path="res://ships/hardpoints/weapon_data/shell.glb" id="1_oxoxs"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5ith"]
+albedo_color = Color(0.8689852, 0.86898476, 0.86898494, 1)
+metallic = 1.0
+roughness = 0.32
+
 [node name="CannonShell" type="Node3D" unique_id=1590272973]
 script = ExtResource("1_h5ith")
 
 [node name="shell" parent="." unique_id=1329470181 instance=ExtResource("1_oxoxs")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+
+[node name="Cube" parent="shell" index="0" unique_id=473176411]
+surface_material_override/0 = SubResource("StandardMaterial3D_h5ith")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=513738476]
+trail_lifetime = 1.6199999999999999
+
+[editable path="shell"]

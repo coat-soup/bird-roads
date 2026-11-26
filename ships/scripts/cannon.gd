@@ -22,6 +22,8 @@ var airship : Airship
 
 var ray_self_exclude_list : Array[RID]
 
+var auto_fire : bool = false
+
 
 func _ready() -> void:
 	target_rotation = Vector2(pitch_obj.rotation.x, yaw_obj.rotation.x)
@@ -53,6 +55,7 @@ func fire():
 
 func _process(delta: float) -> void:
 	if time_to_fire > 0: time_to_fire -= delta
+	elif auto_fire: fire()
 	
 	yaw_obj.rotation.y += clamp(wrapf(target_rotation.y - yaw_obj.rotation.y, -PI, PI) * 10, -1, 1) * delta * turn_speed
 	yaw_obj.rotation.y = clamp(yaw_obj.rotation.y, deg_to_rad(-yaw_range), deg_to_rad(yaw_range))

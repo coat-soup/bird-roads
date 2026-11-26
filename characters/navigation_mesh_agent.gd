@@ -15,6 +15,7 @@ var cur_node : NavigationNode
 
 
 func _ready() -> void:
+	await get_tree().create_timer(randf()/TICK_RATE).timeout
 	tick()
 
 

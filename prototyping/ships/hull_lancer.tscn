@@ -14,9 +14,13 @@
 [ext_resource type="Script" uid="uid://suwb0y10pmfp" path="res://ships/scripts/rigging_point.gd" id="9_k67kr"]
 [ext_resource type="Script" uid="uid://by720oy317wk4" path="res://ships/scripts/hardpoint_slot.gd" id="11_jji0u"]
 [ext_resource type="PackedScene" uid="uid://b4u8rhmao3py0" path="res://world/props/ladder.tscn" id="12_6aw4h"]
+[ext_resource type="Script" uid="uid://ckbjdu370t3cn" path="res://system/navigation_graph.gd" id="15_th3g1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6aw4h"]
 size = Vector3(1.5807571, 2.1446533, 1.5674362)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lp1v0"]
+size = Vector3(3.1980524, 3.0820923, 0.75254905)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_spxh4"]
 size = Vector3(7.98, 0.06237793, 24.03247)
@@ -39,6 +43,9 @@ data = PackedVector3Array(-2, 1.5, -4, 2, 0, -4, 2, 1.5, -4, -2, 1.5, -4, -2, 0,
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3kp6t"]
 data = PackedVector3Array(4.1116, 1.5702, 15.1278, -3.0096, 1.5702, 17.988699, -4.1116, 1.5702, 15.1278, 4.1116, 1.5702, 15.1278, 3.0096, 1.5702, 17.988699, -3.0096, 1.5702, 17.988699, 4.5043, 1.5702, 12.6173, 4.1116, 1.5702, 15.1278, -4.1116, 1.5702, 15.1278, 3.0096, 1.5702, 17.988699, -1.745, 1.5702, 20.308199, -3.0096, 1.5702, 17.988699, 4.5043, 1.5702, 12.6173, -4.1116, 1.5702, 15.1278, -4.5043, 1.5702, 12.6173, 3.0096, 1.5702, 17.988699, 1.745, 1.5702, 20.308199, -1.745, 1.5702, 20.308199, 1.745, 1.5702, 20.308199, -0.077599995, 1.5702, 22.3231, -1.745, 1.5702, 20.308199, 1.745, 1.5702, 20.308199, 0.077599995, 1.5702, 22.3231, -0.077599995, 1.5702, 22.3231, 4.5590997, 1.5702, 10.7568, 4.5043, 1.5702, 12.6173, -4.5043, 1.5702, 12.6173, 4.5590997, 1.5702, 10.7568, -4.5043, 1.5702, 12.6173, -4.5590997, 1.5702, 10.7568, 4.5590997, 1.5702, 10.7568, 1.9955, 1.5702, -8.4773, 4.5590997, 1.5702, -8.4773, 4.5590997, 1.5702, 10.7568, -1.9955, 1.5702, -8.4773, 1.9955, 1.5702, -8.4773, -1.9955, 1.5702, -8.4773, -4.5590997, 1.5702, 10.7568, -4.5590997, 1.5702, -8.4773, -3, 1.5702, 5, 4.5590997, 1.5702, 10.7568, -4.5590997, 1.5702, 10.7568, -3, 1.5702, 5, -1, 1.5702, 5, 4.5590997, 1.5702, 10.7568, -4.5590997, 1.5702, 10.7568, -3, 1.5702, 3, -3, 1.5702, 5, -1.9955, 1.5702, -8.4773, -3, 1.5702, 3, -4.5590997, 1.5702, 10.7568, -1, 1.5702, 3, 4.5590997, 1.5702, 10.7568, -1, 1.5702, 5, -3, 1.5702, 3, -1.9955, 1.5702, -8.4773, -1, 1.5702, 3, -1, 1.5702, 3, -1.9955, 1.5702, -8.4773, 4.5590997, 1.5702, 10.7568, 1.2544999, 2.5556998, -20.014399, 1.1575999, 2.5556998, -20.874199, 2.8662, 2.5556998, -20.014399, 1.2544999, 2.5556998, -20.014399, 0.5067, 2.5556998, -20.874199, 1.1575999, 2.5556998, -20.874199, 1.8625, 2.5556998, -15.7513, 1.2544999, 2.5556998, -20.014399, 2.8662, 2.5556998, -20.014399, 1.8625, 2.5556998, -15.7513, 2.8662, 2.5556998, -20.014399, 4.2552, 2.5556998, -15.7513, -1.2544999, 2.5556998, -20.014399, 0.5067, 2.5556998, -20.874199, 1.2544999, 2.5556998, -20.014399, -1.2544999, 2.5556998, -20.014399, -0.5067, 2.5556998, -20.874199, 0.5067, 2.5556998, -20.874199, -2.8662, 2.5556998, -20.014399, -0.5067, 2.5556998, -20.874199, -1.2544999, 2.5556998, -20.014399, -2.8662, 2.5556998, -20.014399, -1.1575999, 2.5556998, -20.874199, -0.5067, 2.5556998, -20.874199, -4.2552, 2.5556998, -15.7513, -2.8662, 2.5556998, -20.014399, -1.2544999, 2.5556998, -20.014399, -1.8625, 2.5556998, -15.7513, -1.2544999, 2.5556998, -20.014399, 1.2544999, 2.5556998, -20.014399, -4.2552, 2.5556998, -15.7513, -1.2544999, 2.5556998, -20.014399, -1.8625, 2.5556998, -15.7513, -1.8625, 2.5556998, -15.7513, 1.2544999, 2.5556998, -20.014399, 1.8625, 2.5556998, -15.7513, -1.8625, 2.5556998, -15.7513, -4.5590997, 2.5556998, -14.0538, -4.2552, 2.5556998, -15.7513, -1.8625, 2.5556998, -15.7513, -1.9955, 2.5556998, -14.0538, -4.5590997, 2.5556998, -14.0538, 1.8625, 2.5556998, -15.7513, -1.9955, 2.5556998, -14.0538, -1.8625, 2.5556998, -15.7513, -4.5590997, 2.5556998, -13.3947, -4.5590997, 2.5556998, -14.0538, -1.9955, 2.5556998, -14.0538, 4.2552, 2.5556998, -15.7513, 1.9955, 2.5556998, -14.0538, 1.8625, 2.5556998, -15.7513, 1.8625, 2.5556998, -15.7513, 1.9955, 2.5556998, -14.0538, -1.9955, 2.5556998, -14.0538, 4.2552, 2.5556998, -15.7513, 4.5590997, 2.5556998, -14.0538, 1.9955, 2.5556998, -14.0538, -4.5590997, 2.5556998, -13.3947, -1.9955, 2.5556998, -14.0538, -1.9955, 2.5556998, -13.3947, -1.9955, 2.5556998, -13.3947, -1.9955, 2.5556998, -14.0538, 1.9955, 2.5556998, -14.0538, -4.5590997, 2.5556998, -10.1199, -4.5590997, 2.5556998, -13.3947, -1.9955, 2.5556998, -13.3947, -4.5590997, 2.5556998, -10.1199, -1.9955, 2.5556998, -13.3947, -1.9955, 2.5556998, -10.1199, -1.9955, 2.5556998, -13.3947, 1.9955, 2.5556998, -14.0538, 1.9955, 2.5556998, -13.3947, 1.9955, 2.5556998, -13.3947, 1.9955, 2.5556998, -14.0538, 4.5590997, 2.5556998, -14.0538, 1.9955, 2.5556998, -13.3947, 4.5590997, 2.5556998, -14.0538, 4.5590997, 2.5556998, -13.3947, 1.9955, 2.5556998, -10.1199, 1.9955, 2.5556998, -13.3947, 4.5590997, 2.5556998, -13.3947, 1.9955, 2.5556998, -10.1199, 4.5590997, 2.5556998, -13.3947, 4.5590997, 2.5556998, -10.1199, 4.5590997, 2.5556998, -10.1199, 1.9955, 1.5702, -8.4773, 1.9955, 2.5556998, -10.1199, 4.5590997, 2.5556998, -10.1199, 4.5590997, 1.5702, -8.4773, 1.9955, 1.5702, -8.4773, -1.9955, 2.5556998, -10.1199, -4.5590997, 1.5702, -8.4773, -4.5590997, 2.5556998, -10.1199, -1.9955, 2.5556998, -10.1199, -1.9955, 1.5702, -8.4773, -4.5590997, 1.5702, -8.4773, 1.9955, 2.5556998, -10.1199, 1.9955, 1.5834999, -13.3947, 1.9955, 2.5556998, -13.3947, 1.9955, 2.5556998, -10.1199, 1.9955, 1.5834999, -10.1199, 1.9955, 1.5834999, -13.3947, 1.9955, 1.5702, -8.4773, 1.9955, 1.5834999, -10.1199, 1.9955, 2.5556998, -10.1199, 1.9955, 2.5556998, -13.3947, -1.9955, 1.5834999, -13.3947, -1.9955, 2.5556998, -13.3947, 1.9955, 2.5556998, -13.3947, 1.9955, 1.5834999, -13.3947, -1.9955, 1.5834999, -13.3947, 1.9955, 1.5834999, -10.1199, -1.9955, 1.5702, -8.4773, -1.9955, 1.5834999, -10.1199, 1.9955, 1.5834999, -10.1199, 1.9955, 1.5702, -8.4773, -1.9955, 1.5702, -8.4773, -1.9955, 1.5834999, -10.1199, 1.9955, 1.5834999, -13.3947, 1.9955, 1.5834999, -10.1199, -1.9955, 1.5834999, -10.1199, -1.9955, 1.5834999, -13.3947, 1.9955, 1.5834999, -13.3947, -1.9955, 2.5556998, -13.3947, -1.9955, 1.5834999, -10.1199, -1.9955, 2.5556998, -10.1199, -1.9955, 2.5556998, -13.3947, -1.9955, 1.5834999, -13.3947, -1.9955, 1.5834999, -10.1199, -1.9955, 2.5556998, -10.1199, -1.9955, 1.5834999, -10.1199, -1.9955, 1.5702, -8.4773)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3kp6t"]
+size = Vector3(10.581268, 3.189621, 44.18378)
+
 [node name="hull_lancer" unique_id=1646478423 instance=ExtResource("1_tb2ik")]
 script = ExtResource("2_etoac")
 
@@ -50,6 +57,10 @@ collision_mask = 32768
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hull/LadderNavBlocker" index="0" unique_id=545173654]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03823471, 0.57232666, 0.01467514)
 shape = SubResource("BoxShape3D_6aw4h")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hull/LadderNavBlocker" index="1" unique_id=1504542959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0471282, 1.0410461, -9.4456005)
+shape = SubResource("BoxShape3D_lp1v0")
 
 [node name="Cockpit" parent="Hull" parent_id_path=PackedInt32Array(1524205886) index="25" unique_id=1189283437]
 visible = false
@@ -297,5 +308,20 @@ shape = SubResource("ConcavePolygonShape3D_lp1v0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="3" unique_id=1335400811]
 shape = SubResource("ConcavePolygonShape3D_3kp6t")
+
+[node name="NavGraph" type="Area3D" parent="." index="4" unique_id=275436886 node_paths=PackedStringArray("nodes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.378888, 0.5528469, -3.6845245)
+collision_mask = 32770
+script = ExtResource("15_th3g1")
+debug_visualise = false
+spacing = 1.5
+vertical_spacing = 4.0
+step_height = 1.5
+nodes = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null]
+cover_nodes = Array[int]([9, 12, 27, 29, 34, 87, 88, 155, 162, 167, 169, 174, 191, 194, 199, 200])
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavGraph" index="0" unique_id=137832716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3743744, 3.011345, 4.313736)
+shape = SubResource("BoxShape3D_3kp6t")
 
 [editable path="Interior/Ladder"]

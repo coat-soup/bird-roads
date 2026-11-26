@@ -9,6 +9,7 @@ var claimed_character : Character # characters can "claim" station while not cur
 
 
 func start_crewing(character : Character):
+	print(character.character_data.character_name, " station ai set true ")
 	active_character = character
 	ai_controller.set_active(character)
 

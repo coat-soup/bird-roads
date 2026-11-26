@@ -75,8 +75,12 @@ func tick():
 			
 			if los:
 				cannon.fire()
+				cannon.auto_fire = true
+			else: cannon.auto_fire = false
 		
 		ticked.emit()
+		
+	else: cannon.auto_fire = false
 	
 	await get_tree().create_timer(1.0/tick_rate).timeout
 	tick()
