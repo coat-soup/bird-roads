@@ -198,6 +198,7 @@ metadata/_custom_type_script = "uid://b1gbofimjjgn7"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.565, 16.864027)
 script = ExtResource("11_jji0u")
 move_weapon_forward = 0.5
+yaw_range = 120.0
 metadata/_custom_type_script = "uid://by720oy317wk4"
 
 [node name="HardpointMid" type="Marker3D" parent="Exterior/Hardpoints" index="1" unique_id=1545773368]
@@ -210,6 +211,7 @@ metadata/_custom_type_script = "uid://by720oy317wk4"
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2.573, -17.543)
 script = ExtResource("11_jji0u")
 move_weapon_forward = 1.0
+yaw_range = 120.0
 metadata/_custom_type_script = "uid://by720oy317wk4"
 
 [node name="HardpointFrontLeft" type="Marker3D" parent="Exterior/Hardpoints" index="3" unique_id=406178540 node_paths=PackedStringArray("symmetry_connection")]

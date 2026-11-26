@@ -14,9 +14,13 @@ var target_rotation : Vector2
 @export var pitch_min : float = -30
 @export var pitch_max : float = 40
 
+@export var yaw_range : float = 90
+
 var airship : Airship
 
 @export var ai_controller : CannonAIController
+
+var ray_self_exclude_list : Array[RID]
 
 
 func _ready() -> void:
@@ -26,6 +30,10 @@ func _ready() -> void:
 	while parent != null and not airship:
 		airship = parent as Airship
 		parent = parent.get_parent_node_3d()
+	
+	for child in get_children(true):
+		var collider = child as CollisionObject3D
+		if collider: ray_self_exclude_list.append(collider.get_rid())
 
 
 func fire():
@@ -39,7 +47,7 @@ func fire():
 	shell.global_rotation = muzzle_point.global_rotation
 	if airship:
 		shell.parent_velocity = airship.movement.linear_velocity
-		airship.movement.apply_force(-muzzle_point.global_basis.z * shell.damage/2, global_position - airship.movement.global_position)
+		airship.movement.apply_force(-muzzle_point.global_basis.z * shell.damage/20, global_position - airship.movement.global_position)
 	shell._ready()
 
 
@@ -47,5 +55,7 @@ func _process(delta: float) -> void:
 	if time_to_fire > 0: time_to_fire -= delta
 	
 	yaw_obj.rotation.y += clamp(wrapf(target_rotation.y - yaw_obj.rotation.y, -PI, PI) * 10, -1, 1) * delta * turn_speed
+	yaw_obj.rotation.y = clamp(yaw_obj.rotation.y, deg_to_rad(-yaw_range), deg_to_rad(yaw_range))
+	
 	pitch_obj.rotation.x += clamp(wrapf(target_rotation.x - pitch_obj.rotation.x, -PI, PI) * 10, -1, 1) * delta * turn_speed
 	pitch_obj.rotation.x = clamp(pitch_obj.rotation.x, deg_to_rad(pitch_min), deg_to_rad(pitch_max))

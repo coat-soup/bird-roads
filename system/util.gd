@@ -18,6 +18,7 @@ static func layer_in_mask(mask: int, layer: int) -> bool:
 # 2 player (player should only ever have this)
 # 3 interactable
 # 4 airship physics interactors (should be on airship and terrain/large objects)
+# 16 navgraph: nodes & occlusion zones
 
 
 static func spawn_particles_for_time(position: Vector3, particles: PackedScene, parent: Node, time: float):

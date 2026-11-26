@@ -24,6 +24,9 @@ size = Vector3(2, 2.397461, 1.4008789)
 [sub_resource type="SphereShape3D" id="SphereShape3D_guhb2"]
 radius = 0.1
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_lk1b1"]
+radius = 0.1
+
 [node name="weapon_platform_small" unique_id=234909682 instance=ExtResource("1_gib8b")]
 script = ExtResource("2_eswkj")
 
@@ -57,30 +60,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0730072, -2.7004395)
 shape = SubResource("BoxShape3D_tnm82")
 
 [node name="NavigationNode" type="Node3D" parent="." index="11" unique_id=1313953137 node_paths=PackedStringArray("connections")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6348449, -1.7960486)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0801601, -1.3654557)
 script = ExtResource("3_guhb2")
 connections = [NodePath("../NavigationNode2")]
 force_connect_on_load = true
 add_connections_on_force_load = null
 metadata/_custom_type_script = "uid://dck4k0vi4hevc"
 
-[node name="@StaticBody3D@25939" type="StaticBody3D" parent="NavigationNode" index="0" unique_id=1555027874]
+[node name="@StaticBody3D@50477" type="StaticBody3D" parent="NavigationNode" index="0" unique_id=479278753]
 collision_layer = 32768
 
-[node name="@CollisionShape3D@25940" type="CollisionShape3D" parent="NavigationNode/@StaticBody3D@25939" index="0" unique_id=198276233]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35128427, 0)
+[node name="@CollisionShape3D@50478" type="CollisionShape3D" parent="NavigationNode/@StaticBody3D@50477" index="0" unique_id=420063297]
 shape = SubResource("SphereShape3D_guhb2")
 
 [node name="NavigationNode2" type="Node3D" parent="." index="12" unique_id=1764744216 node_paths=PackedStringArray("connections")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43333566, -3.4355915)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2127575, -3.4355915)
 script = ExtResource("3_guhb2")
 connections = [NodePath("../NavigationNode")]
 force_connect_on_load = true
 metadata/_custom_type_script = "uid://dck4k0vi4hevc"
 
-[node name="_StaticBody3D_25939" type="StaticBody3D" parent="NavigationNode2" index="0" unique_id=1374567227]
+[node name="@StaticBody3D@49999" type="StaticBody3D" parent="NavigationNode2" index="1" unique_id=493646749]
 collision_layer = 32768
 
-[node name="_CollisionShape3D_25940" type="CollisionShape3D" parent="NavigationNode2/_StaticBody3D_25939" index="0" unique_id=133630959]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51316917, -0.30026102)
-shape = SubResource("SphereShape3D_guhb2")
+[node name="@CollisionShape3D@50000" type="CollisionShape3D" parent="NavigationNode2/@StaticBody3D@49999" index="0" unique_id=2017440960]
+shape = SubResource("SphereShape3D_lk1b1")

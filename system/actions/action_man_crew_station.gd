@@ -38,7 +38,7 @@ func end_action(character : Character):
 	super.end_action(character)
 	character.nav_agent.finished_path.disconnect(on_finished_path)
 	if chosen_station:
-		chosen_station.ai_controller.end_crewing(character)
+		chosen_station.end_crewing(character)
 		chosen_station.claimed_character = null
 
 

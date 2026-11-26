@@ -8,6 +8,10 @@ extends AIController
 @export var target : Node3D
 @export var subtarget : Node3D
 
+var los : bool = false
+
+var los_dist_forgiveness : float = 5 # NOTE: changes depending on target type, gunner skill, etc
+
 
 func _ready() -> void:
 	super._ready()
@@ -19,7 +23,11 @@ func _ready() -> void:
 
 
 func tick():
-	if active and target: subtarget = get_airship_subtarget(target)
+	if active and target:
+		subtarget = get_airship_subtarget(target)
+		los = has_los(subtarget if subtarget else target, cannon.get_world_3d().direct_space_state)
+		DebugDraw3D.draw_line(cannon.muzzle_point.global_position, subtarget.global_position if subtarget else target.global_position, Color.GREEN if los else Color.RED, 1.0/tick_rate)
+	else: los = false
 	
 	if active and target:
 		var pos = cannon.muzzle_point.global_position
@@ -53,15 +61,16 @@ func tick():
 			var launch_dir = horizontal * cos(angle)
 			launch_dir.y = sin(angle)
 			launch_dir = launch_dir.normalized()
-
+			
 			var local_dir = cannon.global_basis.inverse() * launch_dir
-		
+			
 			var yaw = atan2(local_dir.x, local_dir.z)
 			var pitch = -atan2(local_dir.y, Vector2(local_dir.x, local_dir.z).length())
-		
+			
 			cannon.target_rotation = Vector2(pitch, yaw)
-		
-			cannon.fire()
+			
+			if los:
+				cannon.fire()
 		
 		ticked.emit()
 	
@@ -98,7 +107,23 @@ func get_airship_subtarget(target : Node3D) -> Node3D:
 	if airship:
 		for engine in airship.engines:
 			if engine.health and engine.health.cur_health > 0:
-				var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(cannon.muzzle_point.global_position, engine.center_point.global_position if engine.center_point else engine.global_position, Util.layer_mask([1,2,4,5,6])))
+				var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(cannon.muzzle_point.global_position, engine.center_point.global_position if engine.center_point else engine.global_position, Util.layer_mask([1,2,5,6])))
 				if result and result.collider.get_parent_node_3d() == engine:
 					return engine.center_point if engine.center_point else engine
 	return null
+
+
+func has_los(target : Node3D, space_state : PhysicsDirectSpaceState3D, angle_limited = true) -> bool:
+	if angle_limited:
+		var dir : Vector3 = target.global_position - cannon.muzzle_point.global_position
+		var yaw_angle : float = rad_to_deg(cannon.global_basis.z.signed_angle_to(dir, cannon.muzzle_point.global_basis.y))
+		var pitch_angle : float = rad_to_deg(cannon.global_basis.z.signed_angle_to(dir, cannon.muzzle_point.global_basis.x))
+		if abs(yaw_angle) > cannon.yaw_range or pitch_angle > cannon.pitch_max or pitch_angle < cannon.pitch_min - 10: return false
+	
+	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(cannon.muzzle_point.global_position, target.global_position, Util.layer_mask([1,2,5,6]), cannon.ray_self_exclude_list))
+	
+	if (not result or
+		(result.collider == target or result.collider.get_parent_node_3d() == target) or 
+		result.position.distance_to(target.global_position) < los_dist_forgiveness):
+		return true
+	else: return false

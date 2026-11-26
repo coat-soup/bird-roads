@@ -5,6 +5,7 @@ extends Marker3D
 @export_flags("Cargo", "Weapon", "Equipment") var allowed_types : int = 0b111
 
 @export_range(0,1) var move_weapon_forward : float = 0
+@export var yaw_range : float = 70
 
 @export var symmetry_connection : HardpointSlot = null
 
@@ -73,6 +74,7 @@ func resolve(rand : RandomNumberGenerator, generator : ShipExteriorGenerator):
 		var weapon = weapon_data.prefab.instantiate()
 		hardpoint.get_child(0).add_child(weapon)
 		weapon_platform.cannon = weapon
+		weapon_platform.cannon.yaw_range = min(weapon_platform.cannon.yaw_range, yaw_range)
 		
 	elif hardpoint_data.type == HardpointData.HardpointType.CARGO:
 		generator.cargo_req -= hardpoint_data.size

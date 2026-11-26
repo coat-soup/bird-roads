@@ -47,7 +47,7 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1
 shape = SubResource("CapsuleShape3D_swygn")
 
 [node name="Helm" type="CSGBox3D" parent="Movement" unique_id=1139777492]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0940003, -6.1209373)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0940003, -5.9263864)
 
 [node name="Controllable" type="StaticBody3D" parent="Movement/Helm" unique_id=1154739986 node_paths=PackedStringArray("movement", "camera")]
 script = ExtResource("5_0s8cv")
@@ -61,7 +61,7 @@ prompt_text = "Control Helm"
 shape = SubResource("BoxShape3D_0s8cv")
 
 [node name="Camera3D" type="Camera3D" parent="Movement/Helm/Controllable" unique_id=969510234]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.46767, -0.9292779)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1.4751477, -0.59460163)
 
 [node name="AIController" type="Node" parent="Movement" unique_id=1181289627 node_paths=PackedStringArray("movement")]
 script = ExtResource("6_mq1uw")

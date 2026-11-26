@@ -9,6 +9,5 @@ enum HardpointType {CARGO, WEAPON, EQUIPMENT}
 
 @export_enum("Small", "Medium", "Large", "Extra Large") var size : int
 
-
 func _to_string() -> String:
 	return name

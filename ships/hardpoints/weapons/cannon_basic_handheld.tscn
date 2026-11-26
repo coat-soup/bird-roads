@@ -15,6 +15,7 @@ yaw_obj = NodePath("Yaw")
 pitch_obj = NodePath("Yaw/Pitch")
 muzzle_point = NodePath("Yaw/Pitch/MuzzlePoint")
 pitch_min = -40.0
+yaw_range = 180.0
 ai_controller = NodePath("AIController")
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="Yaw/Pitch" parent_id_path=PackedInt32Array(90843999) index="0" unique_id=1982730829]
