@@ -2,7 +2,6 @@ class_name CannonAIController
 extends AIController
 
 
-
 @onready var cannon: Cannon = $".."
 
 @export var target : Node3D
@@ -17,12 +16,17 @@ func _ready() -> void:
 	super._ready()
 	await get_tree().create_timer(0.5).timeout
 	
-	if active: target_closest_airship()
+	if active: target_highest_threat()
 	
-	active_changed.connect(target_closest_airship)
+	active_changed.connect(target_highest_threat)
 
 
 func tick():
+	n_ticked += 1
+	
+	if n_ticked % 5 == 0:
+		target_highest_threat()
+	
 	if active and target:
 		subtarget = get_airship_subtarget(target)
 		los = has_los(subtarget if subtarget else target, cannon.get_world_3d().direct_space_state)
@@ -91,14 +95,25 @@ func solve_ballistic_angle(horizontal_dist: float, vertical_dist: float, speed: 
 	return atan((v2 - sqrt(discriminant)) / (gravity * horizontal_dist))
 
 
-func target_closest_airship():
+func target_highest_threat():
 	var airships = get_tree().get_nodes_in_group("Airship")
-	var closest : Airship = airships[0]
-	for airship in airships:
-		airship = airship as Airship
-		if closest == cannon.airship or (airship != cannon.airship and airship.movement.global_position.distance_to(cannon.global_position) < closest.movement.global_position.distance_to(cannon.global_position)):
-			closest = airship
-	target = closest.movement
+	var targets : Array[Node] = airships
+	
+	var best_t = targets[0]
+	var highest_threat = 0
+	
+	var space_state = cannon.get_world_3d().direct_space_state
+	
+	for _target in targets:
+		if _target == cannon.airship: continue
+		var t = get_target_threat(_target) if has_los(_target.movement, space_state) else 0.0
+		if t > highest_threat:
+			highest_threat = t
+			best_t = _target
+	
+	var airship = best_t as Airship
+	if airship and airship != cannon.airship: target = airship.movement
+
 
 
 func get_airship_subtarget(target : Node3D) -> Node3D:
@@ -107,23 +122,35 @@ func get_airship_subtarget(target : Node3D) -> Node3D:
 	if airship:
 		for engine in airship.engines:
 			if engine.health and engine.health.cur_health > 0:
-				var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(cannon.muzzle_point.global_position, engine.center_point.global_position if engine.center_point else engine.global_position, Util.layer_mask([1,2,5,6])))
-				if result and result.collider.get_parent_node_3d() == engine:
+				if has_los(engine.center_point if engine.center_point else engine, space_state):
 					return engine.center_point if engine.center_point else engine
 	return null
 
 
-func has_los(target : Node3D, space_state : PhysicsDirectSpaceState3D, angle_limited = true) -> bool:
+func has_los(_target : Node3D, space_state : PhysicsDirectSpaceState3D, angle_limited = true) -> bool:
 	if angle_limited:
-		var dir : Vector3 = target.global_position - cannon.muzzle_point.global_position
+		var dir : Vector3 = _target.global_position - cannon.muzzle_point.global_position
 		var yaw_angle : float = rad_to_deg(cannon.global_basis.z.signed_angle_to(dir, cannon.muzzle_point.global_basis.y))
 		var pitch_angle : float = rad_to_deg(cannon.global_basis.z.signed_angle_to(dir, cannon.muzzle_point.global_basis.x))
 		if abs(yaw_angle) > cannon.yaw_range or pitch_angle > cannon.pitch_max or pitch_angle < cannon.pitch_min - 10: return false
 	
-	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(cannon.muzzle_point.global_position, target.global_position, Util.layer_mask([1,2,5,6]), cannon.ray_self_exclude_list))
+	var result = space_state.intersect_ray(PhysicsRayQueryParameters3D.create(cannon.muzzle_point.global_position, _target.global_position, Util.layer_mask([1,2,4,5,6] if (_target as AirshipMovementManager) else [1,2,5,6]), cannon.ray_self_exclude_list))
 	
 	if (not result or
-		(result.collider == target or result.collider.get_parent_node_3d() == target) or 
-		result.position.distance_to(target.global_position) < los_dist_forgiveness):
+		(result.collider == _target or result.collider.get_parent_node_3d() == _target) or 
+		result.position.distance_to(_target.global_position) < los_dist_forgiveness):
 		return true
 	else: return false
+
+
+func get_target_threat(_target : Node3D) -> float:
+	var threat : float = 0
+	
+	var airship = _target as Airship
+	if airship:
+		for engine in airship.engines:
+			if engine.health and engine.health.cur_health > 0: threat += 1
+		
+		threat *= 1.0 - min((cannon.global_position.distance_to(airship.movement.global_position) / 500), 1)
+		if get_airship_subtarget(airship) == airship.movement: threat *= 0.3 # no vital components in los
+	return threat

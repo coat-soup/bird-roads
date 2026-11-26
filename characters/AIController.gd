@@ -5,6 +5,7 @@ signal ticked
 signal active_changed
 
 const tick_rate : float = 12
+var n_ticked : int = 0
 
 var controlling_character : Character
 
@@ -19,6 +20,7 @@ func _ready() -> void:
 
 
 func tick():
+	n_ticked += 1
 	await get_tree().create_timer(1.0/tick_rate).timeout
 	tick()
 
