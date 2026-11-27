@@ -110,9 +110,10 @@ func target_highest_threat():
 	
 	for _target in targets:
 		if _target == cannon.airship: continue
-		var t = get_target_threat(_target) if has_los(_target.movement, space_state) else 0.0
-		if t > highest_threat:
-			highest_threat = t
+		var threat = get_target_threat(_target)
+		if not has_los(_target.movement, space_state, true): threat = 0
+		if threat > highest_threat:
+			highest_threat = threat
 			best_t = _target
 	
 	var airship = best_t as Airship

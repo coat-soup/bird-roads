@@ -12,7 +12,9 @@ var action_weights = {}
 var tick_speed = 5.0
 
 
-func _ready() -> void: tick()
+func _ready() -> void:
+	character.health.died.connect(on_character_died)
+	tick()
 
 
 func tick():
@@ -106,3 +108,8 @@ func get_action_by_name(action_name : String) -> AIAction:
 	for action in action_set:
 		if action.action_name == action_name: return action
 	return null
+
+
+func on_character_died():
+	for action in current_actions:
+		action.end_action(character)
