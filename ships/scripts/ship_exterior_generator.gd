@@ -97,8 +97,8 @@ func recursive_resolve_slots(node : Node, material : ShaderMaterial, part_type :
 		
 		if not structurised:
 			selected_type = rand.rand_weighted([speed_req, # engines
-													maneouvrability_req, # control surfaces
-													10]) # don't force
+												maneouvrability_req, # control surfaces
+												10]) # don't force
 			if selected_type == 0: hull_slot.allowed_types &= 0b00001000
 			elif selected_type == 1: hull_slot.allowed_types &= 0b00010110
 		

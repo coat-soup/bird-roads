@@ -73,6 +73,8 @@ func fire():
 		var start : Vector3
 		var end : Vector3
 		
+		AudioManager.spawn_sound_at_point(preload("uid://cpfrx6omaegjr"), muzzle_point.global_position, null, 0.0, 50, 0.05)
+		
 		if weapon_manager.player:
 			start = weapon_manager.player.movement_manager.camera.global_position
 			end = weapon_manager.player.movement_manager.camera.global_position - weapon_manager.player.movement_manager.camera.global_basis.z * range + spread_offset

@@ -78,7 +78,7 @@ func toggle_options_menu(value : bool):
 
 
 func update_virtual_joystick(value : Vector2):
-	vjoy_line.points[1] = value * 50 * Vector2(-1,1)
+	vjoy_line.set_point_position(1, value * 50 * Vector2(-1,1))
 	vjoy_pip.position = value * 50 * Vector2(-1,1)
 
 func toggle_airship_hud(value : bool):

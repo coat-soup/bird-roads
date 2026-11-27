@@ -25,6 +25,9 @@ var active = true
 func _ready():
 	velocity = transform.basis.z * speed
 	
+	#await get_tree().create_timer(0.02).timeout
+	#$GPUTrail3D.length = 100
+	
 	await get_tree().create_timer(expiration_time).timeout
 	handle_impact()
 
@@ -49,6 +52,8 @@ func _physics_process(delta: float) -> void:
 
 
 func handle_impact(hit_result = null):
+	AudioManager.spawn_sound_at_point(preload("uid://dagbcowiym36s"), global_position, null, 0.0, 400)
+	
 	var particles : Node3D = preload("res://vfx/scenes/explosion_particles.tscn").instantiate()
 	get_tree().root.add_child(particles)
 	particles.global_position = global_position

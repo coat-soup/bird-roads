@@ -2,11 +2,91 @@
 
 [ext_resource type="Script" uid="uid://doyckji4q6huc" path="res://ships/hardpoints/weapons/cannon_shell.gd" id="1_h5ith"]
 [ext_resource type="PackedScene" uid="uid://cwulpm0i82q41" path="res://ships/hardpoints/weapon_data/shell.glb" id="1_oxoxs"]
+[ext_resource type="Shader" uid="uid://ojovyxd8g716" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="3_f86au"]
+[ext_resource type="Shader" uid="uid://t4lyoc7wjfy7" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="4_msebi"]
+[ext_resource type="Script" uid="uid://bvk073vilonp5" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="5_06167"]
+[ext_resource type="Texture2D" uid="uid://waydps1haq40" path="res://vfx/textures/smoke_trail.png" id="5_msebi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5ith"]
 albedo_color = Color(0.8689852, 0.86898476, 0.86898494, 1)
 metallic = 1.0
 roughness = 0.32
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_msebi"]
+shader = ExtResource("3_f86au")
+
+[sub_resource type="Gradient" id="Gradient_otv0x"]
+offsets = PackedFloat32Array(0, 0.039513677, 0.45288754, 0.775076, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1.7489012, 0.8143145, 0, 1, 1.7539611, 0.7202342, 0, 1, 1.6052606, 0.3462952, 0.24755284, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_wom6b"]
+gradient = SubResource("Gradient_otv0x")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_7c23t"]
+_limits = [0.0, 0.3, 0.0, 1.0]
+bake_resolution = 16
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.49577466, 0.14571431), 0.0, 0.0, 0, 0, Vector2(0.6112676, 0.08571431), 0.0, 0.0, 0, 0, Vector2(0.71549296, 0.15642859), 0.0, 0.0, 0, 0, Vector2(0.81408453, 0.060000002), 0.0, 0.0, 0, 0, Vector2(0.91830987, 0.12214288), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 7
+
+[sub_resource type="CurveTexture" id="CurveTexture_otv0x"]
+curve = SubResource("Curve_7c23t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d6y06"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_msebi")
+shader_parameter/tex = ExtResource("5_msebi")
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_wom6b")
+shader_parameter/curve = SubResource("CurveTexture_otv0x")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 44
+
+[sub_resource type="QuadMesh" id="QuadMesh_nihsb"]
+material = SubResource("ShaderMaterial_d6y06")
+
+[sub_resource type="Curve" id="Curve_d6y06"]
+_limits = [0.0, 0.3, 0.0, 1.0]
+bake_resolution = 16
+_data = [Vector2(0, 0.25684935), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.25684935), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nihsb"]
+curve = SubResource("Curve_d6y06")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_06167"]
+shader = ExtResource("3_f86au")
+
+[sub_resource type="Gradient" id="Gradient_7c23t"]
+offsets = PackedFloat32Array(0.2887538, 0.5349544, 0.80851066, 1)
+colors = PackedColorArray(0.47397643, 0.47397536, 0.4739756, 0.2618581, 0.49019608, 0.49019608, 0.49019608, 0.69803923, 0.34117648, 0.34117648, 0.34117648, 0.56078434, 0.41598046, 0.41598043, 0.4159804, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_otv0x"]
+gradient = SubResource("Gradient_7c23t")
+
+[sub_resource type="Curve" id="Curve_wom6b"]
+_limits = [0.0, 0.3, 0.0, 1.0]
+bake_resolution = 16
+_data = [Vector2(0.20000002, 0), 0.0, 0.0, 0, 0, Vector2(0.34084508, 0.12328768), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_d6y06"]
+curve = SubResource("Curve_wom6b")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nihsb"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_msebi")
+shader_parameter/tex = ExtResource("5_msebi")
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_otv0x")
+shader_parameter/curve = SubResource("CurveTexture_d6y06")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 44
+
+[sub_resource type="QuadMesh" id="QuadMesh_4fgpy"]
+material = SubResource("ShaderMaterial_nihsb")
 
 [node name="CannonShell" type="Node3D" unique_id=1590272973]
 script = ExtResource("1_h5ith")
@@ -17,7 +97,38 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0
 [node name="Cube" parent="shell" index="0" unique_id=473176411]
 surface_material_override/0 = SubResource("StandardMaterial3D_h5ith")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=513738476]
-trail_lifetime = 1.6199999999999999
+[node name="FireTrail" type="GPUParticles3D" parent="." unique_id=1932026111]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.06543535)
+amount = 49
+lifetime = 49.0
+explosiveness = 1.0
+fixed_fps = 165
+process_material = SubResource("ShaderMaterial_msebi")
+draw_pass_1 = SubResource("QuadMesh_nihsb")
+script = ExtResource("5_06167")
+length = 49
+length_seconds = 0.296969696969697
+texture = ExtResource("5_msebi")
+color_ramp = SubResource("GradientTexture1D_wom6b")
+curve = SubResource("CurveTexture_nihsb")
+billboard = true
+_defaults_have_been_set = true
+metadata/_custom_type_script = "uid://bvk073vilonp5"
+
+[node name="SmokeTrail" type="GPUParticles3D" parent="." unique_id=451104015]
+amount = 100
+lifetime = 100.0
+explosiveness = 1.0
+fixed_fps = 165
+process_material = SubResource("ShaderMaterial_06167")
+draw_pass_1 = SubResource("QuadMesh_4fgpy")
+script = ExtResource("5_06167")
+length_seconds = 0.6060606060606061
+texture = ExtResource("5_msebi")
+color_ramp = SubResource("GradientTexture1D_otv0x")
+curve = SubResource("CurveTexture_d6y06")
+billboard = true
+_defaults_have_been_set = true
+metadata/_custom_type_script = "uid://bvk073vilonp5"
 
 [editable path="shell"]

@@ -43,6 +43,8 @@ func fire():
 	
 	time_to_fire = 1.0/fire_rate
 	
+	AudioManager.spawn_sound_at_point(preload("uid://cutkpvf0cki72"), muzzle_point.global_position, null, 0, 250)
+	
 	var shell : CannonShell = preload("res://ships/hardpoints/weapons/cannon_shell.tscn").instantiate()
 	get_tree().root.add_child(shell)
 	shell.global_position = muzzle_point.global_position

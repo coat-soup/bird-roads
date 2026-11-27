@@ -11,6 +11,7 @@ size = Vector3(2, 2, 2)
 
 [node name="cannon_basic_handheld" unique_id=942342330 node_paths=PackedStringArray("yaw_obj", "pitch_obj", "muzzle_point", "ai_controller") instance=ExtResource("1_hfnd5")]
 script = ExtResource("2_ldnv6")
+fire_rate = 1.0
 yaw_obj = NodePath("Yaw")
 pitch_obj = NodePath("Yaw/Pitch")
 muzzle_point = NodePath("Yaw/Pitch/MuzzlePoint")

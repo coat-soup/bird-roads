@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://djhjtgojkfdes" path="res://ships/scripts/airship_player_controller.gd" id="5_0s8cv"]
 [ext_resource type="Script" uid="uid://61wl05o4gntr" path="res://ships/scripts/airship_ai_controller.gd" id="6_mq1uw"]
 [ext_resource type="Script" uid="uid://85bwq26quwdk" path="res://ships/scripts/ai_airship_waypoints.gd" id="7_5nyth"]
+[ext_resource type="Script" uid="uid://bwcnyxymcagof" path="res://ships/scripts/airship_audio_manager.gd" id="7_ub5ht"]
+[ext_resource type="AudioStream" uid="uid://cpbwqfdty3qe2" path="res://audio/PropelorWhir.wav" id="8_ub5ht"]
 
 [sub_resource type="Curve" id="Curve_0s8cv"]
 _data = [Vector2(0, 0.10344815), 0.0, 0.6913994, 0, 0, Vector2(1, 1), 0.6236484, 0.0, 0, 0]
@@ -56,13 +58,13 @@ shape = SubResource("BoxShape3D_mq1uw")
 [node name="CollisionShape3D2" parent="Movement/hull_lancer/Interior/Ladder/Area" parent_id_path=PackedInt32Array(242663195, 288771121, 1313439371) index="0" unique_id=2059811295]
 shape = SubResource("BoxShape3D_5nyth")
 
-[node name="@Node3D@102884" parent="Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(242663195, 288771121, 1093771356) index="1" unique_id=1847256221]
+[node name="@Node3D@138855" parent="Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(242663195, 288771121, 1093771356) index="1" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="@Node3D@102885" parent="Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(242663195, 288771121, 1093771356) index="2" unique_id=1847256221]
+[node name="@Node3D@138856" parent="Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(242663195, 288771121, 1093771356) index="2" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="@Node3D@102886" parent="Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(242663195, 288771121, 1093771356) index="3" unique_id=1847256221]
+[node name="@Node3D@138857" parent="Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(242663195, 288771121, 1093771356) index="3" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="NavGraph" parent="Movement/hull_lancer" index="4" unique_id=275436886 node_paths=PackedStringArray("nodes")]
@@ -96,6 +98,17 @@ movement = NodePath("..")
 
 [node name="AIAirshipWaypoints" type="Node" parent="Movement/AIController" unique_id=1240303359]
 script = ExtResource("7_5nyth")
+
+[node name="AirshipAudioManager" type="Node3D" parent="Movement" unique_id=332203986]
+script = ExtResource("7_ub5ht")
+
+[node name="EngineSounds" type="AudioStreamPlayer3D" parent="Movement/AirshipAudioManager" unique_id=1055922770]
+stream = ExtResource("8_ub5ht")
+volume_db = -80.0
+unit_size = 50.0
+max_db = 5.0
+max_distance = 500.0
+bus = &"SFX"
 
 [editable path="Movement/hull_lancer"]
 [editable path="Movement/hull_lancer/Interior/Ladder"]
