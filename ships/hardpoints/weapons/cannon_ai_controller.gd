@@ -30,7 +30,7 @@ func tick():
 	if active and target:
 		subtarget = get_airship_subtarget(target)
 		los = has_los(subtarget if subtarget else target, cannon.get_world_3d().direct_space_state)
-		DebugDraw3D.draw_line(cannon.muzzle_point.global_position, subtarget.global_position if subtarget else target.global_position, Color.GREEN if los else Color.RED, 1.0/tick_rate)
+		#DebugDraw3D.draw_line(cannon.muzzle_point.global_position, subtarget.global_position if subtarget else target.global_position, Color.GREEN if los else Color.RED, 1.0/tick_rate)
 	else: los = false
 	
 	if active and target:

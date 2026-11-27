@@ -35,6 +35,8 @@ glow_enabled = true
 
 [sub_resource type="Resource" id="Resource_q0tv2"]
 script = ExtResource("2_nygha")
+cargo_capacity = 1
+combat_power = 8
 metadata/_custom_type_script = "uid://bfj51xxaikpcp"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rf0tu"]
@@ -213,13 +215,13 @@ shape = SubResource("BoxShape3D_rf0tu")
 [node name="CollisionShape3D2" parent="Airship/Movement/hull_lancer/Interior/Ladder/Area" parent_id_path=PackedInt32Array(254215350, 242663195, 288771121, 1313439371) index="0" unique_id=2059811295]
 shape = SubResource("BoxShape3D_7tuc3")
 
-[node name="@Node3D@117979" parent="Airship/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(254215350, 242663195, 288771121, 1093771356) index="1" unique_id=1847256221]
+[node name="@Node3D@20960" parent="Airship/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(254215350, 242663195, 288771121, 1093771356) index="1" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="@Node3D@117980" parent="Airship/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(254215350, 242663195, 288771121, 1093771356) index="2" unique_id=1847256221]
+[node name="@Node3D@20961" parent="Airship/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(254215350, 242663195, 288771121, 1093771356) index="2" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="@Node3D@117981" parent="Airship/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(254215350, 242663195, 288771121, 1093771356) index="3" unique_id=1847256221]
+[node name="@Node3D@20962" parent="Airship/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(254215350, 242663195, 288771121, 1093771356) index="3" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Controllable" parent="Airship/Movement/Helm" parent_id_path=PackedInt32Array(254215350, 1139777492) index="0" unique_id=1154739986]
@@ -235,13 +237,13 @@ shape = SubResource("BoxShape3D_mhk54")
 [node name="CollisionShape3D2" parent="Airship2/Movement/hull_lancer/Interior/Ladder/Area" parent_id_path=PackedInt32Array(1276957024, 242663195, 288771121, 1313439371) index="0" unique_id=2059811295]
 shape = SubResource("BoxShape3D_8leff")
 
-[node name="@Node3D@117983" parent="Airship2/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(1276957024, 242663195, 288771121, 1093771356) index="1" unique_id=1847256221]
+[node name="@Node3D@20964" parent="Airship2/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(1276957024, 242663195, 288771121, 1093771356) index="1" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="@Node3D@117984" parent="Airship2/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(1276957024, 242663195, 288771121, 1093771356) index="2" unique_id=1847256221]
+[node name="@Node3D@20965" parent="Airship2/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(1276957024, 242663195, 288771121, 1093771356) index="2" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="@Node3D@117985" parent="Airship2/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(1276957024, 242663195, 288771121, 1093771356) index="3" unique_id=1847256221]
+[node name="@Node3D@20966" parent="Airship2/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(1276957024, 242663195, 288771121, 1093771356) index="3" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Controllable" parent="Airship2/Movement/Helm" parent_id_path=PackedInt32Array(1276957024, 1139777492) index="0" unique_id=1154739986]
@@ -264,13 +266,13 @@ shape = SubResource("BoxShape3D_uyr6x")
 [node name="CollisionShape3D2" parent="Airship3/Movement/hull_lancer/Interior/Ladder/Area" parent_id_path=PackedInt32Array(238483044, 242663195, 288771121, 1313439371) index="0" unique_id=2059811295]
 shape = SubResource("BoxShape3D_dv8yc")
 
-[node name="@Node3D@117987" parent="Airship3/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(238483044, 242663195, 288771121, 1093771356) index="1" unique_id=1847256221]
+[node name="@Node3D@20968" parent="Airship3/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(238483044, 242663195, 288771121, 1093771356) index="1" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="@Node3D@117988" parent="Airship3/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(238483044, 242663195, 288771121, 1093771356) index="2" unique_id=1847256221]
+[node name="@Node3D@20969" parent="Airship3/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(238483044, 242663195, 288771121, 1093771356) index="2" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
-[node name="@Node3D@117989" parent="Airship3/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(238483044, 242663195, 288771121, 1093771356) index="3" unique_id=1847256221]
+[node name="@Node3D@20970" parent="Airship3/Movement/hull_lancer/Interior/Ladder/Segments" parent_id_path=PackedInt32Array(238483044, 242663195, 288771121, 1093771356) index="3" unique_id=1847256221]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 
 [node name="Controllable" parent="Airship3/Movement/Helm" parent_id_path=PackedInt32Array(238483044, 1139777492) index="0" unique_id=1154739986]
@@ -963,7 +965,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.377724, 0.06482975, 34.751
 transform = Transform3D(0.5589614, 0, 0.8291937, 0, 1, 0, -0.8291937, 0, 0.5589614, -47.95346, 0.065, 42)
 
 [node name="Camera3D" parent="cannon_basic_handheld2" index="4" unique_id=160089326]
-transform = Transform3D(-1.0000001, -3.7249386e-09, -8.940697e-08, -3.7249408e-09, 1, 2.9802578e-08, 8.940697e-08, 2.9802578e-08, -1.0000001, 0, 1.7742426, -1.7037029)
+transform = Transform3D(-1.0000001, -3.724936e-09, -8.940697e-08, -3.7249395e-09, 1, 2.9802578e-08, 8.940697e-08, 2.9802578e-08, -1.0000001, 0, 1.7742426, -1.7037029)
 
 [node name="AIController" parent="cannon_basic_handheld2" index="6" unique_id=1230178264 node_paths=PackedStringArray("target")]
 target = NodePath("../../Airship2/Movement")

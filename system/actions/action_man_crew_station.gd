@@ -36,8 +36,8 @@ func perform_action(character : Character):
 	character.nav_agent.set_path_to_node(node)
 	character.nav_agent.finished_path.connect(on_finished_path.bind(character))
 	
-	DebugDraw3D.draw_sphere(node.global_position, 0.5, Color.WHITE, 15)
-	DebugDraw3D.draw_text(node.global_position + Vector3.UP, character.character_data.character_name + "'s claimed station", 32, Color.WHITE, 15)
+	#DebugDraw3D.draw_sphere(node.global_position, 0.5, Color.WHITE, 15)
+	#DebugDraw3D.draw_text(node.global_position + Vector3.UP, character.character_data.character_name + "'s claimed station", 32, Color.WHITE, 15)
 	
 	chosen_station.claimed_character = character
 
